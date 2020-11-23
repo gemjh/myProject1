@@ -3,12 +3,12 @@ package kr.spring.admin.service;
 import java.util.List;
 import java.util.Map;
 
-import kr.spring.admin.vo.AdminMusicalVO;
+import kr.spring.member.vo.MemberVO;
 
 public class AdminMemberServiceImpl implements AdminMemberService{
 
 	@Override
-	public List<AdminMusicalVO> selectList(Map<String, Object> map) {
+	public List<MemberVO> selectList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -17,6 +17,12 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 	public int selectRowCount(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public MemberVO selectMember(Integer mem_num) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 import kr.spring.admin.vo.AdminMusicalVO;
 
 public class AdminMusicalMapper {
-/*	// 뮤지컬 등록 페이지
+	/*// 뮤지컬 등록 페이지
 	public void insertMusical(AdminMusicalVO adminMusical);
 
 	// 뮤지컬 리스트

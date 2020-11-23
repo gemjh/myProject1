@@ -21,7 +21,7 @@ public class MemberVO {
 	private byte[] mem_image;
 	private String mem_imagename;
 	
-	
+	 
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도로 사용
 	private String now_password;
 		

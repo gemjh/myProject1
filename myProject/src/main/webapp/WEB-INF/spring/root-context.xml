@@ -54,9 +54,9 @@
 	
 	<aop:config>
 		<aop:pointcut expression="execution(public * kr.spring..*ServiceImpl.*(..))" 
-		      id="servicePublicMethod"/>
+		      id="kr.spring.admin.servicePublicMethod"/>
 		<aop:advisor advice-ref="txAdvice" 
-		             pointcut-ref="servicePublicMethod"/>      
+		             pointcut-ref="kr.spring.admin.servicePublicMethod"/>      
 	</aop:config>
 	
 	<!-- mybatis 설정 -->

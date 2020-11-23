@@ -16,4 +16,7 @@ public interface AdminConsultService {
 	
 	// 문의 상세 보기
 	public AdminConsultVO selectConsult(Integer con_num);	
+	
+	// 문의 답변달기
+	public void updateConsult(Integer con_num);
 }

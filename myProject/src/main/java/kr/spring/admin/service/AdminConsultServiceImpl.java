@@ -26,4 +26,10 @@ public class AdminConsultServiceImpl implements AdminConsultService{
 		return null;
 	}
 
+	@Override
+	public void updateConsult(Integer con_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

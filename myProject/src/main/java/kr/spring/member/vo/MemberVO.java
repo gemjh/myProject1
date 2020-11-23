@@ -25,7 +25,7 @@ public class MemberVO {
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도로 사용
 	private String now_password;
 		
-	//==============비밀번호 일치 여부 체크============//
+	//비밀번호 일치 여부 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 		if(auth > 1 && password.equals(userPasswd)) {
 			return true;
@@ -33,14 +33,13 @@ public class MemberVO {
 		return false;
 	}
 	
-	//=======이미지 BLOB 처리 =========//
-	public void setUpload(MultipartFile upload)
-			                  throws IOException{
-	//MultipartFile -> byte[]
-		setMem_image(upload.getBytes());
-		//파일 이름
-		setMem_imagename(upload.getOriginalFilename());
-		}	
+	//이미지 BLOB 처리
+	public void setUpload(MultipartFile upload) throws IOException{
+		//MultipartFile -> byte[]
+			setMem_image(upload.getBytes());
+			//파일 이름
+			setMem_imagename(upload.getOriginalFilename());
+	}	
 		
 	//Getter, Setter
 	public int getMem_num() {
@@ -142,9 +141,3 @@ public class MemberVO {
 	
 	
 }
-
-
-
-
-
-

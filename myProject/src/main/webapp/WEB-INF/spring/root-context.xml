@@ -68,5 +68,8 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="kr.spring.musinfo.dao,kr.spring.admin.dao"/>
 	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kr.spring.member.dao"/>
+	</bean>
 	
 </beans>

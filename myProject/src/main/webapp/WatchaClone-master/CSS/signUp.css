@@ -1,0 +1,146 @@
+.signUp_main-1{
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUp_main-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.signUp_main-logo i{
+    font-size: 50px;
+    margin-right: 22px;
+}
+
+.signUp_main-logo .signUp_main-logo-watxha{
+    font-size: 27px;
+}
+
+.singUp_main-logIn{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(250, 250, 250, 0.2);
+    padding-bottom: 20px;
+    margin-bottom:20px;
+}
+
+.singUp_main-logIn_text{
+    font-size: 14px;
+    color:rgba(250, 250, 250, 0.6);
+    margin-bottom:27px;
+}
+
+.logIn_link{
+    text-decoration: none;
+    color:white;
+}
+
+.singUp_main-logIn_button{
+    background-color:#FE2E64;
+    border-radius: 50px;
+    padding: 12px 90px 12px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.singUp_main-logIn_button i{
+    font-size: 18px;
+}
+
+.singUp_main-logIn_button-text{
+    font-size: 14px;
+    margin-left:60px;
+}
+
+.signUp_main-signUp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:198px;
+}
+
+.singUp_main-signUp_Email{
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #585858;
+    padding: 12px 68px 12px 30px;  
+    margin-bottom: 13px; 
+}
+
+.singUp_main-signUp_Email>a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.singUp_main-signUp_Email:hover{
+    background-color: white;
+    color:black;
+    cursor: pointer;
+}
+
+.singUp_main-signUp_Email i{
+    font-size: 20px;
+    margin-right: 38px;
+}
+
+.singUp_main-signUp_Email-text{
+    font-size: 14px;
+}
+
+.singUp_main-signUp_Facebook{
+    background-color: #5882FA;
+    border-radius: 50px;
+    padding: 12px 70px 12px 30px; 
+    margin-bottom: 13px; 
+}
+
+
+.singUp_main-signUp_Facebook:hover{
+    cursor: pointer;
+}
+
+.singUp_main-signUp_Facebook i{
+    font-size: 23px;
+    margin-right: 40px;
+}
+
+.singUp_main-signUp_Facebook-text{
+    font-size:14px;
+}
+
+.signUp_main-signUp_text{
+    font-size:14px;font-size: 11px;
+    color:rgba(250, 250, 250, 0.5);
+}
+
+.start_bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start_bottom-call{
+    font-size: 11px;
+    color: rgba(250, 250, 250, 0.8);
+    margin-bottom:3px;
+}
+
+.start_bottom-address{
+    font-size: 11px;
+    color:rgba(250, 250, 250, 0.3);
+}

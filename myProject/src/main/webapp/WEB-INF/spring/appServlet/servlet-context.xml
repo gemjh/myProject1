@@ -24,11 +24,9 @@
 	</beans:bean>
 	
 	<context:component-scan 
-	               base-package="kr.spring.main.controller"/>
+	               base-package="kr.spring.main.controller"/>          
 	<context:component-scan 
-	               base-package="kr.spring.member.controller" />
-	<context:component-scan 
-	               base-package="kr.spring.board.controller"/>               
+	               base-package="kr.spring.musinfo.controller"/>
 	
 	<!-- tiles 설정 -->
 	<beans:bean id="tilesConfigurer"

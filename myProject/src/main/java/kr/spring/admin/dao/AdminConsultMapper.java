@@ -1,5 +1,5 @@
 package kr.spring.admin.dao;
 
-public class AdminConsultMapper {
+public interface AdminConsultMapper {
 
 }

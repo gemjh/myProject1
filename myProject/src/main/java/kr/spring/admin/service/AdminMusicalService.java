@@ -15,10 +15,9 @@ public interface AdminMusicalService {
 	//글의 갯수 구하기
 	public int selectRowCount(Map<String, Object> map);
 	//뮤지컬 수정폼 보기
-	public AdminMusicalVO selectBoard(Integer mus_num);	
+	public AdminMusicalVO selectMusical(Integer mus_num);	
 	//뮤지컬 수정하기
 	public void updateMusical(AdminMusicalVO adminMusical);
-	
 	//뮤지컬 삭제
 	public void deleteMusical(Integer mus_num);
 }

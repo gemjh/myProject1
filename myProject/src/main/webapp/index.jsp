@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%
-	response.sendRedirect(request.getContextPath()+"/main/main.do");
-%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테스트 페이지</title>
+</head>
+<body>
+<a href="${pageContext.request.contextPath}/main/main.do">메인페이지</a><br>
+<a href="${pageContext.request.contextPath}/main/main.do">뮤지컬페이지</a><br>
+<a href="${pageContext.request.contextPath}/admin/adminMain.do">관리자페이지</a><br>
+<a href="${pageContext.request.contextPath}/main/main.do">회원페이지</a><br>
+</html>   

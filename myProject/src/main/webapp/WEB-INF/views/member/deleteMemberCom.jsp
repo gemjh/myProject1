@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원탈퇴 완료 안내</title>
 </head>
 <body>
 
+	<h2>회원 탈퇴가 완료되었습니다!</h2>
 </body>
 </html>

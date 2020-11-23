@@ -24,29 +24,29 @@ public class MemberAjaxController {
 	
 	@RequestMapping("/member/confirmId.do")
 	@ResponseBody
-	public Map<String,String>process(@RequestParam("id") String id){
+	public Map<String,String>process(@RequestParam("email") String email){
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<아이디 중복 체크>> : " + id);
+			log.debug("<<아이디 중복 체크>> : " + email);
 		}
 		
 		Map<String,String> map = new HashMap<String,String>();
 		
 		//null값을 이용해 체크
-		MemberVO member = memberService.selectCheckMember(id);
+		MemberVO member = memberService.selectCheckMember(email);
 		if(member!=null) {
 			//아이디 중복
-			map.put("result", "idDuplicated");
+			map.put("result", "emailDuplicated");
 		}else {
 			//아이디 미중복
-			map.put("result", "idNotFound");
+			map.put("result", "emailNotFound");
 		}	
 		
 		return map;
 	}
 	
 	//프로필 사진 업데이트
-	@RequestMapping("/member/updateMyPhoto.do")
+	@RequestMapping("/member/updateMyImage.do")
 	@ResponseBody
 	public Map<String,String> processProfile(MemberVO memberVO,HttpSession session){
 		Map<String,String> map = new HashMap<String,String>();

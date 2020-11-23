@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>프로필 이미지 수정 완료 안내</title>
 </head>
 <body>
 
+	<h2>프로필 이미지 수정이 완료되었습니다!</h2>
 </body>
 </html>

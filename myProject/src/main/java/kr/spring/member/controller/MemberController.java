@@ -67,8 +67,8 @@ public class MemberController {
 			log.debug("<<MemberVO>> : " + memberVO);
 		}
 
-		// id와 passwd 필드만 체크
-		if (result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
+		// id와 password 필드만 체크
+		if (result.hasFieldErrors("id") || result.hasFieldErrors("password")) {
 			return formLogin();
 		}
 
@@ -79,7 +79,7 @@ public class MemberController {
 
 			if (member != null) {
 				// 비밀번호 일치 여부 체크
-				check = member.isCheckedPasswd(memberVO.getPassword());
+				check = member.isCheckedPassword(memberVO.getPassword());
 			}
 
 			if (check) {
@@ -94,7 +94,7 @@ public class MemberController {
 
 		} catch (LoginCheckException e) {
 			// 인증 실패로 로그인폼 호출
-			result.reject("invalidIdOrPassword");
+			result.reject("invalidEmailOrPassword");
 
 			return formLogin();
 		}
@@ -177,7 +177,7 @@ public class MemberController {
 		}
 
 		// 현재 비밀번호와 변경할 비밀번호가 전송됐는지 여부를 체크
-		if (result.hasFieldErrors("now_passwd") || result.hasFieldErrors("passwd")) {
+		if (result.hasFieldErrors("now_password") || result.hasFieldErrors("password")) {
 			return "memberChangePassword";
 		}
 
@@ -190,7 +190,7 @@ public class MemberController {
 		// DB에서 읽어온 현재 비밀번호가 일치하는지 여부 체크
 		MemberVO member = memberService.selectMember(memberVO.getMem_num());
 		if (!member.getPassword().equals(memberVO.getNow_password())) {
-			result.rejectValue("now_passwd", "invalidPassword");
+			result.rejectValue("now_password", "invalidPassword");
 			return "memberChangePassword";
 		}
 
@@ -214,8 +214,8 @@ public class MemberController {
 			log.debug("<<회원탈퇴>> : " + memberVO);
 		}
 		
-		//id,passwd 필드의 에러만 체크
-		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
+		//id,password 필드의 에러만 체크
+		if(result.hasFieldErrors("id") || result.hasFieldErrors("password")) {
 			return "memberDelete";
 		}
 		
@@ -232,7 +232,7 @@ public class MemberController {
 						  //입력한 아이디.equals(세션에 저장된 아이디)
 		if(member!=null && memberVO.getEmail().equals(vo.getEmail())) {
 				//비밀번호 일치여부 체크
-				check = member.isCheckedPasswd(memberVO.getPassword());
+				check = member.isCheckedPassword(memberVO.getPassword());
 		}
 		
 		if(check) {
@@ -244,13 +244,13 @@ public class MemberController {
 			
 		}else {
 			//인증실패
-			result.reject("invalidIdOrPassword");
+			result.reject("invalidEmailOrPassword");
 			return "memberDelete";
 		}
 	}
 	
 	//이미지출력
-	@RequestMapping("/member/photoView.do")
+	@RequestMapping("/member/ImageView.do")
 	public ModelAndView viewImage(HttpSession session) {
 		
 		MemberVO user = (MemberVO) session.getAttribute("user");

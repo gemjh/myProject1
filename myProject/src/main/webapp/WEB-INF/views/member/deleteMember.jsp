@@ -2,23 +2,23 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
-	<h2>회원 정보 수정</h2>
-	<form:form action="update.do" commandName="memberVO">
+	<h2>회원 탈퇴</h2>
+	<form:form action="delete.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="nickname">닉네임</label>
-				<form:input path="nickname"/>
-				<form:errors path="nickname" cssClass="error-color"/>
+				<label for="email">이메일</label>
+				<form:input path="email"/>
+				<form:errors path="email" cssClass="error-color"/>        
 			</li>
 			<li>
-				<label for="phone">연락처</label>
-				<form:input path="phone"/>
-				<form:errors path="phone" cssClass="error-color"/>
+				<label for="password">비밀번호</label>
+				<form:password path="password"/>
+				<form:errors path="password" cssClass="error-color"/>
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="수정">
+			<input type="submit" value="전송">
 			<input type="button" value="홈으로"
 			    onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>

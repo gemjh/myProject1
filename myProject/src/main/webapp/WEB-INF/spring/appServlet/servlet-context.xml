@@ -27,6 +27,8 @@
 	               base-package="kr.spring.main.controller"/>          
 	<context:component-scan 
 	               base-package="kr.spring.musinfo.controller"/>
+    <context:component-scan 
+	               base-package="kr.spring.admin.controller"/>
 	
 	<!-- tiles 설정 -->
 	<beans:bean id="tilesConfigurer"
@@ -36,6 +38,7 @@
 				<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/board.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

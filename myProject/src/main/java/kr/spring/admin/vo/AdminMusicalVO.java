@@ -112,11 +112,7 @@ public class AdminMusicalVO {
 	public String toString() {
 		return "AdminMusicalVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
 				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
-				+ ", mus_rate=" + mus_rate + ", mus_summary=" + mus_summary + ", mus_detail=" + mus_detail
-				+ ", mus_regdate=" + mus_regdate + "]";
+				+ ", mus_rate=" + mus_rate + ", mus_postname=" + mus_postname + ", mus_summary=" + mus_summary
+				+ ", mus_detail=" + mus_detail + ", mus_regdate=" + mus_regdate + "]";
 	}
-	
-	
-	
-	
 }

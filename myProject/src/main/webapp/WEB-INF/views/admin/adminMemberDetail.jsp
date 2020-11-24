@@ -1,12 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<div class="page-main-style">
+	<h2>회원 정보 상세 보기</h2>
+		<ul>
+			<li>
+				<label>회원 번호 :</label>
+				 ${memberVO.mem_num}
+			</li>
+			<li>
+				<label>회원 이메일 :</label>
+				${memberVO.email}
+			</li>
+			<li>
+				<label>회원 닉네임 :</label>
+				${memberVO.nickname}
+			</li>
+			<li>
+				<label>회원 전화번호 :</label>
+				${memberVO.phone}
+			</li>
+			<li>
+				<label>생년월일 :</label>
+				${memberVO.birth}
+			</li>
+			<li>
+				<label>회원가입일 :</label>
+				${memberVO.mem_regdate}
+			</li>
+			<!-- 이용권 구입 넣을까 말까... -->
+			<!-- 회원분류 값 넣기... -->
+		</ul>
+	
+</div>

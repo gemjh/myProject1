@@ -15,7 +15,7 @@ public interface AdminMemberMapper {
 	// 글의 갯수 구하기
 	public int selectRowCount(Map<String, Object> map);
 	// 회원 상세 보기
-	@Select("SELECT * FROM member_detail WHERE member.mem_num=#{mem_num}")
+	@Select("SELECT * FROM member_detail WHERE member_detail.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 
 }

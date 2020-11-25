@@ -267,7 +267,7 @@ public class MemberController {
 	
 	
 	//이미지출력
-	@RequestMapping("/member/ImageView.do")
+	@RequestMapping("/member/imageView.do")
 	public ModelAndView viewImage(HttpSession session) {
 		
 		MemberVO user = (MemberVO) session.getAttribute("user");

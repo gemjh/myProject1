@@ -28,6 +28,7 @@ public interface MemberMapper {
 	@Update("UPDATE member_detail SET password=#{password} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);
 	
+	//mem_num을 받아 member_detail 데이터 전체를 가져오자
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	

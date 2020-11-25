@@ -39,17 +39,17 @@
 			$.ajax({
 				url:'confirmEmail.do',
 				type:'post',
-				data:{id:$('#email').val()},
+				data:{email:$('#email').val()},
 				dataType:'json',
 				cache:false,
 				timeout:30000,
 				success:function(data){
 					$('#loading').hide();//로딩 이미지 감추기
 					
-					if(data.result == 'EmailNotFound'){
+					if(data.result == 'emailNotFound'){
 						$('#message_email').css('color','blue').text('등록가능Email');
 						checkId = 1;
-					}else if(data.result == 'EmailDuplicated'){
+					}else if(data.result == 'emailDuplicated'){
 						$('#message_email').css('color','red').text('중복된Email');
 						$('#email').val('').focus();
 						checkId = 0;

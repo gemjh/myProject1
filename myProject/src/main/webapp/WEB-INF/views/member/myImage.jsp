@@ -84,10 +84,10 @@
 	<h2>프로필 사진 변경하기</h2>
 	<ul>
 		<li>
-			<c:if test="${empty member.mem_imagename}">
+			<c:if test="${empty user.mem_imagename}">
 			<img src="${pageContext.request.contextPath}/resources/images/blank.gif" width="100" height="100" class="my-image">	
 			</c:if>
-			<c:if test="${!empty member.mem_imagename}">
+			<c:if test="${!empty user.mem_imagename}">
 			<img src="${pageContext.request.contextPath}/member/imageView.do" width="100" height="100" class="my-image">
 			</c:if>
 		</li>

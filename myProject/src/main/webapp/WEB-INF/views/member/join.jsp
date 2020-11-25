@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){		
 		//0->1 체크한것, 0->0체크안된것
 		var checkId = 0;
@@ -82,7 +82,7 @@
 			
 		});
 	});
-</script> -->
+</script> 
 <div class="page-main-style">
 	<h2>회원 가입</h2>
 	<form:form id="register_form" action="join.do" commandName="memberVO">

@@ -253,6 +253,18 @@ public class MemberController {
 			return "/member/deleteMember";
 		}
 	}
+	//이미지 변경 폼
+	@RequestMapping(value="/member/myImage.do", method=RequestMethod.GET)
+	public String formImage() {
+		return "/member/myImage";
+	}
+	
+	//이미지 변경 처리
+	@RequestMapping(value = "/member/myImage.do", method = RequestMethod.POST)
+	public String submitImage(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+		return "/member/myImage";
+	}
+	
 	
 	//이미지출력
 	@RequestMapping("/member/ImageView.do")

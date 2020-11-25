@@ -81,7 +81,7 @@
 	});
 </script>
 <div class="page-main-style">
-	<h2>프로필 사진</h2>
+	<h2>프로필 사진 변경하기</h2>
 	<ul>
 		<li>
 			<c:if test="${empty member.mem_imagename}">

@@ -22,7 +22,7 @@ public class MemberAjaxController {
 	@Resource
 	private MemberService memberService;
 	
-	/*@RequestMapping("/member/confirmEmail.do")
+	@RequestMapping("/member/confirmEmail.do")
 	@ResponseBody
 	public Map<String,String>process(@RequestParam("email") String email){
 		
@@ -44,7 +44,7 @@ public class MemberAjaxController {
 		
 		return map;
 	}
-	*/
+	
 	//프로필 사진 업데이트
 	@RequestMapping("/member/updateMyImage.do")
 	@ResponseBody

@@ -67,12 +67,12 @@ public class MemberController {
 			log.debug("<<MemberVO>> : " + memberVO);
 		}
 
-		// id와 password 필드만 체크
-		if (result.hasFieldErrors("id") || result.hasFieldErrors("password")) {
+		// email와 password 필드만 체크
+		if (result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
 			return formLogin();
 		}
 
-		// 로그인 체크(id와 비밀번호 일치 여부 체크)
+		// 로그인 체크(email와 비밀번호 일치 여부 체크)
 		try {
 			MemberVO member = memberService.selectCheckMember(memberVO.getEmail());
 			boolean check = false;

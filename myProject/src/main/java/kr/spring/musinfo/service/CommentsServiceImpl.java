@@ -1,53 +1,58 @@
 package kr.spring.musinfo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.spring.musinfo.dao.CommentsMapper;
 import kr.spring.musinfo.service.CommentsService;
 import kr.spring.musinfo.vo.CommentsVO;
          //빈 이름
 @Service("commentsService")
 public class CommentsServiceImpl implements CommentsService{
+	@Resource
+	CommentsMapper commentsMapper;
+			@Override
+			public void insertComments(CommentsVO commentsVO) {
+				// TODO Auto-generated method stub
+				commentsMapper.insertComments(commentsVO);
+			}
+
+			@Override
+			public List<CommentsVO> selectList(Map<String, Object> map) {
+				// TODO Auto-generated method stub
+				return commentsMapper.selectList(map);
+			}
+
+
+			@Override
+			public CommentsVO selectComments(int rev_num) {
+				// TODO Auto-generated method stub
+				return commentsMapper.selectComments(rev_num);
+			}
+
+			@Override
+			public void updateComments(CommentsVO commentsVO) {
+				// TODO Auto-generated method stub
+				commentsMapper.updateComments(commentsVO);
+			}
+
+			@Override
+			public void deleteComments(int rev_num) {
+				// TODO Auto-generated method stub
+				commentsMapper.deleteComments(rev_num);
+			}
+
+			@Override
+			public int selectRowCount(Map<String, Object> map) {
+				// TODO Auto-generated method stub
+				return commentsMapper.selectRowCount(map);
+			}
+
 	
 
-
-	@Override
-	public void insertComments(CommentsVO review) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getCommentsCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<CommentsVO> getCommentsList(int startRow, int endRow) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CommentsVO getComments(int num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateComments(CommentsVO musical) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteComments(int num) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

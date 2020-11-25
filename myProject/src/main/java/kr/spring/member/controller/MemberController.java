@@ -127,8 +127,8 @@ public class MemberController {
 		model.addAttribute("member", member);
 
 		return "memberView";
-	}
-*/
+	}*/
+
 	// 회원 정보 수정 폼
 	@RequestMapping(value = "/member/modifyMember.do", method = RequestMethod.GET)
 	public String formUpdate(HttpSession session, Model model) {
@@ -203,28 +203,29 @@ public class MemberController {
 
 		return "redirect:/member/memberMain.do";
 	}
-	/*
+	
 	// 회원 탈퇴 폼
-	@RequestMapping(value = "/member/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/deleteMember.do", method = RequestMethod.GET)
 	public String formDelete() {
-		return "memberDelete";
+		return "/member/deleteMember";
 	}
 
 	// 회원 탈퇴 처리   -- 입력값 | 세션에 저장된 값 | 데이터베이스에 저장된 값
-	@RequestMapping(value = "/member/delete.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/deleteMember.do", method = RequestMethod.POST)
 	public String submitDelete(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<회원탈퇴>> : " + memberVO);
 		}
 		
-		//id,password 필드의 에러만 체크
-		if(result.hasFieldErrors("id") || result.hasFieldErrors("password")) {
-			return "memberDelete";
+		//email,password 필드의 에러만 체크
+		if(result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
+			return "/member/deleteMember";
 		}
 		
 		//회원번호를 얻기 위해 세션에 저장된 회원 정보 반환
 		MemberVO vo = (MemberVO) session.getAttribute("user");
+		
 		//
 		memberVO.setMem_num(vo.getMem_num());
 		
@@ -244,12 +245,12 @@ public class MemberController {
 			memberService.deleteMember(memberVO.getMem_num());
 			//로그아웃
 			session.invalidate();
-			return "redirect:/main/main.do";
+			return "redirect:/member/memberMain.do";
 			
 		}else {
 			//인증실패
 			result.reject("invalidEmailOrPassword");
-			return "memberDelete";
+			return "/member/deleteMember";
 		}
 	}
 	
@@ -268,6 +269,6 @@ public class MemberController {
 		return mav;
 		
 		
-	}*/
+	}
 	
 }

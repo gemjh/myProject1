@@ -37,22 +37,25 @@ public interface MemberMapper {
 	/*@Update("UPDATE spmember_detail SET passwd=#{passwd} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);*/
 	
-	//프로필 이미지 변경
 	
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	
 	
 	
-	
-	
-	@Update("UPDATE spmember SET auth=0 WHERE mem_num=#{mem_num}")
+	//회원탈퇴
+	@Update("UPDATE member SET auth=3 WHERE mem_num=#{mem_num}")
 	public void deleteMember(Integer mem_num);
-	@Delete("DELETE FROM spmember_detail WHERE mem_num=#{mem_num}")
+	/*@Update("UPDATE spmember SET auth=0 WHERE mem_num=#{mem_num}")
+	public void deleteMember(Integer mem_num);*/
+	@Delete("DELETE FROM member_detail WHERE mem_num=#{mem_num}")
 	public void deleteMember_detail(Integer mem_num);
+	
+	
 	//프로필이미지업데이트
-	@Update("UPDATE spmember_detail SET photo=#{photo},photoname=#{photoname} WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member_detail SET mem_image={#mem_image},mem_imagename=#{mem_imagename} WHERE mem_num=#{mem_num}")
 	public void updateProfile(MemberVO member);
+	/*@Update("UPDATE spmember_detail SET photo=#{photo},photoname=#{photoname} WHERE mem_num=#{mem_num}")*/
 }
 
 

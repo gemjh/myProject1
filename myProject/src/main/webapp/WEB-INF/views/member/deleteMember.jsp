@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
 	<h2>회원 탈퇴</h2>
-	<form:form action="delete.do" commandName="memberVO">
+	<form:form action="deleteMember.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>

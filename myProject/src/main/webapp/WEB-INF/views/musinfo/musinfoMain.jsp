@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 
 .triangle-right {
@@ -110,7 +111,8 @@
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
-                	<span class="triangle-right"></span>
+                	<span class="triangle-right">
+                	</span>
                    	<span class="content_watch">바로보기</span>
                 <!-- 바로보기 버튼 끝 -->
 
@@ -133,7 +135,7 @@
     <!-- 여기까지 영화 정보들 입니다 -->
 
     <!-- 여기서부터 메인 컨텐츠 박스입니다 -->
-    <main class="contents_main-box">
+    <div class="contents_main-box">
         <div class="contents_middle-box">
             <div>
                 <div class="leave-comment-box">
@@ -149,7 +151,7 @@
                             <span class="contents_contents_title">기본 정보</span>
                         </div>
                         <!-- 기본정보 더보기 링크 -->
-                            <a href="">
+                            <a href="more.do?mus_num=${musical.mus_num }">
                                 <span class="contents_contents_more">더보기</span>
                             </a>
                         <!-- 더보기 링크 끝 -->   
@@ -296,7 +298,7 @@
             </div>
             <div class="contents_side-box"></div>
         </div>
-    </main>
+    </div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
     <footer>
         <div class="small-box ">

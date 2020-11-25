@@ -72,7 +72,7 @@
 		<div class="align-center">
 			<input type="submit" value="전송">
 			<input type="button" value="홈으로"
-			    onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			    onclick="location.href='${pageContext.request.contextPath}/member/memberMain.do'">
 		</div>
 	</form:form>
 </div>

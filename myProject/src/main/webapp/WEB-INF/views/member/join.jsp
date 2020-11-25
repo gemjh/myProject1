@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
+<!-- <script type="text/javascript">
+	$(document).ready(function(){		
 		//0->1 체크한것, 0->0체크안된것
 		var checkId = 0;
 		
@@ -25,7 +25,8 @@
 			
 			//================================//
 			/* var regMsg = new RegExp('^[A-Za-z0-9+]{4,10}$'); */
-		 	var regMsg = /^[A-Za-z0-9+]{4,10}$/;
+		 	/* var regMsg = /^[A-Za-z0-9+]{4,10}$/; */
+		 	var regMsg =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			if(!regMsg.test($('#email').val())){
 				$('#message_email').css('color','red').text('이메일 형식을 맞춰 입력해주세요');
 				$('#email').focus();
@@ -81,17 +82,17 @@
 			
 		});
 	});
-</script>
+</script> -->
 <div class="page-main-style">
 	<h2>회원 가입</h2>
-	<form:form id="register_form" action="registerUser.do" commandName="memberVO">
+	<form:form id="register_form" action="join.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
 				<label for="email">이메일</label>
 				<form:input path="email"/>
-				<input type="button" id="confirmEmail" value="Email 중복체크">
-				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" 
+				<input type="button" id="confirmEmail" value="Email 확인">
+ 				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" 
 				      width="16" height="16" style="display:none;" id="loading">
 				<span id="message_email"></span>
 				<form:errors path="email" cssClass="error-color"/>        
@@ -106,11 +107,11 @@
 				<form:password path="password"/>
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
-			<li>
+<%-- 			<li>
 				<label for="password_chk">비밀번호 확인</label>
 				<form:input path="password_chk"/>
 				<form:errors path="password_chk" cssClass="error-color"/>
-			</li>
+			</li> --%>
 			<li>
 				<label for="birth">생년월일</label>
 				<form:input path="birth"/>

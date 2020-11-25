@@ -31,13 +31,13 @@ public class MemberController {
 	}
 
 	// 회원가입 폼
-	@RequestMapping(value = "/member/registerUser.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/join.do", method = RequestMethod.GET)
 	public String form() {
-		return "memberRegister";
+		return "/member/join";
 	}
 
 	// 회원가입 처리
-	@RequestMapping(value = "/member/registerUser.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/join.do", method = RequestMethod.POST)
 	public String submit(@Valid MemberVO memberVO, BindingResult result) {
 		if (log.isDebugEnabled()) {
 			log.debug("<<회원 가입>> : " + memberVO);
@@ -49,15 +49,15 @@ public class MemberController {
 		}
 
 		// 회원 가입
-		memberService.insertMember(memberVO);
+		memberService.joinMember(memberVO);
 
-		return "redirect:/main/main.do";
+		return "redirect:/member/memberMain.do";
 	}
 
 	// 로그인 폼
 	@RequestMapping(value = "/member/login.do", method = RequestMethod.GET)
 	public String formLogin() {
-		return "memberLogin";
+		return "member/login";
 	}
 
 	// 로그인 처리
@@ -85,8 +85,11 @@ public class MemberController {
 			if (check) {
 				// 인증 성공, 로그인 처리
 				session.setAttribute("user", member);
-
-				return "redirect:/main/main.do";
+				session.setAttribute("email",member.getEmail());
+				session.setAttribute("nickname", member.getNickname());
+				session.setAttribute("expire_date",member.getExpire_date());
+				
+				return "redirect:/index.jsp";
 			} else {
 				// 인증 실패
 				throw new LoginCheckException();
@@ -106,10 +109,10 @@ public class MemberController {
 		// 로그아웃
 		session.invalidate();
 
-		return "redirect:/main/main.do";
+		return "redirect:/index.jsp";
 	}
 
-	// 회원 상세 정보
+	/*// 회원 상세 정보
 	@RequestMapping("/member/myPage.do")
 	public String process(HttpSession session, Model model) {
 		// 회원번호를 얻기위해 세션에 저장된 회원 정보를 반환
@@ -125,9 +128,9 @@ public class MemberController {
 
 		return "memberView";
 	}
-
+*/
 	// 회원 정보 수정 폼
-	@RequestMapping(value = "/member/update.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/modifyMember.do", method = RequestMethod.GET)
 	public String formUpdate(HttpSession session, Model model) {
 		// 회원 번호를 구하기 위해 세션에 저장된 회원 정보 반환
 		MemberVO vo = (MemberVO) session.getAttribute("user");
@@ -136,11 +139,11 @@ public class MemberController {
 
 		model.addAttribute("memberVO", memberVO);
 
-		return "memberModify";
+		return "/member/modifyMember";
 	}
 
 	// 회원 정보 수정 처리
-	@RequestMapping(value = "/member/update.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/modifyMember.do", method = RequestMethod.POST)
 	public String submitUpdate(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
 
 		if (log.isDebugEnabled()) {
@@ -149,7 +152,7 @@ public class MemberController {
 
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
-			return "memberModify";
+			return "/member/modifyMember";
 		}
 
 		// 회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
@@ -160,13 +163,13 @@ public class MemberController {
 		// 회원 정보 수정
 		memberService.updateMember(memberVO);
 
-		return "redirect:/member/myPage.do";
+		return "redirect:/member/memberMain.do";
 	}
-
+	
 	// 비밀번호 변경 폼
 	@RequestMapping(value = "/member/changePassword.do", method = RequestMethod.GET)
 	public String formChangePassword() {
-		return "memberChangePassword";
+		return "/member/changePassword";
 	}
 
 	// 비밀번호 변경 처리
@@ -178,7 +181,7 @@ public class MemberController {
 
 		// 현재 비밀번호와 변경할 비밀번호가 전송됐는지 여부를 체크
 		if (result.hasFieldErrors("now_password") || result.hasFieldErrors("password")) {
-			return "memberChangePassword";
+			return "/member/changePassword";
 		}
 
 		// 회원 번호를 얻기 위해서 세션에 저장된 회원 정보 반환
@@ -191,15 +194,15 @@ public class MemberController {
 		MemberVO member = memberService.selectMember(memberVO.getMem_num());
 		if (!member.getPassword().equals(memberVO.getNow_password())) {
 			result.rejectValue("now_password", "invalidPassword");
-			return "memberChangePassword";
+			return "/member/changePassword";
 		}
 
 		// 비밀번호 수정 처리
 		memberService.updatePassword(memberVO);
 
-		return "redirect:/member/myPage.do";
+		return "redirect:/member/memberMain.do";
 	}
-
+	/*
 	// 회원 탈퇴 폼
 	@RequestMapping(value = "/member/delete.do", method = RequestMethod.GET)
 	public String formDelete() {
@@ -264,6 +267,6 @@ public class MemberController {
 		return mav;
 		
 		
-	}
+	}*/
 	
 }

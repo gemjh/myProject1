@@ -7,7 +7,7 @@
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="email">아이디</label>
+				<label for="email">이메일</label>
 				<form:input path="email"/>
 				<form:errors path="email" cssClass="error-color"/>        
 			</li>

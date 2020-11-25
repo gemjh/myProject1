@@ -9,5 +9,8 @@
 <body>
 
 	<h2>회원 탈퇴가 완료되었습니다!</h2>
+	<div class="align-center">
+<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/member/memberMain.do'">
+</div>
 </body>
 </html>

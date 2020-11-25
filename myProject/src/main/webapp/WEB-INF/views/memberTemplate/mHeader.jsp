@@ -3,14 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <h2 class="align-center">회원 MyPage 페이지</h2>
 <div class="align-right">
-	<c:if test="${!empty user && !empty user.mem_Imagename}">
-	<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-image">
+	<%-- <c:if test="${!empty user && !empty user.mem_Imagename}">
+	<img src="${pageContext.request.contextPath}/member/imageView.do" width="25" height="25" class="my-image">
 	</c:if>
 	<c:if test="${!empty user && empty user.mem_Imagename}">
 	<img src="${pageContext.request.contextPath}/resources/images/blank.jpg" width="25" height="25" class="my-image">
-	</c:if>
+	</c:if> --%>
 	<c:if test="${!empty user}">
-	[<span>${user.id}</span>]<br>
+	[<span>${user.email}</span>]<br>
+	<a href="${pageContext.request.contextPath}/member/memberMain.do">마이페이지</a>
 	<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 	</c:if>
 	
@@ -23,9 +24,10 @@
 	
 	 -->
 	<c:if test="${empty user}">
-	<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>	
+	<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+	<a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>	
 	</c:if>
-	<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
+	<a href="${pageContext.request.contextPath}/index.jsp">홈으로</a>
 	<br>
 	<!--
 	
@@ -33,7 +35,9 @@
 	${user.nickname} / ${user.expire_date}가져와서 표시해야함 
 	 
 	 -->
-	[ㅇㅇㅇ님의 이용권 만료일 : ㅇㅇㅇㅇㅇ]
+	<c:if test="${!empty user}">
+		[${user.nickname}님의 이용권 만료일 : ${user.expire_date}]	
+	</c:if>
 </div>
 
 

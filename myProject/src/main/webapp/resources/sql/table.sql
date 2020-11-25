@@ -2,21 +2,20 @@
 CREATE TABLE member(
        mem_num NUMBER(10) not null,
        email VARCHAR2(100) unique not null,
-       auth NUMBER(1) not null,
-
+       auth NUMBER(1) default 2 not null,
       CONSTRAINT mem_pk PRIMARY KEY(mem_num)
 );
 
 
 CREATE TABLE member_detail(
        mem_num NUMBER(10) not null,
-       mem_image BLOB not null,
-       email VARCHAR2(100) unique not null,
+       mem_image BLOB,
+--       email VARCHAR2(100) unique not null,
        nickname VARCHAR2(30) not null,
-       passwd VARCHAR2(60) not null,
+       password VARCHAR2(60) not null,
        birth DATE not null,
        phone VARCHAR2(500) not null,
-       mem_regdate DATE,
+       mem_regdate DATE default SYSDATE not null,
        mem_modifydate DATE ,
        purchase_date DATE,
        expire_date Date,
@@ -104,10 +103,10 @@ CONSTRAINT voucher_pk PRIMARY KEY (voucher_num)
 
 
 
-ALTER TABLE member 
-ADD CONSTRAINTS email
-FOREIGN KEY(email)
-REFERENCES member_detail(email);
+--ALTER TABLE member 
+--ADD CONSTRAINTS email
+--FOREIGN KEY(email)
+--REFERENCES member_detail(email);
 
 ALTER TABLE member_detail
 ADD CONSTRAINTS mem_num 

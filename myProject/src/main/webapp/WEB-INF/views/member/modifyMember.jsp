@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
 	<h2>회원 정보 수정</h2>
-	<form:form action="update.do" commandName="memberVO">
+	<form:form action="modifyMember.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -20,14 +20,7 @@
 		<div class="align-center">
 			<input type="submit" value="수정">
 			<input type="button" value="홈으로"
-			    onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			    onclick="location.href='${pageContext.request.contextPath}/member/memberMain.do'">
 		</div>
 	</form:form>
 </div>
-
-
-
-
-
-
-

@@ -26,8 +26,8 @@ public class MemberVO {
 	private String now_password;
 		
 	//비밀번호 일치 여부 체크
-	public boolean isCheckedPassword(String userPasswd) {
-		if(auth > 1 && password.equals(userPasswd)) {
+	public boolean isCheckedPassword(String userPassword) {
+		if(auth <3 && password.equals(userPassword)) {
 			return true;
 		}
 		return false;

@@ -22,12 +22,12 @@ public class MemberAjaxController {
 	@Resource
 	private MemberService memberService;
 	
-	@RequestMapping("/member/confirmId.do")
+	/*@RequestMapping("/member/confirmEmail.do")
 	@ResponseBody
 	public Map<String,String>process(@RequestParam("email") String email){
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<아이디 중복 체크>> : " + email);
+			log.debug("<<이메일중복 체크>> : " + email);
 		}
 		
 		Map<String,String> map = new HashMap<String,String>();
@@ -44,7 +44,7 @@ public class MemberAjaxController {
 		
 		return map;
 	}
-	
+	*/
 	//프로필 사진 업데이트
 	@RequestMapping("/member/updateMyImage.do")
 	@ResponseBody

@@ -14,11 +14,11 @@ public class MemberServiceImpl implements MemberService{
 	private MemberMapper memberMapper;
 	
 	@Override
-	public void insertMember(MemberVO member) {
+	public void joinMember(MemberVO member) {
 		//세개가 한번에 정상 작동해야하므로 트랜젝션 처리. 하나라도 안되면 롤백되어야함
 		member.setMem_num(memberMapper.selectMem_num());
-		memberMapper.insertMember(member);
-		memberMapper.insertMember_detail(member);
+		memberMapper.joinMember(member);
+		memberMapper.joinMember_detail(member);
 	}
 
 	@Override

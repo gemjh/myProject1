@@ -10,7 +10,7 @@ CREATE TABLE member(
 CREATE TABLE member_detail(
        mem_num NUMBER(10) not null,
        mem_image BLOB,
---       email VARCHAR2(100) unique not null,
+       mem_imagename varchar2(100),
        nickname VARCHAR2(30) not null,
        password VARCHAR2(60) not null,
        birth DATE not null,

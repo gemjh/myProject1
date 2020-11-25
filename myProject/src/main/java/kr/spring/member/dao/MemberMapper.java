@@ -18,7 +18,7 @@ public interface MemberMapper {
 	public void joinMember_detail(MemberVO member);
 	
 	//
-	@Select("SELECT m.mem_num,m.email,m.auth,d.password FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.email=#{email}")
+	@Select("SELECT m.mem_num,m.email,m.auth,d.password,d.mem_imagename FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.email=#{email}")
 	public MemberVO selectCheckMember(String id);//누락된id(탈퇴한 회원의 id)는 검색필요 X -> JOIN
 	
 	//회원정보 변경
@@ -37,12 +37,7 @@ public interface MemberMapper {
 	/*@Update("UPDATE spmember_detail SET passwd=#{passwd} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);*/
 	
-	
-	
-	
-	
 	//프로필 이미지 변경
-	
 	
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);

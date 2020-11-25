@@ -85,9 +85,9 @@ public class MemberController {
 			if (check) {
 				// 인증 성공, 로그인 처리
 				session.setAttribute("user", member);
-				session.setAttribute("email",member.getEmail());
+				/*session.setAttribute("email",member.getEmail());
 				session.setAttribute("nickname", member.getNickname());
-				session.setAttribute("expire_date",member.getExpire_date());
+				session.setAttribute("expire_date",member.getExpire_date());*/
 				
 				return "redirect:/index.jsp";
 			} else {
@@ -186,6 +186,7 @@ public class MemberController {
 
 		// 회원 번호를 얻기 위해서 세션에 저장된 회원 정보 반환
 		MemberVO vo = (MemberVO) session.getAttribute("user");
+		
 		// 현재 비밀번호와 변경할 비밀번호가 저장된 자바빈에 회원 번호 저장
 		memberVO.setMem_num(vo.getMem_num());
 

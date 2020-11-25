@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <h2 class="align-center">회원 MyPage 페이지</h2>
 <div class="align-right">
-	<%-- <c:if test="${!empty user && !empty user.mem_Imagename}">
+	<c:if test="${!empty user && !empty user.mem_imagename}">
 	<img src="${pageContext.request.contextPath}/member/imageView.do" width="25" height="25" class="my-image">
 	</c:if>
-	<c:if test="${!empty user && empty user.mem_Imagename}">
-	<img src="${pageContext.request.contextPath}/resources/images/blank.jpg" width="25" height="25" class="my-image">
-	</c:if> --%>
+	<c:if test="${!empty user && empty user.mem_imagename}">
+	<img src="${pageContext.request.contextPath}/webapp/resources/images/blank.gif" width="25" height="25" class="my-image">
+	</c:if>
 	<c:if test="${!empty user}">
 	[<span>${user.email}</span>]<br>
 	<a href="${pageContext.request.contextPath}/member/memberMain.do">마이페이지</a>

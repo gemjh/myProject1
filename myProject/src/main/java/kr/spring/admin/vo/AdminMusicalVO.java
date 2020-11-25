@@ -3,20 +3,27 @@ package kr.spring.admin.vo;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class AdminMusicalVO {
 	private int mus_num;
+	@NotEmpty
 	private String mus_name;
 	private int gen_num;
 	private int mus_age;
+	@NotEmpty
 	private String mus_actor;
 	private int mus_time;
+	@NotEmpty
 	private String mus_video;
 	private int mus_rate;
 	private byte[] mus_post;
 	private String mus_postname;
+	@NotEmpty
 	private String mus_summary;
+	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
 	public int getMus_num() {
@@ -54,8 +61,8 @@ public class AdminMusicalVO {
 	public String getMus_actor() {
 		return mus_actor;
 	}
-	public void setMus_actor(String mus_actor) {
-		this.mus_actor = mus_actor;
+	public void setMus_actor(String mus_actor2) {
+		this.mus_actor = mus_actor2;
 	}
 	public int getMus_time() {
 		return mus_time;

@@ -2,6 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+function addBox (x) {
+    var actors = '<textarea name="mus_actor' + '" rows="1" cols="12" placeholder="배우이름입력"></textarea>';
+    $('#mus_actor').append(actors);
+  }
+
+</script>
 <div class="page-main-style">
 	<h2>글수정</h2>
 	<form:form commandName="adminMusicalVO" action="adminMusicalModifyCompleted.do"
@@ -55,8 +64,10 @@
 			</li>
 			<li>
 				<label for="mus_actor">출연 배우</label>
-				<input type="button" value="추가" onclick="input_append(this.form)">
-				<div id="mus_actor"></div>
+				<input type="button" value="추가" onclick="addBox(this.form)">
+				<div id="mus_actor">
+
+				</div>
 			</li>
 			<li>
 				<label for="mus_video">스트리밍 비디오 링크</label>

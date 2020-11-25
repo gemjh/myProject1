@@ -13,10 +13,10 @@ public interface AdminMusicalMapper {
 	
 
 	// 뮤지컬 리스트
-	// 리스트(xml)
+	// 리스트-
 	public List<AdminMusicalVO> selectList(Map<String, Object> map);
 
-	// 글의 갯수 구하기(xml)
+	// 글의 갯수 구하기
 	public int selectRowCount(Map<String, Object> map);
 	
 	// 뮤지컬 등록 페이지
@@ -30,10 +30,10 @@ public interface AdminMusicalMapper {
 	@Select("SELECT * FROM musical WHERE musical.mus_num=#{mus_num}")
 	public AdminMusicalVO selectMusical(Integer mus_num);
 
-	// 뮤지컬 수정하기(xml)
+	// 뮤지컬 수정하기
 	public void updateMusical(AdminMusicalVO adminMusical);
 
 	// 뮤지컬 삭제
-	@Delete("DELETE FROM musical WHERE mus_num=#{mus_num}")
+	@Delete("DELETE FROM musical WHERE musical.mus_num=#{mus_num}")
 	public void deleteMusical(Integer mus_num);
 }

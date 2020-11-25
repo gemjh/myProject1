@@ -3,31 +3,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-cnt=0;
-function input_append(ff){
-  cnt++;
-  app = document.getElementById("mus_actor");
-  app.innerHTML += cnt + " : <input type=text name='mus_actor' id='mus_actor'><br>";
-  
-}
 
-function input_result(ff){
-  var str = "";
-  if(cnt == 1){
-    str = ff.txt.value;
-  }else{
-    for(i=0 ; i<cnt ; i++){
-      str += ff.txt[i].value + " , ";
-    }
+function addBox (x) {
+    var actors = '<textarea name="mus_actor' + '" rows="1" cols="10" placeholder="배우이름입력"></textarea>';
+    $('#mus_actor').append(actors);
   }
-  alert(str);
-}
+
 </script>
 <div class="page-main-style">
 	<h2>뮤지컬 등록</h2>
 	<form:form commandName="adminMusicalVO" action="adminMusicalRegister.do"
 								enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color"/>
+
 		<ul>
 			<li>
 				<label for="mus_name">뮤지컬 제목</label>
@@ -70,7 +58,7 @@ function input_result(ff){
 			</li>
 			<li>
 				<label for="mus_actor">출연 배우</label>
-				<input type="button" value="추가" onclick="input_append(this.form)">
+				<input type="button" value="추가" onclick="addBox(this.form)"/>
 				<div id="mus_actor"></div>
 			</li>
 			<li>

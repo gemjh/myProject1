@@ -8,16 +8,30 @@
 		resultType="memberVO">
 		SELECT
 		*
-		FROM member_detail
-		ORDER BY member_detail.mem_num DESC
- 
+		FROM
+		(SELECT a.*,rownum rnum FROM
+			(SELECT * FROM member_detail d JOIN member m ON d.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 1">d.mem_num LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 2">d.nickname LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 3">m.email LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 4">
+			d.mem_num LIKE '%' || #{keyword} || '%' 
+			or d.nickname LIKE '%' || #{keyword} || '%'
+			or m.email LIKE '%' || #{keyword} || '%'
+			or d.mem_num LIKE '%' || #{keyword} || '%'</if>
+		</where>
+		ORDER BY d.mem_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>
 	</select>
 
 	<!-- 총 글 또는 검색된 글의 갯수 구하기 -->
 	<select id="selectRowCount" parameterType="map"
 		resultType="integer">
 		SELECT
-			COUNT(*)
+		COUNT(*)
 		FROM member_detail
 	</select>
 

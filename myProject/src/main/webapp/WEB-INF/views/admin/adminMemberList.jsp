@@ -7,10 +7,10 @@
 	<ul class="search">
 		<li>
 			<select name="keyfield" id="keyfield">
-				<option value="mem_num">회원번호</option>
-				<option value="nicknaame">닉네임</option>
-				<option value="email">이메일</option>
-				<option value="all">전체</option>
+				<option value="1">회원번호</option>
+				<option value="2">닉네임</option>
+				<option value="3">이메일</option>
+				<option value="4">전체</option>
 			</select>
 		</li>
 		<li>
@@ -41,6 +41,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<div class="align-center">${paginHtml}</div>
+	<div class="align-center">${pagingHtml}</div>
 	</c:if>
 </div>

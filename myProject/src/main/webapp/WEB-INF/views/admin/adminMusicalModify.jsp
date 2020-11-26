@@ -13,7 +13,7 @@ function addBox (x) {
 </script>
 <div class="page-main-style">
 	<h2>글수정</h2>
-	<form:form commandName="adminMusicalVO" action="adminMusicalModifyCompleted.do"
+	<form:form commandName="adminMusicalVO" action="adminMusicalModify.do"
 								enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>

@@ -38,11 +38,17 @@
     	<put-attribute name="title" value="뮤지컬 수정"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalModify.jsp"/>       
     </definition>
-     <!-- 뮤지컬 삭제 확인 페이지 들어가기 -->
+     <!-- 뮤지컬 삭제 페이지 들어가기 -->
     <definition name="adminMusicalDelete" 
               extends="adminMain">
     	<put-attribute name="title" value="뮤지컬 삭제"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalDelete.jsp"/>       
+    </definition>
+      <!-- 뮤지컬 삭제 완료 페이지 들어가기 -->
+    <definition name="adminMusicalDeleteCompleted" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 삭제"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalDeleteCompleted.jsp"/>       
     </definition>
     <!-- 관리자페이지 회원 정보 리스트 보기 -->
     <definition name="adminMemberList" 

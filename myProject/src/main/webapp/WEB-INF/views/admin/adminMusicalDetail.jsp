@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-main-style">
 	<h2>뮤지컬 정보 상세 보기</h2>
 	<table>
@@ -10,7 +11,23 @@
 		</tr>
 		<tr>
 			<th>장르</th>
-			<td>${adminMusicalVO.gen_num}</td>
+			<td>
+			<c:if test="${adminMusicalVO.gen_num == 1}">
+			라이선스
+			</c:if>
+			<c:if test="${adminMusicalVO.gen_num == 2}">
+			오리지널
+			</c:if>
+			<c:if test="${adminMusicalVO.gen_num == 3}">
+			창작
+			</c:if>
+			<c:if test="${adminMusicalVO.gen_num == 4}">
+			어린이/가족
+			</c:if>
+			<c:if test="${adminMusicalVO.gen_num == 5}">
+			퍼포먼스
+			</c:if>
+			</td>
 		</tr>
 		<tr>
 			<th>등급</th>
@@ -18,7 +35,12 @@
 		</tr>
 		<tr>
 			<th>뮤지컬 포스터</th>
-			<td>${adminMusicalVO.mus_postname}</td>
+			<td>
+			<div class="align-center">
+			<img src="postView.do?mus_num=${adminMusicalVO.mus_num}"
+										style="max-width:500px;">
+			</div>
+			</td>
 		</tr>
 		<tr>
 			<th>요약 정보</th>

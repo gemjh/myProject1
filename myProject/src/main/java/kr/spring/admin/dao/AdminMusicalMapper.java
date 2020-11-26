@@ -26,7 +26,7 @@ public interface AdminMusicalMapper {
 			+ "SYSDATE)")
 	public void insertMusical(AdminMusicalVO adminMusical);
 
-	// 뮤지컬 수정폼 보기
+	// 뮤지컬 상세 보기
 	@Select("SELECT * FROM musical WHERE musical.mus_num=#{mus_num}")
 	public AdminMusicalVO selectMusical(Integer mus_num);
 

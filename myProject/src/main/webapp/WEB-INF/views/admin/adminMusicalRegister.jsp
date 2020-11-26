@@ -4,16 +4,31 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
+$(document).ready(function(){
+	var check = 0;
+	$('#musical_form').submit(function(event){
+		$('.actor_box').each(function(index,item){
+			if($(this).val()==''){
+				alert('배우 이름을 입력하세요!');
+				$(this).focus();
+				check = 1;
+				return false;
+			}
+			check = 0;
+		});
+		if(check == 1) return false;
+	});
+});
+
 function addBox (x) {
-    var actors = '<textarea name="mus_actor' + '" rows="1" cols="10" placeholder="배우이름입력"></textarea>';
+    var actors = '<input type="text" name="mus_actor' + '" placeholder="배우이름입력" size="10" class="actor_box">';
     $('#mus_actor').append(actors);
   }
-
 </script>
 <div class="page-main-style">
 	<h2>뮤지컬 등록</h2>
 	<form:form commandName="adminMusicalVO" action="adminMusicalRegister.do"
-								enctype="multipart/form-data">
+								enctype="multipart/form-data" id="musical_form">
 		<form:errors element="div" cssClass="error-color"/>
 
 		<ul>
@@ -59,6 +74,7 @@ function addBox (x) {
 			<li>
 				<label for="mus_actor">출연 배우</label>
 				<input type="button" value="추가" onclick="addBox(this.form)"/>
+				<input type="button" value="삭제" onclick="addBox(this.form)"/>
 				<div id="mus_actor"></div>
 			</li>
 			<li>

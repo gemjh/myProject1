@@ -22,7 +22,8 @@ delete_btn.onclick=function(){
 			<select name="keyfield" id="keyfield">
 				<option value="1">뮤지컬 번호</option>
 				<option value="2">뮤지컬 제목</option>
-				<option value="3">전체</option>
+				<option value="3">뮤지컬 장르</option>
+				<option value="4">전체</option>
 			</select>
 		</li>
 		<li>
@@ -39,6 +40,9 @@ delete_btn.onclick=function(){
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count>0}">
+	<div>
+	검색된 총 뮤지컬 수 : ${count}
+	</div>
 	<table>
 		<tr>
 			<th width="130">뮤지컬 번호</th>

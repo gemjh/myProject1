@@ -6,13 +6,20 @@
 	<!--뮤지컬 리스트 -->
 	<select id="selectList" parameterType="map"
 		resultType="adminMusicalVO">	
-	   SELECT * FROM (SELECT a.*,rownum rnum FROM (SELECT * FROM musical m 
+	   SELECT 
+	   	 * 
+	  	 FROM 
+	   	(SELECT a.*,rownum rnum 
+	   		FROM (select * FROM musical m join genre g on m.gen_num = g.gen_num
       <where>
-         <if test="keyword != '' and keyfield == 1">m.mus_num LIKE '%' || #{keyword} || '%' </if>
-
-         <if test="keyword != '' and keyfield == 2">m.mus_name LIKE '%' || #{keyword} || '%' </if>
-
-         <if test="keyword != '' and keyfield == 3">m.mus_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 1">
+         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
       </where>
       ORDER BY m.mus_num DESC)a)
       <![CDATA[
@@ -22,10 +29,23 @@
 	<!-- 총 글 또는 검색된 글의 갯수 구하기 -->
 	<select id="selectRowCount" parameterType="map"
 		resultType="integer">
-		SELECT
-		COUNT(*)
-		FROM musical
-	</select>
+		SELECT 
+	   	count(*)
+	  	 FROM 
+	   	(SELECT a.*,rownum rnum 
+	   		FROM (select * FROM musical m join genre g on m.gen_num = g.gen_num
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+		 </where>
+     	 ORDER BY m.mus_num DESC)a)
+     	 </select>
 	<!-- 뮤지컬 수정 -->
 	<update id="updateMusical" parameterType="adminMusicalVO">
 		UPDATE musical SET
@@ -40,8 +60,8 @@
 		mus_time=#{mus_time},
 		mus_video=#{mus_video},
 		mus_detail=#{mus_detail},
-		mus_summary=#{mus_summary},
-		WHERE musical_num=#{musical_num}
+		mus_summary=#{mus_summary}
+		WHERE mus_num=#{mus_num}
 	</update>
 
 </mapper>

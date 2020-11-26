@@ -1,6 +1,5 @@
 package kr.spring.admin.controller;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.admin.service.AdminMemberService;
 import kr.spring.admin.service.AdminMusicalService;
 import kr.spring.admin.vo.AdminMusicalVO;
 import kr.spring.member.vo.MemberVO;
@@ -32,12 +32,21 @@ public class AdminMusicalController {
 	// 객체 주입
 	@Resource
 	AdminMusicalService adminMusicalService;
+	
+	@Resource
+	AdminMemberService adminMemberService;
 
 	// 자바빈 초기화
 	@ModelAttribute
 	public AdminMusicalVO initCommand() {
 		System.out.println("//뮤지컬자바빈 초기화");
 		return new AdminMusicalVO();
+	}
+	
+	@ModelAttribute
+	public MemberVO initCommand2() {
+		System.out.println("//뮤지컬자바빈 초기화");
+		return new MemberVO();
 	}
 
 	// 뮤지컬 등록
@@ -54,17 +63,15 @@ public class AdminMusicalController {
 			HttpServletRequest request,
 			HttpSession session) {
 		System.out.println("//뮤지컬등록 처리 메소드 호출");
-		//배우이름값 콤마붙여서 넣어주기
+		//배우 이름 데이터  콤마붙여서 넣어주기
 		String[] actors = request.getParameterValues("mus_actor");
 		String mus_actor = "";
 		for(int i=0; i<actors.length;i++) {
-			if(actors[i]==null||actors[i].equals("")) {
-			 mus_actor += "";
-			}
-			if(i!=actors.length-1) {
-			mus_actor += actors[i]+",";
-			}else {
-			mus_actor += actors[i];
+			if(actors[i]!=null && !actors[i].equals("")) {
+				if(i !=0) {
+					mus_actor += ",";	
+				}
+				mus_actor += actors[i];	
 			}
 		}
 		adminMusicalVO.setMus_actor(mus_actor);
@@ -102,7 +109,7 @@ public class AdminMusicalController {
 			log.debug("<<count>> : " + count);
 		}
 		System.out.println("//" + currentPage + "//" + keyfield + "//" + keyword);
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "list.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "adminMusicalList.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		System.out.println("//page :" + page);
@@ -154,66 +161,89 @@ public class AdminMusicalController {
 	//뮤지컬 수정 처리
 	@RequestMapping(value = "/admin/adminMusicalModify.do",method=RequestMethod.POST)
 	public String modifySubmit(@Valid AdminMusicalVO adminMusicalVO, 
-			BindingResult result, 
-			HttpServletRequest request,
-			HttpSession session) {
-		System.out.println("//뮤지컬 수정 메소드 호출");
-		String[] actors = request.getParameterValues("mus_actor");
-		String mus_actor = "";
-		for(int i=0; i<actors.length;i++) {
-			if(i!=actors.length-1) {
-			mus_actor += actors[i]+",";
-			}else {
-			mus_actor += actors[i];
-			}
-		}
-		
-		System.out.println("//actors"+actors);
-		adminMusicalVO.setMus_actor(mus_actor);
+								BindingResult result, 
+								HttpServletRequest request,
+								HttpSession session) {
+		System.out.println("//*******뮤지컬 수정 처리******");
 		if (log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 정보 수정>> : " + adminMusicalVO);
 		}
+		if(result.hasErrors()) {
+			System.out.println("//유효성 체크 결과 오류가 있으면 폼 호출");
+			return "adminMusicalModify";
+		}
+		
+		//배우 이름 데이터  콤마붙여서 넣어주기
+		String[] actors = request.getParameterValues("mus_actor");
+		String mus_actor = "";
+			for(int i=0; i<actors.length;i++) {
+				if(actors[i]!=null && !actors[i].equals("")) {
+					if(i !=0) {
+					mus_actor += ",";	
+					}
+					mus_actor += actors[i];	
+				}
+			}
+		System.out.println("//actors"+actors);
+		adminMusicalVO.setMus_actor(mus_actor);
+		
 
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
 			System.out.println("//오류발생");
 			return "adminMusicalModify";
 		}
-		
-		// 등록하기
+		System.out.println("//adminMusicalVO" + adminMusicalVO);
+		//주소에 입력할 mus_num 구하기
+		System.out.println("adminMusicalVO.getMus_num()"+adminMusicalVO.getMus_num());
+		// 수정하기
 		adminMusicalService.updateMusical(adminMusicalVO);
 		System.out.println("//뮤지컬 정보 수정완료");
-		return "redirect:/admin/adminMusicalList.do";
+		return "redirect:adminMusicalDetail.do?mus_num=";
 	}
 	
 	
 	//뮤지컬 삭제 폼 
 	@RequestMapping(value ="/admin/adminMusicalDelete.do", method = RequestMethod.GET)
-	public String submitDelete(
-			@RequestParam int mus_num,Model model,HttpServletRequest request) {
+	public String submitDelete() {
 		System.out.println("********뮤지컬 삭제 폼*********");
-		if(log.isDebugEnabled()) {
-			log.debug("<<뮤지컬 삭제>> : " + mus_num);
-		}
-		
+
 		return "adminMusicalDelete";
 	}
 	//뮤지컬 삭제 처리
 	@RequestMapping(value ="/admin/adminMusicalDelete.do", method = RequestMethod.POST)
-	public String completeDelete(@RequestParam int mus_num,Model model,HttpServletRequest request) {
+	public String completeDelete(@Valid MemberVO memberVO,BindingResult result,@RequestParam int mus_num,HttpSession session,HttpServletRequest request) {
 		System.out.println("********뮤지컬 삭제 처리*********");
 		if(log.isDebugEnabled()) {
 			log.debug("<<게시판 글 삭제>> : " + mus_num);
 		}
-		
+		//email,password 필드의 에러만 체크
+		if(result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
+			return "/admin/adminMusicalDelete.do";
+		}
 		System.out.println("//글삭제");
 		adminMusicalService.deleteMusical(mus_num);
 		System.out.println("//messeage 출력");
-		model.addAttribute("message","글 삭제 완료!!");
-		model.addAttribute("url",request.getContextPath()+"/admin/adminMusicalList.do");
+
 		
-		return "common/result";
+		return "adminMusicalDeleteCompleted";
 	}
+	
+	
+	//이미지 출력
+	@RequestMapping("/admin/postView.do")
+	public ModelAndView viewImage(@RequestParam int mus_num) {
+		System.out.println("//*****이미지 출력*********");
+		AdminMusicalVO adminMusicalVO = adminMusicalService.selectMusical(mus_num);
+		System.out.println("//adminMusicalVO : "+adminMusicalVO);
+		ModelAndView mav = new ModelAndView();
+		System.out.println("//mav : "+mav);
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",adminMusicalVO.getMus_post());
+		mav.addObject("filename",adminMusicalVO.getMus_postname());
+		System.out.println("//mav : "+mav);
+		return mav;
+	}	
 	
 	//뮤지컬 등록 미리보기
 	

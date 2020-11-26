@@ -9,8 +9,4 @@ public class MusinfoMainController {
 	public String getMusinfoMain() {
 		return "/musinfo/musinfoMain";
 	}
-	@RequestMapping("/musinfo/more.do")
-	public String getMoreMusinfo() {
-		return "/musinfo/moreMusinfo";
-	};
 }

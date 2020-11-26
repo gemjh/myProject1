@@ -73,7 +73,45 @@
   transform-origin: 100% 100%;
 }
 
+      .contents_contents_column{
+      		overflow:hidden;
+      	}
+      .contents_contents_column .contents_contents_summary.hidden{
+         white-space:nowrap;
+         word-wrap:normal;
+         width:90%;
+         overflow:hidden;
+         text-overflow: ellipsis;
+         float:left;
+         
+      }
+      
+      .btn-moreInfo{display:none;white-space:nowrap;float:right;}
+      
+      @media screen and (max-width: 533px){
+         .contents_contents_column .contents_contents_summary.hidden{
+            width:75%;
+         }
+      }
 </style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function () {
+    var colorbox = $('.contents_contents_column .contents_contents_summary');
+    colorbox.each( function() {
+       $( this ).outerHeight();
+       if( $(this).outerHeight() > 21 ){
+          $(this).addClass('hidden');
+          var btnMoreCmt = $(this).siblings('.btn-moreInfo');
+          btnMoreCmt.show();
+          btnMoreCmt.on("click",function(){
+             $(this).siblings('.contents_contents_summary').removeClass('hidden');
+             $(this).remove();
+          });
+       }
+    } );
+ });
+</script>
 <!-- 메뉴바 밑에 콘텐츠 썸네일 -->
     <div class="thumbnail"></div>
     <!-- 여기까지 썸네일 -->
@@ -104,7 +142,7 @@
 
             <!-- 세번째 줄 평점 -->
             <div class="content_info">
-                <span class="content_star">평점 ★2.9 (690명)</span>
+                <span class="content_star">평점 ★2.9 (${review_length}명)</span>
             </div>
             <!-- 세번째 줄 평점 끝 -->
 
@@ -138,28 +176,35 @@
     <div class="contents_main-box">
         <div class="contents_middle-box">
             <div>
-                <div class="leave-comment-box">
-                    <span class="go-leave-comment">
-                        이 작품에 대한 준혁 님의 평가를 글로 남겨보세요.
-                    </span>
-                    <span class="leave-comment">코멘트 남기기</span>
-                </div>
                 <div class="contents_contents-box">
                     <!-- 첫번째(기본정보) 박스입니다 -->
                     <div class="contents_contents_column">
                         <div>
                             <span class="contents_contents_title">기본 정보</span>
                         </div>
-                        <!-- 기본정보 더보기 링크 -->
-                            <a href="more.do?mus_num=${musical.mus_num }">
-                                <span class="contents_contents_more">더보기</span>
-                            </a>
-                        <!-- 더보기 링크 끝 -->   
+                          
                         <span class="contents_contents_summary contents_info">
                             남북미 정상회담 중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
                             북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담 중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
+                            미국 대통령(앵거스 맥페이든)간의 남북미 정상회담중, 북한 내 쿠데타로 세 정상이 납치된다!&nbsp;
+                            북미 평화협정 체결을 위한 대한민국 대통령(정우성), 북한의 최고지도자인 위원장(유연석)과&nbsp;
                             미국 대통령(앵거스 맥페이든)간의 남북미 정상회담
                         </span>
+                        <!-- 기본정보 더보기 링크 -->
+                        <span class="btn-moreInfo" >더보기</span>
+                        <!-- 더보기 링크 끝 --> 
                     </div>
                     <!-- 첫번째(기본정보) 끝입니다 -->
 
@@ -170,18 +215,18 @@
                             <div class="contents_contents_content">
                                 <div class="contents_contents_profile">
                                     <div>
-                                        <span class="profile_name">$(actor1)</span>
-                                        <span class="profile_job">$(role_actor1)</span>
-                                        <span class="profile_name">$(actor2)</span>
-                                        <span class="profile_job">$(role_actor2)</span>
-                                        <span class="profile_name">$(actor3)</span>
-                                        <span class="profile_job">$(role_actor3)</span>
-                                        <span class="profile_name">$(actor4)</span>
-                                        <span class="profile_job">$(role_actor4)</span>
-                                        <span class="profile_name">$(actor5)</span>
-                                        <span class="profile_job">$(role_actor5)</span>
-                                        <span class="profile_name">$(actor6)</span>
-                                        <span class="profile_job">$(role_actor6)</span>
+                                        <span class="profile_name">${actor1 }</span>
+                                        <span class="profile_job">${role_actor1}</span>
+                                        <span class="profile_name">${actor2}</span>
+                                        <span class="profile_job">${role_actor2}</span>
+                                        <span class="profile_name">${actor3}</span>
+                                        <span class="profile_job">${role_actor3}</span>
+                                        <span class="profile_name">${actor4}</span>
+                                        <span class="profile_job">${role_actor4}</span>
+                                        <span class="profile_name">${actor5}</span>
+                                        <span class="profile_job">${role_actor5}</span>
+                                        <span class="profile_name">${actor6}</span>
+                                        <span class="profile_job">${role_actor6}</span>
                                     </div>
                                 </div>
                             </div>
@@ -205,8 +250,8 @@
                         <div>
                             <span class="contents_contents_title">별점 그래프</span>
                             <div>
-                                <span class="star_average">평균 ★2.9</span>
-                                <span class="star_people">(2,225명)</span>
+                                <span class="star_average">평균 ★${rev_rate.sum/rev_rate.length }</span>
+                                <span class="star_people">(${rev_num.length }명)</span>
                             </div>
                         </div>
                         <div class="contents_contents_star-box">
@@ -219,8 +264,8 @@
 			<div class="contents_contents_column">
 				<div class="column_column">
 					<div>
-						<span class="contents_contents_title">코멘트</span> <span
-							class="contents_contents_title-number">550+</span>
+						<span class="contents_contents_title">코멘트</span> 
+						<span class="contents_contents_title-number">${rev_num.length }</span>
 					</div>
 
 
@@ -231,16 +276,6 @@
 						<div class="comment_user">
 							<img src="img/user_profile.jfif" class="comment_user-img">
 							<span class="user_name">filmaholic9</span>
-						</div>
-						<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
-							캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ (대충 예상되는 내용) 미국 : 평화협정 하자고 불러놓고는 자기들의 이익만 추구하며
-							훼방을 놓고 억지</div>
-						<div class="comment_feel">
-							<span class="comment_feel-good"> <i
-								class="fas fa-thumbs-up"></i> 381
-							</span> <span class="comment_feel-comment"> <i
-								class="fas fa-comment"></i> 57
-							</span>
 						</div>
 						<div class="content_info_star">
 							<div class="star_box star1" value="0.5"></div>
@@ -259,23 +294,35 @@
 							<i class="far fa-star real-star5 real-star"></i>
 							<div class="star_box star10" value="5"></div>
 						</div>
+						<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
+							캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ 
+						</div>
 					</div>
 					<div class="comment-nemo">
 						<div class="comment_user">
 							<img src="img/user_profile.jfif" class="comment_user-img">
 							<span class="user_name">filmaholic9</span>
 						</div>
-						<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
-							캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ (대충 예상되는 내용) 미국 : 평화협정 하자고 불러놓고는 자기들의 이익만 추구하며
-							훼방을 놓고 억지</div>
-						<div class="comment_feel">
-							<span class="comment_feel-good"> <i
-								class="fas fa-thumbs-up"></i> 381
-							</span> <span class="comment_feel-comment"> <i
-								class="fas fa-comment"></i> 57
-							</span>
+						<div class="content_info_star">
+							<div class="star_box star1" value="0.5"></div>
+							<i class="far fa-star real-star1 real-star"></i>
+							<div class="star_box star2" value="1"></div>
+							<div class="star_box star3" value="1.5"></div>
+							<i class="far fa-star real-star2 real-star"></i>
+							<div class="star_box star4" value="2"></div>
+							<div class="star_box star5" value="2.5"></div>
+							<i class="far fa-star real-star3 real-star"></i>
+							<div class="star_box star6" value="3"></div>
+							<div class="star_box star7" value="3.5"></div>
+							<i class="far fa-star real-star4 real-star"></i>
+							<div class="star_box star8" value="4"></div>
+							<div class="star_box star9" value="4.5"></div>
+							<i class="far fa-star real-star5 real-star"></i>
+							<div class="star_box star10" value="5"></div>
 						</div>
-						<div class="comment_click-good">좋아요</div>
+						<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
+							캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ
+						</div>
 					</div>
 				</div>
 				<!-- 코멘트 더보기 링크 -->
@@ -300,45 +347,6 @@
         </div>
     </div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
-    <footer>
-        <div class="small-box ">
-            <span class="review">
-                지금까지&nbsp;
-            </span>
-            <span class="review review-red">
-                ★ 562,339,084 개의 평가가&nbsp;
-            </span>
-            <span class="review">
-                쌓였어요.
-            </span>
-        </div>
-        <div class="big-box">
-            <div class="first-column column">
-                <span class="footer_info cursor">
-                    서비스 이용약관 &nbsp;|&nbsp; 개인정보 처리방침 &nbsp;|&nbsp; 회사 안내
-                </span>
-            </div>
-            <div class="second-column column">
-                <span class="footer_info cursor">
-                    고객센터 &nbsp;|&nbsp; cs@watchapedia.co.kr
-                </span>
-                <span class="footer_info cursor">
-                    제휴 및 대외 협력 &nbsp;|&nbsp; contact@watcha.com, 070-7554-9696
-                </span>
-            </div>
-            <div class="third-column column">
-                <span class="footer_info">
-                    주식회사 왓챠 &nbsp;|&nbsp; 대표 박태훈 &nbsp;|&nbsp; 서울특별시 서초구 강남대로 343 신덕빌딩 3층
-                </span>
-                <span class="footer_info">
-                    사업자 등록 번호 211-88-66013
-                </span>
-                <div class="footer_info">
-                    <img src="img/footer_logo.png" class="footer_logo">
-                    <span class="footer_info">© 2011 Watcha. Inc</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="js/index.js"></script>
-    <script src="js/star.js"></script>
+  
+    <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/star.js"></script>

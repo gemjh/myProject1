@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="musinfoMain" 
+               template="/WEB-INF/views/musinfoTemplate/miLayout.jsp">
+    	<put-attribute name="title" value="뮤지컬 상세정보"/>
+    	<put-attribute name="header" value="/WEB-INF/views/musinfoTemplate/miHeader.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/musinfo/musinfoMain.jsp"/>   
+    	<put-attribute name="footer" value="/WEB-INF/views/musinfoTemplate/miFooter.jsp"/>   
+    </definition>
+    <!-- 리뷰 등록 -->
+    <definition name="reviewWrite" 
+              extends="musinfoMain">
+    	<put-attribute name="title" value="리뷰 등록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/musinfo/reviewWrite.jsp"/>       
+    </definition>
+</tiles-definitions>

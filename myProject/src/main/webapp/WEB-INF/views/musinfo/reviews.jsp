@@ -15,12 +15,9 @@
 	<div class="contents_contents_comment-container">
 		<div class="comment-nemo">
 			<div class="comment_user">
-				<img src="img/user_profile.jfif" class="comment_user-img"> <span
-					class="user_name">filmaholic9</span>
+				<img src="img/user_profile.jfif" class="comment_user-img"> 
+				<span class="user_name">filmaholic9</span>
 			</div>
-			<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
-				캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ (대충 예상되는 내용) 미국 : 평화협정 하자고 불러놓고는 자기들의 이익만 추구하며
-				훼방을 놓고 억지</div>
 			<div class="content_info_star">
 				<div class="star_box star1" value="0.5"></div>
 				<i class="far fa-star real-star1 real-star"></i>
@@ -38,6 +35,10 @@
 				<i class="far fa-star real-star5 real-star"></i>
 				<div class="star_box star10" value="5"></div>
 			</div>
+			<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
+				캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ (대충 예상되는 내용) 미국 : 평화협정 하자고 불러놓고는 자기들의 이익만 추구하며
+				훼방을 놓고 억지</div>
+			
 		</div>
 	</div>
 </body>

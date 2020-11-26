@@ -2,7 +2,26 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.main_style {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+.cursor {
+    cursor: pointer;
+}
 .triangle-right {
       width: 0;
       height: 0;
@@ -115,7 +134,7 @@ $(document).ready(function () {
 <!-- 메뉴바 밑에 콘텐츠 썸네일 -->
     <div class="thumbnail"></div>
     <!-- 여기까지 썸네일 -->
-
+<div class="all_contents">
     <!-- 썸네일 밑에 겹쳐있는 콘텐츠 정보들입니다. -->
     <div class="content_info-box">
 
@@ -347,6 +366,6 @@ $(document).ready(function () {
         </div>
     </div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
-  
+  </div>
     <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/star.js"></script>

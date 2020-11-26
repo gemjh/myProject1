@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +10,21 @@
 <title>수정하기</title>
 </head>
 <body>
-<c:if test="${!empty member&& member.mem_num==board.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
-			<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'">
-			<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?board_num=${board.board_num}'">
+
+<form:form commandName="CommentsVO" action="update.do" enctype="multipart/form-data">
+	<form:hidden path="rev_num"></form:hidden>
+		<form:errors element="div" cssClass="error-color"/>
+		<ul>
+			<li>
+				<label for="content">내용</label>
+				<form:textarea path="content"/>
+				<form:errors path="content" cssClass="error-color"/>
+			</li>
 			
+		</ul>
+			<input type="submit" value="전송">
+			<input type="button" value="홈" onclick="location.href='main.do'">
 			
-		</c:if>
+	</form:form>				
 </body>
 </html>

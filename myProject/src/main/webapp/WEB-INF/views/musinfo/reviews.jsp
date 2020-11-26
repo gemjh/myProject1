@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,8 @@
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 </head>
 <body>
+<c:if test="${!empty member&& member.mem_num==board.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
+
 	<div class="contents_contents_comment-container">
 		<div class="comment-nemo">
 			<div class="comment_user">
@@ -38,8 +41,11 @@
 			<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
 				캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ (대충 예상되는 내용) 미국 : 평화협정 하자고 불러놓고는 자기들의 이익만 추구하며
 				훼방을 놓고 억지</div>
-			
+			<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'">
+			<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?board_num=${board.board_num}'">
 		</div>
 	</div>
+</c:if>			
+	
 </body>
 </html>

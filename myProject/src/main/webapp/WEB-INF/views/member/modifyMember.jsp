@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
-	<h2>회원 정보 수정</h2>
+	<h2>회원정보 변경</h2>
 	<form:form action="modifyMember.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>

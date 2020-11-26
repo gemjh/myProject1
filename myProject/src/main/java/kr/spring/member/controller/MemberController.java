@@ -139,7 +139,7 @@ public class MemberController {
 
 		model.addAttribute("memberVO", memberVO);
 
-		return "/member/modifyMember";
+		return "modifyMember";
 	}
 
 	// 회원 정보 수정 처리
@@ -152,7 +152,7 @@ public class MemberController {
 
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
-			return "/member/modifyMember";
+			return "modifyMember";
 		}
 
 		// 회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
@@ -169,7 +169,7 @@ public class MemberController {
 	// 비밀번호 변경 폼
 	@RequestMapping(value = "/member/changePassword.do", method = RequestMethod.GET)
 	public String formChangePassword() {
-		return "/member/changePassword";
+		return "changePassword";
 	}
 
 	// 비밀번호 변경 처리
@@ -181,7 +181,7 @@ public class MemberController {
 
 		// 현재 비밀번호와 변경할 비밀번호가 전송됐는지 여부를 체크
 		if (result.hasFieldErrors("now_password") || result.hasFieldErrors("password")) {
-			return "/member/changePassword";
+			return "changePassword";
 		}
 
 		// 회원 번호를 얻기 위해서 세션에 저장된 회원 정보 반환
@@ -195,7 +195,7 @@ public class MemberController {
 		MemberVO member = memberService.selectMember(memberVO.getMem_num());
 		if (!member.getPassword().equals(memberVO.getNow_password())) {
 			result.rejectValue("now_password", "invalidPassword");
-			return "/member/changePassword";
+			return "changePassword";
 		}
 
 		// 비밀번호 수정 처리
@@ -207,7 +207,7 @@ public class MemberController {
 	// 회원 탈퇴 폼
 	@RequestMapping(value = "/member/deleteMember.do", method = RequestMethod.GET)
 	public String formDelete() {
-		return "/member/deleteMember";
+		return "deleteMember";
 	}
 
 	// 회원 탈퇴 처리   -- 입력값 | 세션에 저장된 값 | 데이터베이스에 저장된 값
@@ -220,7 +220,7 @@ public class MemberController {
 		
 		//email,password 필드의 에러만 체크
 		if(result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
-			return "/member/deleteMember";
+			return "deleteMember";
 		}
 		
 		//회원번호를 얻기 위해 세션에 저장된 회원 정보 반환
@@ -250,19 +250,19 @@ public class MemberController {
 		}else {
 			//인증실패
 			result.reject("invalidEmailOrPassword");
-			return "/member/deleteMember";
+			return "deleteMember";
 		}
 	}
 	//이미지 변경 폼
 	@RequestMapping(value="/member/myImage.do", method=RequestMethod.GET)
 	public String formImage() {
-		return "/member/myImage";
+		return "myImage";
 	}
 	
 	//이미지 변경 처리
 	@RequestMapping(value = "/member/myImage.do", method = RequestMethod.POST)
 	public String submitImage(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
-		return "/member/myImage";
+		return "myImage";
 	}
 	
 	
@@ -280,7 +280,44 @@ public class MemberController {
 		
 		return mav;
 		
+	}
+	
+	//이용권 구매하기 폼
+	@RequestMapping(value ="/member/ticket.do", method=RequestMethod.GET)
+	public String formticket(HttpSession session, Model model) {
+		//회원번호 구하기
+		MemberVO vo = (MemberVO)session.getAttribute("user");
+		
+		MemberVO memberVO = memberService.selectMember(vo.getMem_num());
+		
+		model.addAttribute("memberVO",memberVO);
+		
+		return "ticket";
+	}
+	
+	//이용권 구매 처리
+	@RequestMapping(value="/member/ticket.do", method=RequestMethod.POST)
+	public String SubmitTicket(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<티켓구매처리>>" + memberVO);
+		}
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "ticket";
+		}
+		
+		//회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
+		MemberVO vo = (MemberVO) session.getAttribute("user");
+		//전송된 데이터가 저장된 자바빈에 회원 번호를 저장
+		memberVO.setMem_num(vo.getMem_num());
+		
+		//회원 정보 수정
+		memberService.updateTicket(memberVO);
+		
+		return "redirect:/member/ticket.do";
 		
 	}
+	
 	
 }

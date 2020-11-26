@@ -5,13 +5,38 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="member" template="/WEB-INF/views/memberTemplate/mLayout.jsp">
+	<definition name="memberMain" template="/WEB-INF/views/memberTemplate/mLayout.jsp">
 		<put-attribute name="title" value="Mucha 회원관리 페이지"/>
 		<put-attribute name="header" value="/WEB-INF/views/memberTemplate/mHeader.jsp"/>
 		<put-attribute name="left" value="/WEB-INF/views/memberTemplate/mLeft.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/memberMain.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/memberTemplate/mFooter.jsp"/>
 	</definition>
+	<!-- 회원정보 변경 -->
+    <definition name="modifyMember" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyMember.jsp"/>       
+    </definition>
+    <!-- 비밀번호 변경 -->
+    <definition name="changePassword" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/changePassword.jsp"/>       
+    </definition>
+    <!-- 프로필 이미지 변경 -->
+    <definition name="myImage" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/myImage.jsp"/>       
+    </definition>
+    <!-- 이용권 구매 -->
+    <definition name="ticket" extends="memberMain">
+    	<put-attribute name="title" value="이용권 구매"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/ticket.jsp"/>       
+    </definition>
+    <!-- 회원탈퇴 -->
+    <definition name="deleteMember" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/deleteMember.jsp"/>       
+    </definition>
 </tiles-definitions>
 
 

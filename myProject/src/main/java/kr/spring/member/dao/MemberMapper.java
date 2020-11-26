@@ -42,7 +42,11 @@ public interface MemberMapper {
 	//프로필이미지업데이트
 	@Update("UPDATE member_detail SET mem_image=#{mem_image},mem_imagename=#{mem_imagename} WHERE mem_num=#{mem_num}")
 	public void updateProfile(MemberVO member);
-	/*@Update("UPDATE spmember_detail SET photo=#{photo},photoname=#{photoname} WHERE mem_num=#{mem_num}")*/
+	
+	//이용권 구매
+	@Update("update member_detail SET purchase_date=SYSDATE WHERE mem_num=#{mem_num}")
+	public void updateTicket(MemberVO member);
+	
 }
 
 

@@ -10,4 +10,5 @@ public interface MemberService {
 	public void updatePassword(MemberVO member);
 	public void deleteMember(Integer mem_num);
 	public void updateProfile(MemberVO member);
+	public void updateTicket(MemberVO member);
 }

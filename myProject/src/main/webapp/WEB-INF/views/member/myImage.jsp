@@ -81,7 +81,8 @@
 	});
 </script>
 <div class="page-main-style">
-	<h2>프로필 사진 변경하기</h2>
+	<h2>프로필 이미지 변경</h2>
+	현재 이미지<br>
 	<ul>
 		<li>
 			<c:if test="${empty user.mem_imagename}">

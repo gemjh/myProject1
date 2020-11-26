@@ -11,6 +11,6 @@ public class MemberMainController {
 	public String make(HttpServletResponse response) {
 		
 	
-		return "member";
+		return "memberMain";
 		}
 }

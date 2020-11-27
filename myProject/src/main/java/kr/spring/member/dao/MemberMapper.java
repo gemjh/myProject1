@@ -28,7 +28,7 @@ public interface MemberMapper {
 	@Update("UPDATE member_detail SET password=#{password} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);
 	
-	//mem_num을 받아 member_detail 데이터 전체를 가져오자
+	//mem_num을 받아 member_detail 데이터 전체를 가져오기
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	
@@ -44,7 +44,7 @@ public interface MemberMapper {
 	public void updateProfile(MemberVO member);
 	
 	//이용권 구매
-	@Update("update member_detail SET purchase_date=SYSDATE WHERE mem_num=#{mem_num}")
+	@Update("update member_detail SET purchase_date=SYSDATE, expire_date=SYSDATE+30 WHERE mem_num=#{mem_num}")
 	public void updateTicket(MemberVO member);
 	
 }

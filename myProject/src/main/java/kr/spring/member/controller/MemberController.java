@@ -33,7 +33,7 @@ public class MemberController {
 	// 회원가입 폼
 	@RequestMapping(value = "/member/join.do", method = RequestMethod.GET)
 	public String form() {
-		return "/member/join";
+		return "join";
 	}
 
 	// 회원가입 처리
@@ -57,7 +57,7 @@ public class MemberController {
 	// 로그인 폼
 	@RequestMapping(value = "/member/login.do", method = RequestMethod.GET)
 	public String formLogin() {
-		return "member/login";
+		return "login";
 	}
 
 	// 로그인 처리
@@ -85,9 +85,6 @@ public class MemberController {
 			if (check) {
 				// 인증 성공, 로그인 처리
 				session.setAttribute("user", member);
-				/*session.setAttribute("email",member.getEmail());
-				session.setAttribute("nickname", member.getNickname());
-				session.setAttribute("expire_date",member.getExpire_date());*/
 				
 				return "redirect:/index.jsp";
 			} else {
@@ -113,7 +110,7 @@ public class MemberController {
 	}
 
 	/*// 회원 상세 정보
-	@RequestMapping("/member/myPage.do")
+	@RequestMapping("/member/memberMain.do")
 	public String process(HttpSession session, Model model) {
 		// 회원번호를 얻기위해 세션에 저장된 회원 정보를 반환
 		MemberVO vo = (MemberVO) session.getAttribute("user");
@@ -127,8 +124,8 @@ public class MemberController {
 		model.addAttribute("member", member);
 
 		return "memberView";
-	}*/
-
+	}
+*/
 	// 회원 정보 수정 폼
 	@RequestMapping(value = "/member/modifyMember.do", method = RequestMethod.GET)
 	public String formUpdate(HttpSession session, Model model) {

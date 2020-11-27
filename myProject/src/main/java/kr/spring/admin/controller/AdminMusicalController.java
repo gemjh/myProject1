@@ -153,7 +153,7 @@ public class AdminMusicalController {
 			AdminMusicalVO VO = adminMusicalService.selectMusical(mus_num);
 			
 			model.addAttribute("adminMusicalVO",VO);
-				
+		
 			
 			return "adminMusicalModify";
 		}	
@@ -162,8 +162,8 @@ public class AdminMusicalController {
 	@RequestMapping(value = "/admin/adminMusicalModify.do",method=RequestMethod.POST)
 	public String modifySubmit(@Valid AdminMusicalVO adminMusicalVO, 
 								BindingResult result, 
-								HttpServletRequest request,
-								HttpSession session) {
+								HttpServletRequest request
+								) {
 		System.out.println("//*******뮤지컬 수정 처리******");
 		if (log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 정보 수정>> : " + adminMusicalVO);
@@ -172,7 +172,7 @@ public class AdminMusicalController {
 			System.out.println("//유효성 체크 결과 오류가 있으면 폼 호출");
 			return "adminMusicalModify";
 		}
-		
+	
 		//배우 이름 데이터  콤마붙여서 넣어주기
 		String[] actors = request.getParameterValues("mus_actor");
 		String mus_actor = "";
@@ -186,20 +186,17 @@ public class AdminMusicalController {
 			}
 		System.out.println("//actors"+actors);
 		adminMusicalVO.setMus_actor(mus_actor);
-		
-
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
 			System.out.println("//오류발생");
 			return "adminMusicalModify";
 		}
 		System.out.println("//adminMusicalVO" + adminMusicalVO);
-		//주소에 입력할 mus_num 구하기
-		System.out.println("adminMusicalVO.getMus_num()"+adminMusicalVO.getMus_num());
+
 		// 수정하기
 		adminMusicalService.updateMusical(adminMusicalVO);
 		System.out.println("//뮤지컬 정보 수정완료");
-		return "redirect:adminMusicalDetail.do?mus_num=";
+		return "redirect:adminMusicalDetail.do?mus_num="+adminMusicalVO.getMus_num();
 	}
 	
 	

@@ -21,7 +21,12 @@ $(document).ready(function(){
 });
 
 function addBox (x) {
-    var actors = '<input type="text" name="mus_actor' + '" placeholder="배우이름입력" size="10" class="actor_box">';
+    var actors = '<input type="text" name="mus_actor' + '" placeholder="배우 이름 입력" size="10" class="actor_box">';
+    $('#mus_actor').append(actors);
+  }
+function deleteBox (x) {
+    var actors = '<input type="text" name="mus_actor' + '" placeholder="배우 이름 입력" size="10" class="actor_box">';
+    $('#mus_actor').empty();
     $('#mus_actor').append(actors);
   }
 </script>
@@ -73,9 +78,11 @@ function addBox (x) {
 			</li>
 			<li>
 				<label for="mus_actor">출연 배우</label>
-				<input type="button" value="추가" onclick="addBox(this.form)"/>
-				<input type="button" value="삭제" onclick="addBox(this.form)"/>
-				<div id="mus_actor"></div>
+				<input type="button" value="배우추가" onclick="addBox(this.form)"/>
+				<input type="button" value="초기화" onclick="deleteBox(this.form)"/>
+				<div id="mus_actor">
+				 <input type="text" name="mus_actor" placeholder="배우 이름 입력" size="10" class="actor_box">
+				</div>
 			</li>
 			<li>
 				<label for="mus_video">스트리밍 비디오 링크</label>
@@ -84,7 +91,7 @@ function addBox (x) {
 			</li>
 			<li>
 				<label for="mus_time">뮤지컬 재생 시간</label>
-				<input type = "number" name="mus_time" id="mus_time"/>
+				<input type = "number" name="mus_time" id="mus_time" min="0" max="999"/>
 				<form:errors path="mus_time" cssClass="error-color"/>
 			</li>
 		</ul>

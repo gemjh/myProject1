@@ -1,14 +1,5 @@
 @CHARSET "UTF-8";
-@import "reset.css";
-@import "menu.css";
-@import "type1_contents.css";
-@import "type2_contents.css";
-/* @import "footer.css"; */
-@import "contents.css";
-@import "popup.css";
-@import "contents_main.css";
-@import "profile.css";
-@import "comment.css";
+
 
 /*=========레이아웃=========*/
 div#main{

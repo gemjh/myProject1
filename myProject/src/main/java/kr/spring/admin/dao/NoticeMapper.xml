@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.admin.dao.NoticeMapper"> 
+ 
+	 <select id="selectList" parameterType="map"
+	                               resultType="noticeVO">
+	 	SELECT
+	 	  *
+	 	FROM (SELECT
+	 	         a.*,
+	 	         rownum rnum
+	 	      FROM (SELECT 
+	 	              *
+	 	            FROM notice n JOIN member_detail d
+	 	            ON n.mem_num=d.mem_num
+	 	            ORDER BY n.no_num DESC)a)
+	 <![CDATA[
+	 	WHERE rnum >= #{start} AND rnum <= #{end}
+	 ]]>	            
+	 </select>
+	 
+	 <select id="selectRowCount" resultType="integer">
+	 	SELECT
+	 	   COUNT(*)
+	 	FROM notice n JOIN member_detail d
+	 	ON n.mem_num = d.mem_num                               
+	 </select>
+	 
+	 <update id="updateNotice" parameterType="noticeVO">
+	 	UPDATE notice SET
+	 	  no_title=#{no_title},
+	 	  mem_num=#{mem_num},
+	 	  email=#{email},
+	 	  nickname=#{nickname},
+	 	  no_content=#{no_content},
+	 	  no_regdate=SYSDATE,
+	 	  no_hit=#{no_him}
+	   WHERE no_num=#{no_num}	  
+	 </update>
+ 	
+</mapper>
+
+
+
+
+
+
+

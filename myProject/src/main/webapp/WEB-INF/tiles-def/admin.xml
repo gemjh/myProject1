@@ -73,6 +73,23 @@
     	<put-attribute name="title" value="회원 정보 상세 보기"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberDetail.jsp"/>       
     </definition>
+    
+        <definition name="noticeList" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 리스트"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeList.jsp"/>  
+    </definition>
+    <definition name="noticeWrite" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 작성"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeWrite.jsp"/>  
+    </definition>
+    <definition name="noticeView" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeView.jsp"/>  
+    </definition>
+    <definition name="noticeModify" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeModify.jsp"/>  
+    </definition>
 </tiles-definitions>
 
 

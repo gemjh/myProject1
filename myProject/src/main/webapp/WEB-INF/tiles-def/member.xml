@@ -13,6 +13,16 @@
 		<put-attribute name="footer" value="/WEB-INF/views/memberTemplate/mFooter.jsp"/>
 	</definition>
 	<!-- 회원정보 변경 -->
+    <definition name="join" extends="memberMain">
+    	<put-attribute name="title" value="회원가입"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"/>       
+    </definition>
+	<!-- 회원정보 변경 -->
+    <definition name="login" extends="memberMain">
+    	<put-attribute name="title" value="회원로그인"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>       
+    </definition>
+	<!-- 회원정보 변경 -->
     <definition name="modifyMember" extends="memberMain">
     	<put-attribute name="title" value="회원정보 변경"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/modifyMember.jsp"/>       

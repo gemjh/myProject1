@@ -17,7 +17,7 @@ public interface MemberMapper {
 	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone) VALUES (#{mem_num},#{nickname},#{password},#{birth},#{phone})")
 	public void joinMember_detail(MemberVO member);
 	
-	@Select("SELECT m.mem_num,m.email,m.auth,d.password,d.mem_imagename FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.email=#{email}")
+	@Select("SELECT m.mem_num,m.email,m.auth,d.password,d.mem_imagename,d.nickname,d.mem_regdate,d.purchase_date,d.expire_date FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.email=#{email}")
 	public MemberVO selectCheckMember(String id);//누락된id(탈퇴한 회원의 id)는 검색필요 X -> JOIN
 	
 	//회원정보 변경

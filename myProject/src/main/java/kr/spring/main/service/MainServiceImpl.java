@@ -5,9 +5,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import kr.spring.main.dao.MainMapper;
 import kr.spring.main.vo.MainVO;
 
+@Service("MainServce")
 public class MainServiceImpl implements MainService{
 	
 	@Resource

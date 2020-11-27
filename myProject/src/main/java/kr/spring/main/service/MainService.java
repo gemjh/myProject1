@@ -3,8 +3,10 @@ package kr.spring.main.service;
 import java.util.List;
 import java.util.Map;
 
-import kr.spring.admin.vo.AdminMusicalVO;
+import org.springframework.stereotype.Service;
+
 import kr.spring.main.vo.MainVO;
+
 
 public interface MainService {
 	//뮤지컬 리스트

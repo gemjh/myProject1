@@ -2,9 +2,12 @@ package kr.spring.musinfo.service;
 
 
 
+import java.util.List;
+import java.util.Map;
+
 import kr.spring.musinfo.vo.ContentsVO;
 
 public interface ContentsService {
-	public void insertContents(ContentsVO contentsVO);
-	public void updateContents(ContentsVO contentsVO);
+	public ContentsVO selectContents(int mus_num);
+	public List<String> actorList(Map<String,Object> map);
 }

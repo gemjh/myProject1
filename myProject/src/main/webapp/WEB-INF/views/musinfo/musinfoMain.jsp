@@ -140,7 +140,7 @@ $(document).ready(function () {
 
         <!-- 왼쪽 포스터입니다. -->
         <div class="left-column">
-            <img src="img/ironrain.jpg" alt="강철비2: 정상회담">
+            <img src="imageView.do?mus_num=${musical.mus_num }" style="max-width:500px;" alt="${musical.mus_name }">
         </div>
         <!-- 여기까지 왼쪽 포스터 -->
 
@@ -149,33 +149,40 @@ $(document).ready(function () {
 
             <!-- 첫번째 줄 작품명 -->
             <div class="content_info">
-                <span class="content_title">강철비2: 정상회담</span>
+                <span class="content_title">${musical.mus_name }</span>
             </div>
             <!-- 첫번째 줄 작품명 끝 -->
 
-            <!-- 두번째 줄 년도, 장르, 나라-->
+            <!-- 두번째 줄 년도, 장르, 재생시간-->
             <div class="content_info">
-                <span class="content_type">2019 · 드라마 · 한국</span>
+                <span class="content_type">
+                <c:if test="${musical.gen_num==1 } ">라이선스</c:if>
+                <c:if test="${musical.gen_num==2 }">오리지널</c:if>
+                <c:if test="${musical.gen_num==3 }">창작</c:if>
+                <c:if test="${musical.gen_num==4 }">어린이/가족</c:if>
+                <c:if test="${musical.gen_num==5 }">퍼포먼스</c:if>
+                 · ${musical.mus_time }
+                 </span>
             </div>
             <!-- 두번째 줄 년도, 장르, 나라 끝 -->
 
             <!-- 세번째 줄 평점 -->
             <div class="content_info">
-                <span class="content_star">평점 ★2.9 (${review_length}명)</span>
+                <span class="content_star">평점 ★(${reviews.review.length}명)</span>
             </div>
             <!-- 세번째 줄 평점 끝 -->
 
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
-                	<span class="triangle-right">
+                	<a href="${musical.mus_video }"><span class="triangle-right">
                 	</span>
-                   	<span class="content_watch">바로보기</span>
+                   	<span class="content_watch">바로보기</span></a>
                 <!-- 바로보기 버튼 끝 -->
 
                 <!-- 별점 평가하기 -->
-                	<span class="star-five"></span>
-                    <span class="js-leaveStar">평가하기</span>
+                	<a href="Write.do"><span class="star-five"></span>
+                    <span class="js-leaveStar">평가하기</span></a>
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
@@ -213,23 +220,34 @@ $(document).ready(function () {
 
                     <!-- 두번째(출연/제작) 시작 -->
                     <div class="contents_contents_column">
-                        <span class="contents_contents_title">출연/제작</span>
+                        <span class="contents_contents_title">출연</span>
                         <div class="contents_contents_container">
                             <div class="contents_contents_content">
                                 <div class="contents_contents_profile">
                                     <div>
-                                        <span class="profile_name">${actor1 }</span>
+                                    	<span class="profile_name">
+                                    	<c:forEach var="contentsVO" items="${actorList }">
+													${musical.mus_actor }
+											</c:forEach>
+										</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <%-- <span class="profile_name">${musical.mus_actor1 }</span>
                                         <span class="profile_job">${role_actor1}</span>
-                                        <span class="profile_name">${actor2}</span>
+                                        <span class="profile_name">${musical.mus_actor2}</span>
                                         <span class="profile_job">${role_actor2}</span>
-                                        <span class="profile_name">${actor3}</span>
+                                        <span class="profile_name">${musical.mus_actor3}</span>
                                         <span class="profile_job">${role_actor3}</span>
-                                        <span class="profile_name">${actor4}</span>
+                                        <span class="profile_name">${musical.mus_actor4}</span>
                                         <span class="profile_job">${role_actor4}</span>
-                                        <span class="profile_name">${actor5}</span>
+                                        <span class="profile_name">${musical.mus_actor5}</span>
                                         <span class="profile_job">${role_actor5}</span>
-                                        <span class="profile_name">${actor6}</span>
-                                        <span class="profile_job">${role_actor6}</span>
+                                        <span class="profile_name">${musical.mus_actor6}</span>
+                                        <span class="profile_job">${role_actor6}</span> --%>
                                     </div>
                                 </div>
                             </div>
@@ -253,8 +271,11 @@ $(document).ready(function () {
                         <div>
                             <span class="contents_contents_title">별점 그래프</span>
                             <div>
-                                <span class="star_average">평균 ★${rev_rate.sum/rev_rate.length }</span>
-                                <span class="star_people">(${rev_num.length }명)</span>
+                                <span class="star_average">평균 ★(별 개수의 합/전체 리뷰어 수???)</span>
+                                <c:set var="starArray" value=">"></c:set>
+                                
+                                
+                                <span class="star_people">(${reviews.rev_num.length }명)</span>
                             </div>
                         </div>
                         <div class="contents_contents_star-box">
@@ -268,7 +289,7 @@ $(document).ready(function () {
 				<div class="column_column">
 					<div>
 						<span class="contents_contents_title">코멘트</span> 
-						<span class="contents_contents_title-number">${rev_num.length }</span>
+						<span class="contents_contents_title-number">${reviews.rev_num.length }</span>
 					</div>
 
 
@@ -278,7 +299,7 @@ $(document).ready(function () {
 					<div class="comment-nemo">
 						<div class="comment_user">
 							<img src="img/user_profile.jfif" class="comment_user-img">
-							<span class="user_name">filmaholic9</span>
+							<span class="user_name">userId</span>
 						</div>
 						<div class="content_info_star">
 							<div class="star_box star1" value="0.5"></div>
@@ -297,8 +318,7 @@ $(document).ready(function () {
 							<i class="far fa-star real-star5 real-star"></i>
 							<div class="star_box star10" value="5"></div>
 						</div>
-						<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
-							캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ 
+						<div class="comment_comment">${reviews.review }
 						</div>
 					</div>
 					<div class="comment-nemo">
@@ -323,8 +343,7 @@ $(document).ready(function () {
 							<i class="far fa-star real-star5 real-star"></i>
 							<div class="star_box star10" value="5"></div>
 						</div>
-						<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
-							캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ
+						<div class="comment_comment">${reviews.review }
 						</div>
 					</div>
 				</div>

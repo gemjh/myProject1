@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MusinfoMainController {
-	@RequestMapping("/musinfo/musinfoMain.do")
+	//@RequestMapping("/musinfo/musinfoMain.do")
 	public String getMusinfoMain() {
 		return "/musinfo/musinfoMain";
 	}
+	//평점 구하기
 }

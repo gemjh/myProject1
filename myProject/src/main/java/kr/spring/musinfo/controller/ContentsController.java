@@ -2,16 +2,16 @@ package kr.spring.musinfo.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.musinfo.service.ContentsService;
 import kr.spring.musinfo.vo.ContentsVO;
@@ -27,28 +27,50 @@ public class ContentsController {
 	public ContentsVO initCommand() {
 		return new ContentsVO();
 	}
-	//뮤지컬정보 업로드
-	//업로드 폼 호출
-		@RequestMapping(value="/musinfo/update.do",method=RequestMethod.GET)
-		public String form() {
-			return "updateMusinfo";
+	//뮤지컬 소개 페이지
+	@RequestMapping("/musinfo/musinfoDetail.do")
+	public ModelAndView detail(@RequestParam int mus_num) {
+		System.out.println("//*******뮤지컬상세 보기");
+		if(log.isDebugEnabled()) {
+			log.debug("<<뮤지컬 상세>>:"+mus_num);
 		}
-	//데이터 처리
-		@RequestMapping(value="/musinfo/update.do",method=RequestMethod.POST)
-		public String submit(ContentsVO contentsVO, BindingResult result, HttpServletRequest request, HttpSession session, Model model) {
-			if(log.isDebugEnabled()) {
-				log.debug("<< 글 저장>>:"+contentsVO);
+	
+	ContentsVO VO = contentsService.selectContents(mus_num);
+	System.out.println("//ContentsVO : " + VO);
+
+	return new ModelAndView("musinfoMain","contentsVO",VO);
+	}
+	@RequestMapping(value = "/musinfo/musinfoMain.do",method=RequestMethod.POST)
+	public String modifySubmit(@Valid ContentsVO contentsVO, BindingResult result, HttpServletRequest request) {
+		String[] actors = request.getParameterValues("mus_actor");
+		String mus_actor = "";
+			for(int i=0; i<actors.length;i++) {
+				if(actors[i]!=null && !actors[i].equals("")) {
+					if(i !=0) {
+					mus_actor += ",";	
+					}
+					mus_actor += actors[i];	
+				}
 			}
-			//유효성 체크 결과 오류가 있으면 폼 호출
-			if(result.hasErrors()) {
-				return "updateMusinfo";
-			}
-			contentsService.updateContents(contentsVO);	
-			
-			//view에 표시할 메세지
-			model.addAttribute("message","수정 완료");
-			model.addAttribute("url",request.getContextPath()+"/main/main.do");
-			//아래 뷰 이름이 없으면 단독으로 jsp 호출
-			return "musinfo/result";
+			contentsVO.setMus_actor(mus_actor);
+
+		System.out.println("//actors"+actors);
+		return null;
+		
+	}
+	//이미지 출력
+		@RequestMapping("/musinfo/musinfoMain.do")
+		public ModelAndView viewImage(@RequestParam int mus_num) {
+			System.out.println("//*****이미지 출력*********");
+			ContentsVO contentsVO = contentsService.selectContents(mus_num);
+			System.out.println("//VO : "+contentsVO);
+			ModelAndView mav = new ModelAndView();
+			System.out.println("//mav : "+mav);
+			mav.setViewName("imageView");
+			mav.addObject("imageFile",contentsVO.getMus_post());
+			mav.addObject("filename",contentsVO.getMus_postname());
+			System.out.println("//mav : "+mav);
+			return mav;
 		}
+	
 }

@@ -20,7 +20,7 @@
 		<li>
 			<input type="submit" value="찾기">
 			<input type="button" value="목록"
-						onclick="location.href='adminMemberList.do'">
+						onclick="location.href='adminManagerList.do'">
 		</li>
 	</ul>
 	</form>
@@ -41,7 +41,7 @@
 		<c:forEach var="member_detail" items="${list}">
 		<tr>
 			<td>${member_detail.mem_num}</td>
-			<td><a href="adminMemberDetail.do?mem_num=${member_detail.mem_num}">${member_detail.nickname}</a></td>
+			<td><a href="adminManagerDetail.do?mem_num=${member_detail.mem_num}">${member_detail.nickname}</a></td>
 			<td>${member_detail.email}</td>
 		</tr>
 		</c:forEach>

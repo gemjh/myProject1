@@ -49,7 +49,7 @@
 	<!-- 뮤지컬 수정 -->
 	<update id="updateMusical" parameterType="adminMusicalVO">
 		UPDATE musical SET
-		<if test="mus_postname==''"><!--아무것도 넣지않아도 비어있는 문자열로 처리하므로 null이 아닌 빈문자열로 넣어야 한다. -->
+		<if test="mus_postname!=''"><!--아무것도 넣지않아도 비어있는 문자열로 처리하므로 null이 아닌 빈문자열로 넣어야 한다. -->
 			mus_post=#{mus_post},
 			mus_postname=#{mus_postname},
 		</if>

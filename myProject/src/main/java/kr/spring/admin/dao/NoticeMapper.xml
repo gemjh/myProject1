@@ -3,40 +3,55 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.admin.dao.NoticeMapper"> 
- 
+ 	<!-- 공지사항리스트 보기 -->
 	 <select id="selectList" parameterType="map"
 	                               resultType="noticeVO">
-	 	SELECT
-	 	  *
-	 	FROM (SELECT
-	 	         a.*,
-	 	         rownum rnum
-	 	      FROM (SELECT 
-	 	              *
-	 	            FROM notice n JOIN member_detail d
-	 	            ON n.mem_num=d.mem_num
-	 	            ORDER BY n.no_num DESC)a)
-	 <![CDATA[
-	 	WHERE rnum >= #{start} AND rnum <= #{end}
-	 ]]>	            
+	 	 SELECT 
+		 * 
+		 FROM 
+		(SELECT a.*,rownum rnum 
+		FROM (select * FROM notice
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+      </where>
+      ORDER BY m.mus_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>    
 	 </select>
 	 
 	 <select id="selectRowCount" resultType="integer">
-	 	SELECT
-	 	   COUNT(*)
-	 	FROM notice n JOIN member_detail d
-	 	ON n.mem_num = d.mem_num                               
+	 	SELECT 
+	   	count(*)
+	  	 FROM 
+	   	(SELECT a.*,rownum rnum 
+	   		FROM (select * FROM notice
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+		 </where>
+     	 ORDER BY notice.no_num DESC)a)                               
 	 </select>
 	 
 	 <update id="updateNotice" parameterType="noticeVO">
 	 	UPDATE notice SET
 	 	  no_title=#{no_title},
 	 	  mem_num=#{mem_num},
-	 	  email=#{email},
-	 	  nickname=#{nickname},
 	 	  no_content=#{no_content},
-	 	  no_regdate=SYSDATE,
-	 	  no_hit=#{no_him}
+	 	  no_regdate=SYSDATE
 	   WHERE no_num=#{no_num}	  
 	 </update>
  	

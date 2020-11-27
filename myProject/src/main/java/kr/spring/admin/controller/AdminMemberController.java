@@ -74,6 +74,16 @@ public class AdminMemberController {
 		System.out.println("//mav: " + mav);
 		return mav;
 	}
+	@RequestMapping("/admin/adminManagerDetail.do")
+	public String managerDetail(@RequestParam int mem_num,
+			Model model) {
+	System.out.println("//*******회원 상세 보기");
+	MemberVO vo = adminMemberService.selectMember(mem_num);
+	System.out.println("//MemberVO : " + vo);
+	model.addAttribute("memberVO",vo);
+	
+	return "adminManagerDetail";
+	}
 	
 	
 	//회원 관리

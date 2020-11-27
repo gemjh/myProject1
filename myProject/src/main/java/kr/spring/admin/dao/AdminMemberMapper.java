@@ -10,6 +10,7 @@ import kr.spring.member.vo.MemberVO;
 public interface AdminMemberMapper {
 
 	// 멤버 리스트
+	
 	//관리자 리스트
 	public List<MemberVO> managerList(Map<String, Object> map);
 	//관리자 갯수 구하기 

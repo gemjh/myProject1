@@ -34,6 +34,7 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 		return mapper.selectMember(mem_num);
 	}
 
+	
 	@Override
 	public List<MemberVO> managerList(Map<String, Object> map) {
 		

@@ -27,6 +27,7 @@
        WHERE rnum >= #{start} AND rnum <= #{end}
     ]]>
 	</select>
+	
 
 	<!--일반 회원 총 글 또는 검색된 글의 갯수 구하기 -->
 	<select id="selectRowCount" parameterType="map"
@@ -89,6 +90,7 @@
 			or m.email LIKE '%' || #{keyword} || '%'
 			or d.mem_num LIKE '%' || #{keyword} || '%')</if>
 		</where>
+		
 	</select>
 
 

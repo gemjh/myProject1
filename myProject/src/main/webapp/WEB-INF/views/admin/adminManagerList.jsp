@@ -12,6 +12,7 @@
 				<option value="3">이메일</option>
 				<option value="4">전체</option>
 			</select>
+			
 		</li>
 		<li>
 			<input type="text" name="keyword" id="keyword">

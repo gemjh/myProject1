@@ -20,7 +20,6 @@
 	
 	</c:if> --%> 
 	
-	
 	<!-- 프로필 이미지 표시 -->
 	<!-- 이미지가 있는 경우 -->
 	<c:if test="${!empty user && !empty user.mem_imagename}">

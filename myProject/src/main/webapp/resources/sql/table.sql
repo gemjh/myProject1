@@ -6,7 +6,6 @@ CREATE TABLE member(
       CONSTRAINT mem_pk PRIMARY KEY(mem_num)
 );
 
-
 CREATE TABLE member_detail(
        mem_num NUMBER(10) not null,
        mem_image BLOB,

@@ -19,4 +19,5 @@ public interface AdminMemberService {
 	// 회원 상세 보기
 	public MemberVO selectMember(Integer mem_num);	
 
+	
 }

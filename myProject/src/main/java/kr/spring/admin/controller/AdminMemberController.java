@@ -65,6 +65,7 @@ public class AdminMemberController {
 				log.debug("<<글목록>> : " + list);
 			}
 		}
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminManagerList");
 		mav.addObject("list", list);

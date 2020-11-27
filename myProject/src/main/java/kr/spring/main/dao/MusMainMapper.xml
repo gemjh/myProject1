@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
-<mapper namespace="kr.spring.main.dao.MainListMapper">  
+<mapper namespace="kr.spring.main.dao.MusMainMapper">  
 <!-- 총 레코드 수 -->
  	<select id="getMusMainCount" resultType="integer">
  		SELECT

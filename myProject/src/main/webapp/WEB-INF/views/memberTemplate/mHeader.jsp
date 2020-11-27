@@ -39,19 +39,14 @@
 	
 	<!-- 회원인경우 -->
 	<c:if test="${!empty user && user.auth > 0 }">
+		[${user.nickname}]님 접속 !<br>
 		<a href="${pageContext.request.contextPath}/member/memberMain.do">마이페이지</a>
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 		<a href="${pageContext.request.contextPath}/index.jsp">홈으로</a><br>
 			<!-- 이용권 결제한 경우 -->
-			<%-- <c:if test="${!empty user.purchase_date}"> --%>
-				[<span>${user.email}</span>] 
-			<%-- </c:if> --%>
-				<br>[[<span>${user.mem_num}</span>]]
-				<br>[[<span>${user.nickname}</span>]]
-				<br>[[<span>${user.mem_regdate}</span>]]
-				<br>[[<span>${user.purchase_date}</span>]]
-				<br>[[<span>${user.expire_date}</span>]]
-				
+			<c:if test="${!empty user.purchase_date}">
+				[<span>${user.nickname}님의 이용권 만료일 : ${user.expire_date}</span>] 
+			</c:if>
 
 	</c:if>
 	

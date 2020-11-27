@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" %>
 <ul>
 	<li><h3>관리자 메뉴</h3></li>
-
+	<li><h4><a href="${pageContext.request.contextPath}/admin/adminList.do">관리자 관리</a></h4></li>
 	<li><h4>뮤지컬 관리</h4></li>
 	<li><a href="${pageContext.request.contextPath}/admin/adminMusicalRegister.do">-뮤지컬 등록</a></li>
 	<li><a href="${pageContext.request.contextPath}/admin/adminMusicalList.do">-등록된 뮤지컬 관리</a></li>

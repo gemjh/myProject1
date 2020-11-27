@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class MainVO {
+public class MusMainVO {
 	private int mus_num;
 	@NotEmpty
 	private String mus_name;

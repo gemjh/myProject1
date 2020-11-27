@@ -18,7 +18,7 @@
 		<br>[${user.nickname}님의 이용권 만료일 : ${user.expire_date}]	
 	</c:if>
 	
-	</c:if> --%>
+	</c:if> --%> 
 	
 	
 	<!-- 프로필 이미지 표시 -->
@@ -33,7 +33,7 @@
 	<!-- auth값에 따라 다른 링크 만들어주기 0:관리자 1-2:회원 -->
 	<!-- 관리자인 경우 -->
 	<c:if test="${!empty user && user.auth == 0}">
-		<a href="${pageContext.request.contextPath}/member/memberMain.do">관리 페이지</a>
+		<a href="${pageContext.request.contextPath}/admin/adminMain.do">관리 페이지</a>
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 	</c:if>
 	
@@ -41,18 +41,26 @@
 	<c:if test="${!empty user && user.auth > 0 }">
 		<a href="${pageContext.request.contextPath}/member/memberMain.do">마이페이지</a>
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/index.jsp">홈으로</a><br>
 			<!-- 이용권 결제한 경우 -->
-			<c:if test="{!empty user.purchase_date}">
-				[[<span>${user.expire_date}</span>]<br>]
-			</c:if>
+			<%-- <c:if test="${!empty user.purchase_date}"> --%>
+				[<span>${user.email}</span>] 
+			<%-- </c:if> --%>
+				<br>[[<span>${user.mem_num}</span>]]
+				<br>[[<span>${user.nickname}</span>]]
+				<br>[[<span>${user.mem_regdate}</span>]]
+				<br>[[<span>${user.purchase_date}</span>]]
+				<br>[[<span>${user.expire_date}</span>]]
+				
+
 	</c:if>
 	
 	<!-- 로그인해야하는 경우 -->
 	<c:if test="${empty user}">
 	<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
 	<a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>	
-	</c:if>
 	<a href="${pageContext.request.contextPath}/index.jsp">홈으로</a>
+	</c:if>
 	<br>
 	
 	

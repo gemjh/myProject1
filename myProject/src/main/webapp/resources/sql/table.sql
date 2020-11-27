@@ -32,6 +32,7 @@ CREATE TABLE musical(
     mus_video VARCHAR2(1000) not null,
     mus_rate NUMBER(10),
     mus_post BLOB not null,
+    mus_postname VARCHAR2(200) not null,
     mus_summary VARCHAR2(1000) not null,
     mus_detail CLOB not null,
     mus_regdate DATE not null,
@@ -74,7 +75,7 @@ CREATE TABLE reviews(
  rev_num NUMBER(10) not null,
  mem_num NUMBER(10)   not null,
  mus_num NUMBER(20) not null,
- avg_rate NUMBER(1) not null,
+ rev_rate NUMBER(1) not null,
  review varchar2(300) not null,
  rev_regdate date not null,
 CONSTRAINT reviews_pk PRIMARY KEY (rev_num)
@@ -162,7 +163,7 @@ CREATE SEQUENCE mem_num
 INCREMENT BY 1
 START WITH  10000;
 
-CREATE SEQUENCE mus_num
+CREATE SEQUENCE mus_seq
 INCREMENT BY 1
 START WITH  100;
 

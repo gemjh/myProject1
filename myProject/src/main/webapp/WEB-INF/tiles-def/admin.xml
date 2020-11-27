@@ -14,6 +14,12 @@
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminMain.jsp"/>  
     	<put-attribute name="footer" value="/WEB-INF/views/adminTemplate/aFooter.jsp"/>        
     </definition>
+     <!-- 관리자 관리 페이지 -->
+    <definition name="adminManagerList" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자 관리"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminManagerList.jsp"/>       
+    </definition>
     <!-- 뮤지컬 등록 페이지 -->
     <definition name="adminMusicalRegister" 
               extends="adminMain">
@@ -56,7 +62,13 @@
     	<put-attribute name="title" value="회원 정보 리스트 보기"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberList.jsp"/>       
     </definition>
-      <!-- 관리자페이지 회원 정보 상세 보기 -->
+    <!-- 관리자페이지 회원 정보 상세 보기 -->
+    <definition name="adminMemberDetail" 
+              extends="adminMain">
+    	<put-attribute name="title" value="회원 정보 상세 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberDetail.jsp"/>       
+    </definition>
+     <!-- 관리자페이지 회원 정보 상세 보기 -->
     <definition name="adminMemberDetail" 
               extends="adminMain">
     	<put-attribute name="title" value="회원 정보 상세 보기"/>

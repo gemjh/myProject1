@@ -10,7 +10,11 @@ import kr.spring.member.vo.MemberVO;
 public interface AdminMemberMapper {
 
 	// 멤버 리스트
-	// 리스트
+	//관리자 리스트
+	public List<MemberVO> managerList(Map<String, Object> map);
+	//관리자 갯수 구하기 
+	public int selectManagerCount(Map<String, Object> map);
+	// 회원리스트
 	public List<MemberVO> selectList(Map<String, Object> map);
 	// 글의 갯수 구하기
 	public int selectRowCount(Map<String, Object> map);

@@ -33,5 +33,17 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 		// TODO Auto-generated method stub
 		return mapper.selectMember(mem_num);
 	}
+
+	@Override
+	public List<MemberVO> managerList(Map<String, Object> map) {
+		
+		return mapper.managerList(map);
+	}
+
+	@Override
+	public int selectManagerCount(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.selectManagerCount(map);
+	}
 	
 }

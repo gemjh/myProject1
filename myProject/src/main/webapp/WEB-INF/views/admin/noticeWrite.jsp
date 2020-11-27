@@ -3,8 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
 	<h2>공지사항 작성</h2>
-	<form:form commandName="noticeVO" action="noticeWrite.do"
-	                        enctype="multipart/form-data">
+	<form:form commandName="noticeVO" action="noticeWrite.do">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>

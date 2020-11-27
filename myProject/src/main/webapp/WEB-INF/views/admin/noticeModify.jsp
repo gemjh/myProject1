@@ -4,19 +4,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
 	<h2>공지사항 수정</h2>
-	<form:form commandName="noticeVO" action="update.do">
+	<form:form commandName="noticeVO" action="noticeUpdate.do">
 	    <form:hidden path="no_num"/>                    
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="title">제목</label>
-				<form:input path="title"/>
-				<form:errors path="title" cssClass="error-color"/>
+				<label for="no_title">제목</label>
+				<form:input path="no_title"/>
+				<form:errors path="no_title" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="content">내용</label>
-				<form:textarea path="content"/>
-				<form:errors path="content" cssClass="error-color"/>
+				<label for="no_content">내용</label>
+				<form:textarea path="no_content"/>
+				<form:errors path="no_content" cssClass="error-color"/>
 			</li>
 		</ul>	
 		<div class="align-center">

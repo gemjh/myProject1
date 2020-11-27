@@ -13,7 +13,8 @@ public interface NoticeMapper {
 	public List<NoticeVO> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
 	
-	@Insert("INSERT INTO notice (no_num, mem_num, email, nickname, title, content, hit, no_regdate) VALUES(no_seq.nextval, #{mem_num}, #{email}, #{nickname}, #{title}, #{content}, #{hit}, SYSDATE)")
+	@Insert("INSERT INTO notice (no_num, mem_num, email, nickname, title, content, no_regdate, no_modifydate, hit) "
+			+ "VALUES(no_seq.nextval, #{mem_num}, #{email}, #{nickname}, #{title}, #{content}, SYSDATE, SYSDATE, #{hit})")
 	public void insertNotice(NoticeVO notice);
 	
 	@Select("SELECT * FROM notice n JOIN member_detail d ON n.mem_num = d.mem_num WHERE n.no_num=#{no_num}")

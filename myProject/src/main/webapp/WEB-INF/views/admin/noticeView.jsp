@@ -2,17 +2,17 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <div class="page-main-style">
-	<h2>${notice.title}</h2>
+	<h2>${notice.no_title}</h2>
 	<ul>
 		<li>번호 : ${notice.no_num}</li>
 		<li>작성자 : ${notice.email}</li>
-		<li>조회수 : ${notice.hit}</li>
-		<li>작성일 : ${notice.regdate}</li>
+		<li>조회수 : ${notice.no_hit}</li>
+		<li>작성일 : ${notice.no_modifydate}</li>
 	</ul>
 	<hr size="1" width="100%">
 	
 	<p>
-		${notice.content}
+		${notice.no_content}
 	</p>
 	<hr size="1" width="100%">
 	<div class="align-right">

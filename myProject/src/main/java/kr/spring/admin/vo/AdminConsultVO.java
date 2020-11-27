@@ -14,9 +14,6 @@ public class AdminConsultVO {
 	public int getCon_num() {
 		return con_num;
 	}
-	
-	
-	
 	public void setCon_num(int con_num) {
 		this.con_num = con_num;
 	}

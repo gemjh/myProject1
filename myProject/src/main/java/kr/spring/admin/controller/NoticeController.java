@@ -113,7 +113,7 @@ public class NoticeController {
 	}
 	
 	//글 상세
-	@RequestMapping("/admin/noticeDetail.do")
+	@RequestMapping("/admin/noticeView.do")
 	public ModelAndView process(@RequestParam int no_num) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<글 상세>> : " + no_num);

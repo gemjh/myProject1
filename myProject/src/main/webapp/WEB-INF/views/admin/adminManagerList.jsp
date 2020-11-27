@@ -24,7 +24,11 @@
 		</li>
 	</ul>
 	</form>
-	
+	<div class="align-right">
+		<c:if test="${!empty user}">
+			<input type="button" value="글쓰기" onclick="location.href='adminPlus.do'">
+		</c:if>
+	</div>
 	<c:if test="${count==0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>

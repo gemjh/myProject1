@@ -10,7 +10,7 @@
 		 * 
 		 FROM 
 		(SELECT a.*,rownum rnum 
-		FROM (select * FROM notice
+		FROM (select * FROM notice n
       <where>
          <if test="keyword != '' and keyfield == 1">
          m.mus_num LIKE '%' || #{keyword} || '%' </if>
@@ -21,7 +21,7 @@
          <if test="keyword != '' and keyfield == 4">
          m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
       </where>
-      ORDER BY m.mus_num DESC)a)
+      ORDER BY n.no_num DESC)a)
       <![CDATA[
        WHERE rnum >= #{start} AND rnum <= #{end}
     ]]>    

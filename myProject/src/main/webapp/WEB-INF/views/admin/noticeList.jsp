@@ -7,7 +7,7 @@
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield">
-					<option value="no_title">제목</option>
+					<option value="title">제목</option>
 					<option value="nickname">작성자</option>
 					<option value="email">이메일</option>
 					<option value="all">전체</option>
@@ -24,11 +24,11 @@
 	</form>
 	<div class="align-right">
 		<c:if test="${!empty user}">
-			<input type="button" value="공지사항 작성" onclick="location.href='noticeWrite.do'">
+			<input type="button" value="글쓰기" onclick="location.href='noticeWrite.do'">
 		</c:if>
 	</div>
 	<c:if test="${count == 0}">
-		<div class="align-center">등록된 공지가 없습니다.</div>
+		<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
 		<table>
@@ -42,9 +42,9 @@
 			<c:forEach var="notice" items="${list}">
 				<tr>
 					<td>${notice.no_num}</td>
-					<td><a href="noticeDetail.do?no_num=${notice.no_num}">${notice.no_title}</a></td>
-					<td>${notice.id}</td>
-					<td>${notice.notice_modifydate}</td>
+					<td><a href="noticeView.do?no_num=${notice.no_num}">${notice.no_title}</a></td>
+					<td>${notice.mem_num}</td>
+					<td>${notice.no_regdate}</td>
 					<td>${notice.no_hit}</td>
 				</tr>			
 			</c:forEach>

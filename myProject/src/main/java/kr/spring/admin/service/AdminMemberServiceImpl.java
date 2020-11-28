@@ -46,5 +46,20 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 		// TODO Auto-generated method stub
 		return mapper.selectManagerCount(map);
 	}
+
+	@Override
+	public void adminPlusMember(MemberVO member) {
+		member.setMem_num(mapper.selectMem_num());
+		mapper.adminPlusMember(member);
+		mapper.adminPlusMember_detail(member);
+	}
+
+	@Override
+	public MemberVO selectCheckMember(String email) {
+		return mapper.selectCheckMember(email);
+	}
+
+
+
 	
 }

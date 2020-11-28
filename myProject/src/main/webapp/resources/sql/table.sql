@@ -99,7 +99,16 @@ CREATE TABLE voucher(
 CONSTRAINT voucher_pk PRIMARY KEY (voucher_num)
 );
 
-
+CREATE TABLE notice(
+	no_num NUMBER(10) not null,
+	mem_num NUMBER(10)not null,
+	no_title VARCHAR2(300)  not null,
+	no_content VARCHAR2(2000)  not null,
+	no_regdate DATE  not null,
+	no_modifydate DATE ,
+	no_hit NUMBER(10) ,
+CONSTRAINT notice_pk PRIMARY KEY (no_num)
+);
 
 
 
@@ -153,6 +162,10 @@ ADD CONSTRAINTS mem_num5
 FOREIGN KEY(mem_num)
 REFERENCES  member(mem_num);
 
+ALTER TABLE notice
+ADD CONSTRAINTS mem_num6
+FOREIGN KEY(mem_num)
+REFERENCES  member(mem_num);
 
 
 
@@ -190,4 +203,7 @@ CREATE SEQUENCE voucher_num
 INCREMENT BY 1
 START WITH  60000;
 
+CREATE SEQUENCE admin_seq
+INCREMENT BY 1
+START WITH  100;
 

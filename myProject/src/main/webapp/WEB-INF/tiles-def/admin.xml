@@ -20,6 +20,12 @@
     	<put-attribute name="title" value="관리자 관리"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/adminManagerList.jsp"/>       
     </definition>
+    <!-- 관리자 추가 -->
+    <definition name="adminPlus" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자 추가"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminPlus.jsp"/>       
+    </definition>
     <!-- 관리자페이지 관리자 정보 상세 보기 -->
     <definition name="adminManagerDetail" 
               extends="adminMain">

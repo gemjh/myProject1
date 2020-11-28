@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.admin.service.AdminMemberService;
@@ -83,6 +87,54 @@ public class AdminMemberController {
 	model.addAttribute("memberVO",vo);
 	
 	return "adminManagerDetail";
+	}
+	
+	//관리자 추가
+	@RequestMapping(value = "/admin/adminPlus.do", method = RequestMethod.GET)
+	public String form() {
+		return "adminPlus";
+	}
+
+	// 관리자 추가 처리
+	@RequestMapping(value = "/admin/adminPlus.do", method = RequestMethod.POST)
+	public String submit(@Valid MemberVO memberVO, BindingResult result) {
+		if (log.isDebugEnabled()) {
+			log.debug("<<회원 가입>> : " + memberVO);
+		}
+
+		// 유효성 체크 결과 오류가 있으면 폼 호출
+		if (result.hasErrors()) {
+			return form();
+		}
+
+		// 관리자 추가 메소드
+		adminMemberService.adminPlusMember(memberVO);
+		
+
+		return "redirect:/admin/adminManagerList.do";
+	}
+	
+	@RequestMapping("/admin/confirmEmail.do")
+	@ResponseBody
+	public Map<String,String>process(@RequestParam("email") String email){
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<이메일중복 체크>> : " + email);
+		}
+		
+		Map<String,String> map = new HashMap<String,String>();
+		
+		//null값을 이용해 체크
+		MemberVO member = adminMemberService.selectCheckMember(email);
+		if(member!=null) {
+			//아이디 중복
+			map.put("result", "emailDuplicated");
+		}else {
+			//아이디 미중복
+			map.put("result", "emailNotFound");
+		}	
+		
+		return map;
 	}
 	
 	

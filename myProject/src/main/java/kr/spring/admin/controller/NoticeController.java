@@ -112,9 +112,10 @@ public class NoticeController {
 		return "redirect:/admin/noticeList.do";
 	}
 	
-	//글 상세
+	//공자사항 상세
 	@RequestMapping("/admin/noticeView.do")
 	public ModelAndView process(@RequestParam int no_num) {
+		System.out.println("//공지사항 상세 보기 ");
 		if(log.isDebugEnabled()) {
 			log.debug("<<글 상세>> : " + no_num);
 		}

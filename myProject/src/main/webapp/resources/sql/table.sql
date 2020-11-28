@@ -106,7 +106,7 @@ CREATE TABLE notice(
 	no_content VARCHAR2(2000)  not null,
 	no_regdate DATE  not null,
 	no_modifydate DATE ,
-	no_hit NUMBER(10) ,
+	no_hit NUMBER(10) default 0 not null ,
 CONSTRAINT notice_pk PRIMARY KEY (no_num)
 );
 

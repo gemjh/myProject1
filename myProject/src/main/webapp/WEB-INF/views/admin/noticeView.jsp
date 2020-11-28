@@ -5,7 +5,7 @@
 	<h2>${notice.no_title}</h2>
 	<ul>
 		<li>번호 : ${notice.no_num}</li>
-		<li>작성자 : ${notice.no_num}</li>
+		<li>작성자 : ${notice.mem_num}</li>
 		<li>조회수 : ${notice.no_hit}</li>
 		<li>작성일 : ${notice.no_regdate}</li>
 	</ul>

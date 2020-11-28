@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.admin.service.AdminMemberService;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 
@@ -29,6 +31,9 @@ public class AdminMemberController {
 	//객체 주입
 	@Resource
 	AdminMemberService adminMemberService;
+	
+	@Resource
+	MemberService memberService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -137,6 +142,43 @@ public class AdminMemberController {
 		return map;
 	}
 	
+	//관리자 회원 정보 수정
+	// 관리자 회원 정보 수정 폼
+		@RequestMapping(value = "/admin/adminMemberModify.do", method = RequestMethod.GET)
+		public String formUpdate(HttpSession session, Model model) {
+			// 회원 번호를 구하기 위해 세션에 저장된 회원 정보 반환
+			MemberVO vo = (MemberVO) session.getAttribute("user");
+
+			MemberVO memberVO = memberService.selectMember(vo.getMem_num());
+
+			model.addAttribute("memberVO", memberVO);
+
+			return "adminMemberModify";
+		}
+	
+	// 관리자 정보 수정 처리
+	@RequestMapping(value = "/admin/adminMemberModify.do", method = RequestMethod.POST)
+	public String submitUpdate(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+
+		if (log.isDebugEnabled()) {
+			log.debug("<<회원 정보 수정 처리>> : " + memberVO);
+		}
+
+		// 유효성 체크 결과 오류가 있으면 폼 호출
+		if (result.hasErrors()) {
+			return "adminMemberModify";
+		}
+
+		// 회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
+		MemberVO vo = (MemberVO) session.getAttribute("user");
+		// 전송된 데이터가 저장된 자바빈에 회원 번호를 저장
+		memberVO.setMem_num(vo.getMem_num());
+
+		// 회원 정보 수정
+		memberService.updateMember(memberVO);
+
+		return "redirect:/admin/adminMain.do";
+	}
 	
 	//회원 관리
 	//회원 목록

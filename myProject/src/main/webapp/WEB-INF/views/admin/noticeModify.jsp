@@ -20,7 +20,7 @@
 			</li>
 		</ul>	
 		<div class="align-center">
-			<input type="submit" value="작성">
+			<input type="submit" value="수정">
 			<input type="button" value="목록"
 			       onclick="location.href='noticeList.do'">
 		</div>

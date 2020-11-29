@@ -13,13 +13,15 @@
 		FROM (select * FROM notice n
       <where>
          <if test="keyword != '' and keyfield == 1">
-         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         n.no_title LIKE '%' || #{keyword} || '%' </if>
          <if test="keyword != '' and keyfield == 2">
-         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         n.no_content LIKE '%' || #{keyword} || '%' </if>
          <if test="keyword != '' and keyfield == 3">
-         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         n.no_mem_numLIKE '%' || #{keyword} || '%'  </if>
          <if test="keyword != '' and keyfield == 4">
-         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+          n.no_num LIKE '%' || #{keyword} || '%'
+          or n.no_title LIKE '%' || #{keyword} || '%' 
+          or n.no_content LIKE '%' || #{keyword} || '%' </if>
       </where>
       ORDER BY n.no_num DESC)a)
       <![CDATA[
@@ -31,19 +33,19 @@
 	 	SELECT 
 	   	count(*)
 	  	 FROM 
-	   	(SELECT a.*,rownum rnum 
-	   		FROM (select * FROM notice
+	   	notice n
       <where>
          <if test="keyword != '' and keyfield == 1">
-         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         n.no_title LIKE '%' || #{keyword} || '%' </if>
          <if test="keyword != '' and keyfield == 2">
-         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         n.no_content LIKE '%' || #{keyword} || '%' </if>
          <if test="keyword != '' and keyfield == 3">
-         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         n.mem_num LIKE '%' || #{keyword} || '%'  </if>
          <if test="keyword != '' and keyfield == 4">
-         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
-		 </where>
-     	 ORDER BY notice.no_num DESC)a)                               
+           n.no_num LIKE '%' || #{keyword} || '%'
+          or n.no_title LIKE '%' || #{keyword} || '%' 
+          or n.no_content LIKE '%' || #{keyword} || '%' </if>
+		 </where>                            
 	 </select>
 	 
 	 <update id="updateNotice" parameterType="noticeVO">

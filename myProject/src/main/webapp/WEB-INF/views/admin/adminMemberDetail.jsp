@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="page-main-style">
 	<h2>회원 정보 상세 보기</h2>
 	<table>
@@ -29,8 +31,13 @@
 			<td>${memberVO.mem_regdate}</td>
 		</tr>
 		<tr>
-			<th>이용권 구매 기간</th>
-			<td></td>
+			<th>이용권 구매일</th>
+			<c:if test ="${not empty memberVO.purchase_date}">
+			<td>구입일 : ${memberVO.purchase_date} / 만료일 : ${memberVO.expire_date}</td>
+			</c:if>
+			<c:if test ="${empty memberVO.purchase_date}">
+			<td>이용권 구매내역이 없습니다.</td>
+			</c:if>
 		</tr>
 	</table>
 </div>

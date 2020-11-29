@@ -42,6 +42,8 @@ public class AdminMemberController {
 		return new MemberVO();
 	}
 	//관리자 관리
+	
+	//관리자 목록
 	@RequestMapping("/admin/adminManagerList.do")
 	public ModelAndView managerList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,

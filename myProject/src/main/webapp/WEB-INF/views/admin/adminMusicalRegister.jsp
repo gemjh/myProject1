@@ -68,26 +68,31 @@ function deleteBox (x) {
 			</li>
 			<li>
 				<label for="mus_summary">요약 정보</label>
-				<form:textarea path="mus_summary"/>
+				<form:textarea path="mus_summary" cols="50" rows="7"/>
 				<form:errors path="mus_summary" cssClass="error-color"/>
+				<br>
 			</li>
 			<li>
 				<label for="mus_detail">상세 정보</label>
-				<form:textarea path="mus_detail"/>
+				<form:textarea path="mus_detail" cols="50" rows="10"/>
 				<form:errors path="mus_detail" cssClass="error-color"/>
+				<br>
 			</li>
 			<li>
 				<label for="mus_actor">출연 배우</label>
 				<input type="button" value="배우추가" onclick="addBox(this.form)"/>
 				<input type="button" value="초기화" onclick="deleteBox(this.form)"/>
+				<br>
 				<div id="mus_actor">
 				 <input type="text" name="mus_actor" placeholder="배우 이름 입력" size="10" class="actor_box">
 				</div>
+				<br>
 			</li>
 			<li>
 				<label for="mus_video">스트리밍 비디오 링크</label>
-				<form:textarea path="mus_video"/>
+				<form:textarea path="mus_video" cols="50"/>
 				<form:errors path="mus_video" cssClass="error-color"/>
+				<br>
 			</li>
 			<li>
 				<label for="mus_time">뮤지컬 재생 시간</label>

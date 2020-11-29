@@ -168,7 +168,7 @@ public class NoticeController {
 				request.getContextPath()+"/admin/noticeList.do");
 		
 		//타일스 설정에 아래 뷰이름이 없으면 단독으로 JSP 호출
-		return "common/result";
+		return "redirect:/admin/noticeView.do?no_num="+noticeVO.getNo_num();
 	}
 	
 	//글 삭제 처리
@@ -188,7 +188,7 @@ public class NoticeController {
 		model.addAttribute("url", 
 				request.getContextPath()+"/admin/noticeList.do");
 		
-		return "common/result";
+		return "redirect:/admin/noticeList.do";
 	}
 	
 }

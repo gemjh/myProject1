@@ -7,10 +7,10 @@
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield">
-					<option value="title">제목</option>
-					<option value="nickname">작성자</option>
-					<option value="email">이메일</option>
-					<option value="all">전체</option>
+					<option value="1">제목</option>
+					<option value="2">내용</option>
+					<option value="3">작성 관리자 번호</option>
+					<option value="4">전체</option>
 				</select>
 			</li>  
 			<li>
@@ -35,7 +35,7 @@
 			<tr>
 				<th>번호</th>
 				<th width="400">제목</th>
-				<th>작성자</th>
+				<th>작성 관리자 번호</th>
 				<th>최근 수정일</th>
 				<th>조회수</th>
 			</tr>

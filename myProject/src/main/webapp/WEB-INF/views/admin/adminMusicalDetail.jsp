@@ -10,6 +10,10 @@
 			<td>${adminMusicalVO.mus_num}</td>
 		</tr>
 		<tr>
+			<th>뮤지컬 이름</th>
+			<td>${adminMusicalVO.mus_name}</td>
+		</tr>
+		<tr>
 			<th>장르</th>
 			<td>
 			<c:if test="${adminMusicalVO.gen_num == 1}">

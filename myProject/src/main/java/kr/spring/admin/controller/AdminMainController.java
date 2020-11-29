@@ -10,6 +10,7 @@ public class AdminMainController {
 	@RequestMapping("/admin/adminMain.do")
 	public String make(HttpServletResponse response) {
 		
+		
 		return "adminMain";
 		}
 }

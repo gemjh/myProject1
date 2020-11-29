@@ -23,10 +23,17 @@
 			</tr>
 			<c:forEach var="musMain" items="${list}">
 				<tr>
-					<td><a href="musMainDetail.do?mus_num=${musMain.mus_num}">${musMain.mus_name}</a></td>
-					<td>${musMain.id}</td>
-					<td>${board.modify_date}</td>
-					<td>${board.hit}</td>
+					<td><a href="musDetail.do?mus_num=${musMain.mus_num}">${musMain.mus_name}</a></td>
+					<td>${musMain.post}</td>
+					<td>${musMain.gen_num}</td>
+					<td>${musMain.mus_age}</td>
+					<td>${musMain.mus_actor}</td>
+					<td>${musMain.mus_time}</td>
+					<td>${musMain.mus_video}</td>
+					<td>${musMain.mus_rate}</td>
+					<td>${musMain.mus_summary}</td>
+					<td>${musMain.mus_detail}</td>
+					<td>${musMain.mus_regdate}</td>
 				</tr>			
 			</c:forEach>
 		</table>

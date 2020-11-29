@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.main.dao.MusMainMapper;
 import kr.spring.main.vo.MusMainVO;
 
-@Service("MusMainServce")
+@Service("MusMainService")
 public class MusMainServiceImpl implements MusMainService{
 	@Resource
 	MusMainMapper musMainMapper;

@@ -32,7 +32,7 @@ public class AdminMusicalController {
 	// 객체 주입
 	@Resource
 	AdminMusicalService adminMusicalService;
-	
+
 	@Resource
 	AdminMemberService adminMemberService;
 
@@ -42,7 +42,7 @@ public class AdminMusicalController {
 		System.out.println("//뮤지컬자바빈 초기화");
 		return new AdminMusicalVO();
 	}
-	
+
 	@ModelAttribute
 	public MemberVO initCommand2() {
 		System.out.println("//뮤지컬자바빈 초기화");
@@ -58,20 +58,18 @@ public class AdminMusicalController {
 
 	// 뮤지컬 등록 처리
 	@RequestMapping(value = "/admin/adminMusicalRegister.do", method = RequestMethod.POST)
-	public String registerSubmit(@Valid AdminMusicalVO adminMusicalVO, 
-			BindingResult result, 
-			HttpServletRequest request,
+	public String registerSubmit(@Valid AdminMusicalVO adminMusicalVO, BindingResult result, HttpServletRequest request,
 			HttpSession session) {
 		System.out.println("//뮤지컬등록 처리 메소드 호출");
-		//배우 이름 데이터  콤마붙여서 넣어주기
+		// 배우 이름 데이터 콤마붙여서 넣어주기
 		String[] actors = request.getParameterValues("mus_actor");
 		String mus_actor = "";
-		for(int i=0; i<actors.length;i++) {
-			if(actors[i]!=null && !actors[i].equals("")) {
-				if(i !=0) {
-					mus_actor += ",";	
+		for (int i = 0; i < actors.length; i++) {
+			if (actors[i] != null && !actors[i].equals("")) {
+				if (i != 0) {
+					mus_actor += ",";
 				}
-				mus_actor += actors[i];	
+				mus_actor += actors[i];
 			}
 		}
 		adminMusicalVO.setMus_actor(mus_actor);
@@ -84,7 +82,7 @@ public class AdminMusicalController {
 			System.out.println("//오류발생");
 			return "adminMusicalRegister";
 		}
-		
+
 		// 등록하기
 		adminMusicalService.insertMusical(adminMusicalVO);
 		System.out.println("//등록 완료");
@@ -131,60 +129,56 @@ public class AdminMusicalController {
 		System.out.println("//mav: " + mav);
 		return mav;
 	}
-	//뮤지컬 정보 상세 보기
-		@RequestMapping("/admin/adminMusicalDetail.do")
-		public ModelAndView detail(@RequestParam int mus_num) {
-			System.out.println("//*******뮤지컬상세 보기");
-			if(log.isDebugEnabled()) {
-				log.debug("<<뮤지컬 상세>>:"+mus_num);
-			}
-		
+
+	// 뮤지컬 정보 상세 보기
+	@RequestMapping("/admin/adminMusicalDetail.do")
+	public ModelAndView detail(@RequestParam int mus_num) {
+		System.out.println("//*******뮤지컬상세 보기");
+		if (log.isDebugEnabled()) {
+			log.debug("<<뮤지컬 상세>>:" + mus_num);
+		}
+
 		AdminMusicalVO VO = adminMusicalService.selectMusical(mus_num);
 		System.out.println("//AdminMusicalVO : " + VO);
 
-		return new ModelAndView("adminMusicalDetail","adminMusicalVO",VO);
-		}
-	
-	//뮤지컬 수정 폼 보기
-		@RequestMapping(value="/admin/adminMusicalModify.do",method=RequestMethod.GET)
-		public String modifyForm(@RequestParam int mus_num,
-							Model model) {
-			System.out.println("//*******뮤지컬 수정 폼 보기");
-			AdminMusicalVO VO = adminMusicalService.selectMusical(mus_num);
-			
-			model.addAttribute("adminMusicalVO",VO);
-		
-			
-			return "adminMusicalModify";
-		}	
-		
-	//뮤지컬 수정 처리
-	@RequestMapping(value = "/admin/adminMusicalModify.do",method=RequestMethod.POST)
-	public String modifySubmit(@Valid AdminMusicalVO adminMusicalVO, 
-								BindingResult result, 
-								HttpServletRequest request
-								) {
+		return new ModelAndView("adminMusicalDetail", "adminMusicalVO", VO);
+	}
+
+	// 뮤지컬 수정 폼 보기
+	@RequestMapping(value = "/admin/adminMusicalModify.do", method = RequestMethod.GET)
+	public String modifyForm(@RequestParam int mus_num, Model model) {
+		System.out.println("//*******뮤지컬 수정 폼 보기");
+		AdminMusicalVO VO = adminMusicalService.selectMusical(mus_num);
+
+		model.addAttribute("adminMusicalVO", VO);
+
+		return "adminMusicalModify";
+	}
+
+	// 뮤지컬 수정 처리
+	@RequestMapping(value = "/admin/adminMusicalModify.do", method = RequestMethod.POST)
+	public String modifySubmit(@Valid AdminMusicalVO adminMusicalVO, BindingResult result, HttpServletRequest request) {
 		System.out.println("//*******뮤지컬 수정 처리******");
 		if (log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 정보 수정>> : " + adminMusicalVO);
 		}
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			System.out.println("//유효성 체크 결과 오류가 있으면 폼 호출");
 			return "adminMusicalModify";
 		}
-	
-		//배우 이름 데이터  콤마붙여서 넣어주기
+
+		// 배우 이름 데이터 콤마붙여서 넣어주기
 		String[] actors = request.getParameterValues("mus_actor");
 		String mus_actor = "";
-			for(int i=0; i<actors.length;i++) {
-				if(actors[i]!=null && !actors[i].equals("")) {
-					if(i !=0) {
-					mus_actor += ",";	
-					}
-					mus_actor += actors[i];	
+		for (int i = 0; i < actors.length; i++) {
+			if (actors[i] != null && !actors[i].equals("")) {
+				if (i != 0) {
+					mus_actor += ",";
 				}
+				mus_actor += actors[i];
 			}
-		System.out.println("//actors"+actors);
+		}
+		System.out.println("//actors" + actors);
 		adminMusicalVO.setMus_actor(mus_actor);
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
@@ -196,56 +190,93 @@ public class AdminMusicalController {
 		// 수정하기
 		adminMusicalService.updateMusical(adminMusicalVO);
 		System.out.println("//뮤지컬 정보 수정완료");
-		return "redirect:adminMusicalDetail.do?mus_num="+adminMusicalVO.getMus_num();
+		return "redirect:adminMusicalDetail.do?mus_num=" + adminMusicalVO.getMus_num();
 	}
-	
-	
-	//뮤지컬 삭제 폼 
-	@RequestMapping(value ="/admin/adminMusicalDelete.do", method = RequestMethod.GET)
-	public String submitDelete() {
+
+	// 뮤지컬 삭제 폼
+	@RequestMapping(value = "/admin/adminMusicalDelete.do", method = RequestMethod.GET)
+	public String submitDelete(@RequestParam int mus_num, Model model) {
+		AdminMusicalVO VO = adminMusicalService.selectMusical(mus_num);
+
+		model.addAttribute("adminMusicalVO", VO);
 		System.out.println("********뮤지컬 삭제 폼*********");
 
 		return "adminMusicalDelete";
 	}
-	//뮤지컬 삭제 처리
-	@RequestMapping(value ="/admin/adminMusicalDelete.do", method = RequestMethod.POST)
-	public String completeDelete(@Valid MemberVO memberVO,BindingResult result,@RequestParam int mus_num,HttpSession session,HttpServletRequest request) {
-		System.out.println("********뮤지컬 삭제 처리*********");
-		if(log.isDebugEnabled()) {
-			log.debug("<<게시판 글 삭제>> : " + mus_num);
+
+	// 뮤지컬 삭제 처리
+	@RequestMapping(value = "/admin/adminMusicalDelete.do", method = RequestMethod.POST)
+	public String completeDelete(	@RequestParam int mus_num,
+									AdminMusicalVO adminMusicalVO,
+									@Valid MemberVO memberVO, 
+									BindingResult result, 
+									HttpSession session, 
+									HttpServletRequest request) {
+		System.out.println("//*****뮤지컬 삭제 처리**");
+		if (log.isDebugEnabled()) {
+			log.debug("<<뮤지컬 삭제>> : " + mus_num);
 		}
-		//email,password 필드의 에러만 체크
-		if(result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
+		// email,password 필드의 에러만 체크
+		if (result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
 			return "/admin/adminMusicalDelete.do";
 		}
-		System.out.println("//글삭제");
-		adminMusicalService.deleteMusical(mus_num);
-		System.out.println("//messeage 출력");
+		// 회원번호를 얻기 위해 세션에 저장된 회원 정보 반환
+		MemberVO vo = (MemberVO) session.getAttribute("user");
+		memberVO.setMem_num(vo.getMem_num());
 
 		
+		// 비밀번호 일치 여부 체크
+		// 회원번호를 이용해 회원 정보를 읽기
+		MemberVO member = adminMemberService.selectMember(memberVO.getMem_num());
+		boolean check = false;
+		// 입력한 아이디.equals(세션에 저장된 아이디)
+		if (member != null && memberVO.getEmail().equals(vo.getEmail())) {
+			// 비밀번호 일치여부 체크
+			check = member.isCheckedPassword(memberVO.getPassword());
+		}
+
+		if (check) {
+			// 인증성공
+			adminMusicalService.deleteMusical(mus_num);
+			System.out.println("//뮤지컬 삭제 완료");
+			return "redirect:/admin/adminMusicalDeleteCompleted.do";
+
+		} else {
+			// 인증실패
+			result.reject("invalidEmailOrPassword");
+			return "adminMusicalDelete";
+		}
+
+
+		
+	}	
+	//뮤지컬 삭제 완료 폼
+	@RequestMapping("/admin/adminMusicalDeleteCompleted.do")
+	public String adminMusicalDeleteCompleted() {
+
+		System.out.println("***뮤지컬 삭제 완료*****");
+
 		return "adminMusicalDeleteCompleted";
 	}
 	
-	
-	//이미지 출력
+
+	// 이미지 출력
 	@RequestMapping("/admin/postView.do")
 	public ModelAndView viewImage(@RequestParam int mus_num) {
 		System.out.println("//*****이미지 출력*********");
 		AdminMusicalVO adminMusicalVO = adminMusicalService.selectMusical(mus_num);
-		System.out.println("//adminMusicalVO : "+adminMusicalVO);
+		System.out.println("//adminMusicalVO : " + adminMusicalVO);
 		ModelAndView mav = new ModelAndView();
-		System.out.println("//mav : "+mav);
+		System.out.println("//mav : " + mav);
 		mav.setViewName("imageView");
-		mav.addObject("imageFile",adminMusicalVO.getMus_post());
-		mav.addObject("filename",adminMusicalVO.getMus_postname());
-		System.out.println("//mav : "+mav);
+		mav.addObject("imageFile", adminMusicalVO.getMus_post());
+		mav.addObject("filename", adminMusicalVO.getMus_postname());
+		System.out.println("//mav : " + mav);
 		return mav;
-	}	
-	
-	//뮤지컬 등록 미리보기
-	
-	//뮤지컬 수정 미리보기
-	
-	
+	}
+
+	// 뮤지컬 등록 미리보기
+
+	// 뮤지컬 수정 미리보기
 
 }

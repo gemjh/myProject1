@@ -8,10 +8,20 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var check = 0;
-	$('#musical_form').submit(function(event){
+	
+	$('#confirm_password').keyup(function(){
+		if($('#password').val()!='' &&
+				 $('#password').val()!=$(this).val()){
+			$('#message_id').text('비밀번호 불일치').css('color','red');
+		}else if($('#password').val()!='' &&
+				$('#password').val()==$(this).val()){
+			$('#message_id').text('비밀번호 일치').css('color','#000');
+		}
+	});
+	
+		$('#musical_form').submit(function(event){
 		$('.actor_box').each(function(index,item){
-			if($(this).val()==''){
+			if($(this).val()==''|| $(this).val().replace(blank_pattern,'')==''){
 				alert('배우 이름을 입력하세요!');
 				$(this).focus();
 				check = 1;
@@ -19,6 +29,16 @@ $(document).ready(function(){
 			}
 			check = 0;
 		});
+			
+		var mus_time = $("#mus_time").val();
+		 mus_time = $.trim( mus_time );
+		    if( mus_time == "" || mus_time <= 0){
+		        alert("재생 시간을 입력하세요!");
+		        $("#mus_time").focus();
+		        check = 1;
+		        return false; 
+		    }
+
 		if(check == 1) return false;
 	});
 	//옵션값 db 저장된 값으로 초기화 하기
@@ -34,11 +54,13 @@ function deleteBox (x) {
    $('#mus_actor').empty();
    $('#mus_actor').append(actors);
  }
+ 
+ 
 </script>
 <div class="page-main-style">
 	<h2>글수정</h2>
 	<form:form commandName="adminMusicalVO" action="adminMusicalModify.do"
-								enctype="multipart/form-data">
+								enctype="multipart/form-data" id="musical_form">
 		<form:errors element="div" cssClass="error-color"/>
 		<form:hidden path="mus_num"/>
 		<ul>
@@ -95,6 +117,7 @@ function deleteBox (x) {
 					<c:forTokens var="actor" items="${adminMusicalVO.mus_actor}" delims=",">
 						  <input type="text" name="mus_actor" value="${actor}" size="10" class="actor_box">
 					</c:forTokens>		
+					<form:errors path="mus_actor" cssClass="error-color"/>
 				</div>
 			</li>
 			<li>

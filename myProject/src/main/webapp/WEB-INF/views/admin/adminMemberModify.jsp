@@ -4,6 +4,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		//공백 체크
+		
+		
 		//비밀번호 변경 체크
 		$('#password').keyup(function(){
 			if($('#confirm_passwd').val()!='' &&
@@ -26,17 +29,18 @@
 		});
 		
 		$('#change_form').submit(function(){
-			if($('#now_password').val()==''){
+			var blank_pattern = /^\s+|\s+$/g;
+			if($('#now_password').val()==''||$('#now_password').val().replace(blank_pattern,'')==''){
 				alert('현재 비밀번호를 입력하세요');
 				$('#now_password').focus();
 				return false;
 			}
-			if($('#password').val()==''){
+			if($('#password').val()==''||$('#password').val().replace(blank_pattern,'')==''){
 				alert('변경 비밀번호를 입력하세요');
 				$('#password').focus();
 				return false;
 			}
-			if($('#confirm_password').val()==''){
+			if($('#confirm_password').val()==''||$('#confirm_password').val().replace(blank_pattern,'')==''){
 				alert('변경 비밀번호 확인을 입력하세요');
 				$('#confirm_password').focus();
 				return false;
@@ -46,6 +50,8 @@
 				return false;
 			}
 		});
+		
+		
 	});
 </script>
 <div class="page-main-style">

@@ -66,18 +66,27 @@
 		
 		//submit이벤트 발생시 id 중복체크 여부 확인
 		$('#register_form').submit(function(){
+			var check = 0;
 			if(checkId==0){
 				$('#message_email').css('color','red').text('이메일 중복체크 필수')
 				$('#email').focus();
 				return false;
 			}
 			
+			var birth = $("#birth").val();
+			    if( birth == ''){
+			        alert("생일을 선택하세요!");
+			        check = 1;
+			        return false; 
+			    }
+			 if(check == 1) return false;
+			
 		});
 	});
 
 </script> 
 <div class="page-main-style">
-	<h2>회원 가입</h2>
+	<h2>관리자 추가</h2>
 	<form:form id="register_form" action="adminPlus.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
@@ -100,14 +109,14 @@
 				<form:password path="password"/>
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
-<%-- 			<li>
+			<li>
 				<label for="password_chk">비밀번호 확인</label>
 				<form:input path="password_chk"/>
 				<form:errors path="password_chk" cssClass="error-color"/>
-			</li> --%>
+			</li> 
 			<li>
 				<label for="birth">생년월일</label>
-				<form:input path="birth"/>
+				<input type="date" id="birth" name="birth"/>
 				<form:errors path="birth" cssClass="error-color"/>
 			</li>
 			<li>

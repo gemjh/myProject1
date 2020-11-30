@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!--  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css"> -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <style>
 * {
     box-sizing: border-box;
@@ -77,6 +77,8 @@ $(document).ready(function () {
 
         <!-- 포스터 오른쪽 정보들 입니다. -->
         <div class="right-column">
+                    <div class="content_info"></div>
+        
             <!-- 첫번째 줄 작품명 -->
             <div class="content_info">
                 <span class="content_title">${contentsVO.mus_name }</span>
@@ -277,5 +279,5 @@ $(document).ready(function () {
     </div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
   </div>
-    <script src="js/index.js"></script>
-    <script src="js/star.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/star.js"></script>

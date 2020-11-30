@@ -49,7 +49,7 @@
 			       onclick="location.href='main/musMain.do'">
 		</div>
 	</form:form>
-    <script src="js/index.js"></script>
-    <script src="js/star.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/index.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/star.js"></script>
 </body>
 </html>

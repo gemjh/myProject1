@@ -6,9 +6,11 @@
 
 $(document).ready(function(){
 	var check = 0;
+	var blank_pattern = /^\s+|\s+$/g;
+	
 	$('#musical_form').submit(function(event){
 		$('.actor_box').each(function(index,item){
-			if($(this).val()==''){
+			if($(this).val()==''||$(this).val().replace(blank_pattern,'')==''){
 				alert('배우 이름을 입력하세요!');
 				$(this).focus();
 				check = 1;
@@ -16,8 +18,23 @@ $(document).ready(function(){
 			}
 			check = 0;
 		});
-		if(check == 1) return false;
+	var fileCheck = document.getElementById("upload").value;
+	   if(!fileCheck){
+	       alert("파일을 첨부해 주세요");
+	       check = 1;
+	   }		
+	var mus_time = $("#mus_time").val();
+	    if( mus_time == "" || mus_time <= 0){
+	        alert("재생 시간을 입력하세요!");
+	        $("#mus_time").focus();
+	        check = 1;
+	        return false; 
+	    }
+	    
+	if(check == 1) return false;
 	});
+	
+	
 });
 
 function addBox (x) {

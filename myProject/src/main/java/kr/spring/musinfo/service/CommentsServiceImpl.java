@@ -22,13 +22,6 @@ public class CommentsServiceImpl implements CommentsService{
 			}
 
 			@Override
-			public List<CommentsVO> selectList(Map<String, Object> map) {
-				// TODO Auto-generated method stub
-				return commentsMapper.selectList(map);
-			}
-
-
-			@Override
 			public CommentsVO selectComments(int rev_num) {
 				// TODO Auto-generated method stub
 				return commentsMapper.selectComments(rev_num);
@@ -45,14 +38,5 @@ public class CommentsServiceImpl implements CommentsService{
 				// TODO Auto-generated method stub
 				commentsMapper.deleteComments(rev_num);
 			}
-
-			@Override
-			public int selectRowCount(Map<String, Object> map) {
-				// TODO Auto-generated method stub
-				return commentsMapper.selectRowCount(map);
-			}
-
-	
-
 
 }

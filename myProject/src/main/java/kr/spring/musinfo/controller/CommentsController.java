@@ -30,6 +30,7 @@ public class CommentsController {
 	@Resource
 	private CommentsService commentsService;
 	private Logger log = Logger.getLogger(this.getClass());
+	//자바빈 초기화
 	@ModelAttribute
 	public CommentsVO initCommand() {
 		return new CommentsVO();
@@ -38,42 +39,34 @@ public class CommentsController {
 	//글쓰기 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
 	public String form() {
+		
 		return "reviewWrite";
 	}
-	
-	//글쓰기 전송된 데이터 처리
+	//글 등록
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.POST)
-	public String submit(CommentsVO commentsVO,
-			BindingResult result, HttpServletRequest request,HttpSession session) {
-		
-		//유효성 체크	
-		new CommentsValidator().validate(commentsVO, result);
+	public String submit(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<글 저장>>:"+commentsVO);
+		}
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return "reviewWrite";
 		}
-		
-		//글 등록
 		//회원번호 세팅
 		MemberVO member=(MemberVO)session.getAttribute("member");
 		commentsVO.setMem_num(member.getMem_num());
 		//뮤지컬번호 세팅
 		ContentsVO contentsVO=(ContentsVO)session.getAttribute("contentsVO");
 		contentsVO.setMus_num(contentsVO.getMus_num());
-		commentsService.updateComments(commentsVO);
-
+		//글쓰기
+		commentsService.insertComments(commentsVO);
 		return "redirect:/musinfo/musinfoMain.do";
 	}
 	//글 전체보기
 	@RequestMapping("/musinfo/reviews.do")
-	public List<CommentsVO> allComments() {
-		Map<String,Object> map=new HashMap<String,Object>();
-		int count=commentsService.selectRowCount(map);
-		List<CommentsVO> list=null;
-		if(count>0) {
-			list=commentsService.selectList(map);
-		}
-		return list;
+	public String wholeList(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session) {
+
+		return "musinfo/reviews";
 	}
 	//글 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)

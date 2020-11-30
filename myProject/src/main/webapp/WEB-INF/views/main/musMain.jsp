@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<div class="page-main-style">
+<%-- 	<div>
 	<form action="musMain.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
@@ -13,18 +13,24 @@
 			</li>
 		</ul>
 	</form>
+</div> --%>	
 	<c:if test="${count == 0}">
 		<div class="align-center">등록된 뮤지컬이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-		<table>
-			<c:forEach var="musMain" items="${list}">
-				<tr>
-					<td><a href="musDetail.do?mus_num=${musMain.mus_num}">${musMain.mus_name}</a></td>
-					<td><img src="postView.do?mus_num=${musMain.mus_num}" style="max-width:200px;"></td>
-				</tr>			
-			</c:forEach>
-		</table>		
+		<div class="contents_title">새로 올라온 작품</div>
+		<main class="first_contents-box contents-box">	       				
+				<div class="type1-contents_contents">
+					<c:forEach var="musMain" items="${list}">				
+						<div class="type1-content-box">
+							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+								<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width:200px;">
+								<span class="type1-content_title">${musMain.mus_name}</span>
+							</a>
+						</div>	
+					</c:forEach>
+				</div>			
+		</main>
 	</c:if>	
 </div>  
 

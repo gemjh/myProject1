@@ -20,6 +20,19 @@
 	
 	</c:if> --%> 
 	
+	<!-- 검색 -->
+	<form action="musMain.do" id="search_form" method="get">
+		<ul class="search">
+			<li>
+				<input type="text" name="keyword" id="keyword">
+			</li>
+			<li>
+				<input type="submit" value="찾기">
+			</li>
+		</ul>
+	</form>
+
+	
 	<!-- 프로필 이미지 표시 -->
 	<!-- 이미지가 있는 경우 -->
 	<c:if test="${!empty user && !empty user.mem_imagename}">

@@ -32,7 +32,7 @@
  	<![CDATA[           
  		WHERE rnum >= #{start} AND rnum <= #{end}           
  	]]>
- 	</select>	
+ 	</select>
 </mapper>   
 
 

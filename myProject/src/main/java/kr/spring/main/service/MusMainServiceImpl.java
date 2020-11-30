@@ -16,13 +16,13 @@ public class MusMainServiceImpl implements MusMainService{
 	MusMainMapper musMainMapper;
 	
 	@Override
-	public List<MusMainVO> getMusMainList(Map<String, Object> map) {
-		return musMainMapper.getMusMainList(map);
+	public List<MusMainVO> selectMusMainList(Map<String, Object> map) {
+		return musMainMapper.selectMusMainList(map);
 	}
 
 	@Override
-	public int getMusMainCount() {
-		return musMainMapper.getMusMainCount();
+	public int selectMusMainCount(Map<String, Object> map) {
+		return musMainMapper.selectMusMainCount(map);
 	}
 
 	@Override

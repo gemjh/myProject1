@@ -32,31 +32,41 @@ public class MusMainController {
 
 	// 메인 목록
 	@RequestMapping("/main/musMain.do")
-	public ModelAndView getList(@RequestParam(value="pageNum", defaultValue="1") int currentPage){
-
+	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+								@RequestParam(value="keyfield",defaultValue="") String keyfield,
+								@RequestParam(value="keyword",defaultValue="") String keyword){
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
 		// 목록 총 레코드 수
-		int count = musMainService.getMusMainCount();
+		int count = musMainService.selectMusMainCount(map);
 		System.out.println("//count: " + count);
 		if (log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
 
 		// 페이징 처리
-		PagingUtil page = new PagingUtil(currentPage, count, 20, 10, "musMain.do");
-
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "musMain.do");
+		
+		// 페이지 시작 숫자, 끝 숫자
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		
 		// 목록 호출
 		List<MusMainVO> list = null;
 		if(count > 0) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("start", page.getStartCount());
-			map.put("end", page.getEndCount());
-
-			list = musMainService.getMusMainList(map);
+			list = musMainService.selectMusMainList(map);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<글 목록>> : " + list );
+			}
 		}
 
 		ModelAndView mav = new ModelAndView();
-		// 뷰 이름 설정
-		mav.setViewName("/main/musMain");
+		// 뷰 이름 설정 - ""에 tiles 명 넣기
+		mav.setViewName("main");
 		// 데이터 저장
 		mav.addObject("count", count);
 		mav.addObject("list", list);
@@ -64,7 +74,8 @@ public class MusMainController {
 
 		return mav;
 	}
-	//이미지출력
+	
+	//DB에 저장된 포스터 이미지를 view에 출력
 	@RequestMapping("/main/postView.do")
 	public ModelAndView viewImage(@RequestParam int mus_num) {
 

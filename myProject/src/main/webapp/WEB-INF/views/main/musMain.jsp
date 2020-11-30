@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
+	<form action="musMain.do" id="search_form" method="get">
+		<ul class="search">
+			<li>
+				<input type="text" name="keyword" id="keyword">
+			</li>
+			<li>
+				<input type="submit" value="찾기">
+			</li>
+		</ul>
+	</form>
 	<c:if test="${count == 0}">
 		<div class="align-center">등록된 뮤지컬이 없습니다.</div>
 	</c:if>
@@ -10,7 +21,7 @@
 			<c:forEach var="musMain" items="${list}">
 				<tr>
 					<td><a href="musDetail.do?mus_num=${musMain.mus_num}">${musMain.mus_name}</a></td>
-					<td><img src="postView.do?mus_num=${musMain.mus_num}" style="max-width:500px;"></td>
+					<td><img src="postView.do?mus_num=${musMain.mus_num}" style="max-width:200px;"></td>
 				</tr>			
 			</c:forEach>
 		</table>		

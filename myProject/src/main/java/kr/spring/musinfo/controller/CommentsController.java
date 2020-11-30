@@ -66,7 +66,7 @@ public class CommentsController {
 	@RequestMapping("/musinfo/reviews.do")
 	public String wholeList(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session) {
 
-		return "musinfo/reviews";
+		return "reviews";
 	}
 	//글 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)

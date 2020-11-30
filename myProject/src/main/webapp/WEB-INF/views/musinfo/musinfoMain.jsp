@@ -257,7 +257,7 @@ $(document).ready(function () {
 					</div>
 				</div>
 				<!-- 코멘트 더보기 링크 -->
-				<a href="/musinfo/reviews.do"><span class="contents_contents_more">더보기</span>
+				<a href="reviews.do"><span class="contents_contents_more">더보기</span>
 				</a>
 				<!-- 코멘트 더보기 링크 끝 -->
 			</div>

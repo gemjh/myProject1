@@ -207,33 +207,8 @@ $(document).ready(function () {
 				<div class="contents_contents_comment-container">
 					<div class="comment-nemo">
 						<div class="comment_user">
-							<img src="img/user_profile.jfif" class="comment_user-img">
-							<span class="user_name">userID</span>
-						</div>
-						<div class="content_info_star">
-							<div class="star_box star1" value="0.5"></div>
-							<i class="far fa-star real-star1 real-star"></i>
-							<div class="star_box star2" value="1"></div>
-							<div class="star_box star3" value="1.5"></div>
-							<i class="far fa-star real-star2 real-star"></i>
-							<div class="star_box star4" value="2"></div>
-							<div class="star_box star5" value="2.5"></div>
-							<i class="far fa-star real-star3 real-star"></i>
-							<div class="star_box star6" value="3"></div>
-							<div class="star_box star7" value="3.5"></div>
-							<i class="far fa-star real-star4 real-star"></i>
-							<div class="star_box star8" value="4"></div>
-							<div class="star_box star9" value="4.5"></div>
-							<i class="far fa-star real-star5 real-star"></i>
-							<div class="star_box star10" value="5"></div>
-						</div>
-						<div class="comment_comment">${conmmentsVO.review }
-						</div>
-					</div>
-					<div class="comment-nemo">
-						<div class="comment_user">
-							<img src="img/user_profile.jfif" class="comment_user-img">
-							<span class="user_name">filmaholic9</span>
+							<span class="comment_user-img">${member.mem_image }</span>
+							<span class="user_name">${member.mem_name }</span>
 						</div>
 						<div class="content_info_star">
 							<div class="star_box star1" value="0.5"></div>
@@ -254,8 +229,7 @@ $(document).ready(function () {
 						</div>
 						<div class="comment_comment">${commentsVO.review }
 						</div>
-					</div>
-				</div>
+				
 				<!-- 코멘트 더보기 링크 -->
 				<a href="reviews.do"><span class="contents_contents_more">더보기</span>
 				</a>

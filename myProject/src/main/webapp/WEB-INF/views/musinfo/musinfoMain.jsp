@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css"> -->
 <style>
 * {
     box-sizing: border-box;
@@ -22,76 +23,6 @@ html {
 .cursor {
     cursor: pointer;
 }
-.triangle-right {
-      width: 0;
-      height: 0;
-      border-top: 3px solid transparent;
-      border-left: 6px solid pink;
-      border-bottom: 3px solid transparent;
-}
-.star-five {
-     margin: 5px 0;
-     position: relative;
-     display: block;
-     color: pink;
-     width: 0px;
-     height: 0px;
-     border-right: 10px solid transparent;
-     border-bottom: 7px solid pink;
-     border-left: 10px solid transparent;
-     transform: rotate(35deg);
-}
-.star-five:before {
-  border-bottom: 8px solid pink;
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
-  position: absolute;
-  height: 0;
-  width: 0;
-  top: -4.5px;
-  left: -6.5px;
-  display: block;
-  content: '';
-  transform: rotate(-35deg);
-}
-.star-five:after {
-  position: absolute;
-  display: block;
-  color: pink;
-  top: 3px;
-  left: -10.5px;
-  width: 0px;
-  height: 0px;
-  border-right: 10px solid transparent;
-  border-bottom: 7px solid pink;
-  border-left: 10px solid transparent;
-  transform: rotate(-70deg);
-  content: '';
-}
-.heart {
-      position: relative;
-      width: 20px;
-      height: 18px;
-}
-.heart:before,
-.heart:after {
-  position: absolute;
-  content: "";
-  left: 10px;
-  top: 0;
-  width: 10px;
-  height: 16px;
-  background: pink;
-  border-radius: 10px 10px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-.heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
-
       .contents_contents_column{
       		overflow:hidden;
       	}
@@ -140,54 +71,51 @@ $(document).ready(function () {
 
         <!-- 왼쪽 포스터입니다. -->
         <div class="left-column">
-            <img src="imageView.do?mus_num=${musical.mus_num }" style="max-width:500px;" alt="${musical.mus_name }">
+            <img src="musinfoImage.do?mus_num=${contentsVO.mus_num }" style="max-width:500px;" alt="${contentsVO.mus_name }">
         </div>
         <!-- 여기까지 왼쪽 포스터 -->
 
         <!-- 포스터 오른쪽 정보들 입니다. -->
         <div class="right-column">
-
             <!-- 첫번째 줄 작품명 -->
             <div class="content_info">
-                <span class="content_title">${musical.mus_name }</span>
+                <span class="content_title">${contentsVO.mus_name }</span>
             </div>
             <!-- 첫번째 줄 작품명 끝 -->
 
             <!-- 두번째 줄 년도, 장르, 재생시간-->
             <div class="content_info">
                 <span class="content_type">
-                <c:if test="${musical.gen_num==1 } ">라이선스</c:if>
-                <c:if test="${musical.gen_num==2 }">오리지널</c:if>
-                <c:if test="${musical.gen_num==3 }">창작</c:if>
-                <c:if test="${musical.gen_num==4 }">어린이/가족</c:if>
-                <c:if test="${musical.gen_num==5 }">퍼포먼스</c:if>
-                 · ${musical.mus_time }
+                <c:if test="${contentsVO.gen_num==1 }">라이선스</c:if>
+                <c:if test="${contentsVO.gen_num==2 }">오리지널</c:if>
+                <c:if test="${contentsVO.gen_num==3 }">창작</c:if>
+                <c:if test="${contentsVO.gen_num==4 }">어린이/가족</c:if>
+                <c:if test="${contentsVO.gen_num==5 }">퍼포먼스</c:if>
+                 · ${contentsVO.mus_time }분
                  </span>
             </div>
             <!-- 두번째 줄 년도, 장르, 나라 끝 -->
 
             <!-- 세번째 줄 평점 -->
             <div class="content_info">
-                <span class="content_star">평점 ★(${reviews.review.length}명)</span>
+                <span class="content_star">평점 </span>
             </div>
             <!-- 세번째 줄 평점 끝 -->
 
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
-                	<a href="${musical.mus_video }"><span class="triangle-right">
-                	</span>
-                   	<span class="content_watch">바로보기</span></a>
+                	<a href="${contentsVO.mus_video }">
+                   	<span class="content_watch">►바로보기</span></a>
                 <!-- 바로보기 버튼 끝 -->
 
                 <!-- 별점 평가하기 -->
-                	<a href="Write.do"><span class="star-five"></span>
-                    <span class="js-leaveStar">평가하기</span></a>
+                	<a href="write.do">
+                    <span class="js-leaveStar">★평가하기</span></a>
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
-                	<span class="heart"></span>
-                    <span class="wishList">찜하기</span>
+                	<a href="#"><span class="zzim">♥︎찜하기</span></a>
                 <!-- 찜 끝 -->
 
             </div>
@@ -210,7 +138,7 @@ $(document).ready(function () {
                         </div>
                           
                         <span class="contents_contents_summary contents_info">
-                            ${musical.mus_post }
+                            ${contentsVO.mus_detail }
                         </span>
                         <!-- 기본정보 더보기 링크 -->
                         <span class="btn-moreInfo" >더보기</span>
@@ -226,28 +154,9 @@ $(document).ready(function () {
                                 <div class="contents_contents_profile">
                                     <div>
                                     	<span class="profile_name">
-                                    	<c:forEach var="contentsVO" items="${actorList }">
-													${musical.mus_actor }
-											</c:forEach>
+                                    	${contentsVO.mus_actor }
 										</span>
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <%-- <span class="profile_name">${musical.mus_actor1 }</span>
-                                        <span class="profile_job">${role_actor1}</span>
-                                        <span class="profile_name">${musical.mus_actor2}</span>
-                                        <span class="profile_job">${role_actor2}</span>
-                                        <span class="profile_name">${musical.mus_actor3}</span>
-                                        <span class="profile_job">${role_actor3}</span>
-                                        <span class="profile_name">${musical.mus_actor4}</span>
-                                        <span class="profile_job">${role_actor4}</span>
-                                        <span class="profile_name">${musical.mus_actor5}</span>
-                                        <span class="profile_job">${role_actor5}</span>
-                                        <span class="profile_name">${musical.mus_actor6}</span>
-                                        <span class="profile_job">${role_actor6}</span> --%>
                                     </div>
                                 </div>
                             </div>
@@ -275,7 +184,7 @@ $(document).ready(function () {
                                 <c:set var="starArray" value=">"></c:set>
                                 
                                 
-                                <span class="star_people">(${reviews.rev_num.length }명)</span>
+                                <span class="star_people">(명)</span>
                             </div>
                         </div>
                         <div class="contents_contents_star-box">
@@ -288,18 +197,16 @@ $(document).ready(function () {
 			<div class="contents_contents_column">
 				<div class="column_column">
 					<div>
-						<span class="contents_contents_title">코멘트</span> 
-						<span class="contents_contents_title-number">${reviews.rev_num.length }</span>
+						<span class="contents_contents_title">한줄평</span> 
+						<span class="contents_contents_title-number"></span>
 					</div>
-
-
 
 				</div>
 				<div class="contents_contents_comment-container">
 					<div class="comment-nemo">
 						<div class="comment_user">
 							<img src="img/user_profile.jfif" class="comment_user-img">
-							<span class="user_name">userId</span>
+							<span class="user_name">userID</span>
 						</div>
 						<div class="content_info_star">
 							<div class="star_box star1" value="0.5"></div>
@@ -318,7 +225,7 @@ $(document).ready(function () {
 							<i class="far fa-star real-star5 real-star"></i>
 							<div class="star_box star10" value="5"></div>
 						</div>
-						<div class="comment_comment">${reviews.review }
+						<div class="comment_comment">${conmmentsVO.review }
 						</div>
 					</div>
 					<div class="comment-nemo">
@@ -343,7 +250,7 @@ $(document).ready(function () {
 							<i class="far fa-star real-star5 real-star"></i>
 							<div class="star_box star10" value="5"></div>
 						</div>
-						<div class="comment_comment">${reviews.review }
+						<div class="comment_comment">${commentsVO.review }
 						</div>
 					</div>
 				</div>
@@ -370,5 +277,5 @@ $(document).ready(function () {
     </div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
   </div>
-    <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/star.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/star.js"></script>

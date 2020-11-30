@@ -6,19 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
 <title>한줄평 쓰기</title>
 </head>
 <body>
-<c:if test="${!empty member&& member.mem_num==board.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
+<%-- <c:if test="${!empty member&& member.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
 <%=	response.sendRedirect("reviewModify.do")
 %>
-</c:if>
-	<form:form action="insert.do" commandName="commentsVO">
+</c:if> --%>
+	<form:form action="write.do" commandName="commentsVO">
 		<ul>
 			<li>
-				<form:input path="writer"/>
-				<form:errors path="writer" cssClass="error-color"/>
+				${member.mem_image }
 			</li>
+			<li>${member.nickname }</li>
 			<li class="content_info_star">
 				<div class="star_box star1" value="0.5"></div>
 				<i class="far fa-star real-star1 real-star"></i>
@@ -37,16 +38,18 @@
 				<div class="star_box star10" value="5"></div>
 			</li>
 			<li>
-				<label for="content"></label>
-				<form:textarea path="content"/>
-				<form:errors path="content" cssClass="error-color"/>
+				<label for=review></label>
+				<form:textarea path="review"/>
+				<form:errors path="review" cssClass="error-color"/>
 			</li>
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="등록">
 			<input type="button" value="홈으로"
-			       onclick="location.href='main.do'">
+			       onclick="location.href='main/musMain.do'">
 		</div>
 	</form:form>
+    <script src="js/index.js"></script>
+    <script src="js/star.js"></script>
 </body>
 </html>

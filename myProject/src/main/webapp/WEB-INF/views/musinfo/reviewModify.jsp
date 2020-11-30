@@ -11,20 +11,22 @@
 </head>
 <body>
 
-<form:form commandName="CommentsVO" action="update.do" enctype="multipart/form-data">
+<form:form commandName="CommentsVO" action="modify.do" enctype="multipart/form-data">
 	<form:hidden path="rev_num"></form:hidden>
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
 				<label for="content">내용</label>
-				<form:textarea path="content"/>
-				<form:errors path="content" cssClass="error-color"/>
+				<form:textarea path="comment"/>
+				<form:errors path="comment" cssClass="error-color"/>
 			</li>
 			
 		</ul>
 			<input type="submit" value="전송">
-			<input type="button" value="홈" onclick="location.href='main.do'">
+			<input type="button" value="뒤로가기" onclick="history.go(-1)">
 			
-	</form:form>				
+	</form:form>		
+    <script src="js/index.js"></script>
+    <script src="js/star.js"></script>			
 </body>
 </html>

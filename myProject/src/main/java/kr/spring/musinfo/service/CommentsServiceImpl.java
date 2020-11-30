@@ -45,14 +45,4 @@ public class CommentsServiceImpl implements CommentsService{
 				// TODO Auto-generated method stub
 				commentsMapper.deleteComments(rev_num);
 			}
-
-			@Override
-			public int selectRowCount(Map<String, Object> map) {
-				// TODO Auto-generated method stub
-				return commentsMapper.selectRowCount(map);
-			}
-
-	
-
-
 }

@@ -4,22 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한줄평 모두 보기</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>한줄평 전체보기</title>
 </head>
 <body>
-<c:if test="${!empty member&& member.mem_num==board.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
+<c:if test="${!empty member&& member.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
+<input type="button" value="수정" onclick="location.href='update.do?commentsVO_num=${contentsVO.mus_num}'">
+<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?board_num=${contentsVO.mus_num}'">
+</c:if>			
 
 	<div class="contents_contents_comment-container">
 		<div class="comment-nemo">
 			<div class="comment_user">
-				<img src="img/user_profile.jfif" class="comment_user-img"> 
-				<span class="user_name">filmaholic9</span>
+				<span class="user_image">${member_detail.mem_image }</span>
 			</div>
 			<div class="content_info_star">
 				<div class="star_box star1" value="0.5"></div>
@@ -38,14 +35,11 @@
 				<i class="far fa-star real-star5 real-star"></i>
 				<div class="star_box star10" value="5"></div>
 			</div>
-			<div class="comment_comment">대한민국 대통령 정우성에 김정은은 유연석 ㅋㅋㅋㅋㅋㅋㅋㅋ
-				캐스팅부터 장난하냐 ㅋㅋㅋㅋㅋㅋㅋ (대충 예상되는 내용) 미국 : 평화협정 하자고 불러놓고는 자기들의 이익만 추구하며
-				훼방을 놓고 억지</div>
-			<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'">
-			<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?board_num=${board.board_num}'">
+			<div class="comment_comment">리뷰 </div>
+			<div class="userId">by ${member_detail.mem_name }</div>
 		</div>
 	</div>
-</c:if>			
-	
+    <script src="js/index.js"></script>
+    <script src="js/star.js"></script>	
 </body>
 </html>

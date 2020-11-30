@@ -56,7 +56,7 @@ public class MusMainController {
 		
 		ModelAndView mav = new ModelAndView();
 		// 뷰 이름 설정
-		mav.setViewName("musMain");
+		mav.setViewName("/main/musMain");
 		// 데이터 저장
 		mav.addObject("count", count);
 		mav.addObject("list", list);

@@ -42,87 +42,40 @@
 }
 
 /* 오른쪽 부분 중 첫번째 줄 */
-.content_info:first-child {
+.content_info{
     font-size: 13px;
     margin-bottom: 25px;
-}
-
-/* 첫번째 줄에 회색 글씨 */
-.content_info:first-child .gray {
-    color: gray;
-}
-
-/* 첫번째 줄에 하얀 글씨 */
-.content_info:first-child .white {
-    color: rgb(231, 231, 231);
-}
-
-/* 오른쪽 부분 중 두번째 줄 */
-.content_info:nth-child(2) {
-    font-size: 33px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-/* 오른쪽 부분 중 세번째 줄 */
-.content_info:nth-child(3) {
-    font-size: 17px;
-    color: rgb(173, 173, 173);
-    margin-bottom: 20px;
-}
-
-/* 오른쪽 부분 중 네번째 줄 */
-.content_info:nth-child(4) {
-    font-size: 17px;
-    border-top: 1px solid rgb(224, 224, 224);
-    border-bottom: 1px solid rgb(224, 224, 224);
-    padding: 10px 0px;
+    color: rgb(122, 122, 122);
+    
 }
 
 /* 오른쪽 부분 중 보고싶어요 버튼 */
-.content_want-see {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #FF2F6E;
-    color: white;
-    font-size: 18px;
-    width: 250px;
-    height: 40px;
-    border-radius: 5px;
-    margin-right: 33px;
-    margin-top: 33px;
-}
 
 /* 보고싶어요 버튼의 plus 아이콘 */
-.content_want-see i {
-    margin-right: 10px;
-    margin-left: -10px;
-    transition: all 0.5s ease;
-}
 
 /* plus 아이콘 돌아가는 기능 */
-.content_want-see:hover > .plus-rotate {
-    transform: rotate(90deg);
 }
 
 /* 오른쪽 부분 중 마지막 줄 */
 .content_info:last-child {
     display: flex;
 }
-
-/* 마지막 줄에서 평가하기 쪽 박스 */
-.content_info-right {
-    display: flex;
-    flex-direction: column;
+/* 더보기 */
+.btn-moreInfo{
+	float:right;
 }
+/* 바로보기 */
+.content-watch{
+	margin-right:200px;
+}
+/* 평가하기 */
+.js-leaveStar{
+	margin-right:200px;	
+}
+/* 마지막 줄에서 평가하기 쪽 박스 */
 
 /* 평가하기 글씨 */
-.content_info-right span:first-child {
-    font-size: 13px;
-    color: rgb(122, 122, 122);
-    margin: 10px 0px;
-}
+
 
 /* 별 5개 한 묶음 박스 */
 .content_info_star {

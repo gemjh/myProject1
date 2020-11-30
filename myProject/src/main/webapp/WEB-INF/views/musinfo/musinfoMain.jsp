@@ -68,10 +68,9 @@ $(document).ready(function () {
 <div class="all_contents">
     <!-- 썸네일 밑에 겹쳐있는 콘텐츠 정보들입니다. -->
     <div class="content_info-box">
-
         <!-- 왼쪽 포스터입니다. -->
         <div class="left-column">
-            <img src="musinfoImage.do?mus_num=${contentsVO.mus_num }" style="max-width:500px;" alt="${contentsVO.mus_name }">
+            <img src="imageView.do?mus_num=${contentsVO.mus_num }" style="max-width:500px;" alt="${contentsVO.mus_name }">
         </div>
         <!-- 여기까지 왼쪽 포스터 -->
 
@@ -208,7 +207,7 @@ $(document).ready(function () {
 					<div class="comment-nemo">
 						<div class="comment_user">
 							<span class="comment_user-img">${member.mem_image }</span>
-							<span class="user_name">${member.mem_name }</span>
+							<span class="user_name">${member.nickname }</span>
 						</div>
 						<div class="content_info_star">
 							<div class="star_box star1" value="0.5"></div>
@@ -229,7 +228,8 @@ $(document).ready(function () {
 						</div>
 						<div class="comment_comment">${commentsVO.review }
 						</div>
-				
+					</div>
+				</div>
 				<!-- 코멘트 더보기 링크 -->
 				<a href="reviews.do"><span class="contents_contents_more">더보기</span>
 				</a>

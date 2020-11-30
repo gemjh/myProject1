@@ -59,7 +59,7 @@ public class ContentsController {
 		
 	}
 	//이미지 출력
-		@RequestMapping("/musinfo/musinfoMain.do")
+		@RequestMapping("/musinfo/imageView.do")
 		public ModelAndView viewImage(@RequestParam int mus_num) {
 			System.out.println("//*****이미지 출력*********");
 			ContentsVO contentsVO = contentsService.selectContents(mus_num);
@@ -72,5 +72,5 @@ public class ContentsController {
 			System.out.println("//mav : "+mav);
 			return mav;
 		}
-	
+
 }

@@ -60,11 +60,22 @@
 .content_info:last-child {
     display: flex;
 }
-
+/* 더보기 */
+.btn-moreInfo{
+	float:right;
+}
+/* 바로보기 */
+.content-watch{
+	margin-right:200px;
+}
+/* 평가하기 */
+.js-leaveStar{
+	margin-right:200px;	
+}
 /* 마지막 줄에서 평가하기 쪽 박스 */
 
 /* 평가하기 글씨 */
-}
+
 
 /* 별 5개 한 묶음 박스 */
 .content_info_star {

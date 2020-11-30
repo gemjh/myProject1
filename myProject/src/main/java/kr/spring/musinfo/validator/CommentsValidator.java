@@ -15,7 +15,7 @@ public class CommentsValidator implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"star","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"star","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"content","required");
 	}
 

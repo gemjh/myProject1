@@ -68,8 +68,11 @@ public class CommentsController {
 	@RequestMapping("/musinfo/reviews.do")
 	public List<CommentsVO> allComments() {
 		Map<String,Object> map=new HashMap<String,Object>();
+		int count=commentsService.selectRowCount(map);
 		List<CommentsVO> list=null;
-		list=commentsService.selectList(map);
+		if(count>0) {
+			list=commentsService.selectList(map);
+		}
 		return list;
 	}
 	//글 수정 폼 호출

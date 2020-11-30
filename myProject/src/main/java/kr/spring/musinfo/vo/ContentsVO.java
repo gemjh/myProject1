@@ -111,19 +111,17 @@ public class ContentsVO {
 		setMus_postname(upload.getOriginalFilename());
 		System.out.println("//파일명 구하기");
 	}
-	
+	@Override
+	public String toString() {
+		return "ContentsVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
+				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
+				+ ", mus_rate=" + mus_rate + ", mus_post=" + mus_post + ", mus_detail=" + mus_detail + ", mus_summary="
+				+ mus_summary + ", mus_regdate=" + mus_regdate + "]";
+	}
 	public String getMus_postname() {
 		return mus_postname;
 	}
 	public void setMus_postname(String mus_postname) {
 		this.mus_postname = mus_postname;
 	}
-	@Override
-	public String toString() {
-		return "ContentsVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
-				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
-				+ ", mus_rate=" + mus_rate + ", mus_postname=" + mus_postname + ", mus_summary=" + mus_summary
-				+ ", mus_detail=" + mus_detail + ", mus_regdate=" + mus_regdate + "]";
-	}
-	
 }

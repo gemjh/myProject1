@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.main.dao.MusMainMapper;
 import kr.spring.main.vo.MusMainVO;
 
-@Service("MusMainServce")
+@Service("MusMainService")
 public class MusMainServiceImpl implements MusMainService{
 	@Resource
 	MusMainMapper musMainMapper;
@@ -23,6 +23,11 @@ public class MusMainServiceImpl implements MusMainService{
 	@Override
 	public int getMusMainCount() {
 		return musMainMapper.getMusMainCount();
+	}
+
+	@Override
+	public MusMainVO selectMusMain(int mus_num) {
+		return musMainMapper.selectMusMain(mus_num);
 	}
 	
 	

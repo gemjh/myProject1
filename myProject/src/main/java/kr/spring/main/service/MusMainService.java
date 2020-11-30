@@ -14,5 +14,7 @@ public interface MusMainService {
 
 	// 뮤지컬 리스트 갯수 구하기
 	public int getMusMainCount();
+	
+	public MusMainVO selectMusMain(int mus_num);
 
 }

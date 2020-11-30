@@ -12,6 +12,7 @@ import kr.spring.main.vo.MusMainVO;
 
 @Service("MusMainService")
 public class MusMainServiceImpl implements MusMainService{
+	
 	@Resource
 	MusMainMapper musMainMapper;
 	
@@ -24,10 +25,40 @@ public class MusMainServiceImpl implements MusMainService{
 	public int selectMusMainCount(Map<String, Object> map) {
 		return musMainMapper.selectMusMainCount(map);
 	}
-
+	
 	@Override
 	public MusMainVO selectMusMain(int mus_num) {
 		return musMainMapper.selectMusMain(mus_num);
+	}
+
+	@Override
+	public List<MusMainVO> selectMusLatestList(Map<String, Object> map) {
+		return musMainMapper.selectMusLatestList(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectMusPopularList(Map<String, Object> map) {
+		return musMainMapper.selectMusPopularList(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectMusPreferList(Map<String, Object> map) {
+		return musMainMapper.selectMusPreferList(map);
+	}
+
+	@Override
+	public int selectPreferCount(Map<String, Object> map) {
+		return musMainMapper.selectPreferCount(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectMusPickList(Map<String, Object> map) {
+		return musMainMapper.selectMusPickList(map);
+	}
+
+	@Override
+	public int selectPickCount(Map<String, Object> map) {
+		return musMainMapper.selectPickCount(map);
 	}
 	
 	

@@ -40,21 +40,21 @@ public class MusMainController {
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		
-		// 목록 총 레코드 수
+		// 뮤지컬 총 레코드 수
 		int count = musMainService.selectMusMainCount(map);
 		System.out.println("//count: " + count);
 		if (log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
 
-		// 페이징 처리
+		// 페이징 처리 - 검색
 		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "musMain.do");
 		
 		// 페이지 시작 숫자, 끝 숫자
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
-		// 목록 호출
+		// 검색 목록 호출
 		List<MusMainVO> list = null;
 		if(count > 0) {
 			list = musMainService.selectMusMainList(map);
@@ -63,6 +63,35 @@ public class MusMainController {
 				log.debug("<<글 목록>> : " + list );
 			}
 		}
+		
+		// 신작순 목록 호출
+		List<MusMainVO> latestList = null;
+		if(count > 0) {
+			latestList = musMainService.selectMusLatestList(map);
+			if(log.isDebugEnabled()) {
+				log.debug("<<신작 목록>> : " + latestList );
+			}
+			
+		}
+		// 인기순 목록 호출
+		List<MusMainVO> popularList = null;
+		if(count > 0) {
+			popularList = musMainService.selectMusPopularList(map);
+		}
+		
+		// 선호장르 목록 호출
+		List<MusMainVO> preferList = null;
+		if(count > 0) {
+			
+		}
+		
+		// 찜한 목록 호출
+		List<MusMainVO> pickList = null;
+		if(count > 0) {
+			
+		}
+		
+		
 
 		ModelAndView mav = new ModelAndView();
 		// 뷰 이름 설정 - ""에 tiles 명 넣기
@@ -70,6 +99,8 @@ public class MusMainController {
 		// 데이터 저장
 		mav.addObject("count", count);
 		mav.addObject("list", list);
+		mav.addObject("latestList", latestList);
+		mav.addObject("popularList", popularList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 
 		return mav;

@@ -5,11 +5,11 @@
 
 <mapper namespace="kr.spring.main.dao.MusMainMapper">  
 <!-- 총 레코드 수 -->
- 	<select id="selectMusMainCount" resultType="integer">
+ 	<!-- <select id="selectMusMainCount" resultType="integer">
  		SELECT
  			COUNT(*)
  		FROM musical
- 	</select>	
+ 	</select>	 -->
  	<!-- 목록, 키워드 제목 배우로 검색 -->
  	<select id="selectMusMainList" parameterType="map" resultType="MusMainVO">
  		SELECT
@@ -32,6 +32,13 @@
  	<![CDATA[           
  		WHERE rnum >= #{start} AND rnum <= #{end}           
  	]]>
+ 	</select>
+ 	
+ 	<!-- 회원 선호 장르 리스트 -->
+ 	<select id="selectMusPreferList" parameterType="map" resultType="MusMainVO">
+		SELECT
+		  *
+		FROM musical; 	
  	</select>
 </mapper>   
 

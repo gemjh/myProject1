@@ -24,6 +24,11 @@ public class MusMainServiceImpl implements MusMainService{
 	public int getMusMainCount() {
 		return musMainMapper.getMusMainCount();
 	}
+
+	@Override
+	public MusMainVO selectMusMain(int mus_num) {
+		return musMainMapper.selectMusMain(mus_num);
+	}
 	
 	
 }

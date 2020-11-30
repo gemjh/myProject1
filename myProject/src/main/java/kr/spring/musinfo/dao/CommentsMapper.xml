@@ -7,6 +7,6 @@
 	<update id="updateComments" parameterType="CommentsVO">
 		update reviews set
 			nickname=#{nickname},rev_rate=#{rev_rate},review=#{review},rev_regdate=sysdate 
-		where rev_num={rev_num}			
+		where rev_num=#{rev_num}			
 	</update>
 </mapper>

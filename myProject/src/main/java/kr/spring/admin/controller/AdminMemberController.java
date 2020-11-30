@@ -175,9 +175,23 @@ public class AdminMemberController {
 		MemberVO vo = (MemberVO) session.getAttribute("user");
 		// 전송된 데이터가 저장된 자바빈에 회원 번호를 저장
 		memberVO.setMem_num(vo.getMem_num());
+		// 현재 비밀번호와 변경할 비밀번호가 전송됐는지 여부를 체크
+		if (result.hasFieldErrors("now_password") || result.hasFieldErrors("password")) {
+			return "adminMemberModify";
+		}
 
+		// 회원 번호를 통해서 회원 정보를 DB로부터 읽어와서 입력한 현재 비밀번호와
+		// DB에서 읽어온 현재 비밀번호가 일치하는지 여부 체크
+		MemberVO member = memberService.selectMember(memberVO.getMem_num());
+		if (!member.getPassword().equals(memberVO.getNow_password())) {
+			result.rejectValue("now_password", "invalidPassword");
+			return "adminMemberModify";
+		}
+		
 		// 회원 정보 수정
 		memberService.updateMember(memberVO);
+		// 비밀번호 수정 처리
+		memberService.updatePassword(memberVO);
 
 		return "redirect:/admin/adminMain.do";
 	}

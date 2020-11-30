@@ -12,7 +12,7 @@ import kr.spring.musinfo.vo.CommentsVO;
 
 public interface CommentsMapper {
 	@Insert("insert into reviews(rev_num,mem_num,mus_num,rev_rate,review,rev_regdate) values(rev_seq.nextval,#{mem_num},#{mus_num},#{rev_rate},#{review},sysdate)")
-	public void insertComments(CommentsVO commentsVO);
+	public void insertComments(CommentsVO commentsVO, int rev_rate);
 	@Select("select * from reviews where mem_num=#{mem_num}")
 	public CommentsVO selectComments(int num);
 	@Update("update reviews set mem_num=#{mem_num},mus_num=#{mus_num},rev_rate=#{rev_rate},review=#{review},rev_regdate=sysdate where rev_num=#{rev_num}")

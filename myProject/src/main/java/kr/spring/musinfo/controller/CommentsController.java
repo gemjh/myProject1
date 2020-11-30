@@ -52,6 +52,7 @@ public class CommentsController {
 		if(result.hasErrors()) {
 			return "reviewWrite";
 		}
+		
 		//회원번호 세팅
 		MemberVO member=(MemberVO)session.getAttribute("member");
 		commentsVO.setMem_num(member.getMem_num());

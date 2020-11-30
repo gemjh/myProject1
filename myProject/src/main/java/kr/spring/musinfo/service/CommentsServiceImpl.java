@@ -18,7 +18,7 @@ public class CommentsServiceImpl implements CommentsService{
 			@Override
 			public void insertComments(CommentsVO commentsVO) {
 				// TODO Auto-generated method stub
-				commentsMapper.insertComments(commentsVO);
+				commentsMapper.insertComments(commentsVO, 0);
 			}
 
 			@Override
@@ -38,5 +38,6 @@ public class CommentsServiceImpl implements CommentsService{
 				// TODO Auto-generated method stub
 				commentsMapper.deleteComments(rev_num);
 			}
+
 
 }

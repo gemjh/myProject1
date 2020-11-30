@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="page-main-style">
 	<h2>공지사항</h2>
-	<form action="noticeList.do" id="search_form" method="get">
+	<form action="noticeList.do" id="notice_form" method="get">
 		<ul class="search">
 			<li>
 				<select name="keyfield" id="keyfield">
@@ -42,7 +43,7 @@
 			<c:forEach var="notice" items="${list}">
 				<tr>
 					<td>${notice.no_num}</td>
-					<td><a href="noticeView.do?no_num=${notice.no_num}">${notice.no_num}</a></td>
+					<td><a href="noticeView.do?no_num=${notice.no_num}">${notice.no_title}</a></td>
 					<td>${notice.mem_num}</td>
 					<td>${notice.no_regdate}</td>
 					<td>${notice.no_hit}</td>

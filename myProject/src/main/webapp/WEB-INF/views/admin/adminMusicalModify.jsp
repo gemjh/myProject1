@@ -8,18 +8,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	$('#confirm_password').keyup(function(){
-		if($('#password').val()!='' &&
-				 $('#password').val()!=$(this).val()){
-			$('#message_id').text('비밀번호 불일치').css('color','red');
-		}else if($('#password').val()!='' &&
-				$('#password').val()==$(this).val()){
-			$('#message_id').text('비밀번호 일치').css('color','#000');
-		}
-	});
-	
 		$('#musical_form').submit(function(event){
+			var check = 0;
+			var blank_pattern = /^\s+|\s+$/g;
 		$('.actor_box').each(function(index,item){
 			if($(this).val()==''|| $(this).val().replace(blank_pattern,'')==''){
 				alert('배우 이름을 입력하세요!');
@@ -58,7 +49,7 @@ function deleteBox (x) {
  
 </script>
 <div class="page-main-style">
-	<h2>글수정</h2>
+	<h2>뮤지컬 수정</h2>
 	<form:form commandName="adminMusicalVO" action="adminMusicalModify.do"
 								enctype="multipart/form-data" id="musical_form">
 		<form:errors element="div" cssClass="error-color"/>

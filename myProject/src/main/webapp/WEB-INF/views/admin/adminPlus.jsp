@@ -67,21 +67,23 @@
 		//submit이벤트 발생시 id 중복체크 여부 확인
 		$('#register_form').submit(function(){
 			var check = 0;
+			
 			if(checkId==0){
 				$('#message_email').css('color','red').text('이메일 중복체크 필수')
 				$('#email').focus();
+				check = 1;
 				return false;
 			}
-			
+			//생일 선택여부  체크
 			var birth = $("#birth").val();
 			    if( birth == ''){
 			        alert("생일을 선택하세요!");
 			        check = 1;
 			        return false; 
 			    }
-			 if(check == 1) return false;
-			
-		});
+			    
+	          if(check == 1) return false;
+		});		
 	});
 
 </script> 
@@ -110,10 +112,10 @@
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="password_chk">비밀번호 확인</label>
-				<form:input path="password_chk"/>
-				<form:errors path="password_chk" cssClass="error-color"/>
-			</li> 
+				<label for="confirm_password">변경할 비밀번호 확인</label>
+				<input type="password" id="confirm_password">
+				<span id="message_email" class="error-color"></span>
+			</li>
 			<li>
 				<label for="birth">생년월일</label>
 				<input type="date" id="birth" name="birth"/>

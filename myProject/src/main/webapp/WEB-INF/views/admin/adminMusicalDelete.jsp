@@ -4,9 +4,8 @@
 <div class="page-main-style">
 	<h2>뮤지컬 삭제</h2>
 	<form:form action="adminMusicalDelete.do" commandName="memberVO">
-	<input type="hidden" name="mus_num" value="${adminMuscialVO.mus_num}"/>
 	<form:errors element="div" cssClass="error-color"/>
-	
+		<form:hidden path="mus_num"/>
 		<ul>
 			<li>
 				<label for="email">관리자 이메일</label>

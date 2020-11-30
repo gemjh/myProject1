@@ -3,12 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-
 $(document).ready(function(){
-	var check = 0;
-	var blank_pattern = /^\s+|\s+$/g;
-	
 	$('#musical_form').submit(function(event){
+		var check = 0;
+		var blank_pattern = /^\s+|\s+$/g;
 		$('.actor_box').each(function(index,item){
 			if($(this).val()==''||$(this).val().replace(blank_pattern,'')==''){
 				alert('배우 이름을 입력하세요!');
@@ -16,7 +14,7 @@ $(document).ready(function(){
 				check = 1;
 				return false;
 			}
-			check = 0;
+			
 		});
 	var fileCheck = document.getElementById("upload").value;
 	   if(!fileCheck){
@@ -24,7 +22,7 @@ $(document).ready(function(){
 	       check = 1;
 	   }		
 	var mus_time = $("#mus_time").val();
-	    if( mus_time == "" || mus_time <= 0){
+	    if( mus_time == '' || mus_time <= 0){
 	        alert("재생 시간을 입력하세요!");
 	        $("#mus_time").focus();
 	        check = 1;
@@ -33,8 +31,6 @@ $(document).ready(function(){
 	    
 	if(check == 1) return false;
 	});
-	
-	
 });
 
 function addBox (x) {

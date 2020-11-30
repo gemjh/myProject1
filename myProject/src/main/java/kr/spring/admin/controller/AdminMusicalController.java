@@ -196,9 +196,9 @@ public class AdminMusicalController {
 	// 뮤지컬 삭제 폼
 	@RequestMapping(value = "/admin/adminMusicalDelete.do", method = RequestMethod.GET)
 	public String submitDelete(@RequestParam int mus_num, Model model) {
-		AdminMusicalVO VO = adminMusicalService.selectMusical(mus_num);
-
-		model.addAttribute("adminMusicalVO", VO);
+		MemberVO memberVO = new MemberVO();
+		memberVO.setMus_num(mus_num);
+		model.addAttribute("memberVO", memberVO);
 		System.out.println("********뮤지컬 삭제 폼*********");
 
 		return "adminMusicalDelete";
@@ -206,16 +206,11 @@ public class AdminMusicalController {
 
 	// 뮤지컬 삭제 처리
 	@RequestMapping(value = "/admin/adminMusicalDelete.do", method = RequestMethod.POST)
-	public String completeDelete(	@RequestParam int mus_num,
-									AdminMusicalVO adminMusicalVO,
-									@Valid MemberVO memberVO, 
+	public String completeDelete(	@Valid MemberVO memberVO, 
 									BindingResult result, 
 									HttpSession session, 
 									HttpServletRequest request) {
 		System.out.println("//*****뮤지컬 삭제 처리**");
-		if (log.isDebugEnabled()) {
-			log.debug("<<뮤지컬 삭제>> : " + mus_num);
-		}
 		// email,password 필드의 에러만 체크
 		if (result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
 			return "/admin/adminMusicalDelete.do";
@@ -237,7 +232,7 @@ public class AdminMusicalController {
 
 		if (check) {
 			// 인증성공
-			adminMusicalService.deleteMusical(mus_num);
+			adminMusicalService.deleteMusical(memberVO.getMus_num());
 			System.out.println("//뮤지컬 삭제 완료");
 			return "redirect:/admin/adminMusicalDeleteCompleted.do";
 

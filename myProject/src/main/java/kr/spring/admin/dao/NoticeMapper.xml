@@ -45,7 +45,7 @@
            n.no_num LIKE '%' || #{keyword} || '%'
           or n.no_title LIKE '%' || #{keyword} || '%' 
           or n.no_content LIKE '%' || #{keyword} || '%' </if>
-		 </where>                            
+		</where>                            
 	 </select>
 	 
 	 <update id="updateNotice" parameterType="noticeVO">

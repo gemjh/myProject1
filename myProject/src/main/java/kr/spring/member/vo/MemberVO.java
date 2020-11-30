@@ -6,7 +6,7 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
-	
+
 	private int mem_num;
 	private String email;
 	private int auth;
@@ -20,11 +20,13 @@ public class MemberVO {
 	private Date expire_date;
 	private byte[] mem_image;
 	private String mem_imagename;
-	
-	 
+
+	//뮤지컬 삭제폼에서 사용할 mus_num
+	private int mus_num; 
+
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도로 사용
 	private String now_password;
-		
+
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPassword(String userPassword) {
 		if(auth <3 && password.equals(userPassword)) {
@@ -32,15 +34,15 @@ public class MemberVO {
 		}
 		return false;
 	}
-	
+
 	//이미지 BLOB 처리
 	public void setUpload(MultipartFile upload) throws IOException{
 		//MultipartFile -> byte[]
-			setMem_image(upload.getBytes());
-			//파일 이름
-			setMem_imagename(upload.getOriginalFilename());
+		setMem_image(upload.getBytes());
+		//파일 이름
+		setMem_imagename(upload.getOriginalFilename());
 	}	
-		
+
 	//Getter, Setter
 	public int getMem_num() {
 		return mem_num;
@@ -129,7 +131,14 @@ public class MemberVO {
 		this.now_password = now_password;
 	}
 
-	
+	public int getMus_num() {
+		return mus_num;
+	}
+
+	public void setMus_num(int mus_num) {
+		this.mus_num = mus_num;
+	}
+
 	//toString
 	@Override
 	public String toString() {
@@ -138,6 +147,6 @@ public class MemberVO {
 				+ ", mem_modifydate=" + mem_modifydate + ", purchase_date=" + purchase_date + ", expire_date="
 				+ expire_date + ", mem_imagename=" + mem_imagename + "]";
 	}
-	
-	
+
+
 }

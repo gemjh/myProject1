@@ -9,8 +9,8 @@
 <div class="align-left">
 	<ul id="main_nav">
 		<li><a
-			href="${pageContext.request.contextPath}/admin/adminMain.do"> <img
-				src="${pageContext.request.contextPath}/admin/mucha.png" alt="mucha">
+			href="${pageContext.request.contextPath}/main/musMain.do"> <img
+				src="${pageContext.request.contextPath}/resources/css/admin/mucha.png" alt="mucha">
 		</a></li>
 		<li>
 			<h3>장르별 카테고리</h3>

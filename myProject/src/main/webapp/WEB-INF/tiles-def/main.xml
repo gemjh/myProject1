@@ -5,10 +5,19 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
+	<!-- 메인 페이지 -->
     <definition name="main" template="/WEB-INF/views/mainTemplate/mainLayout.jsp">
         <put-attribute name="title" value="뮤지컬 메인" />
-    	<put-attribute name="mainHeader" value="/WEB-INF/views/mainTemplate/mainHeader.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
     	<put-attribute name="mainBody" value="/WEB-INF/views/main/musMain.jsp"/>  
+    	<put-attribute name="mainFooter" value="/WEB-INF/views/mainTemplate/mainFooter.jsp"/>        
+    </definition>
+    
+    <!-- 메인 검색 페이지 -->
+    <definition name="mainList" template="/WEB-INF/views/mainTemplate/mainLayout.jsp">
+        <put-attribute name="title" value="뮤지컬 메인 검색" />
+    	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+    	<put-attribute name="mainBody" value="/WEB-INF/views/main/musMainList.jsp"/>  
     	<put-attribute name="mainFooter" value="/WEB-INF/views/mainTemplate/mainFooter.jsp"/>        
     </definition>
 </tiles-definitions>

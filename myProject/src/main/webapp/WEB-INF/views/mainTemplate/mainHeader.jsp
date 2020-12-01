@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!-- <h2 class="align-center">main 페이지</h2> -->
 <div class="align-right">
 <%-- 	<c:if test="${!empty user && !empty user.mem_imagename}">
@@ -21,7 +21,7 @@
 	</c:if> --%> 
 	
 	<!-- 검색 -->
-	<form action="musMain.do" id="search_form" method="get">
+	<form action="musMainList.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
 				<input type="text" name="keyword" id="keyword">

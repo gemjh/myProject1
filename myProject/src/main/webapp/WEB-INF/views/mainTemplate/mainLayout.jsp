@@ -10,8 +10,8 @@
 </head>
 <body>
 <div id="main">
-	<div id="main_header">
-		<tiles:insertAttribute name="mainHeader"/>
+	<div id="header">
+		<tiles:insertAttribute name="header"/>
 	</div>
 	<div id="main_body">
 		<tiles:insertAttribute name="mainBody"/>

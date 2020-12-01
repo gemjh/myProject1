@@ -60,6 +60,5 @@ public class MusMainServiceImpl implements MusMainService{
 	public int selectPickCount(Map<String, Object> map) {
 		return musMainMapper.selectPickCount(map);
 	}
-	
-	
+
 }

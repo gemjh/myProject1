@@ -36,9 +36,50 @@
  	
  	<!-- 회원 선호 장르 리스트 -->
  	<select id="selectMusPreferList" parameterType="map" resultType="MusMainVO">
-		SELECT
-		  *
-		FROM musical; 	
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           		<if test="keyword != ''">
+ 		           			mus_name LIKE '%' || #{keyword} || '%' or
+ 		           			mus_actor LIKE '%' || #{keyword} || '%' or
+ 		           			mus_summary LIKE '%' || #{keyword} || '%' or
+ 		           			mus_detail LIKE '%' || #{keyword} || '%'		           					           			
+ 		           		</if>
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 	
+ 	<!-- 회원 찜 리스트 -->
+ 	<select id="selectMusPickList" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           		<if test="keyword != ''">
+ 		           			mus_name LIKE '%' || #{keyword} || '%' or
+ 		           			mus_actor LIKE '%' || #{keyword} || '%' or
+ 		           			mus_summary LIKE '%' || #{keyword} || '%' or
+ 		           			mus_detail LIKE '%' || #{keyword} || '%'		           					           			
+ 		           		</if>
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
  	</select>
 </mapper>   
 

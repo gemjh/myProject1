@@ -43,4 +43,5 @@ public interface MusMainService {
 	// 회원 찜한 작품 갯수 구하기
 	public int selectPickCount(Map<String, Object> map);
 
+
 }

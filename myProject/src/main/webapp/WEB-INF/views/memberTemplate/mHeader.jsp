@@ -7,11 +7,11 @@
 	<!-- 프로필 이미지 표시 -->
 	<!-- 이미지가 있는 경우 -->
 	<c:if test="${!empty user && !empty user.mem_imagename}">
-		<img src="${pageContext.request.contextPath}/member/imageView.do" width="25" height="25" class="my-image">
+		<img src="${pageContext.request.contextPath}/member/imageView.do" width="25px" height="25px" class="my-image">
 	</c:if>
 	<!-- 이미지가 없는 경우 -->
 	<c:if test="${!empty user && empty user.mem_imagename}">
-		<img src="${pageContext.request.contextPath}/resources/images/blank.gif" width="25" height="25" class="my-image">
+		<img src="${pageContext.request.contextPath}/resources/images/blank.gif" width="25px" height="25px" class="my-image">
 	</c:if>
 	<!-- auth값에 따라 다른 링크 만들어주기 0:관리자 1-2:회원 -->
 	<!-- 관리자인 경우 -->

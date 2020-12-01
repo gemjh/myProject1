@@ -139,46 +139,9 @@
 				<form:errors path="phone" cssClass="error-color"/>
 			</li>
 		</ul>
-		
-		<!-- <label class="checkbox-wrap"><input type="checkbox" name="transportation[]" value="1"><i class="check-icon"></i>value:1</label>
-		<label class="checkbox-wrap"><input type="checkbox" name="transportation[]" value="2"><i class="check-icon"></i>value:2</label>
-		<label class="checkbox-wrap"><input type="checkbox" name="transportation[]" value="3"><i class="check-icon"></i>value:3</label>
-		<label class="checkbox-wrap"><input type="checkbox" name="" value=""><i class="check-icon"></i></label>
-		 -->
 		 
 		 <div class="perfer_chk">
 		 <p>보고싶은 공연을 골라보세요. 메인에서 장르 맞춰서 추천해드립니다.( 2 개 제 한 )<p>
-		 	<%-- <img src="${pageContext.request.contextPath}/resources/images/test_li.gif">
-		 	<input type="checkbox" id="check1" value="2">
-		 	<label for="check1"></label>
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_original.gif">
-		 	<input type="checkbox" id="check2" value="3">
-		 	<label for="check2"></label>
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_what.gif">
-		 	<input type="checkbox" id="check3" value="5">
-		 	<label for="check3"></label>
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_child.gif">
-		 	<input type="checkbox" id="check4" value="13">
-		 	<label for="check4"></label> 
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_performance.gif">
-		 	<input type="checkbox" id="check5" value="17">
-		 	<label for="check5"></label>
-		 	<br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_performance.gif">
-		 	<input type="checkbox" id="check6" value="17">
-		 	<label for="check6"></label>
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_child.gif">
-		 	<input type="checkbox" id="check7" value="13">
-		 	<label for="check7"></label>	
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_what.gif">
-		 	<input type="checkbox" id="check8" value="5">
-		 	<label for="check8"></label> 
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_original.gif">
-		 	<input type="checkbox" id="check9" value="3">
-		 	<label for="check9"></label>
-		 	<img src="${pageContext.request.contextPath}/resources/images/test_li.gif">
-		 	<input type="checkbox" id="check10" value="2">
-		 	<label for="check10"></label> --%>
 		 	
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
 		 	<input type="checkbox" id="check1" name="chk" value="2" onClick="return count_chkbox()">

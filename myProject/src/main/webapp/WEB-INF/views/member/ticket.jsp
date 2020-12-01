@@ -6,13 +6,14 @@
 <script type="text/javascript">
     $(document).ready(function(){
 		//체크한 결제수단
+		//if문 아래 연결페이지 넣어서 결제 수단별 결제 기능 --------------------?
 		$('input[type="radio"]').click(function(){
 			if($('input[type="radio"]:checked').val() == 'card'){
-				alert('신용카드로 결제합니다. \n 진행하시겠습니까?');
+				alert('신용카드로 결제합니다. \n진행하시겠습니까?');
 			}else if($('input[type="radio"]:checked').val() == 'phone'){
-				alert('스마트폰으로 결제합니다. \n 진행하시겠습니까? ');
+				alert('스마트폰으로 결제합니다. \n진행하시겠습니까? ');
 			}else if($('input[type="radio"]:checked').val() == 'kakao'){
-				alert('카카오페이로 결제합니다. \n 진행하시겠습니까?');
+				alert('카카오페이로 결제합니다. \n진행하시겠습니까?');
 			}
 		});
 	});

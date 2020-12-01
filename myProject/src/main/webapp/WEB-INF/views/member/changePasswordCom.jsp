@@ -9,5 +9,7 @@
 <body>
 
 	<h2>비밀번호가 변경되었습니다!</h2>
+	<input type="button" value="홈으로"
+			    onclick="location.href='${pageContext.request.contextPath}/member/memberMain.do'">
 </body>
 </html>

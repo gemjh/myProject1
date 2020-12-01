@@ -6,20 +6,82 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/layout.css">
 <title>한줄평 쓰기</title>
+<style>
+textarea{
+	margin-top:20px;
+	width:430px;
+	height:50px;
+}
+</style>
+<script>
+$(document).ready(function () {
+	float rev_rate=0;
+	switch(rev_rate){
+	case 1:
+       $('.star1').click(function(){
+    	   rev_rate=0.5;
+       });
+       break;
+	case 2:
+
+       $('.star2').click(function(){
+    	    rev_rate=1;
+       });
+       break;
+	case 3:
+
+       $('.star3').click(function(){
+    	    rev_rate=1.5;
+       });
+       break;
+	case 4:
+       $('.star4').click(function(){
+    	    rev_rate=2;
+       });
+       break;
+	case 5:
+       $('.star5').click(function(){
+    	    rev_rate=2.5;
+       });
+       break;
+	case 6:
+       $('.star6').click(function(){
+    	    rev_rate=3;
+       });
+       break;
+	case 7:
+       $('.star7').click(function(){
+    	    rev_rate=3.5;
+       });
+       break;
+	case 8:
+       $('.star8').click(function(){
+    	    rev_rate=4;
+       });
+       break;
+	case 9:
+       $('.star9').click(function(){
+    	    rev_rate=4.5;
+       });
+       break;
+	case 10:
+       $('.star10').click(function(){
+    	    rev_rate=5;
+       });
+       break;
+	}
+ });
+</script>
 </head>
 <body>
-<%-- <c:if test="${!empty member&& member.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
+<%--  <c:if test="${!empty member&& member.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
 <%=	response.sendRedirect("reviewModify.do")
 %>
-</c:if> --%>
+</c:if>  --%>
 	<form:form action="write.do" commandName="commentsVO">
 		<ul>
-			<li>
-				${member.mem_image }
-			</li>
-			<li>${member.nickname }</li>
 			<li class="content_info_star">
 				<div class="star_box star1" value="0.5"></div>
 				<i class="far fa-star real-star1 real-star"></i>
@@ -46,7 +108,7 @@
 		<div class="align-center">
 			<input type="submit" value="등록">
 			<input type="button" value="홈으로"
-			       onclick="location.href='main/musMain.do'">
+			       onclick="location.href='${pageContext.request.contextPath }/main/musMain.do'">
 		</div>
 	</form:form>
     <script src="${pageContext.request.contextPath }/resources/js/index.js"></script>

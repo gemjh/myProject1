@@ -10,4 +10,4 @@
 <a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=123">뮤지컬페이지</a><br>
 <a href="${pageContext.request.contextPath}/admin/adminMain.do">관리자페이지</a><br>
 <a href="${pageContext.request.contextPath}/member/memberMain.do">회원페이지</a><br>
-</html>   
+</html>

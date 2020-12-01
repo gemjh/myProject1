@@ -24,6 +24,7 @@ import kr.spring.musinfo.service.CommentsService;
 import kr.spring.musinfo.validator.CommentsValidator;
 import kr.spring.musinfo.vo.CommentsVO;
 import kr.spring.musinfo.vo.ContentsVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class CommentsController {
@@ -44,7 +45,7 @@ public class CommentsController {
 	}
 	//글 등록
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.POST)
-	public String submit(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session) {
+	public String submit(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session, long rev_rate) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<글 저장>>:"+commentsVO);
 		}
@@ -52,7 +53,8 @@ public class CommentsController {
 		if(result.hasErrors()) {
 			return "reviewWrite";
 		}
-		
+		//별 선택한 값을 rev_rate로 전환
+		float value=rev_rate;
 		//회원번호 세팅
 		MemberVO member=(MemberVO)session.getAttribute("member");
 		commentsVO.setMem_num(member.getMem_num());
@@ -64,10 +66,30 @@ public class CommentsController {
 		return "redirect:/musinfo/musinfoMain.do";
 	}
 	//글 전체보기
-	@RequestMapping("/musinfo/reviews.do")
-	public String wholeList(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value="/musinfo/reviews.do")
+	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
+		Map<String,Object> map=new HashMap<String,Object>();
+		int count=commentsService.selectRowCount(map);
+		if(log.isDebugEnabled()) {
+			log.debug("<<count>>: "+count);
+		}
+		PagingUtil page=new PagingUtil(currentPage,count,1000,10,"reviews.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		List<CommentsVO> list=null;
+		if(count>0) {
+			list=commentsService.selectList(map);
+			if(log.isDebugEnabled()) {
+				log.debug("<<글 목록>>:"+list);
+			}
+		}
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("commentList");
+		mav.addObject("count",count);
+		mav.addObject("list",list);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
-		return "reviews";
+		return mav;
 	}
 	//글 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)

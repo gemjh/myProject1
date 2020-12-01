@@ -6,6 +6,8 @@ import java.util.Map;
 import kr.spring.musinfo.vo.CommentsVO;
 
 public interface CommentsService {
+	public List<CommentsVO> selectList(Map<String,Object> map);
+	public int selectRowCount(Map<String,Object> map);
 	public void insertComments(CommentsVO commentsVO);
 	public CommentsVO selectComments(int rev_num);
 	public void updateComments(CommentsVO commentsVO);

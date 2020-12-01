@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor/ckeditor.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -39,8 +41,16 @@ $(document).ready(function(){
 				<form:errors path="no_title" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="no_content">내용</label>
-				<form:textarea path="no_content"/>
+				<label for="no_content">내용</label> 
+				<textarea name="no_content"
+					class="ckeditor" id="no_content"> </textarea>
+				<script
+					type="text/javascript">
+					CKEDITOR.replace('no_content', {
+						height :300,
+						width : 700
+					});
+				</script> 
 				<form:errors path="no_content" cssClass="error-color"/>
 			</li>
 		</ul>	

@@ -2,8 +2,9 @@
     pageEncoding="UTF-8" %>
 <ul>
 	<li><h4>관리자 관리</h4></li>
-	<li><a href="${pageContext.request.contextPath}/admin/adminManagerList.do">관리자 목록</a></li>
-	<li><a href="${pageContext.request.contextPath}/admin/adminMemberModify.do">내 정보 수정</a></li>
+	<li><a href="${pageContext.request.contextPath}/admin/adminManagerList.do">-전체 관리자 계정 보기</a></li>
+	<li><a href="${pageContext.request.contextPath}/admin/adminPlus.do">-관리자 계정 추가</a></li>
+	<li><a href="${pageContext.request.contextPath}/admin/adminMemberModify.do">-내 정보 수정</a></li>
 	<li><h4>뮤지컬 관리</h4></li>
 	<li><a href="${pageContext.request.contextPath}/admin/adminMusicalRegister.do">-뮤지컬 등록</a></li>
 	<li><a href="${pageContext.request.contextPath}/admin/adminMusicalList.do">-등록된 뮤지컬 관리</a></li>

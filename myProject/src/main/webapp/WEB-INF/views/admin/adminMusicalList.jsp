@@ -1,19 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript">
-<!--삭제버튼 이벤트 연결-->
-window.onload = function(){
-var delete_btn = document.getElementById('delete_btn');
-//이벤트 연결
-delete_btn.onclick=function(){
-	var choice= window.confirm('삭제하시겠습니까?');
-/* 	if(choice){
-		location.href='delete.do?board_num=${board.board_num}';
-	} */
-	};
-};
-</script>
+
 <div class="page-main-style">
 	<h2>등록된 뮤지컬 리스트</h2>
 	<form action="adminMusicalList.do" id="search_form" method="get">

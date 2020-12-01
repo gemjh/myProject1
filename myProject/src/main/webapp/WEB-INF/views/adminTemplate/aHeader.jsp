@@ -2,10 +2,7 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/mainHeader.css">
-<script type="text/javascript">
 
-
-</script>
 <div class="align-left">
 	<ul id="main_nav">
 		<li><a

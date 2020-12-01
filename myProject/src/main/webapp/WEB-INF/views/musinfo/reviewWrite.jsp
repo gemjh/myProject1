@@ -17,7 +17,7 @@ textarea{
 </style>
 <script>
 $(document).ready(function () {
-	float rev_rate=0;
+	float rev_rate=0.0;
 	switch(rev_rate){
 	case 1:
        $('.star1').click(function(){
@@ -27,7 +27,7 @@ $(document).ready(function () {
 	case 2:
 
        $('.star2').click(function(){
-    	    rev_rate=1;
+    	    rev_rate=1.0;
        });
        break;
 	case 3:
@@ -38,7 +38,7 @@ $(document).ready(function () {
        break;
 	case 4:
        $('.star4').click(function(){
-    	    rev_rate=2;
+    	    rev_rate=2.0;
        });
        break;
 	case 5:
@@ -48,7 +48,7 @@ $(document).ready(function () {
        break;
 	case 6:
        $('.star6').click(function(){
-    	    rev_rate=3;
+    	    rev_rate=3.0;
        });
        break;
 	case 7:
@@ -58,7 +58,7 @@ $(document).ready(function () {
        break;
 	case 8:
        $('.star8').click(function(){
-    	    rev_rate=4;
+    	    rev_rate=4.0;
        });
        break;
 	case 9:
@@ -68,7 +68,7 @@ $(document).ready(function () {
        break;
 	case 10:
        $('.star10').click(function(){
-    	    rev_rate=5;
+    	    rev_rate=5.0;
        });
        break;
 	}

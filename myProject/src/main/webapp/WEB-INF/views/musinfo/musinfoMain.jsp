@@ -207,15 +207,22 @@ $(document).ready(function () {
 				<div class="contents_contents_comment-container">
 					<div class="comment-nemo">
 						<div class="comment_user">
-						<ul>
-							<li class="comment_user-img">${member.mem_image }</li>
-							<li class="user_name">${member.nickname }</li>
+						<ul class="new">
+							<li class="comment_user-img">image</li>
+							<li class="star">★★★★★</li>
+							<li class="comment">재밌습니다 재밌어 죽겠네요 재미오져부러요 완전재미쩔어요</li>
+							<li class="user_name">by userId</li>
 						</ul>
-						</div>
-						<div class="comment_comment">${commentsVO.review }
+						<ul class="new">
+							<li class="comment_user-img">image</li>
+							<li class="star">★★★★★</li>
+							<li class="comment">재밌습니다 재밌어 죽겠네요 재미오져부러요 완전재미쩔어요</li>
+							<li class="user_name">by userId</li>
+						</ul>
 						</div>
 					</div>
 				</div>
+				
 				<!-- 코멘트 더보기 링크 -->
 				<input type="button" id="reviews" value="더보기" onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
 				</a>

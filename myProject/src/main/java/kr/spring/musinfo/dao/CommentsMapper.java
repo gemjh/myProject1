@@ -23,4 +23,5 @@ public interface CommentsMapper {
 	public void deleteComments(int rev_num);
 	public List<CommentsVO> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
+
 }

@@ -6,11 +6,12 @@
 
 <tiles-definitions>
     <definition name="musinfoMain" 
-               template="/WEB-INF/views/musinfoTemplate/miLayout.jsp">
+               template="/WEB-INF/views/template/layout.jsp">
     	<put-attribute name="title" value="뮤지컬 상세정보"/>
     	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+    	<put-attribute name="left" value="/WEB-INF/views/template/left.jsp"/> 
     	<put-attribute name="body" value="/WEB-INF/views/musinfo/musinfoMain.jsp"/>   
-    	<put-attribute name="footer" value="/WEB-INF/views/musinfoTemplate/miFooter.jsp"/>   
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>   
     </definition>
     <!-- 전체 리뷰 보기 -->
     <definition name="reviews" 

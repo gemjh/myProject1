@@ -24,7 +24,7 @@
 			<ul class="search">
 				<li>
 				<form action="adminMusicalList.do" id="search_form" method="get">	
-				<input type="text" name="keyword" id="keyword">
+				<input type="text" name="keyword" id="keyword" placeholder="제목, 배우로 검색해보세요.">
 				<input type="submit" value="찾기">
 				</form>
 				</li>

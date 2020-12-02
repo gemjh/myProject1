@@ -1,0 +1,136 @@
+/* header_style.css */
+
+#main_header{
+	width: 1020px;
+	height: 111px;
+	margin: 0 auto 9px; /* 상 우좌 하 */
+
+	position: relative;
+}
+
+	/** 로고 **/
+	#main_header > .logo{
+		position: absolute;
+		left: 438px;
+		top: 39px;
+	}
+	#main_header > .logo > a{
+		width: 145px;
+		height: 28px;
+		background: url(../images/logo.png);
+
+		text-indent: -6000px;
+		overflow: hidden;
+	}
+
+	/** 언어 선택 메뉴 **/
+	#main_header > .global_wrap{
+		position: absolute;
+		right: 0; top: 85px;
+	}
+		#main_header .global_wrap > ul{
+			overflow: hidden;
+		}
+			#main_header .global_wrap li{
+				float: left;
+			}
+			#main_header .global_wrap li.en{
+				background: url(../images/line_2.jpg) no-repeat left center;
+				padding-left: 15px;
+			}
+			#main_header .global_wrap li.ch{
+				background: url(../images/line_1.jpg) no-repeat left center;
+				padding-left: 12px;
+				margin-left: 9px;
+			}
+				#main_header .global_wrap a{
+					height: 26px;
+					line-height: 26px;
+					font-size: 15px;
+					letter-spacing: -1px;
+				}
+
+	/** 상단 메뉴 **/
+	#top_nav{
+		position: absolute;
+		left: 340px;
+		top: 85px;  /* left와 top은 단독으로 사용 불가 */
+		z-index: 10; /* 나중에 입력한 메인메뉴에 가려져서 링크적용이 안되므로 z-index를 사용해 적용 */
+	}
+		#top_nav > ul{
+			float: left;
+			overflow: hidden;
+			padding-left: 21px;
+			background: url(../images/line_1.jpg) no-repeat left center;
+		}
+			#top_nav li{
+				float: left;
+				margin-right: 17px;
+			}
+
+			#top_nav li.search{
+				margin-left: 2px;
+				padding-left: 17px;
+				background: url(../images/line_1.jpg) no-repeat left center;
+				margin-right: 0;
+			}
+				#top_nav li > a{
+					height: 26px;
+					line-height: 26px;
+					font-weight: 700;
+					font-size: 13px;
+					letter-spacing: -1px;
+				}
+				#top_nav > ul > li.search > a,
+				#top_nav > ul > li.facebook > a{
+					width: 28px;
+					height: 26px;
+					text-indent: -6000px;
+					overflow: hidden;
+				}
+				#top_nav > ul > li.search > a{
+					margin-left: 2px;
+					background: url(../images/btn_search.png);
+				}
+				#top_nav > ul > li.facebook > a{
+					background: url(../images/btn_facebook.png);
+				}
+
+	/** 메인 메뉴 **/
+	#main_nav{
+		position: absolute;
+		left: 0px;
+		top: 85px;
+ 
+	}
+		#main_nav ul{
+			overflow: hidden;
+		}
+			#main_nav li{
+				float: left;
+				margin-right: 41px;
+			}
+			#main_nav li#community{
+				margin-right: 433px;
+			}
+				#main_nav li > a{
+					height: 26px;
+					text-indent: -6000px;
+					overflow: hidden;
+				}
+				#main_nav li#story > a{
+					width: 58px;
+					background: url(../images/menu_story.png) no-repeat center;
+				}
+				#main_nav li#product > a{
+					width: 81px;
+					background: url(../images/menu_product.png) no-repeat center;
+				}
+				#main_nav li#community > a{
+					width: 101px;
+					background: url(../images/menu_community.png) no-repeat center;
+				}
+				#main_nav li#shopping > a{
+					width: 121px;
+					background: url(../images/menu_shopping.png) no-repeat center;
+				}

@@ -1,0 +1,81 @@
+/* common.css */
+/* 초기화 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 폰트, @import는 주석을 제외하고 항상 맨 위에 */
+@font-face {
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+	src: url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+	}
+@font-face {
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 700;
+	src: url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+	src: url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+	}
+@font-face {
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 300;
+	src: url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+	src: url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('http://cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+	} 
+
+*{
+	margin:0 ;
+	padding: 0;
+}
+html, body{
+	font: 12px / 150% 'Nanum Gothic', sans-serif; /* 150% 줄 간격 */
+	color: #000;
+}
+table, tr, th, td{
+	font: 12px / 150% 'Nanum Gothic', sans-serif; 
+	color: #000;
+}
+h1, h2, h3, h4, h5, h6{
+	font-size: 1.0em;
+	font-weight: normal;
+}
+
+/* 목록표시기호 안보이게 하기 */
+ul, ol, li{
+	list-style: none;
+}
+a, img, label{
+	display: block; /* 인라인 요소를 블럭 요소로 보이게 함 */
+}
+hr, caption, legend{
+	display: none; /* 화면에 안보이도록 처리 */
+}
+input, select, option, textarea, button{
+	border: none;
+	background: transparent; /* 배경 흰색 */
+	border-radius: 0; /*  */
+	outline: none;
+}
+img, fieldset, frameset, iframe{
+	border: none; /* 테두리 안보이게 처리 */
+}
+strong, b{
+	font-weight: normal;
+}
+em, i, address{
+	font-style: normal;
+}
+a{
+	text-decoration: none; /* 밑줄 없애기 */
+	color: #000; /* 기본 글자색: 보라색 또는 파란색을 검정색으로 바꿔줌 */
+}
+
+/***** CLASS STYLE ************************/
+.skip, .blind{/* 글자들을 화면에 안보이게 처리하는 2가지 방법, 두가지 모두써서 화면에 나타날 경우를 방지할 것 */
+	display: block; /* 인라인 요소를 블럭 요소로 바꿈, 인라인 요소는 높이 값이 없기 때문에 밑의 height요소가 안먹을 수 있기 때문에 모두 블럭요소로 바꿔준다 */
+	height: 0; /* 글자 높이를 0으로 설정 */
+	overflow: hidden; /* 영역 밖을 벗어난 글자들을 안보이게 숨김 처리 */
+
+	position: absolute;
+	top: -6000000px;
+}

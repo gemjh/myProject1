@@ -3,16 +3,65 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<!-- ========================== swiper start=========================== -->
+<!-- 
+<link rel="stylesheet" href="resources/css/swiper.css"> 
+<script src="resources/js/jquery-3.5.1.min.js"></script>
+<script src="resources/js/swiper.js"></script>
+ -->
+<!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img2.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img3.jpg" alt=""></div>
+    </div>
+    
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>  
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 0, /* 사진과 사진 사이의 간격 */
+      loop: true,
+	  
+	  /* 자동 넘기기 */
+	  autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+	  
+	  pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+<!-- ========================== swiper end =========================== -->
+
+
+
 <c:if test="${count == 0}">
 	<div class="align-center">등록된 뮤지컬이 없습니다.</div>
 </c:if>
 <c:if test="${count > 0}">
-	<div class="contents_title">새로 올라온 작품</div>
-	<section class="first_contents-box contents-box">
+	<div>새로 올라온 작품</div>
+	<section>
 	
-	<div class="type1-contents_contents">
+	<div>
 		<c:forEach var="musMain" items="${latestList}">
-			<div class="type1-content-box">
+			<div>
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
 					<img src="postView.do?mus_num=${musMain.mus_num}"
 					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>
@@ -22,11 +71,11 @@
 	</div>
 	</section>
 	
-	<div class="contents_title">뮤챠 최고 인기작</div>
-	<section class="first_contents-box contents-box">
-	<div class="type1-contents_contents">
+	<div >뮤챠 최고 인기작</div>
+	<section>
+	<div>
 		<c:forEach var="musMain" items="${popularList}">
-			<div class="type1-content-box">
+			<div>
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
 					<img src="postView.do?mus_num=${musMain.mus_num}"
 					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>
@@ -36,9 +85,9 @@
 	</div>
 	</section>
 
-	<div class="contents_title">__님이 선호하는 장르</div>
-	<section class="first_contents-box contents-box">
-	<div class="type1-contents_contents">
+	<div>__님이 선호하는 장르</div>
+	<section>
+	<div>
 		<c:forEach var="musMain" items="${preferList}">
 			<div class="type1-content-box">
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
@@ -50,11 +99,11 @@
 	</div>
 	</section>
 
-	<div class="contents_title">__님이 찜한 작품</div>
-	<section class="first_contents-box contents-box">
-	<div class="type1-contents_contents">
+	<div>__님이 찜한 작품</div>
+	<section>
+	<div>
 		<c:forEach var="musMain" items="${pickList}">
-			<div class="type1-content-box">
+			<div>
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
 					<img src="postView.do?mus_num=${musMain.mus_num}"
 					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>

@@ -1,0 +1,140 @@
+/* footer_style.css */
+
+#main_footer{
+	width: 1020px;
+	margin: 0 auto;
+}
+#main_footer > div{
+	width: 989px;
+	height: 143px; /* fms영역이 가려져서 overflow: hidden; 높이를 줌 */
+	box-sizing: border-box;
+	border-top: 5px solid #000;
+	margin-left: 16px;
+	margin-right: 15px;
+	padding-top: 28px;
+	padding-bottom: 31px;
+}
+
+	.btn{
+		float: right;
+		width: 377px;
+	}
+
+		.policy{
+			overflow: hidden;
+			margin-bottom: 12px;
+		}
+			.policy > li{
+				float: left;
+				background: url(../images/line_1.jpg) no-repeat right center;
+				padding-right: 14px;
+				margin-right: 12px;
+				letter-spacing: -1px;
+			}
+			.policy > li:last-child{
+				background: none;
+				padding-right: 0;
+				margin-right: 0;
+			}
+				.policy > li > a{
+					height: 13px;
+					line-height: 13px;
+				}
+
+		.list_btn{
+			float: left;
+		}
+			.list_btn > li{
+				float:left;
+				margin-right: 3px;
+				}
+				.list_btn > li > a{
+					width: 83px;
+					height: 23px;
+					background: url(../images/f_btn_recurit1.jpg);
+					text-indent: -6000px;
+					overflow: hidden;
+				}
+				.list_btn > li:last-child > a{
+					background: url(../images/f_btn_recurit2.jpg);
+				}
+		#fms_wrap{
+			float: right;
+		}
+			#fms{
+				float: left;
+				width: 142px;
+				height: 23px;
+				background: url(../images/btn_fms.png) no-repeat right center;
+				box-sizing: border-box;
+				border: 1px solid #c7c7c7;
+				border-right: none;
+				margin-right: 4px;
+
+				position: relative;
+			}
+				#fms > h2{
+					width: 142px;
+					height: 23px;
+					padding: 0 8px;
+					line-height: 23px;
+					box-sizing: border-box;
+					color: #c7c7c7;
+					cursor: pointer;
+				}
+				#fms > ul{
+					background: #c7c7c7;
+					position: absolute;
+					left: -1px;
+					bottom: 22px;
+					width: 142px;
+					cursor: pointer;
+				}
+				#fms > ul > li{
+					height: 0;
+					overflow: hidden;
+					line-height: 20px;
+					padding: 0 8px;
+					transition-duration: 0.3s;
+				}
+
+				#fms > ul.active > li{
+					height: 20px;
+				}
+
+			#goSite{
+				float: left;
+				width: 34px;
+				height: 23px;
+				background: url(../images/f_btn_fms.jpg);
+				text-indent: -6000px;
+				overflow: hidden;
+			}
+		
+	.auth{
+		float: right;
+		margin-right: 17px;
+	}
+
+	.text{
+		float: left;
+		width: 468px;
+	}
+		
+		.text > address{}
+			.text > address > span{
+				display: block;
+				letter-spacing: -1px;
+			}
+			.text > address > span > strong{
+				font-weight: 700;
+				color: #b29583;
+			}
+		.text > .copyright{
+			width: 270px;
+			height: 12px;
+			background: url(../images/f_copyright.jpg);
+			text-indent: -6000px;
+			overflow: hidden;
+			margin-top: 2px;
+		}

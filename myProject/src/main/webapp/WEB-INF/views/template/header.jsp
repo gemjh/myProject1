@@ -21,6 +21,7 @@
 <ul>
 	<li><a href="${pageContext.request.contextPath}/member/modifyMember.do">회원정보 변경</a></li>
 	<li><a href="${pageContext.request.contextPath}/member/changePassword.do">비밀번호 변경</a><li>
+	<li><a href="${pageContext.request.contextPath}/member/modifyPrefer.do">선호장르 변경</a><li>
 	<li><a href="${pageContext.request.contextPath}/member/myImage.do">프로필 이미지 변경</a></li>
 	<li><a href="${pageContext.request.contextPath}/member/ticket.do">이용권 구매</a><li>
 	<li><a href="${pageContext.request.contextPath}/member/deleteMember.do">회원 탈퇴</a><li>
@@ -72,7 +73,7 @@
 	</c:if>
 	<!-- 이미지가 없는 경우 -->
 	<c:if test="${!empty user && empty user.mem_imagename}">
-		<img src="${pageContext.request.contextPath}/resources/images/blank.gif" width="25" height="25" class="my-image">
+		<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="25" height="25" class="my-image">
 	</c:if>
 	</c:if>
 	<!-- auth값에 따라 다른 링크 만들어주기 0:관리자 1-2:회원 -->

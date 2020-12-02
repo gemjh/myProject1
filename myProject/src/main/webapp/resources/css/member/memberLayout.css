@@ -8,6 +8,12 @@ img{
 	margin: 0 auto;
 }
 
+
+div#perfer_chk{
+	width:70px;
+	height:100px;
+	
+}
 /*=========레이아웃=========*/
 div#main{
 	width:1024px;

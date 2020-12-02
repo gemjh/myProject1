@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/memberLayout.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -81,13 +80,13 @@
 		
 	});
 </script>
-<div class="page-main-style">
+<div class="page-main-style" class="">
 	<h2>프로필 이미지 변경</h2>
 	현재 이미지<br>
 	<ul>
 		<li>
 			<c:if test="${empty user.mem_imagename}">
-			<img src="${pageContext.request.contextPath}/images/blank.gif" width="100" height="100" class="my-image">	
+			<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="100" height="100" class="my-image">	
 			</c:if>
 			<c:if test="${!empty user.mem_imagename}">
 			<img src="${pageContext.request.contextPath}/member/imageView.do" width="100" height="100" class="my-image">
@@ -99,7 +98,7 @@
 			</div>
 			<div id="image_choice" style="display:none;">
 				<input type="file" id="upload" accept="image/gif,image/png,image/jpeg">
-				<input type="button" value="전송" id="image_submit">
+				<input type="button" value="변경" id="image_submit">
 				<input type="button" value="취소" id="image_reset">      
 			</div>
 		</li>

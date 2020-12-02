@@ -103,7 +103,7 @@ CREATE TABLE notice(
 	no_num NUMBER(10) not null,
 	mem_num NUMBER(10)not null,
 	no_title VARCHAR2(300)  not null,
-	no_content VARCHAR2(2000)  not null,
+	no_content clob  not null,
 	no_regdate DATE  not null,
 	no_modifydate DATE ,
 	no_hit NUMBER(10) default 0 not null ,

@@ -30,35 +30,31 @@ $(document).ready(function(){
 
 });
 </script>
-<div class="page-main-style">
+<div >
 	<h2>공지사항 작성</h2>
 	<form:form commandName="noticeVO" action="noticeWrite.do" id="notice_form">
 		<form:errors element="div" cssClass="error-color"/>
-		<ul>
-			<li>
-				<label for="no_title">제목</label>
-				<form:input path="no_title"/>
-				<form:errors path="no_title" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="no_content">내용</label> 
-				<textarea name="no_content"
-					class="ckeditor" id="no_content"> </textarea>
-				<script
-					type="text/javascript">
-					CKEDITOR.replace('no_content', {
-						height :300,
-						width : 700
-					});
-				</script> 
-				<form:errors path="no_content" cssClass="error-color"/>
-			</li>
-		</ul>	
-		<div class="align-center">
-			<input type="submit" value="작성">
-			<input type="button" value="목록"
-			       onclick="location.href='noticeList.do'">
+		<div>
+			<div>
+				<label class="no_title">제목</label>
+			</div>
+			<form:input path="no_title"/>
 		</div>
+		<hr>
+          <div class="col_c" style="margin-bottom: 30px">
+                <div class="input-group">                 
+                  <form:textarea path="no_content" />
+                  <script type="text/javascript">
+					CKEDITOR.replace('no_content', {filebrowserUploadUrl:'/admin/imageUpload.do',height:600});
+				</script>
+                </div>
+                <form:errors path="no_content" cssClass="error-color"/>
+            </div> 
+            
+	  <div class="align-center">
+			<input type="submit" value="작성">
+			<input type="button" value="목록" onclick="location.href='noticeList.do'">
+	  </div>
 	</form:form>
 </div>
 

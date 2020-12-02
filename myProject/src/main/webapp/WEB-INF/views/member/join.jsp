@@ -196,17 +196,6 @@
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
-		 	<br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">
 		 </div>
 
 		<div class="align-center">

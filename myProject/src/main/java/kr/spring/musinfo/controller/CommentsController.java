@@ -37,29 +37,31 @@ public class CommentsController {
 		return new CommentsVO();
 	}
 
-	//글쓰기 폼 호출
+	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
 	public String form() {
 		
 		return "reviewWrite";
 	}
-	//글 등록
+	//리뷰 등록
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.POST)
 	public String submit(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session, long rev_rate) {
 		if(log.isDebugEnabled()) {
-			log.debug("<<글 저장>>:"+commentsVO);
+			log.debug("<<리뷰 저장>>:"+commentsVO);
 		}
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return "reviewWrite";
 		}
 		//별 선택한 값을 rev_rate로 전환
+		
 		//회원번호 세팅
 		MemberVO member=(MemberVO)session.getAttribute("member");
 		commentsVO.setMem_num(member.getMem_num());
 		//뮤지컬번호 세팅
 		ContentsVO contentsVO=(ContentsVO)session.getAttribute("contentsVO");
 		contentsVO.setMus_num(contentsVO.getMus_num());
+		contentsVO.setRev_rate(Integer.parseInt(request.getParameter("selectedValue")));
 		//글쓰기
 		commentsService.insertComments(commentsVO);
 		return "redirect:/musinfo/musinfoMain.do";

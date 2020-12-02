@@ -26,7 +26,16 @@ public class ContentsVO {
 	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
-
+	
+	//뮤지컬 리뷰
+	private int rev_rate;
+	public int getRev_rate() {
+		return rev_rate;
+	}
+	public void setRev_rate(int rev_rate) {
+		this.rev_rate = rev_rate;
+	}
+	
 	
 	public int getMus_num() {
 		return mus_num;

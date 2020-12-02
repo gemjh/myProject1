@@ -41,12 +41,12 @@ function emptyStars(event) {
 }
 
 // 5개 별 묶음 박스에서 마우스가 나갈 시에 채워진 별들이 초기화되는 함수.
-function resetStar() {
-    for (var i = 0; i < realStars.length; i++) {
-        realStars[i].classList.remove("fas", "far", "fa-star-half-alt", "fa-star");
-        realStars[i].classList.add("far", "fa-star");
-    };
-}
+//function resetStar() {
+//    for (var i = 0; i < realStars.length; i++) {
+//        realStars[i].classList.remove("fas", "far", "fa-star-half-alt", "fa-star");
+//        realStars[i].classList.add("far", "fa-star");
+//    };
+//}
 
 // 별점을 줬을때 comment 창이 뜨게 하는 함수입니다.
 function showComment(event) {
@@ -108,3 +108,4 @@ for (var i = 0; i < stars.length; i++) {
 };
 
 starBox.addEventListener("mouseout", resetStar);
+

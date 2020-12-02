@@ -74,7 +74,7 @@ CREATE TABLE reviews(
  rev_num NUMBER(10) not null,
  mem_num NUMBER(10)   not null,
  mus_num NUMBER(20) not null,
- rev_rate NUMBER(1) not null,
+ rev_rate NUMBER(1,1) not null,
  review varchar2(300) not null,
  rev_regdate date not null,
 CONSTRAINT reviews_pk PRIMARY KEY (rev_num)

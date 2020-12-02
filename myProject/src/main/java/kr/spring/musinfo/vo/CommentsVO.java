@@ -6,7 +6,7 @@ public class CommentsVO {
 	private int rev_num;
 	private int mem_num;
 	private int mus_num;
-	private float rev_rate;
+	private double rev_rate;
 	private String review;
 	private Date rev_regdate;
 	
@@ -28,10 +28,11 @@ public class CommentsVO {
 	public void setMus_num(int mus_num) {
 		this.mus_num = mus_num;
 	}
-	public float getRev_rate() {
+	
+	public double getRev_rate() {
 		return rev_rate;
 	}
-	public void setRev_rate(float rev_rate) {
+	public void setRev_rate(double rev_rate) {
 		this.rev_rate = rev_rate;
 	}
 	public String getReview() {

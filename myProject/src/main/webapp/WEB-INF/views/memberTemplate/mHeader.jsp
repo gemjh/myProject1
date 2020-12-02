@@ -13,7 +13,7 @@
 	<c:if test="${!empty user && empty user.mem_imagename}">
 		<img src="${pageContext.request.contextPath}/resources/images/blank.gif" width="25px" height="25px" class="my-image">
 	</c:if>
-	<!-- auth값에 따라 다른 링크 만들어주기 0:관리자 1-2:회원 -->
+	<!-- auth값에 따라 다른 링크 만들어주기 0:관리자 1:결제한회원 2:결제안한회원 -->
 	<!-- 관리자인 경우 -->
 	<c:if test="${!empty user && user.auth == 0}">
 		[관리자 계정으로 접속!]<br>
@@ -27,6 +27,9 @@
 		<a href="${pageContext.request.contextPath}/member/memberMain.do">마이페이지</a>
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 		<a href="${pageContext.request.contextPath}/index.jsp">홈으로</a><br>
+			<c:if test="${empty user.purchase_date}">
+				[<span>이용권을 결제하시고 뮤차의 모든 서비스를 제공받으세요!</span>]
+			</c:if>
 			<!-- 이용권 결제한 경우 -->
 			<c:if test="${!empty user.purchase_date}">
 				[<span>${user.nickname}님의 이용권 만료일 : ${user.expire_date}</span>] 
@@ -41,22 +44,6 @@
 	<a href="${pageContext.request.contextPath}/index.jsp">홈으로</a>
 	</c:if>
 	<br>
-	
-	
-	<!-- 
-	
-	뮤챠 로그인 안하고 직접 URL로 마이페이지 접속 가능한가?
-	그거 확인하고 못하면 빼버리면됨 로그인여부체크.
-	
-	로그인 안한 경우 페이지에 접속 못하게하고싶은데..
-	
-	 -->
-	<!--
-	
-	로그인한 경우,
-	${user.nickname} / ${user.expire_date}가져와서 표시해야함 
-	 
-	 -->
 
 </div>
 

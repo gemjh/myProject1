@@ -24,7 +24,11 @@ public interface MemberMapper {
 	//회원정보 변경
 	@Update("UPDATE member_detail SET nickname=#{nickname},phone=#{phone},mem_modifydate=SYSDATE WHERE mem_num=#{mem_num}")
 	public void updateMember(MemberVO member);
-
+	
+	//선호장르 변경
+	@Update("UPDATE member_detail SET prefer=#{prefer} where mem_num=#{mem_num}")
+	public void updatePrefer(MemberVO member);
+	
 	//비밀번호 변경
 	@Update("UPDATE member_detail SET password=#{password} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);

@@ -3,6 +3,7 @@
 <ul>
 <li>
 	<li><a href="${pageContext.request.contextPath}/member/modifyMember.do">회원정보 변경</a></li>
+	<li><a href="${pageContext.request.contextPath}/member/modifyPrefer.do">선호장르 변경</a><li>
 	<li><a href="${pageContext.request.contextPath}/member/changePassword.do">비밀번호 변경</a><li>
 	<li><a href="${pageContext.request.contextPath}/member/myImage.do">프로필 이미지 변경</a></li>
 	<li><a href="${pageContext.request.contextPath}/member/ticket.do">이용권 구매</a><li>

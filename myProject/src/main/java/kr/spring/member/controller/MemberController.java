@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -76,9 +77,9 @@ public class MemberController {
 		}
 		memberVO.setPrefer(max);	
 		
-		log.debug("<< P R E F E R>> prefer : " + prefer);
-		log.debug("<< P R E F E R>> max : " + max);
-		log.debug("<< P R E F E R>> maxIndex :" + maxIndex );
+			/*		log.debug("<< P R E F E R>> prefer : " + prefer);
+					log.debug("<< P R E F E R>> max : " + max);
+					log.debug("<< P R E F E R>> maxIndex :" + maxIndex );*/
 		
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
@@ -161,8 +162,8 @@ public class MemberController {
 		model.addAttribute("member", member);
 
 		return "memberView";
-	}
-*/
+	}*/
+
 	// 회원 정보 수정 폼
 	@RequestMapping(value = "/member/modifyMember.do", method = RequestMethod.GET)
 	public String formUpdate(HttpSession session, Model model) {
@@ -199,6 +200,77 @@ public class MemberController {
 
 		return "redirect:/member/memberMain.do";
 	}
+	
+	
+	//선호장르 수정 폼
+	@RequestMapping(value = "/member/modifyPrefer.do", method = RequestMethod.GET)
+	public String formUpdatePrefer(HttpSession session, Model model) {
+		// 회원 번호를 구하기 위해 세션에 저장된 회원 정보 반환
+		MemberVO vo = (MemberVO) session.getAttribute("user");
+
+		MemberVO memberVO = memberService.selectMember(vo.getMem_num());
+
+		model.addAttribute("memberVO", memberVO);
+
+		return "modifyPrefer";
+	}
+	//선호장르 수정 처리
+	@RequestMapping(value = "/member/modifyPrefer.do", method = RequestMethod.POST)
+	public String submitUpdatePrefer(@Valid MemberVO memberVO, BindingResult result,HttpServletRequest request, HttpSession session) {
+
+		if (log.isDebugEnabled()) {
+			log.debug("<<선호도 수정 처리>> : " + memberVO);
+		}
+
+		//가장 많이 선택된 선호 장르 고르기
+				String[] prefer = request.getParameterValues("prefer");
+
+				
+				//체크된 갯수를 더해줄 배열 생성
+				int[] index = {0,0,0,0,0,0};
+				//갯수 ++
+				for(int i=0;i<prefer.length;i++) {
+					
+					if(prefer[i].equals("1")) {
+						index[1]++;
+					}else if(prefer[i].equals("2")) {
+						index[2]++;
+					}else if(prefer[i].equals("3")) {
+						index[3]++;
+					}else if(prefer[i].equals("4")) {
+						index[4]++;
+					}else if(prefer[i].equals("5")) {
+						index[5]++;
+					}
+				}
+				//가장 많이 선택된 값 찾기
+				int max = index[0]; //=0
+				int maxIndex = 0;
+				for(int j=0; j<index.length; j++) {
+					if(index[j]> max) {
+						maxIndex = j;
+						max = j;
+					}
+				}
+				memberVO.setPrefer(max);
+				
+		// 유효성 체크 결과 오류가 있으면 폼 호출
+		if (result.hasErrors()) {
+			return "modifyPrefer";
+		}
+
+		// 회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
+		MemberVO vo = (MemberVO) session.getAttribute("user");
+		// 전송된 데이터가 저장된 자바빈에 회원 번호를 저장
+		memberVO.setMem_num(vo.getMem_num());
+
+		// 선호장르 수정
+		memberService.updatePrefer(memberVO);
+
+		return "redirect:/member/memberMain.do";
+	}
+	
+	
 	
 	// 비밀번호 변경 폼
 	@RequestMapping(value = "/member/changePassword.do", method = RequestMethod.GET)
@@ -353,6 +425,5 @@ public class MemberController {
 		return "redirect:/member/ticket.do";
 		
 	}
-	
 	
 }

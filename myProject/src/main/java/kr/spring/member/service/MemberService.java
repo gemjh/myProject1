@@ -7,6 +7,7 @@ public interface MemberService {
 	public MemberVO selectCheckMember(String id);
 	public MemberVO selectMember(Integer mem_num);
 	public void updateMember(MemberVO member);
+	public void updatePrefer(MemberVO member);
 	public void updatePassword(MemberVO member);
 	public void deleteMember(Integer mem_num);
 	public void updateProfile(MemberVO member);

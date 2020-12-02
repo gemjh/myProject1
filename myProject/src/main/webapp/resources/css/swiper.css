@@ -154,10 +154,10 @@
 }
 /* 버튼 이미지를 추가 */
 .swiper-button-prev{
-	background: url(../resources/images/btn_prev.png);
+	background: url(../../resources/images/btn_prev.png);
 }
 .swiper-button-next{
-	background: url(../resources/images/btn_next.png);
+	background: url(../../resources/images/btn_next.png);
 }
 
 .swiper-button-prev.swiper-button-disabled,

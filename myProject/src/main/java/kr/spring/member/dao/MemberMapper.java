@@ -10,12 +10,15 @@ import kr.spring.member.vo.MemberVO;
 public interface MemberMapper {
 	@Select("SELECT mem_num.nextval FROM dual")
 	public int selectMem_num();
+	
 	//회원가입_member
 	@Insert("INSERT INTO member (mem_num,email) VALUES (#{mem_num},#{email})")
+	
 	public void joinMember(MemberVO member);
 	//회원가입_member_detail
-	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone) VALUES (#{mem_num},#{nickname},#{password},#{birth},#{phone})")
+	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone,prefer) VALUES (#{mem_num},#{nickname},#{password},#{birth},#{phone},#{prefer})")
 	public void joinMember_detail(MemberVO member);
+
 	
 	@Select("SELECT m.mem_num,m.email,m.auth,d.password,d.mem_imagename,d.nickname,d.mem_regdate,d.purchase_date,d.expire_date FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.email=#{email}")
 	public MemberVO selectCheckMember(String id);//누락된id(탈퇴한 회원의 id)는 검색필요 X -> JOIN

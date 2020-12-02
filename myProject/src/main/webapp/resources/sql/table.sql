@@ -18,6 +18,7 @@ CREATE TABLE member_detail(
        mem_modifydate DATE ,
        purchase_date DATE,
        expire_date Date,
+       prefer number(2),
       CONSTRAINT mem_detail_pk PRIMARY KEY(mem_num)
 );
 

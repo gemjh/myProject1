@@ -141,39 +141,72 @@
 		</ul>
 		 
 		 <div class="perfer_chk">
-		 <p>보고싶은 공연을 골라보세요. 메인에서 장르 맞춰서 추천해드립니다.( 2 개 제 한 )<p>
-		 	
+		 <p>보고싶은 공연을 골라보세요. 메인에서 장르 맞춰서 추천하기위해서 여기서 받음.</p>
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check1" name="chk" value="2" onClick="return count_chkbox()">
-		 	<label for="check1"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check2" name="chk" value="3" onClick="return count_chkbox()">
-		 	<label for="check2"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check3" name="chk" value="5" onClick="return count_chkbox()">
-		 	<label for="check3"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check4" name="chk" value="13" onClick="return count_chkbox()">
-		 	<label for="check4"></label> 
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check5" name="chk" value="17" onClick="return count_chkbox()">
-		 	<label for="check5"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
 		 	<br>
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check6" name="chk" value="17" onClick="return count_chkbox()">
-		 	<label for="check6"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check7" name="chk" value="13" onClick="return count_chkbox()">
-		 	<label for="check7"></label>	
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check8" name="chk" value="5" onClick="return count_chkbox()">
-		 	<label for="check8"></label> 
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check9" name="chk" value="3" onClick="return count_chkbox()">
-		 	<label for="check9"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
-		 	<input type="checkbox" id="check10" name="chk" value="2" onClick="return count_chkbox()">
-		 	<label for="check10"></label>
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<br>
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<br>
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<br>
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<br>
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/images/blank.gif">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
 		 </div>
 
 		<div class="align-center">

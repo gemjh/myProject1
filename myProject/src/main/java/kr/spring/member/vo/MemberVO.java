@@ -20,7 +20,7 @@ public class MemberVO {
 	private Date expire_date;
 	private byte[] mem_image;
 	private String mem_imagename;
-
+	private int prefer;
 	//뮤지컬 삭제폼에서 사용할 mus_num
 	private int mus_num; 
 
@@ -139,13 +139,24 @@ public class MemberVO {
 		this.mus_num = mus_num;
 	}
 
+	
+	public int getPrefer() {
+		return prefer;
+	}
+
+	public void setPrefer(int prefer) {
+		this.prefer = prefer;
+	}
+
+	
 	//toString
 	@Override
 	public String toString() {
 		return "MemberVO [mem_num=" + mem_num + ", email=" + email + ", auth=" + auth + ", nickname=" + nickname
 				+ ", password=" + password + ", birth=" + birth + ", phone=" + phone + ", mem_regdate=" + mem_regdate
 				+ ", mem_modifydate=" + mem_modifydate + ", purchase_date=" + purchase_date + ", expire_date="
-				+ expire_date + ", mem_imagename=" + mem_imagename + "]";
+				+ expire_date + ", mem_imagename=" + mem_imagename + ", prefer=" + prefer + ", mus_num=" + mus_num
+				+ ", now_password=" + now_password + "]";
 	}
 
 

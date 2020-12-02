@@ -1,6 +1,7 @@
 package kr.spring.member.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -37,12 +38,48 @@ public class MemberController {
 	}
 
 	// 회원가입 처리
-	@RequestMapping(value = "/member/join.do", method = RequestMethod.POST)
-	public String submit(@Valid MemberVO memberVO, BindingResult result) {
-		if (log.isDebugEnabled()) {
-			log.debug("<<회원 가입>> : " + memberVO);
-		}
+		@RequestMapping(value = "/member/join.do", method = RequestMethod.POST)
+		public String submit(@Valid MemberVO memberVO, BindingResult result, HttpServletRequest request, HttpSession session) {
+			if (log.isDebugEnabled()) {
+				log.debug("<<회원 가입>> : " + memberVO);
+			}
+			
+		//가장 많이 선택된 선호 장르 고르기
+		String[] prefer = request.getParameterValues("prefer");
 
+		
+		//체크된 갯수를 더해줄 배열 생성
+		int[] index = {0,0,0,0,0,0};
+		//갯수 ++
+		for(int i=0;i<prefer.length;i++) {
+			
+			if(prefer[i].equals("1")) {
+				index[1]++;
+			}else if(prefer[i].equals("2")) {
+				index[2]++;
+			}else if(prefer[i].equals("3")) {
+				index[3]++;
+			}else if(prefer[i].equals("4")) {
+				index[4]++;
+			}else if(prefer[i].equals("5")) {
+				index[5]++;
+			}
+		}
+		//가장 많이 선택된 값 찾기
+		int max = index[0]; //=0
+		int maxIndex = 0;
+		for(int j=0; j<index.length; j++) {
+			if(index[j]> max) {
+				maxIndex = j;
+				max = j;
+			}
+		}
+		memberVO.setPrefer(max);	
+		
+		log.debug("<< P R E F E R>> prefer : " + prefer);
+		log.debug("<< P R E F E R>> max : " + max);
+		log.debug("<< P R E F E R>> maxIndex :" + maxIndex );
+		
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
 			return form();

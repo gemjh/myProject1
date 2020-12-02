@@ -2,18 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%-- 	<div>
-	<form action="musMain.do" id="search_form" method="get">
-		<ul class="search">
-			<li>
-				<input type="text" name="keyword" id="keyword">
-			</li>
-			<li>
-				<input type="submit" value="찾기">
-			</li>
-		</ul>
-	</form>
-</div> --%>	
+
 	<c:if test="${count == 0}">
 		<div class="align-center">등록된 뮤지컬이 없습니다.</div>
 	</c:if>

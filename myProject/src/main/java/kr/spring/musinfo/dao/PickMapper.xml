@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.musinfo.dao.PickMapper">  
+	<insert id="insertPick">
+            INSERT INTO pick (board_id, user_id)
+            VALUES (#{boardId}, #{userId})
+        </insert>
+
+        <delete id="deleteBoardLike">
+            DELETE FROM tbl_board_like
+            WHERE board_id = #{boardId} AND user_id = #{userId}
+        </delete>
+
+        <select id="updateBoardLike">
+            UPDATE tbl_board
+            SET
+            board_likecnt = (SELECT COUNT(*)
+            FROM tbl_board_like
+            WHERE board_id = #{boardId})
+            WHERE board_id = #{boardId}
+        </select>
+
+        <select id="getBoardLike" resultType="int">
+            SELECT COUNT(board_like_id) FROM tbl_board_like WHERE board_id = #{boardId} AND user_id = #{userId}
+        </select>
+</mapper>

@@ -4,11 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- ========================== swiper start=========================== -->
-<!-- 
-<link rel="stylesheet" href="resources/css/swiper.css"> 
-<script src="resources/js/jquery-3.5.1.min.js"></script>
-<script src="resources/js/swiper.js"></script>
- -->
+
 <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -49,7 +45,6 @@
   </script>
 
 <!-- ========================== swiper end =========================== -->
-
 
 
 <c:if test="${count == 0}">

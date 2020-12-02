@@ -83,7 +83,7 @@
 			<mapping path="/member/myImage.do"/>
 			<mapping path="/member/ticket.do"/>
 			<mapping path="/board/delete.do"/>
-			<beans:bean class="kr.spring.member.interceptor.LoginCheckInterceptor"/>
+			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 		
 		<!-- <interceptor>

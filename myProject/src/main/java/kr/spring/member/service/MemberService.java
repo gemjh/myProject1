@@ -11,4 +11,5 @@ public interface MemberService {
 	public void deleteMember(Integer mem_num);
 	public void updateProfile(MemberVO member);
 	public void updateTicket(MemberVO member);
+	public void updateTicketAuth(MemberVO member);
 }

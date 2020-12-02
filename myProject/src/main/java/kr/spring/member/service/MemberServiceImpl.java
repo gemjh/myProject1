@@ -56,6 +56,11 @@ public class MemberServiceImpl implements MemberService{
 	public void updateTicket(MemberVO member) {
 		memberMapper.updateTicket(member);
 		
+	}
+
+	@Override
+	public void updateTicketAuth(MemberVO member) {
+		memberMapper.updateTicketAuth(member);
 	};
 	
 	

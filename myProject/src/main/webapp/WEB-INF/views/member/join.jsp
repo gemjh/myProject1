@@ -107,7 +107,7 @@
 			<li>
 				<label for="email">이메일</label>
 				<form:input path="email"/>
-				<input type="button" id="confirmEmail" value="Email 확인">
+				<input type="button" id="confirmEmail" value="중복 확인">
  				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" 
 				      width="16" height="16" style="display:none;" id="loading">
 				<span id="message_email"></span>
@@ -130,7 +130,7 @@
 			</li> --%>
 			<li>
 				<label for="birth">생년월일</label>
-				<form:input path="birth"/>
+				<input type="date" name="birth" id="birth">
 				<form:errors path="birth" cssClass="error-color"/>
 			</li>
 			<li>

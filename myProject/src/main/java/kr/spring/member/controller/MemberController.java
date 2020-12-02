@@ -348,6 +348,7 @@ public class MemberController {
 		
 		//회원 정보 수정
 		memberService.updateTicket(memberVO);
+		memberService.updateTicketAuth(memberVO);
 		
 		return "redirect:/member/ticket.do";
 		

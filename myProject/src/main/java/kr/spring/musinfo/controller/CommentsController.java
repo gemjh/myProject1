@@ -54,7 +54,6 @@ public class CommentsController {
 			return "reviewWrite";
 		}
 		//별 선택한 값을 rev_rate로 전환
-		float value=rev_rate;
 		//회원번호 세팅
 		MemberVO member=(MemberVO)session.getAttribute("member");
 		commentsVO.setMem_num(member.getMem_num());

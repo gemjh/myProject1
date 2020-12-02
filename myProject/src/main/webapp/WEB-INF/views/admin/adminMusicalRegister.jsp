@@ -4,6 +4,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$('#mus_name').focus();
+	
 	$('#musical_form').submit(function(event){
 		var check = 0;
 		var blank_pattern = /^\s+|\s+$/g;
@@ -20,6 +22,7 @@ $(document).ready(function(){
 	   if(!fileCheck){
 	       alert("파일을 첨부해 주세요");
 	       check = 1;
+	       return false;
 	   }		
 	var mus_time = $("#mus_time").val();
 	    if( mus_time == '' || mus_time <= 0){
@@ -30,6 +33,7 @@ $(document).ready(function(){
 	    }
 	    
 	if(check == 1) return false;
+	
 	});
 });
 

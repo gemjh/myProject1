@@ -20,11 +20,11 @@ public class CommentsServiceImpl implements CommentsService{
 				// TODO Auto-generated method stub
 				commentsMapper.insertComments(commentsVO);
 			}
-
+			
 			@Override
-			public CommentsVO selectComments(int rev_num) {
+			public CommentsVO selectComments(int mus_num) {
 				// TODO Auto-generated method stub
-				return commentsMapper.selectComments(rev_num);
+				return commentsMapper.selectComments(mus_num);
 			}
 
 			@Override
@@ -50,6 +50,8 @@ public class CommentsServiceImpl implements CommentsService{
 				// TODO Auto-generated method stub
 				return commentsMapper.selectRowCount(map);
 			}
+
+			
 
 
 }

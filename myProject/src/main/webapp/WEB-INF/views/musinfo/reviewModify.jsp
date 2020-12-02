@@ -25,8 +25,6 @@
 			<input type="submit" value="전송">
 			<input type="button" value="뒤로가기" onclick="history.go(-1)">
 			
-	</form:form>		
-    <script src="${pageContext.request.contextPath }/resources/js/index.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/star.js"></script>			
+	</form:form>					
 </body>
 </html>

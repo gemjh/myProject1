@@ -35,6 +35,7 @@ public class ContentsController {
 			log.debug("<<뮤지컬 상세>>:"+mus_num);
 		}
 	
+	//뮤지컬번호에서 정보 가져오기
 	ContentsVO VO = contentsService.selectContents(mus_num);
 	System.out.println("//ContentsVO : " + VO);
 

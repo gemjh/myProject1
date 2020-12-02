@@ -9,7 +9,7 @@
 </head>
 <body>
 <form:form action="delete.do" commandName="commandVO">
-	<form:hidden path="rev_num"/>
+	<form:hidden path="mus_rate"/>
 	<h2>삭제하시겠습니까?</h2>
 	<div class="align-center">
 		<input type="submit" value="삭제">

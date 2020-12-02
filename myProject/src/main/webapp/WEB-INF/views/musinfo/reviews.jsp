@@ -12,46 +12,51 @@ span{
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/jquery.raty.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/labs.js" type="text/javascript"></script>
 
-<div class="page-main-style">
+<%-- <div class="page-main-style">
 	<c:if test="${count==0 }">
 		<div class="align-center">등록된 한줄평이 없습니다.</div>
 	</c:if>
 	<c:if test="${count>0 }">
-<c:if test="${!empty member&& member.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
-<input type="button" value="수정" onclick="location.href='modify.do?commentsVO_num=${contentsVO.mus_num}'">
-<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?board_num=${contentsVO.mus_num}'">
-</c:if>	
+<c:if test="${!empty user&& user.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
+<input type="button" value="수정" onclick="location.href='modify.do?contentsVO_num=${contentsVO.mus_num}'">
+<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?mus_num=${contentsVO.mus_num}'">
+</c:if>	 --%>
+
 <!-- 한줄평 -->
-<c:forEach var="commentsVO" items="#{list }" >
-<div id="readOnly"></div>	
-</c:forEach>	
 <table>
-	<c:forEach var="member" items="#{member }">
-		<span>${member.mem_image }</span>
-		<span>${member.nickname }</span><br>
-	</c:forEach>
-	<c:forEach var="commentsVO" items="#{list }">
-		<span>${commentsVO.review }</span>
-	</c:forEach>				
+		<c:forEach var="list" items="${list}">
+			<tr>
+				<td>${list.mem_image }</td>			
+				<td>${list.rev_rate }</td>
+				<td>${list.review }</td>
+				<td>${list.nickname }</td>
+			</tr>
+		</c:forEach>
 </table>
 
-</c:if>	
-</div>
  <script>
   $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
 
   $(function() {
     $('#default').raty();
 
-$('#score').raty({ score: 3 });
-
 $('#score-callback').raty({
   score: function() {
     return $(this).attr('data-score');
   }
 });
+$('#readOnly').raty({ 
+	readOnly: true
+	});
 
-$('#scoreName').raty({ scoreName: 'entity[score]' });
+$('#readOnly-callback').raty({
+  readOnly: function() {
+    return 'true becomes readOnly' == 'true becomes readOnly';
+  }
+});
+
+
+/* $('#scoreName').raty({ scoreName: 'entity[score]' });
 
 $('#number').raty({ number: 10 });
 
@@ -64,17 +69,10 @@ $('#number-callback').raty({
 $('#numberMax').raty({
   numberMax : 5,
   number    : 100
-});
+}); */
 
-$('#readOnly').raty({ readOnly: true, score: ${commentsVO.rev_rate} });
 
-$('#readOnly-callback').raty({
-  readOnly: function() {
-    return 'true becomes readOnly' == 'true becomes readOnly';
-  }
-});
-
-$('#noRatedMsg').raty({
+/* $('#noRatedMsg').raty({
   readOnly   : true,
   noRatedMsg : "I'am readOnly and I haven't rated yet!"
 });
@@ -221,6 +219,6 @@ $('#mouseout').raty({
     alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
   }
 });
-
+ */
   });
 </script>

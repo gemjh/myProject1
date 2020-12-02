@@ -21,10 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.musinfo.service.CommentsService;
-import kr.spring.musinfo.validator.CommentsValidator;
 import kr.spring.musinfo.vo.CommentsVO;
 import kr.spring.musinfo.vo.ContentsVO;
 import kr.spring.util.PagingUtil;
+
 
 @Controller
 public class CommentsController {
@@ -39,13 +39,20 @@ public class CommentsController {
 
 	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
-	public String form() {
+	public String reviewForm(@RequestParam int mus_num, Model model) {
+		CommentsVO commentsVO = new CommentsVO();
+		commentsVO.setMus_num(mus_num);
+		model.addAttribute("commentsVO", commentsVO);
 		
 		return "reviewWrite";
 	}
 	//리뷰 등록
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.POST)
-	public String submit(@Valid CommentsVO commentsVO, BindingResult result, HttpServletRequest request, HttpSession session, long rev_rate) {
+	public String submit(@Valid CommentsVO commentsVO, 
+						BindingResult result, 
+						HttpServletRequest request, 
+						HttpSession session) {
+		System.out.println("//리뷰 등록 처리");
 		if(log.isDebugEnabled()) {
 			log.debug("<<리뷰 저장>>:"+commentsVO);
 		}
@@ -53,28 +60,31 @@ public class CommentsController {
 		if(result.hasErrors()) {
 			return "reviewWrite";
 		}
-		//별 선택한 값을 rev_rate로 전환
-		
 		//회원번호 세팅
-		MemberVO member=(MemberVO)session.getAttribute("member");
+		MemberVO member=(MemberVO)session.getAttribute("user");
+		System.out.println("//member : " + member);
 		commentsVO.setMem_num(member.getMem_num());
 		//뮤지컬번호 세팅
-		ContentsVO contentsVO=(ContentsVO)session.getAttribute("contentsVO");
-		contentsVO.setMus_num(contentsVO.getMus_num());
-		contentsVO.setRev_rate(Integer.parseInt(request.getParameter("selectedValue")));
-		//글쓰기
+		commentsVO.setMus_num(commentsVO.getMus_num());
+		//리뷰쓰기
 		commentsService.insertComments(commentsVO);
-		return "redirect:/musinfo/musinfoMain.do";
+		System.out.println("//리뷰쓰기");
+		return "redirect:musinfoDetail.do?mus_num="+commentsVO.getMus_num();
 	}
-	//글 전체보기
-	@RequestMapping(value="/musinfo/reviews.do")
+
+
+
+	//리뷰 전체보기
+	@RequestMapping("/musinfo/reviews.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
+		System.out.println("//리뷰 전체보기*************");
 		Map<String,Object> map=new HashMap<String,Object>();
 		int count=commentsService.selectRowCount(map);
+		System.out.println("//count: "+ count);
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>>: "+count);
 		}
-		PagingUtil page=new PagingUtil(currentPage,count,1000,10,"reviews.do");
+		PagingUtil page=new PagingUtil(currentPage,count,100,10,"reviews.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		List<CommentsVO> list=null;
@@ -84,12 +94,13 @@ public class CommentsController {
 				log.debug("<<글 목록>>:"+list);
 			}
 		}
+		System.out.println("//list: "+ list);
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("commentList");
+		mav.setViewName("reviews");
 		mav.addObject("count",count);
 		mav.addObject("list",list);
 		mav.addObject("pagingHtml",page.getPagingHtml());
-
+		System.out.println("//mav: "+ mav);
 		return mav;
 	}
 	//글 수정 폼 호출
@@ -97,20 +108,20 @@ public class CommentsController {
 	public String form(@RequestParam int rev_num, Model model) {
 		CommentsVO commentsVO=commentsService.selectComments(rev_num);
 		model.addAttribute("commentsVO",commentsVO);
-		return "musinfo/reviewModify";
+		return "reviewModify";
 	}
 	//글 수정 처리
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
 	public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
 		if(result.hasErrors()) {
-			return "musinfo/reviewModify";
+			return "reviewModify";
 		}
 		//회원번호
 		MemberVO member=(MemberVO)session.getAttribute("member");
 		commentsVO.setMem_num(member.getMem_num());
 		//뮤지컬번호
 		ContentsVO contentsVO=(ContentsVO)session.getAttribute("contentsVO");
-		contentsVO.setMus_num(contentsVO.getMus_num());
+		commentsVO.setMus_num(contentsVO.getMus_num());
 		commentsService.updateComments(commentsVO);
 		
 		//수정 후 view

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/musinfo/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainLayout.css">
 <style>
 * {
     box-sizing: border-box;
@@ -35,7 +35,7 @@ html {
          float:left;
          
       }
-      
+
       .btn-moreInfo{display:none;white-space:nowrap;float:right;}
       
       @media screen and (max-width: 533px){
@@ -43,6 +43,7 @@ html {
             width:75%;
          }
       }
+
 </style>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
@@ -106,17 +107,17 @@ $(document).ready(function () {
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
-                	<a href="${contentsVO.mus_video }">
-                   	<span class="content_watch">►바로보기</span></a>
+                     <input type="button" id="watch" value="바로보기" onclick="${contentsVO.mus_video }">
                 <!-- 바로보기 버튼 끝 -->
 
                 <!-- 별점 평가하기 -->
-                	<a href="write.do">
-                    <span class="js-leaveStar">★평가하기</span></a>
+                	<input type="button" id="review" value="평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
+<%--                 	<a href="write.do?mus_num="${commentsVO.mus_num}>
+                    <span class="js-leaveStar">★평가하기</span></a> --%>
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
-                	<a href="#"><span class="zzim">♥︎찜하기</span></a>
+                	<input type="button" id="zzim" value="찜" onclick="">
                 <!-- 찜 끝 -->
 
             </div>
@@ -206,32 +207,17 @@ $(document).ready(function () {
 				<div class="contents_contents_comment-container">
 					<div class="comment-nemo">
 						<div class="comment_user">
-							<span class="comment_user-img">${member.mem_image }</span>
-							<span class="user_name">${member.nickname }</span>
-						</div>
-						<div class="content_info_star">
-							<div class="star_box star1" value="0.5"></div>
-							<i class="far fa-star real-star1 real-star"></i>
-							<div class="star_box star2" value="1"></div>
-							<div class="star_box star3" value="1.5"></div>
-							<i class="far fa-star real-star2 real-star"></i>
-							<div class="star_box star4" value="2"></div>
-							<div class="star_box star5" value="2.5"></div>
-							<i class="far fa-star real-star3 real-star"></i>
-							<div class="star_box star6" value="3"></div>
-							<div class="star_box star7" value="3.5"></div>
-							<i class="far fa-star real-star4 real-star"></i>
-							<div class="star_box star8" value="4"></div>
-							<div class="star_box star9" value="4.5"></div>
-							<i class="far fa-star real-star5 real-star"></i>
-							<div class="star_box star10" value="5"></div>
+						<ul>
+							<li class="comment_user-img">${member.mem_image }</li>
+							<li class="user_name">${member.nickname }</li>
+						</ul>
 						</div>
 						<div class="comment_comment">${commentsVO.review }
 						</div>
 					</div>
 				</div>
 				<!-- 코멘트 더보기 링크 -->
-				<a href="reviews.do"><span class="contents_contents_more">더보기</span>
+				<input type="button" id="reviews" value="더보기" onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
 				</a>
 				<!-- 코멘트 더보기 링크 끝 -->
 			</div>
@@ -253,5 +239,3 @@ $(document).ready(function () {
     </div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
   </div>
-    <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/star.js"></script>

@@ -25,10 +25,9 @@
  	<select id="selectRowCount" parameterType="map" resultType="integer">
  		SELECT
  			COUNT(*)
- 		FROM reviews r JOIN member_detail m
-		ON r.mem_num=m.mem_num
+ 		FROM reviews
  		<where>
-			rev_num=#{rev_num}
+			mus_num=#{mus_num}
  			
  		</where>
  	</select>

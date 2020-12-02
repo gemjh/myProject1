@@ -47,4 +47,9 @@ public class CommentsVO {
 	public void setRev_regdate(Date rev_regdate) {
 		this.rev_regdate = rev_regdate;
 	}
+	@Override
+	public String toString() {
+		return "CommentsVO [rev_num=" + rev_num + ", mem_num=" + mem_num + ", mus_num=" + mus_num + ", rev_rate="
+				+ rev_rate + ", review=" + review + ", rev_regdate=" + rev_regdate + "]";
+	}
 }

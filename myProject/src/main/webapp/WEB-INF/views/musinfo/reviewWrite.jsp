@@ -24,29 +24,28 @@ h1{
 <title>한줄평 쓰기</title>
 </head>
 <body>
-<%-- <c:if test="${!empty member&& member.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
+<%-- <c:if test="${!empty user&& user.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
 <%=	response.sendRedirect("reviewModify.do")
 %>
 </c:if> --%>
 <h1>솔직한 감상평을 들려주세요!</h1>
-	<form:form action="write.do" commandName="commentsVO" id="reviewForm" name="reviewForm">
-	<input type="hidden" name="rev_rate" id="rev_rate"/>
+	<form:form action="write.do" commandName="commentsVO" enctype="multipart/form-data" id="reviewForm" name="reviewForm">
+	<form:hidden path="mus_num"/>
+	<input type="hidden" name="rev_rate" id="rev_rate" value=""/>
 	<label for=review></label>
 		<div id="half" class="half"></div>
 		<form:textarea path="review"/>
 		<form:errors path="review" cssClass="error-color"/>
 
 		<div class="align-center">
-			<input type="submit" value="등록">
+			<input type="submit" value="등록"> 
 			<input type="button" value="홈으로"
 			       onclick="location.href='main/musMain.do'">
 		</div>
 	</form:form>
-
 </body>
  <script>
   $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
-
   $(function() {
     $('#default').raty();
     
@@ -59,13 +58,14 @@ h1{
     	  },
     	  score: function() {
     		    return $(this).attr('data-score');
-    		  }  
+    		  },  
 
     	});
-/*  	//별점 데이터 넘겨주기
-   function submit(){
- 		reviewForm.selecteValue.value=$(".half").val();
- 	} */
+
+   	//별점 데이터 넘겨주기
+     function getInputValue(){
+ 		var rev_rate=$('#rev_rate').val();
+ 	}  
     /* 
 $('#score').raty({ score: 3 });
 

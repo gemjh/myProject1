@@ -75,34 +75,43 @@ public class CommentsController {
 
 
 	//리뷰 전체보기
-	@RequestMapping("/musinfo/reviews.do")
-	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
-		System.out.println("//리뷰 전체보기*************");
-		Map<String,Object> map=new HashMap<String,Object>();
-		int count=commentsService.selectRowCount(map);
-		System.out.println("//count: "+ count);
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>>: "+count);
-		}
-		PagingUtil page=new PagingUtil(currentPage,count,100,10,"reviews.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		List<CommentsVO> list=null;
-		if(count>0) {
-			list=commentsService.selectList(map);
+		@RequestMapping("/musinfo/reviews.do")
+		public ModelAndView process(
+				@RequestParam int mus_num,
+				@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+				@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
+				@RequestParam(value = "keyword", defaultValue = "") String keyword){
+			System.out.println("//리뷰 전체보기*************");
+			Map<String,Object> map=new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			map.put("mus_num",mus_num);
+			int count=commentsService.selectRowCount(map);
+			System.out.println("//count: "+ count);
 			if(log.isDebugEnabled()) {
-				log.debug("<<글 목록>>:"+list);
+				log.debug("<<count>>: "+count);
 			}
+			PagingUtil page=new PagingUtil(currentPage,count,100,10,"reviews.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			System.out.println("//page :" + page);
+			System.out.println("//map: " + map);
+			List<CommentsVO> list=null;
+			if(count>0) {
+				list=commentsService.selectList(map);
+				if(log.isDebugEnabled()) {
+					log.debug("<<리뷰 목록>>:"+list);
+				}
+			}
+			System.out.println("//list: "+ list);
+			ModelAndView mav=new ModelAndView();
+			mav.setViewName("reviews");
+			mav.addObject("count",count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml",page.getPagingHtml());
+			System.out.println("//mav: "+ mav);
+			return mav;
 		}
-		System.out.println("//list: "+ list);
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("reviews");
-		mav.addObject("count",count);
-		mav.addObject("list",list);
-		mav.addObject("pagingHtml",page.getPagingHtml());
-		System.out.println("//mav: "+ mav);
-		return mav;
-	}
 	//글 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
 	public String form(@RequestParam int rev_num, Model model) {

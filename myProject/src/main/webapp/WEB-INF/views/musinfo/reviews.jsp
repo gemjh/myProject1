@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%-- 
 <style>
 span{
 	overflow:auto;
@@ -11,7 +11,7 @@ span{
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/jquery.raty.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/labs.js" type="text/javascript"></script>
-
+ --%>
 <%-- <div class="page-main-style">
 	<c:if test="${count==0 }">
 		<div class="align-center">등록된 한줄평이 없습니다.</div>
@@ -23,17 +23,18 @@ span{
 </c:if>	 --%>
 
 <!-- 한줄평 -->
+<div class="page-main-style">
 <table>
 		<c:forEach var="list" items="${list}">
 			<tr>
-				<td>${list.mem_image }</td>			
-				<td>${list.rev_rate }</td>
-				<td>${list.review }</td>
-				<td>${list.nickname }</td>
+				<td>${list.rev_rate}</td>
+				<td>${list.review}</td>
+				<td>${list.nickname}</td>
 			</tr>
 		</c:forEach>
 </table>
-
+</div>
+<!-- 
  <script>
   $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
 
@@ -221,4 +222,4 @@ $('#mouseout').raty({
 });
  */
   });
-</script>
+</script> -->

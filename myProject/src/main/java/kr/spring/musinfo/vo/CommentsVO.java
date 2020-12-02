@@ -10,6 +10,15 @@ public class CommentsVO {
 	private String review;
 	private Date rev_regdate;
 	
+	//리뷰에 사용할 사용자 정보
+	private String nickname;
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getRev_num() {
 		return rev_num;
 	}

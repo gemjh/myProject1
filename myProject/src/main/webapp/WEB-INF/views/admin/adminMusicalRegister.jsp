@@ -9,30 +9,49 @@ $(document).ready(function(){
 	$('#musical_form').submit(function(event){
 		var check = 0;
 		var blank_pattern = /^\s+|\s+$/g;
-		$('.actor_box').each(function(index,item){
-			if($(this).val()==''||$(this).val().replace(blank_pattern,'')==''){
-				alert('배우 이름을 입력하세요!');
-				$(this).focus();
-				check = 1;
-				return false;
-			}
-			
-		});
-	var fileCheck = document.getElementById("upload").value;
-	   if(!fileCheck){
-	       alert("파일을 첨부해 주세요");
-	       check = 1;
-	       return false;
-	   }		
-	var mus_time = $("#mus_time").val();
-	    if( mus_time == '' || mus_time <= 0){
+		var fileCheck = document.getElementById("upload").value;
+		var mus_name = $("#mus_name").val();
+		var mus_summary = $("#mus_summary").val();
+		var mus_detail = $("#mus_detail").val();
+		var mus_video = $("#mus_video").val();
+		var mus_time = $("#mus_time").val();
+			if(mus_name==''||mus_name.replace(blank_pattern,'')==""){
+		       alert("제목을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(!fileCheck){
+		       alert("파일을 첨부해 주세요");
+		       check = 1;
+		       return false;
+		   }else if(mus_summary==''||mus_summary.replace(blank_pattern,'')==""){
+		       alert("요약 내용을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(mus_detail==''||mus_detail.replace(blank_pattern,'')==""){
+		       alert("상세 내용을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(mus_video==''||mus_video.replace(blank_pattern,'')==""){
+		       alert("스트리밍 링크를 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if( mus_time == '' || mus_time <= 0){
 	        alert("재생 시간을 입력하세요!");
 	        $("#mus_time").focus();
 	        check = 1;
 	        return false; 
-	    }
+	  	  }
+	    $('.actor_box').each(function(index,item){
+			if($(this).val()==''||$(this).val().replace(blank_pattern,'')==''){
+				check = 1;
+				alert('배우 이름을 입력하세요!');
+				$(this).focus();
+				return false;
+			}
+			
+		});
 	    
-	if(check == 1) return false;
+		if(check == 1) return false;
 	
 	});
 });
@@ -40,6 +59,7 @@ $(document).ready(function(){
 function addBox (x) {
     var actors = '<input type="text" name="mus_actor' + '" placeholder="배우 이름 입력" size="10" class="actor_box">';
     $('#mus_actor').append(actors);
+
   }
 function deleteBox (x) {
     var actors = '<input type="text" name="mus_actor' + '" placeholder="배우 이름 입력" size="10" class="actor_box">';

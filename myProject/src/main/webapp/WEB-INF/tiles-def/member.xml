@@ -5,12 +5,12 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="memberMain" template="/WEB-INF/views/memberTemplate/mLayout.jsp">
+	<definition name="memberMain" template="/WEB-INF/views/template/layout.jsp">
 		<put-attribute name="title" value="Mucha 회원관리 페이지"/>
-		<put-attribute name="header" value="/WEB-INF/views/memberTemplate/mHeader.jsp"/>
-		<put-attribute name="left" value="/WEB-INF/views/memberTemplate/mLeft.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="left" value="/WEB-INF/views/template/left.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/memberMain.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/memberTemplate/mFooter.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
 	<!-- 회원정보 변경 -->
     <definition name="join" extends="memberMain">

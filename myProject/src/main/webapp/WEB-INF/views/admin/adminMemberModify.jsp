@@ -4,9 +4,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//공백 체크
-		
-		
 		//비밀번호 변경 체크
 		$('#password').keyup(function(){
 			if($('#confirm_passwd').val()!='' &&
@@ -30,22 +27,23 @@
 		
 		$('#change_form').submit(function(){
 			var blank_pattern = /^\s+|\s+$/g;
-			if($('#now_password').val()==''||$('#now_password').val().replace(blank_pattern,'')==''){
+			if($('#nickname').val()==''||$('#nickname').val().replace(blank_pattern,'')==''){
+				alert('닉네임을 입력하세요');
+				$('#now_password').focus();
+				return false;
+			}else if($('#now_password').val()==''||$('#now_password').val().replace(blank_pattern,'')==''){
 				alert('현재 비밀번호를 입력하세요');
 				$('#now_password').focus();
 				return false;
-			}
-			if($('#password').val()==''||$('#password').val().replace(blank_pattern,'')==''){
+			}else if($('#password').val()==''||$('#password').val().replace(blank_pattern,'')==''){
 				alert('변경 비밀번호를 입력하세요');
 				$('#password').focus();
 				return false;
-			}
-			if($('#confirm_password').val()==''||$('#confirm_password').val().replace(blank_pattern,'')==''){
+			}else if($('#confirm_password').val()==''||$('#confirm_password').val().replace(blank_pattern,'')==''){
 				alert('변경 비밀번호 확인을 입력하세요');
 				$('#confirm_password').focus();
 				return false;
-			}
-			if($('#password').val()!=$('#confirm_password').val()){
+			}else if($('#password').val()!=$('#confirm_password').val()){
 				alert('변경 비밀번호와 변경 비밀번호 확인 불일치');
 				return false;
 			}

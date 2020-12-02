@@ -2,8 +2,30 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor/ckeditor.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#notice_form').submit(function(event){
+		var check = 0;
+		var blank_pattern = /^\s+|\s+$/g;
+		var no_title = $("#no_title").val();
+		var no_content = $("#no_content").val();
+		   if(no_title==''||no_title.replace(blank_pattern,'')==""){
+		       alert("제목을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(no_content==''||no_content.replace(blank_pattern,'')==""){
+		       alert("내용을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }
+		   
+		   if(check == 1) return false;
+	});
+});
+</script>
 <div class="page-main-style">
 	<h2>공지사항 수정</h2>
 	<form:form commandName="noticeVO" action="noticeUpdate.do">

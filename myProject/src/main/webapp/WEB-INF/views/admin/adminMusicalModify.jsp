@@ -8,28 +8,52 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-		$('#musical_form').submit(function(event){
-			var check = 0;
-			var blank_pattern = /^\s+|\s+$/g;
-		$('.actor_box').each(function(index,item){
-			if($(this).val()==''|| $(this).val().replace(blank_pattern,'')==''){
+	$('#mus_name').focus();
+
+	$('#musical_form').submit(function(event){
+		var check = 0;
+		var blank_pattern = /^\s+|\s+$/g;
+		var fileCheck = document.getElementById("upload").value;
+		var mus_name = $("#mus_name").val();
+		var mus_summary = $("#mus_summary").val();
+		var mus_detail = $("#mus_detail").val();
+		var mus_video = $("#mus_video").val();
+		var mus_time = $("#mus_time").val();
+			if(mus_name==''||mus_name.replace(blank_pattern,'')==""){
+		       alert("제목을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(!fileCheck){
+		       alert("파일을 첨부해 주세요");
+		       check = 1;
+		       return false;
+		   }else if(mus_summary==''||mus_summary.replace(blank_pattern,'')==""){
+		       alert("요약 내용을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(mus_detail==''||mus_detail.replace(blank_pattern,'')==""){
+		       alert("상세 내용을 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if(mus_video==''||mus_video.replace(blank_pattern,'')==""){
+		       alert("스트리밍 링크를 입력하세요.");
+		       check = 1;
+		       return false;
+		   }else if( mus_time == '' || mus_time <= 0){
+	        alert("재생 시간을 입력하세요!");
+	        $("#mus_time").focus();
+	        check = 1;
+	        return false; 
+	  	  }
+	    $('.actor_box').each(function(index,item){
+			if($(this).val()==''||$(this).val().replace(blank_pattern,'')==''){
+				check = 1;
 				alert('배우 이름을 입력하세요!');
 				$(this).focus();
-				check = 1;
 				return false;
 			}
-			check = 0;
-		});
 			
-		var mus_time = $("#mus_time").val();
-		 mus_time = $.trim( mus_time );
-		    if( mus_time == "" || mus_time <= 0){
-		        alert("재생 시간을 입력하세요!");
-		        $("#mus_time").focus();
-		        check = 1;
-		        return false; 
-		    }
-
+		});
 		if(check == 1) return false;
 	});
 	//옵션값 db 저장된 값으로 초기화 하기
@@ -92,12 +116,12 @@ function deleteBox (x) {
 			</li>
 			<li>
 				<label for="mus_summary">요약 정보</label>
-				<form:textarea path="mus_summary"/>
+				<form:textarea path="mus_summary" cols="50" rows="7"/>
 				<form:errors path="mus_summary" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="mus_detail">상세 정보</label>
-				<form:textarea path="mus_detail"/>
+				<form:textarea path="mus_detail" cols="50" rows="10"/>
 				<form:errors path="mus_detail" cssClass="error-color"/>
 			</li>
 			<li>
@@ -113,7 +137,7 @@ function deleteBox (x) {
 			</li>
 			<li>
 				<label for="mus_video">스트리밍 비디오 링크</label>
-				<form:textarea path="mus_video"/>
+				<form:textarea path="mus_video" cols="50"/>
 				<form:errors path="mus_video" cssClass="error-color"/>
 			</li>
 			<li>

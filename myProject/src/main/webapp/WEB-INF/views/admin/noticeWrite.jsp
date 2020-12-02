@@ -4,30 +4,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor/ckeditor.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function(){
 	
 	$('#notice_form').submit(function(event){
-		var check = 0;
-		var blank_pattern = /^\s+|\s+$/g;
-		
 		var no_title = $("#no_title").val();
-		   if(no_title==''||no_title.replace(blank_pattern,'')==""){
+		var blank_pattern = /^\s+|\s+$/g;
+		var no_content = $("#no_content").val(); 
+		   if(no_title=='' || no_title.trim() == ''){
 		       alert("제목을 입력하세요.");
-		       check = 1;
+		       $("#no_title").focus();
 		       return false;
 		   }
-		 var no_content = $("#no_content").val();
-		   if(no_content==''||no_content.replace(blank_pattern,'')==""){
-		       alert("내용을 입력하세요.");
-		       check = 1;
-		       return false;
-		   }
-		   if(check == 1) return false;
+		   function write_go(){
+			   var ckeditor = CKEDITOR.instances['desc']; 
+			   if (ckeditor.getData()=="")
+			   {
+			    alert('내용을 입력 하세요');
+			    ckeditor.focus();
+			    return;
+			   }
+			   else {
+			    document.in_form.submit();
+			   }
+			   }
+
+			   출처: https://jongjongbari.tistory.com/entry/ckeditor-공백체크 [종종바리]
 	});
-
-
 });
 </script>
 <div >

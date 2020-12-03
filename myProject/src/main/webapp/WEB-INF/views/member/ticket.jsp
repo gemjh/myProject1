@@ -19,22 +19,27 @@
 	});
 	
 </script>
-<div class="page-main-style">
+<div>
 	<h2>이용권 구매</h2>
-	<form:form action="ticket.do" commandName="memberVO">
+	
 		<form:errors element="div" cssClass="error-color"/>
-		
-		결제수단 선택 <br>
+		<form:form action="ticket.do" commandName="memberVO">			
+		<div align="center">결제수단 선택 </div><br>
 		<div align="center">
-			<input type="radio" id="card" name="radio" value="card">신용카드
-			<input type="radio" id="phone" name="radio" value="phone">스마트폰
-			<input type="radio" id="kakao" name="radio" value="kakao">카카오페이
+			<input type="radio" id="card" name="radio" value="card">&nbsp;신용카드&nbsp;&nbsp;
+			<input type="radio" id="phone" name="radio" value="phone">&nbsp;스마트폰&nbsp;&nbsp;
+			<input type="radio" id="kakao" name="radio" value="kakao">&nbsp;카카오페이
 		</div>
 		<br>
+		
 		<div class="align-center">
+		
 			<input type="submit" value="결제 진행">
 			<input type="button" value="홈으로"
 			    onclick="location.href='${pageContext.request.contextPath}/member/memberMain.do'">
 		</div>
-	</form:form>
-</div>
+		</form:form>
+		</div>	    
+					    
+			
+	

@@ -75,9 +75,10 @@ CREATE TABLE reviews(
  rev_num NUMBER(10) not null,
  mem_num NUMBER(10)   not null,
  mus_num NUMBER(20) not null,
- rev_rate NUMBER(1,1) not null,
+ rev_rate NUMBER(10,1) not null,
  review varchar2(300) not null,
  rev_regdate date not null,
+ hide_rev VARCHAR2(100),
 CONSTRAINT reviews_pk PRIMARY KEY (rev_num)
 );
 
@@ -121,52 +122,62 @@ CONSTRAINT notice_pk PRIMARY KEY (no_num)
 ALTER TABLE member_detail
 ADD CONSTRAINTS mem_num 
 FOREIGN KEY(mem_num)
-REFERENCES member(mem_num);
+REFERENCES member(mem_num)
+ON DELETE CASCADE;
 
 ALTER TABLE musical
 ADD CONSTRAINTS gen_num
 FOREIGN KEY(gen_num)
-REFERENCES genre(gen_num);
+REFERENCES genre(gen_num)
+ON DELETE CASCADE;
 
 ALTER TABLE prefer
 ADD CONSTRAINTS mem_num2
 FOREIGN KEY(mem_num)
-REFERENCES  member(mem_num);
+REFERENCES  member(mem_num)
+ON DELETE CASCADE;
 
 ALTER TABLE prefer
 ADD CONSTRAINTS gen_num2
 FOREIGN KEY(gen_num)
-REFERENCES  genre(gen_num);
+REFERENCES  genre(gen_num)
+ON DELETE CASCADE;
 
 ALTER TABLE pick
 ADD CONSTRAINTS mem_num3
 FOREIGN KEY(mem_num)
-REFERENCES  member(mem_num);
+REFERENCES  member(mem_num)
+ON DELETE CASCADE;
 
 ALTER TABLE pick
 ADD CONSTRAINTS mus_num
 FOREIGN KEY(mus_num)
-REFERENCES  musical(mus_num);
+REFERENCES  musical(mus_num)
+ON DELETE CASCADE;
 
 ALTER TABLE reviews
 ADD CONSTRAINTS mem_num4
 FOREIGN KEY(mem_num)
-REFERENCES  member(mem_num);
+REFERENCES  member(mem_num)
+ON DELETE CASCADE;
 
 ALTER TABLE reviews
 ADD CONSTRAINTS mus_num2
 FOREIGN KEY(mus_num)
-REFERENCES  musical(mus_num);
+REFERENCES  musical(mus_num)
+ ON DELETE CASCADE;
 
 ALTER TABLE consult
 ADD CONSTRAINTS mem_num5
 FOREIGN KEY(mem_num)
-REFERENCES  member(mem_num);
+REFERENCES  member(mem_num)
+ON DELETE CASCADE;
 
 ALTER TABLE notice
 ADD CONSTRAINTS mem_num6
 FOREIGN KEY(mem_num)
-REFERENCES  member(mem_num);
+REFERENCES  member(mem_num)
+ON DELETE CASCADE;
 
 
 

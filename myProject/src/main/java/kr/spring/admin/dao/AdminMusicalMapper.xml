@@ -83,7 +83,7 @@
          m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
 		 </where>
       </select>
-     <!-- 등록된 뮤지컬 리스트 -->
+     <!-- 등록된 뮤지컬 리뷰 리스트 -->
      <select id="selectReviewsList" parameterType="map" resultType="commentsVO">
 		SELECT
 			*

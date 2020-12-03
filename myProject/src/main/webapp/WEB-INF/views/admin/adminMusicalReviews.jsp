@@ -35,21 +35,26 @@
 			<tr>
 				<th>리뷰 번호</th>
 				<th width="130">뮤지컬 번호</th>
-				<th width="400">뮤지컬 제목</th>
+				<th>뮤지컬 제목</th>
 				<th>닉네임</th>
 				<th>평점</th>
 				<th>한줄평</th>
-				<th>등록일</th>
+				<th>리뷰 등록일</th>
+				<th>리뷰 가리기</th>
 			</tr>
 			<c:forEach var="musical" items="${list}">
 				<tr>
 					<td>${musical.rev_num}</td>
-					<td>${musical.mus_num}</td>
-					<td><a href="adminMusicalDetail.do?mus_num=${musical.mus_num}">${musical.mus_name}</a></td>
+					<td><a href="${pageContext.request.contextPath}/musinfo/reviews.do?mus_num=${musical.mus_num}">${musical.mus_num}</a></td>
+					<td>${musical.mus_name}</td>
 					<td>${musical.nickname}</td>
 					<td>${musical.rev_rate}</td>
 					<td>${musical.review}</td>
 					<td>${musical.rev_regdate}</td>
+					<td>
+					<input type="button" value="가리기" id="rev_delete" onclick="location.href='reviewDelete.do?rev_num=${musical.rev_num}'"/>
+					<input type="button" value="되돌리기" id="rev_delete" onclick="location.href='reviewReturn.do?rev_num=${musical.rev_num}'"/>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

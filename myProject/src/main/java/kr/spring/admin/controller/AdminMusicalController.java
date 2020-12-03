@@ -304,7 +304,7 @@ public class AdminMusicalController {
 		map.put("end", page.getEndCount());
 		System.out.println("//page :" + page);
 		System.out.println("//map: " + map);
-		List<AdminMusicalVO> list = null;
+		List<CommentsVO> list = null;
 		if (count > 0) {
 			list = adminMusicalService.selectReviewsList(map);
 			System.out.println("//list : " + list);
@@ -321,8 +321,14 @@ public class AdminMusicalController {
 		System.out.println("//mav: " + mav);
 		return mav;
 	}
-	// 뮤지컬 등록 미리보기
+	// 뮤지컬 리뷰 숨기기
+	@RequestMapping("/admin/reviewDelete.do")
+	public String reviewDelete() {
+		System.out.println("***리뷰 숨기기 *****");
 
-	// 뮤지컬 수정 미리보기
+		return "redirect:/admin/adminMusicalReviews.do";
+	}
+
+	// 뮤지컬 리뷰 되돌리기
 
 }

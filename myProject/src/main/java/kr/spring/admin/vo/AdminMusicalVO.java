@@ -26,6 +26,7 @@ public class AdminMusicalVO {
 	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
+	
 	public int getMus_num() {
 		return mus_num;
 	}

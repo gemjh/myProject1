@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.admin.vo.AdminMusicalVO;
+import kr.spring.musinfo.vo.CommentsVO;
 
 public interface AdminMusicalMapper {
 	
@@ -40,7 +41,7 @@ public interface AdminMusicalMapper {
 	//뮤지컬 리뷰 리스트 갯수
 	public int selectReviewsRowCount(Map<String, Object> map);
 	//뮤지컬 리뷰 리스트
-	public List<AdminMusicalVO> selectReviewsList(Map<String, Object> map);
+	public List<CommentsVO> selectReviewsList(Map<String, Object> map);
 	
 	
 }

@@ -9,6 +9,8 @@ public class CommentsVO {
 	private double rev_rate;
 	private String review;
 	private Date rev_regdate;
+	private String hide_rev;
+	
 	
 	//리뷰에 사용할 사용자 닉네임
 	private String nickname;
@@ -66,6 +68,13 @@ public class CommentsVO {
 	public void setRev_regdate(Date rev_regdate) {
 		this.rev_regdate = rev_regdate;
 	}
+	public String getHide_rev() {
+		return hide_rev;
+	}
+	public void setHide_rev(String hide_rev) {
+		this.hide_rev = hide_rev;
+	}
+	
 	@Override
 	public String toString() {
 		return "CommentsVO [rev_num=" + rev_num + ", mem_num=" + mem_num + ", mus_num=" + mus_num + ", rev_rate="

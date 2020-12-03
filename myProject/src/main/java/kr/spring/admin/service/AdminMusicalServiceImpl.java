@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.admin.dao.AdminMusicalMapper;
 import kr.spring.admin.vo.AdminMusicalVO;
+import kr.spring.musinfo.vo.CommentsVO;
 
 @Service("AdminMusicalServce")
 public class AdminMusicalServiceImpl implements AdminMusicalService{
@@ -61,7 +62,7 @@ public class AdminMusicalServiceImpl implements AdminMusicalService{
 	}
 
 	@Override
-	public List<AdminMusicalVO> selectReviewsList(Map<String, Object> map) {
+	public List<CommentsVO> selectReviewsList(Map<String, Object> map) {
 		
 		return mapper.selectReviewsList(map);
 	}

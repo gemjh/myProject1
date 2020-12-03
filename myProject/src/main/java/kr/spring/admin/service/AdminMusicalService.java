@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.admin.vo.AdminMusicalVO;
+import kr.spring.musinfo.vo.CommentsVO;
 
 public interface AdminMusicalService {
 	//뮤지컬 등록 페이지
@@ -23,6 +24,6 @@ public interface AdminMusicalService {
 	//리뷰 갯수 구하기
 	public int selectReviewsRowCount(Map<String, Object> map);
 	//리뷰 리스트
-	public List<AdminMusicalVO> selectReviewsList(Map<String, Object> map);
+	public List<CommentsVO> selectReviewsList(Map<String, Object> map);
 
 }

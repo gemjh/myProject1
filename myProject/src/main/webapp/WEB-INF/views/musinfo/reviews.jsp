@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
 <style>
 span{
@@ -12,27 +12,48 @@ span{
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/jquery.raty.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/labs.js" type="text/javascript"></script>
  --%>
-<%-- <div class="page-main-style">
+<div class="page-main-style">
+	<h2>리뷰 보기</h2>
 	<c:if test="${count==0 }">
 		<div class="align-center">등록된 한줄평이 없습니다.</div>
 	</c:if>
-	<c:if test="${count>0 }">
-<c:if test="${!empty user&& user.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
-<input type="button" value="수정" onclick="location.href='modify.do?contentsVO_num=${contentsVO.mus_num}'">
-<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?mus_num=${contentsVO.mus_num}'">
-</c:if>	 --%>
-
-<!-- 한줄평 -->
-<div class="page-main-style">
-<table>
-		<c:forEach var="list" items="${list}">
+	<!-- 한줄평 -->
+	<div>
+		<iframe width="560" height="315"
+			src="https://www.youtube.com/embed/XB8YTYHnWHQ"></iframe>
+	</div>
+	<c:if test="${count!=0 }">
+		평균 평점 : 
+		<table>
 			<tr>
-				<td>${list.rev_rate}</td>
-				<td>${list.review}</td>
-				<td>${list.nickname}</td>
+				<th>닉네임</th>
+				<th>평점</th>
+				<th>한줄평</th>
 			</tr>
-		</c:forEach>
-</table>
+			<c:forEach var="list" items="${list}">
+				<!-- 내가 쓴 리뷰 먼저 보기 -->
+				<c:if test="${!empty user&& user.mem_num==list.mem_num}">
+					<tr>
+						<td>${list.nickname}</td>
+						<td>${list.rev_rate}</td>
+						<td>${list.review}<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
+							<input type="button" value="수정"
+							onclick="location.href='modify.do?contentsVO_num=${list.mus_num}'">
+							<input type="button" value="삭제" id="delete_btn"
+							onclick="location.href='delete.do?mus_num=${list.mus_num}'">
+						</td>
+					</tr>
+				</c:if>
+				<c:if test="${user.mem_num!=list.mem_num}">
+					<tr>
+						<td>${list.nickname}</td>
+						<td>${list.rev_rate}</td>
+						<td>${list.review}</td>
+					</tr>
+				</c:if>
+			</c:forEach>
+		</table>
+	</c:if>
 </div>
 <!-- 
  <script>

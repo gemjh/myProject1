@@ -19,7 +19,7 @@ public interface AdminMemberMapper {
 	//관리자 추가
 	@Insert("INSERT INTO member (mem_num,email,auth) VALUES (#{mem_num},#{email},0)")
 	public void adminPlusMember(MemberVO member);
-	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone) VALUES (#{mem_num},#{nickname},#{password},#{birth},#{phone})")
+	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone) VALUES (#{mem_num},admin_#{nickname},#{password},#{birth},#{phone})")
 	public void adminPlusMember_detail(MemberVO member);
 	@Select("SELECT admin_seq.nextval FROM dual")
 	public int selectMem_num();

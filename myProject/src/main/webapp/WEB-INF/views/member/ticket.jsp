@@ -36,7 +36,7 @@
 		
 			<input type="submit" value="결제 진행">
 			<input type="button" value="홈으로"
-			    onclick="location.href='${pageContext.request.contextPath}/member/memberMain.do'">
+			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 		</div>
 		</form:form>
 		</div>	    

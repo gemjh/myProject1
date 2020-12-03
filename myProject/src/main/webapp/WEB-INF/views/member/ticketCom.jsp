@@ -10,6 +10,7 @@
 
 	<h2>월 이용권 결제가 완료되었습니다!</h2>
 	
-	<!-- 20XX.XX.XX 까지 뮤차의 모든 컨텐츠를 이용하실 수 있습니다 내용 추가? -->
+	<input type="button" value="홈으로"
+			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 </body>
 </html>

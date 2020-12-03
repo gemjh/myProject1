@@ -80,9 +80,9 @@
 		
 	});
 </script>
-<div class="page-main-style" class="">
+
 	<h2>프로필 이미지 변경</h2>
-	현재 이미지<br>
+<div class="page-main-style" align="center">
 	<ul>
 		<li>
 			<c:if test="${empty user.mem_imagename}">
@@ -91,15 +91,14 @@
 			<c:if test="${!empty user.mem_imagename}">
 			<img src="${pageContext.request.contextPath}/member/imageView.do" width="100" height="100" class="my-image">
 			</c:if>
+			<br><br>
 		</li>
 		<li>
-			<div class="align-center">
-				<input type="button" value="수정" id="image_btn">
-			</div>
-			<div id="image_choice" style="display:none;">
-				<input type="file" id="upload" accept="image/gif,image/png,image/jpeg">
-				<input type="button" value="변경" id="image_submit">
-				<input type="button" value="취소" id="image_reset">      
+			<input type="button" value="수정" id="image_btn">
+		<div id="image_choice" style="display:none;">
+				<input type="file" id="upload" accept="image/gif,image/png,image/jpeg"><br>
+				<input type="button" value="변경하기" id="image_submit">
+				<input type="button" value="취소하기" id="image_reset">      
 			</div>
 		</li>
 	</ul>

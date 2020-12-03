@@ -16,6 +16,10 @@
     	<put-attribute name="title" value="회원가입"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"/>       
     </definition>
+    <definition name="joinCom" extends="memberMain">
+    	<put-attribute name="title" value="회원가입완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/joinCom.jsp"/>       
+    </definition>
 	<!-- 회원정보 변경 -->
     <definition name="login" extends="memberMain">
     	<put-attribute name="title" value="회원로그인"/>
@@ -26,15 +30,27 @@
     	<put-attribute name="title" value="회원정보 변경"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/modifyMember.jsp"/>       
     </definition>
+    <definition name="modifyMemberCom" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyMemberCom.jsp"/>       
+    </definition>
     <!-- 선호장르 변경 -->
     <definition name="modifyPrefer" extends="memberMain">
     	<put-attribute name="title" value="선호장르 변경"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/modifyPrefer.jsp"/>    
     </definition>
+    <definition name="modifyPreferCom" extends="memberMain">
+    	<put-attribute name="title" value="선호장르 변경완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyPreferCom.jsp"/>    
+    </definition>
     <!-- 비밀번호 변경 -->
     <definition name="changePassword" extends="memberMain">
-    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="title" value="비밀번호 변경"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/changePassword.jsp"/>       
+    </definition>
+    <definition name="changePasswordCom" extends="memberMain">
+    	<put-attribute name="title" value="비밀번호 변경완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/changePasswordCom.jsp"/>       
     </definition>
     <!-- 프로필 이미지 변경 -->
     <definition name="myImage" extends="memberMain">
@@ -46,10 +62,18 @@
     	<put-attribute name="title" value="이용권 구매"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/ticket.jsp"/>       
     </definition>
+    <definition name="ticketCom" extends="memberMain">
+    	<put-attribute name="title" value="이용권 구매완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/ticketCom.jsp"/>       
+    </definition>
     <!-- 회원탈퇴 -->
     <definition name="deleteMember" extends="memberMain">
-    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="title" value="회원탈퇴"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/deleteMember.jsp"/>       
+    </definition>
+    <definition name="deleteMemberCom" extends="memberMain">
+    	<put-attribute name="title" value="회원탈퇴 완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/deleteMemberCom.jsp"/>       
     </definition>
 </tiles-definitions>
 

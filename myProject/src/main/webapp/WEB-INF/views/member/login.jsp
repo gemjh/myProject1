@@ -20,8 +20,9 @@
 		<div class="align-center">
 			<input type="submit" value="로그인">
 			<input type="button" value="홈으로"
-			    onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 		</div>
+		<br>
 		<div class="align-right">
 		   	<input type="button" value="이메일 찾기"
 				onclick="location.href='${pageContext.request.contextPath}/member/findEmail.do">

@@ -89,7 +89,7 @@ public class MemberController {
 		// 회원 가입
 		memberService.joinMember(memberVO);
 
-		return "redirect:/member/memberMain.do";
+		return "joinCom";
 	}
 
 	// 로그인 폼
@@ -198,7 +198,7 @@ public class MemberController {
 		// 회원 정보 수정
 		memberService.updateMember(memberVO);
 
-		return "redirect:/member/memberMain.do";
+		return "modifyMemberCom";
 	}
 	
 	
@@ -267,7 +267,7 @@ public class MemberController {
 		// 선호장르 수정
 		memberService.updatePrefer(memberVO);
 
-		return "redirect:/member/memberMain.do";
+		return "modifyPreferCom";
 	}
 	
 	
@@ -307,7 +307,7 @@ public class MemberController {
 		// 비밀번호 수정 처리
 		memberService.updatePassword(memberVO);
 
-		return "redirect:/member/memberMain.do";
+		return "changePasswordCom";
 	}
 	
 	// 회원 탈퇴 폼
@@ -351,7 +351,7 @@ public class MemberController {
 			memberService.deleteMember(memberVO.getMem_num());
 			//로그아웃
 			session.invalidate();
-			return "redirect:/member/memberMain.do";
+			return "deleteMemberCom";
 			
 		}else {
 			//인증실패
@@ -422,7 +422,7 @@ public class MemberController {
 		memberService.updateTicket(memberVO);
 		memberService.updateTicketAuth(memberVO);
 		
-		return "redirect:/member/ticket.do";
+		return "ticketCom";
 		
 	}
 	

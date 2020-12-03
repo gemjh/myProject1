@@ -7,22 +7,7 @@
 		<form:errors element="div" cssClass="error-color"/>
 		 <div class="perfer_chk" id="prefer_chk">
 		 <p>체크하면 분류에 따라 당신의 선호가 저장되어서 메인의 추천목록에서 선호장르를 띄워줌 ! </p>
-		 <div class="align-center">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100"><br>
-		 	<input type="checkbox" id="prefer" name="prefer" value="1">&nbsp;&nbsp;&nbsp;
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">&nbsp;&nbsp;&nbsp;
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">&nbsp;&nbsp;&nbsp;
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">&nbsp;&nbsp;&nbsp;
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">&nbsp;&nbsp;&nbsp;
-		 </div>
-		 	<br><br><br>
-		 	
-		 
-		 
+			 
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
 		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">

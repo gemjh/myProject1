@@ -40,9 +40,9 @@ span{
 						<td>${list.rev_rate}</td>
 						<td>${list.review}<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
 							<input type="button" value="수정"
-							onclick="location.href='modify.do?contentsVO_num=${list.mus_num}'">
+							onclick="location.href='modify.do?rev_num=${list.rev_num}'">
 							<input type="button" value="삭제" id="delete_btn"
-							onclick="location.href='delete.do?mus_num=${list.mus_num}'">
+							onclick="location.href='delete.do?rev_num=${list.rev_num}'">
 						</td>
 					</tr>
 				</c:if>

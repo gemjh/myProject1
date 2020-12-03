@@ -113,26 +113,31 @@ public class CommentsController {
 			System.out.println("//mav: "+ mav);
 			return mav;
 		}
-	//글 수정 폼 호출
+	//리뷰 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
 	public String form(@RequestParam int rev_num, Model model) {
 		CommentsVO commentsVO=commentsService.selectComments(rev_num);
 		model.addAttribute("commentsVO",commentsVO);
 		return "reviewModify";
 	}
-	//글 수정 처리
+	//리뷰 수정 처리
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
 	public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
+		if(log.isDebugEnabled()) {
+			log.debug("<<리뷰 수정>>"+commentsVO);
+		}
+		//오류시 폼 호출
 		if(result.hasErrors()) {
 			return "reviewModify";
 		}
-		//회원번호
-		MemberVO member=(MemberVO)session.getAttribute("member");
+		MemberVO member=(MemberVO)session.getAttribute("user");
+		System.out.println("//member : " + member);
 		commentsVO.setMem_num(member.getMem_num());
-		//뮤지컬번호
-		ContentsVO contentsVO=(ContentsVO)session.getAttribute("contentsVO");
-		commentsVO.setMus_num(contentsVO.getMus_num());
+		//뮤지컬번호 세팅
+		commentsVO.setMus_num(commentsVO.getMus_num());
+		//리뷰쓰기
 		commentsService.updateComments(commentsVO);
+
 		
 		//수정 후 view
 		model.addAttribute("message","수정되었습니다.");

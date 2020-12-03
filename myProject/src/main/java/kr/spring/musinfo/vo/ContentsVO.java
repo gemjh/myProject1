@@ -27,6 +27,9 @@ public class ContentsVO {
 	private String mus_detail;
 	private Date mus_regdate;
 	
+	//최근 리뷰에 사용할  정보
+	private String nickname;
+	private String review;
 	//뮤지컬 리뷰
 	private int rev_rate;
 	public int getRev_rate() {
@@ -125,12 +128,24 @@ public class ContentsVO {
 		return "ContentsVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
 				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
 				+ ", mus_rate=" + mus_rate + ",  mus_detail=" + mus_detail + ", mus_summary="
-				+ mus_summary + ", mus_regdate=" + mus_regdate + "]";
+				+ mus_summary + ", mus_regdate=" + mus_regdate + ", nickname=" + nickname +", review=" +review+"]";
 	}
 	public String getMus_postname() {
 		return mus_postname;
 	}
 	public void setMus_postname(String mus_postname) {
 		this.mus_postname = mus_postname;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getReview() {
+		return review;
+	}
+	public void setReview(String review) {
+		this.review = review;
 	}
 }

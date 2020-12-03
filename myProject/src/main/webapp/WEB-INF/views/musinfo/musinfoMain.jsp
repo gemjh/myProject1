@@ -206,12 +206,12 @@ $(document).ready(function () {
 				<div class="contents_contents_comment-container">
 					<div class="comment-nemo">
 						<div class="comment_user">
-						<c:forEach var="list" items="${list }">
-						<ul class="new">
+						<c:forEach var="newest" items="${newest }">
+						<ul class="newComments">
 <!-- 							<li class="star">★★★★★</li>
- -->							<li class="comment">${list.review }</li>
-							<li class="user_name">by ${lsit.nickname }</li>
-						</ul>
+ -->							<li class="comment">${newest.review }</li>
+  	 							<li class="user_name">by ${newest.nickname }</li>
+  						</ul>
 						</c:forEach>
 						</div>
 					</div>

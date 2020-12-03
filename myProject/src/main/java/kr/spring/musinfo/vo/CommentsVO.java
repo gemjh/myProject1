@@ -10,14 +10,24 @@ public class CommentsVO {
 	private String review;
 	private Date rev_regdate;
 	
-	//리뷰에 사용할 사용자 정보
+	//리뷰에 사용할 사용자 닉네임
 	private String nickname;
+	//리뷰에 사용할 뮤지컬 이름
+	private String mus_name;
+	
 	
 	public String getNickname() {
 		return nickname;
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	
+	public String getMus_name() {
+		return mus_name;
+	}
+	public void setMus_name(String mus_name) {
+		this.mus_name = mus_name;
 	}
 	public int getRev_num() {
 		return rev_num;
@@ -61,4 +71,6 @@ public class CommentsVO {
 		return "CommentsVO [rev_num=" + rev_num + ", mem_num=" + mem_num + ", mus_num=" + mus_num + ", rev_rate="
 				+ rev_rate + ", review=" + review + ", rev_regdate=" + rev_regdate + "]";
 	}
+	
+	
 }

@@ -20,4 +20,9 @@ public interface AdminMusicalService {
 	public void updateMusical(AdminMusicalVO adminMusical);
 	//뮤지컬 삭제
 	public void deleteMusical(Integer mus_num);
+	//리뷰 갯수 구하기
+	public int selectReviewsRowCount(Map<String, Object> map);
+	//리뷰 리스트
+	public List<AdminMusicalVO> selectReviewsList(Map<String, Object> map);
+
 }

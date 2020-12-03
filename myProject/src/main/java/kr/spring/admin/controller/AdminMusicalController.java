@@ -23,10 +23,15 @@ import kr.spring.admin.service.AdminMemberService;
 import kr.spring.admin.service.AdminMusicalService;
 import kr.spring.admin.vo.AdminMusicalVO;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.musinfo.service.CommentsService;
+import kr.spring.musinfo.vo.CommentsVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
 public class AdminMusicalController {
+	@Resource
+	private CommentsService commentsService;
+	
 	private Logger log = Logger.getLogger(this.getClass());
 
 	// 객체 주입
@@ -47,6 +52,11 @@ public class AdminMusicalController {
 	public MemberVO initCommand2() {
 		System.out.println("//뮤지컬자바빈 초기화");
 		return new MemberVO();
+	}
+	@ModelAttribute
+	public CommentsVO initCommand3() {
+		System.out.println("//뮤지컬자바빈 초기화");
+		return new CommentsVO();
 	}
 
 	// 뮤지컬 등록
@@ -270,37 +280,37 @@ public class AdminMusicalController {
 		return mav;
 	}
 	
-	// 뮤지컬 삭제 완료 폼
-	
+	// 뮤지컬 리뷰 보기
 	@RequestMapping("/admin/adminMusicalReviews.do")
-	public ModelAndView adminMusicalReviews(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+	public ModelAndView adminMusicalReviews(
+			@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
 		System.out.println("***등록된 뮤지컬 리뷰 보기*****");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
+		
 		System.out.println("//map: " + map);
-
 		// 총 글의 갯수 또는 검색된 글의 갯수 구하기
-		int count = adminMusicalService.selectRowCount(map);
+		int count=adminMusicalService.selectReviewsRowCount(map);
 		System.out.println("//count: " + count);
 		if (log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
 		System.out.println("//" + currentPage + "//" + keyfield + "//" + keyword);
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "adminMusicalList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "adminMusicalReviews.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		System.out.println("//page :" + page);
 		System.out.println("//map: " + map);
 		List<AdminMusicalVO> list = null;
 		if (count > 0) {
-			list = adminMusicalService.selectList(map);
+			list = adminMusicalService.selectReviewsList(map);
 			System.out.println("//list : " + list);
 
 			if (log.isDebugEnabled()) {
-				log.debug("<<뮤지컬 목록>> : " + list);
+				log.debug("<<리뷰 목록>> : " + list);
 			}
 		}
 		ModelAndView mav = new ModelAndView();

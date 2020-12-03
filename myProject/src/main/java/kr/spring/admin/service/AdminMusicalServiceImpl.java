@@ -54,5 +54,17 @@ public class AdminMusicalServiceImpl implements AdminMusicalService{
 		
 	}
 
+	@Override//리뷰 갯수
+	public int selectReviewsRowCount(Map<String, Object> map) {
+		
+		return mapper.selectReviewsRowCount(map);
+	}
+
+	@Override
+	public List<AdminMusicalVO> selectReviewsList(Map<String, Object> map) {
+		
+		return mapper.selectReviewsList(map);
+	}
+
 }
 	

@@ -31,20 +31,28 @@
 	<div>
 	검색된 총 뮤지컬 수 : ${count}
 	</div>
-	<table>
-		<tr>
-			<th width="130">뮤지컬 번호</th>
-			<th width="400">뮤지컬 제목</th>
-			<th>등록일</th>
-		</tr>
-		<c:forEach var="musical" items="${list}">
-		<tr>
-			<td>${musical.mus_num}</td>
-			<td><a href="adminMusicalDetail.do?mus_num=${musical.mus_num}">${musical.mus_name}</a></td>
-			<td>${musical.mus_regdate}</td>
-		</tr>
-		</c:forEach>
-	</table>
-	<div class="align-center">${pagingHtml}</div>
+		<table>
+			<tr>
+				<th>리뷰 번호</th>
+				<th width="130">뮤지컬 번호</th>
+				<th width="400">뮤지컬 제목</th>
+				<th>닉네임</th>
+				<th>평점</th>
+				<th>한줄평</th>
+				<th>등록일</th>
+			</tr>
+			<c:forEach var="musical" items="${list}">
+				<tr>
+					<td>${musical.rev_num}</td>
+					<td>${musical.mus_num}</td>
+					<td><a href="adminMusicalDetail.do?mus_num=${musical.mus_num}">${musical.mus_name}</a></td>
+					<td>${musical.nickname}</td>
+					<td>${musical.rev_rate}</td>
+					<td>${musical.review}</td>
+					<td>${musical.rev_regdate}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<div class="align-center">${pagingHtml}</div>
 	</c:if>
 </div>

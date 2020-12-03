@@ -36,4 +36,11 @@ public interface AdminMusicalMapper {
 	// 뮤지컬 삭제
 	@Delete("DELETE FROM musical WHERE musical.mus_num=#{mus_num}")
 	public void deleteMusical(Integer mus_num);
+	
+	//뮤지컬 리뷰 리스트 갯수
+	public int selectReviewsRowCount(Map<String, Object> map);
+	//뮤지컬 리뷰 리스트
+	public List<AdminMusicalVO> selectReviewsList(Map<String, Object> map);
+	
+	
 }

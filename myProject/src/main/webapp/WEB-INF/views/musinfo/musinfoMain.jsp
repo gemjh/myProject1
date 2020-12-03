@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
 * {
     box-sizing: border-box;
@@ -61,6 +62,25 @@ $(document).ready(function () {
        }
     } );
  });
+ 
+$(function(){
+	// 찜 버튼 클릭시(찜하기 또는 찜 취소하기)
+	$("#zzim").click(function(){
+		$.ajax({
+			url: "/musinfo/pick.do",
+            type: "POST",
+            data: {
+                mem_num: ${mem_num},
+                mus_num: ${contentsVO.mus_num}'
+            },
+            success: function () {
+		        
+            },
+		})
+	})
+
+
+
 </script>
 <!-- 메뉴바 밑에 콘텐츠 썸네일 -->
     <div class="thumbnail"></div>
@@ -116,7 +136,9 @@ $(document).ready(function () {
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
-                	<input type="button" id="zzim" value="찜" onclick="">
+                <form:form commandName="PickVO" action="pick.do">
+                	<input type="submit" id="zzim" value="찜">
+                </form:form>
                 <!-- 찜 끝 -->
 
             </div>

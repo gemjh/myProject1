@@ -5,7 +5,7 @@ package kr.spring.musinfo.vo;
 public class PickVO {
 	private int pick_num;
 	private int mem_num;
-	private int rev_num;
+	private int mus_num;
 	
 
 	public int getPick_num() {
@@ -20,19 +20,15 @@ public class PickVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public int getRev_num() {
-		return rev_num;
+	public int getMus_num() {
+		return mus_num;
 	}
-	public void setRev_num(int rev_num) {
-		this.rev_num = rev_num;
+	public void setMus_num(int mus_num) {
+		this.mus_num = mus_num;
 	}
-
-	
-	
 	@Override
 	public String toString() {
-		return "PickVO [pick_num=" + pick_num + ", mem_num=" + mem_num + ", rev_num=" + rev_num + ", pick_check=" + "]";
+		return "PickVO [pick_num=" + pick_num + ", mem_num=" + mem_num + ", mus_num=" + mus_num + "]";
 	}
-	
-	
+		
 }

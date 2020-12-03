@@ -90,7 +90,7 @@ function deleteBox (x) {
 			</select>
 			<li>
 			<li>
-			<label for="mus_age">뮤지컬 등급</label>
+			<label for="mus_age">등급</label>
 			<select name="mus_age" id="mus_age">
 				<option value="7">7</option>
 				<option value="12">12</option>
@@ -126,7 +126,7 @@ function deleteBox (x) {
 				<br>
 			</li>
 			<li>
-				<label for="mus_video">스트리밍 비디오 링크</label>
+				<label for="mus_video">스트리밍 링크</label>
 				<form:textarea path="mus_video" cols="50"/>
 				<form:errors path="mus_video" cssClass="error-color"/>
 				<br>

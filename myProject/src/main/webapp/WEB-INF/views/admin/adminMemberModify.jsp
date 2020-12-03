@@ -79,7 +79,7 @@
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="confirm_password">변경할 비밀번호 확인</label>
+				<label for="confirm_password">변경 비밀번호 확인</label>
 				<input type="password" id="confirm_password">
 				<span id="message_email" class="error-color"></span>
 			</li>

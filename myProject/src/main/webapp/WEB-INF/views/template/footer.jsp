@@ -50,7 +50,6 @@
 							<p class="simplenav">
 								<a href="#">Home</a> | 
 								<a href="about.html">About</a> |
-								<a href="sidebar-right.html">Sidebar</a> |
 								<a href="contact.html">Contact</a> |
 								<b><a href="signup.html">Sign up</a></b>
 							</p>
@@ -60,7 +59,7 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="text-right">
-								Copyright &copy; 2014, Your name. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
+								Copyright &copy; 2020 
 							</p>
 						</div>
 					</div>

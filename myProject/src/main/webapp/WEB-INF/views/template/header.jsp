@@ -8,7 +8,7 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a href="${pageContext.request.contextPath}/main/musMain.do"><img src="${pageContext.request.contextPath}/resources/css/admin/mucha.png" alt="mucha">
+				<a href="${pageContext.request.contextPath}/main/musMain.do"><img src="${pageContext.request.contextPath}/resources/css/admin/MUCHA.png" alt="mucha">
 		</a>
 			</div>
 			<div class="navbar-collapse collapse">

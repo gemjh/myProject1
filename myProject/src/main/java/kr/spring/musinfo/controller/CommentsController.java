@@ -43,6 +43,7 @@ public class CommentsController {
 		CommentsVO commentsVO = new CommentsVO();
 		commentsVO.setMus_num(mus_num);
 		model.addAttribute("commentsVO", commentsVO);
+		model.addAttribute("pageCheck", "reviewpage");
 		
 		return "reviewWrite";
 	}

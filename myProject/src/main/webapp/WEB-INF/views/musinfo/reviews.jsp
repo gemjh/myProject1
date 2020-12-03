@@ -6,12 +6,14 @@
 span{
 	overflow:auto;
 }
+
 </style>
+ --%>
 <link href="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/jquery.raty.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/labs.js" type="text/javascript"></script>
- --%>
+
 <div class="page-main-style">
 	<h2>리뷰 보기</h2>
 	<c:if test="${count==0 }">

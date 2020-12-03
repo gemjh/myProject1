@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainLayout.css">
 <style>
 * {
     box-sizing: border-box;
@@ -207,18 +206,13 @@ $(document).ready(function () {
 				<div class="contents_contents_comment-container">
 					<div class="comment-nemo">
 						<div class="comment_user">
+						<c:forEach var="list" items="${list }">
 						<ul class="new">
-							<li class="comment_user-img">image</li>
-							<li class="star">★★★★★</li>
-							<li class="comment">재밌습니다 재밌어 죽겠네요 재미오져부러요 완전재미쩔어요</li>
-							<li class="user_name">by userId</li>
+<!-- 							<li class="star">★★★★★</li>
+ -->							<li class="comment">${list.review }</li>
+							<li class="user_name">by ${lsit.nickname }</li>
 						</ul>
-						<ul class="new">
-							<li class="comment_user-img">image</li>
-							<li class="star">★★★★★</li>
-							<li class="comment">재밌습니다 재밌어 죽겠네요 재미오져부러요 완전재미쩔어요</li>
-							<li class="user_name">by userId</li>
-						</ul>
+						</c:forEach>
 						</div>
 					</div>
 				</div>

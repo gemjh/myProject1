@@ -1,5 +1,9 @@
 package kr.spring.musinfo.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -15,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.musinfo.service.ContentsService;
 import kr.spring.musinfo.vo.ContentsVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class ContentsController {
@@ -34,7 +39,7 @@ public class ContentsController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 상세>>:"+mus_num);
 		}
-	
+		
 	//뮤지컬번호에서 정보 가져오기
 	ContentsVO VO = contentsService.selectContents(mus_num);
 	System.out.println("//ContentsVO : " + VO);

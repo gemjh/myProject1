@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/musinfo/style.css">
 <link href="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/jquery.raty.js"></script>
@@ -21,9 +18,6 @@ h1{
 	text-align:center;
 }
 </style>
-<title>한줄평 쓰기</title>
-</head>
-<body>
 <%-- <c:if test="${!empty user&& user.mem_num==commentsVO.mem_num}">	<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치하면 수정으로 리다이렉트 -->
 <%=	response.sendRedirect("reviewModify.do")
 %>
@@ -33,7 +27,7 @@ h1{
 	<form:hidden path="mus_num"/>
 	<input type="hidden" name="rev_rate" id="rev_rate" value=""/>
 	<label for=review></label>
-		<div id="half" class="half"></div>
+		<div id="half"></div>
 		<form:textarea path="review"/>
 		<form:errors path="review" cssClass="error-color"/>
 
@@ -43,30 +37,31 @@ h1{
 			       onclick="location.href='main/musMain.do'">
 		</div>
 	</form:form>
-</body>
  <script>
-  $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
+ $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
+ $(function() {
+ //현재 사용중인 별점주기 코드
+   $('#half').raty({
+   	half: true, 
+   	click: function(score, evt) {
+   	    alert(score+"점이었군요!");
+   	    $('#rev_rate').val(score);
+   	  },
+   	  score: function() {
+   		    return $(this).attr('data-score');
+   		  },  
+
+   	});
+
+  	//별점 데이터 넘겨주기
+    function getInputValue(){
+		var rev_rate=$('#rev_rate').val();
+	}  
+/*   $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
+
   $(function() {
     $('#default').raty();
-    
-  //현재 사용중인 별점주기 코드
-    $('#half').raty({
-    	half: true, 
-    	click: function(score, evt) {
-    	    alert(score+"점이었군요!");
-    	    $('#rev_rate').val(score);
-    	  },
-    	  score: function() {
-    		    return $(this).attr('data-score');
-    		  },  
 
-    	});
-
-   	//별점 데이터 넘겨주기
-     function getInputValue(){
- 		var rev_rate=$('#rev_rate').val();
- 	}  
-    /* 
 $('#score').raty({ score: 3 });
 
 $('#score-callback').raty({
@@ -113,10 +108,18 @@ $('#halfShow-false').raty({
 $('#round').raty({
   round : { down: .26, full: .6, up: .76 },
   score : 3.26
-}); */
+});
+
+$('#half').raty({
+	half: true, 
+	click: function(score, evt) {
+	    alert(score+"점이었군요!");
+	  },
+	  
+
+	});
 
 
-/* 
 $('#starHalf').raty({
   half     : true,
   path     : null,
@@ -244,8 +247,7 @@ $('#mouseout').raty({
   mouseout: function(score, evt) {
     alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
   }
-}); */
-
+});
+ */
   });
 </script>
-</html>

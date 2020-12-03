@@ -115,8 +115,8 @@ public class CommentsController {
 		}
 	//리뷰 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
-	public String form(@RequestParam int rev_num, Model model) {
-		CommentsVO commentsVO=commentsService.selectComments(rev_num);
+	public String form(@RequestParam int rev_num,int mus_num, Model model) {
+		CommentsVO commentsVO=commentsService.selectComments(rev_num,mus_num);
 		model.addAttribute("commentsVO",commentsVO);
 		return "reviewModify";
 	}

@@ -10,7 +10,7 @@
 						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
 							<p>+234 23 9873237<br>
-								<a href="mailto:#">some.email@somewhere.com</a><br>
+								<a href="mailto:#">muchacheckin@gmail.com</a><br>
 								<br>
 								234 Hidden Pond Road, Ashland City, TN 37015
 							</p>	
@@ -48,10 +48,10 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="#">Home</a> | 
+								<a href="${pageContext.request.contextPath}/main/musMain.do">Home</a> | 
 								<a href="about.html">About</a> |
 								<a href="contact.html">Contact</a> |
-								<b><a href="signup.html">Sign up</a></b>
+								<b><a href="${pageContext.request.contextPath}/member/login.do">Sign up</a></b>
 							</p>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="text-right">
-								Copyright &copy; 2020 
+								Copyright &copy; JO2 MUCHA
 							</p>
 						</div>
 					</div>

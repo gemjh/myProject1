@@ -49,7 +49,7 @@ public interface AdminMusicalMapper {
 	public void saveReview(Integer rev_num);
 
 	// 뮤지컬 리뷰 숨기기
-	@Update("UPDATE reviews r SET review ='관리자에 의해 가려졌습니다.' WHERE r.rev_num=#{rev_num}")
+	@Update("UPDATE reviews r SET review ='관리자에 의해 리뷰가 가려졌습니다.' WHERE r.rev_num=#{rev_num}")
 	public void hideReview(Integer rev_num);
 
 	//리뷰 되돌리기

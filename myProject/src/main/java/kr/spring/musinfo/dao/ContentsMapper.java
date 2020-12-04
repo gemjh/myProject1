@@ -16,5 +16,8 @@ public interface ContentsMapper {
 	public List<String> actorList(Map<String,Object> map);
 	@Select("select review, nickname from (select * from reviews r, member_detail m where r.mem_num=m.mem_num and mus_num=#{mus_num} order by rev_regdate desc)where rownum<=2")
 	public List<ContentsVO> selectNewest(int mus_num);
-
+	@Select("select avg(rev_rate) from reviews where mus_num=#{mus_num}")
+	public double selectAvg(int mus_num);
+	@Select("select count(rev_rate) from reviews where mus_num=#{mus_num}")
+	public int selectNum(int mus_num);
 }

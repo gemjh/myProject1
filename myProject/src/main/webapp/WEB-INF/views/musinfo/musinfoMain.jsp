@@ -203,11 +203,11 @@ $(function(){
                         <div>
                             <span class="contents_contents_title">별점 그래프</span>
                             <div>
-                                <span class="star_average">평균 ★(별 개수의 합/전체 리뷰어 수???)</span>
+                                <span class="star_average">평균 ★${avg}개</span>
                                 <c:set var="starArray" value=">"></c:set>
                                 
                                 
-                                <span class="star_people">(명)</span>
+                                <span class="star_people">(${num }명)</span>
                             </div>
                         </div>
                         <div class="contents_contents_star-box">

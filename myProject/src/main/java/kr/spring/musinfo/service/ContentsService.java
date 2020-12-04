@@ -12,5 +12,6 @@ public interface ContentsService {
 	public ContentsVO selectContents(int mus_num);
 	public List<String> actorList(Map<String,Object> map);
 	public List<ContentsVO> selectNewest(int mus_num);
-
+	public double selectAvg(int mus_num);
+	public int selectNum(int mus_num);
 }

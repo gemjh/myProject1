@@ -16,7 +16,7 @@
     <!-- 메인 검색 페이지 -->
     <definition name="mainList" extends="main">
         <put-attribute name="title" value="뮤지컬 메인 검색" />
-    	<put-attribute name="mainBody" value="/WEB-INF/views/main/musMainList.jsp"/>  
+    	<put-attribute name="body" value="/WEB-INF/views/main/musMainList.jsp"/>  
     </definition>
 </tiles-definitions>
 

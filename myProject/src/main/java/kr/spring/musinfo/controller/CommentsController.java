@@ -115,8 +115,8 @@ public class CommentsController {
 		}
 	//리뷰 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
-	public String form(@RequestParam int rev_num,@RequestParam int mus_num, Model model) {
-		CommentsVO commentsVO=commentsService.selectComments(rev_num,mus_num);
+	public String form(@RequestParam int rev_num,Model model) {
+		CommentsVO commentsVO=commentsService.selectComments(rev_num);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<CommentsVO>> : " + commentsVO);
@@ -127,7 +127,7 @@ public class CommentsController {
 	}
 	//리뷰 수정 처리
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
-	public String submitUpdate(@ModelAttribute("commentsVO") @Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
+	public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
 		if(log.isDebugEnabled()) {
 			log.debug("<<리뷰 수정>>"+commentsVO);
 		}

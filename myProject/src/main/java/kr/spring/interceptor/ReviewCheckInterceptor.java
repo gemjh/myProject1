@@ -26,7 +26,7 @@ public class ReviewCheckInterceptor extends HandlerInterceptorAdapter{
 		//작성자의 회원번호 구하기
 		int rev_num=Integer.parseInt(request.getParameter("rev_num"));
 		int mus_num=Integer.parseInt(request.getParameter("mus_num"));
-		CommentsVO commentsVO=commentsService.selectComments(rev_num,mus_num);
+		CommentsVO commentsVO=commentsService.selectComments(rev_num);
 		
 		HttpSession session=request.getSession();
 		MemberVO member=(MemberVO)session.getAttribute("member");

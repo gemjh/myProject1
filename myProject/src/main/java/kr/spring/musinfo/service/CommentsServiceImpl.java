@@ -22,9 +22,9 @@ public class CommentsServiceImpl implements CommentsService{
 			}
 			
 			@Override
-			public CommentsVO selectComments(int mus_num, int rev_num) {
+			public CommentsVO selectComments(int rev_num) {
 				// TODO Auto-generated method stub
-				return commentsMapper.selectComments(mus_num, rev_num);
+				return commentsMapper.selectComments(rev_num);
 			}
 
 			@Override

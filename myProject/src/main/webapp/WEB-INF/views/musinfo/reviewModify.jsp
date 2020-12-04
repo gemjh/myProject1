@@ -21,7 +21,7 @@
 			</li>
 			
 		</ul>
-			<input type="submit" value="전송">
+			<input type="submit" value="수정">
 			<input type="button" value="뒤로가기" onclick="history.go(-1)">
 			
 	</form:form>	

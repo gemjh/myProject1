@@ -16,8 +16,7 @@ import kr.spring.musinfo.vo.CommentsVO;
 public interface CommentsMapper {
 	@Insert("insert into reviews(rev_num,mem_num,mus_num,rev_rate,review,rev_regdate) values(rev_seq.nextval,#{mem_num},#{mus_num},#{rev_rate},#{review},sysdate)")
 	public void insertComments(CommentsVO commentsVO);
-	@Select("SELECT * FROM(SELECT a.*,rownum rnum FROM (SELECT * FROM reviews r JOIN member_detail m ON r.mem_num=m.mem_num ORDER BY r.rev_num DESC)a) WHERE mus_num=#{mus_num} and rev_num=#{rev_num}")
-	public CommentsVO selectComments(@Param("mus_num")int mus_num, @Param("rev_num")int rev_num);
+	public CommentsVO selectComments(int rev_num);
 	@Update("update (select * from reviews r, member_detail m where r.mem_num=m.mem_num)   set mem_num=#{mem_num},mus_num=#{mus_num},rev_rate=#{rev_rate},review=#{review},rev_regdate=sysdate where rev_num=#{rev_num}")
 	public void updateComments(CommentsVO commentsVO);
 	@Delete("delete from reviews where rev_num=#{rev_num}")

@@ -40,10 +40,4 @@ public class ContentsServiceImpl implements ContentsService{
 		return contentsMapper.selectNewest(mus_num);
 	}
 
-
-
-
-
-
-
 }

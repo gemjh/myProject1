@@ -98,7 +98,12 @@
 			return false;
 		}
 	}
-</script> 
+</script>
+<style>
+form{
+	width:95%;
+}
+</style>
 <div class="page-main-style">
 	<h2>회원 가입</h2>
 	<form:form id="register_form" action="join.do" commandName="memberVO">
@@ -141,62 +146,62 @@
 		</ul>
 		 
 		 <div class="perfer_chk" id="prefer_chk">
-		 <p>보고싶은 공연을 골라보세요. 메인에서 장르 맞춰서 추천하기위해서 여기서 받음.</p>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 <p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장</p>
+		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Cats.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/thosedays.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/dodo.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fuerza.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/gloomyday.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/lapungel.GIF" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">
-		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Gentleman's_guide.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/infinityFlying.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The Phantom Of The Opera.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/redhat.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/circus.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jesus_Christ_Super_Star.jpg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fanletter.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The Lion King.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Sweeney_Todd.jpg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/sunemoone.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jekyll and Hyde.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/annie.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/6oclock.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
 		 	<br><br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/chef.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/shadow.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Notre Dame de Paris.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The_Man_of_La_Mancha.jpeg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/alcandy.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+			<br><br><br>		 	
 		 </div>
 
 		<div class="align-center">

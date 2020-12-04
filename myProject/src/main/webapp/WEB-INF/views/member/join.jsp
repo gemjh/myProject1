@@ -15,17 +15,7 @@
 				return;
 			}
 			
-			/* 1.객체생성(문자열로 명시), 
-			   2.정규표현식 사용
-			*/
-			
-			//===============================
-			
-			//정규표현식 -> id형태에서 이메일 형식으로 바꾸기!!!! 아직 작업 X
-			
-			//================================//
-			/* var regMsg = new RegExp('^[A-Za-z0-9+]{4,10}$'); */
-		 	/* var regMsg = /^[A-Za-z0-9+]{4,10}$/; */
+			//이메일 형식 체크
 		 	var regMsg =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			if(!regMsg.test($('#email').val())){
 				$('#message_email').css('color','red').text('이메일 형식을 맞춰 입력해주세요');
@@ -79,12 +69,19 @@
 				$('#email').focus();
 				return false;
 			}
-			
+			//비밀번호 | 비밀번호 확인 비교
+			if($('#password').val()!=$('#confirm_password').val()){
+				alert('비밀번호와 비밀번호 확인이 불일치합니다');
+				return false;
+			}
+			if($('#password').length() < 5 | $('#password').length() > 10){
+				alert('비밀번호는 4자 이상, 10자이하로 입력해주세요.');
+				return false;
+			}
 		});
 	});
-	
 	//체크박스 최대 2개 선택
-	function count_chkbox(){
+	/* function count_chkbox(){
 		num = document.getElementsByName("chk");
 		chk_count = 0;
 		chk_max = 2;
@@ -97,7 +94,7 @@
 			alert(chk_max + "개만 선택 가능합니다");
 			return false;
 		}
-	}
+	} */
 </script>
 <style>
 form{
@@ -128,11 +125,10 @@ form{
 				<form:password path="password"/>
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
-<%-- 			<li>
-				<label for="password_chk">비밀번호 확인</label>
-				<form:input path="password_chk"/>
-				<form:errors path="password_chk" cssClass="error-color"/>
-			</li> --%>
+ 			<li>
+				<label for="confirm_password">비밀번호 확인</label>
+				<input type="password" id="confirm_password">
+			</li> 
 			<li>
 				<label for="birth">생년월일</label>
 				<input type="date" name="birth" id="birth">

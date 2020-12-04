@@ -61,23 +61,59 @@ $(document).ready(function () {
           });
        }
     } );
- });
- 
-$(function(){
-	// 찜 버튼 클릭시(찜하기 또는 찜 취소하기)
-	$("#zzim").click(function(){
+    
+ // 찜 버튼 클릭시(찜하기 또는 찜 취소하기)
+    $("#like_img").click(function(event){    	
+    	var music_num = ${contentsVO.mus_num};
 		$.ajax({
-			url: "/musinfo/pick.do",
-            type: "POST",
-            data: {
-                mem_num: ${mem_num},
-                mus_num: ${contentsVO.mus_num}'
+			url: 'pick.do',
+            type: 'post',
+            dataType: 'json',
+            data: {mus_num:music_num},
+            cache:false,//캐쉬를 사용하지 않음
+			timeout:30000,
+            success: function (data) {
+		        if(data.result == 'success'){
+		        	getFav();
+		        }else if(data.result == 'logout'){
+		        	alert('로그인 해야 찜할 수 있습니다.');
+		        }
             },
-            success: function () {
-		        
+            error:function(){
+            	alert('네트워크 오류');
+            }
+		});
+		event.preventDefault();
+    });
+    
+ 	function getFav(){
+ 		var music_num = ${contentsVO.mus_num};
+ 		$.ajax({
+			url: 'getFav.do',
+            type: 'post',
+            dataType: 'json',
+            data: {mus_num:music_num},
+            cache:false,//캐쉬를 사용하지 않음
+			timeout:30000,
+            success: function (data) {
+            	 if(data.result == 'success'){
+            		 if(data.count == 0){
+            			 $("#like_img").find('img').attr('src','/Mucha/resources/images/like_no.png');
+     		        }else if(data.count > 0){
+     		        	$("#like_img").find('img').attr('src','/Mucha/resources/images/like_yes.png');
+     		        }
+ 		        }else if(data.result == 'logout'){
+ 		        	$("#like_img").find('img').attr('src','/Mucha/resources/images/like_no.png');
+ 		        }
+		       
             },
-		})
-	})
+            error:function(){
+            	alert('네트워크 오류');
+            }
+		});
+ 	}
+ 	getFav();
+ });
 
 
 
@@ -118,11 +154,9 @@ $(function(){
             <!-- 두번째 줄 년도, 장르, 나라 끝 -->
 
             <!-- 세번째 줄 평점 -->
-      
             <div class="content_info">
-                <span class="content_star">평점: ${avg}(${num}명) </span>
+                <span class="content_star">평점: ${avg }(${num}명) </span>
             </div>
-        
             <!-- 세번째 줄 평점 끝 -->
 
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
@@ -137,9 +171,7 @@ $(function(){
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
-                <form:form commandName="PickVO" action="pick.do">
-                	<input type="submit" id="zzim" value="찜">
-                </form:form>
+                <a href="#" id="like_img"><img src="/Mucha/resources/images/like_no.png" width="30px"></a>
                 <!-- 찜 끝 -->
 
             </div>

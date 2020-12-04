@@ -46,6 +46,15 @@ public class ContentsController {
 	//뮤지컬번호에서 정보 가져오기
 	ContentsVO VO = contentsService.selectContents(mus_num);
 	System.out.println("//ContentsVO : " + VO);
+	//평점
+	String avg =String.format("%.1f",contentsService.selectAvg(mus_num));
+	
+	System.out.println("//avg : " + avg);
+	model.addAttribute("avg",avg);
+	//전체 리뷰어 수
+	int num=contentsService.selectNum(mus_num);
+	System.out.println("//num : " + num);
+	model.addAttribute("num",num);
 	//최근리뷰 2개
 		List<ContentsVO> newest=contentsService.selectNewest(mus_num);
 		model.addAttribute("newest",newest);
@@ -55,7 +64,7 @@ public class ContentsController {
 
 	
 	//출연자 이름
-	@RequestMapping(value = "/musinfo/musinfoMain.do",method=RequestMethod.POST)
+	@RequestMapping(value = "/musinfo/musinfoDetail.do",method=RequestMethod.POST)
 	public String modifySubmit(@Valid ContentsVO contentsVO, BindingResult result, HttpServletRequest request) {
 		String[] actors = request.getParameterValues("mus_actor");
 		String mus_actor = "";

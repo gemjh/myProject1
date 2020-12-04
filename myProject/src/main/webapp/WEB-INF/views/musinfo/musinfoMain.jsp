@@ -119,7 +119,7 @@ $(function(){
 
             <!-- 세번째 줄 평점 -->
             <div class="content_info">
-                <span class="content_star">평점 </span>
+                <span class="content_star">평점: ${avg }(${num}명) </span>
             </div>
             <!-- 세번째 줄 평점 끝 -->
 
@@ -131,8 +131,7 @@ $(function(){
 
                 <!-- 별점 평가하기 -->
                 	<input type="button" id="review" value="평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
-<%--                 	<a href="write.do?mus_num="${commentsVO.mus_num}>
-                    <span class="js-leaveStar">★평가하기</span></a> --%>
+
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
@@ -198,12 +197,12 @@ $(function(){
                     </div>
                     세번째(하이라이트) 끝 -->
 
-                    <!-- 세번째(별점 그래프) 시작 -->
+<%--                     <!-- 세번째(별점 그래프) 시작 -->
                     <div class="contents_contents_column">
                         <div>
                             <span class="contents_contents_title">별점 그래프</span>
                             <div>
-                                <span class="star_average">평균 ★(별 개수의 합/전체 리뷰어 수???)</span>
+                                <span class="star_average">평균 ★${avg}</span>
                                 <c:set var="starArray" value=">"></c:set>
                                 
                                 
@@ -214,7 +213,7 @@ $(function(){
                             <img src="img/star_graph.png" alt="별점 그래프" class="star-graph">
                         </div>
                     </div>
-                    <!-- 세번째(별점 그래프) 끝 -->
+                    <!-- 세번째(별점 그래프) 끝 --> --%>
                     
                     <!-- 네번째(코멘트) 시작 -->
 			<div class="contents_contents_column">

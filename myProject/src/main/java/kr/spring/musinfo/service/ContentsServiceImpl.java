@@ -40,4 +40,20 @@ public class ContentsServiceImpl implements ContentsService{
 		return contentsMapper.selectNewest(mus_num);
 	}
 
+
+
+	@Override
+	public double selectAvg(int mus_num) {
+		// TODO Auto-generated method stub
+		return contentsMapper.selectAvg(mus_num);
+	}
+
+
+
+	@Override
+	public int selectNum(int mus_num) {
+		// TODO Auto-generated method stub
+		return contentsMapper.selectNum(mus_num);
+	}
+
 }

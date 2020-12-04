@@ -1,46 +1,24 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<%@ include file="../mheader.jsp"%>
-<%@ include file="../menu.jsp"%><br>
-<body>
- 
-<table border="1" width="300" height="300" align= "center">
-<center>
-<span style="color: green; font-weight: bold;">변경할 비밀번호를 입력해주세요.</span> <br> <br>    
-        <br> <br>
-        
-        
-        <div style="text-align:center;">
-            <tr>        
-                <td>
-                <center>
-                    <form action="pass_change.do${e_mail}" method="post">
-                    
-                    <center>
-                        <br>
-                        <div>
-                            변경할 비밀번호 입력 : <input type = "number" name = "member_pass"
-                                                  placeholder = "비밀번호를 입력하세요." >
-                        </div>                                        
- 
-                        <br> <br>
-                        <button type="submit" name="submit">비밀번호 변경</button>
- 
-                        </div>
-                    </td>
-                </tr>
-                    </center>
-            </table>
-        </form>
-</center>
- 
- 
-</body>
-</html>
- --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<div class="page-main-style">
+	<h2>비밀번호 찾기</h2>
+	<form:form id="findPassword" action="findPassword.do" commandName="memberVO">
+	<form:errors element="div" cssClass="error-color"/>
+		<ul>
+			<li>
+				<label for="email">이메일</label>
+				<form:input path="email"/>
+				<br>
+				<span id="message_email"></span>
+				<form:errors path="email" cssClass="error-color"/>
+			</li>
+		</ul>
+		<div class="align-center">
+			<input type="submit" value="전송">
+			<input type="button" value="홈으로"
+			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
+		</div>
+	</form:form>
+</div>

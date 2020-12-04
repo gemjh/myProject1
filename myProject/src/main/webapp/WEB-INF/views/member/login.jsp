@@ -27,7 +27,7 @@
 		   	<input type="button" value="이메일 찾기"
 				onclick="location.href='${pageContext.request.contextPath}/member/findEmail.do">
 			<input type="button" value="비밀번호 찾기"
-				onclick="location.href='${pageContext.request.contextPath}/member/findPassword.do">		
+				onclick="location.href='${pageContext.request.contextPath}/member/findPassword.do'"> 
 			   
 		</div>
 	</form:form>

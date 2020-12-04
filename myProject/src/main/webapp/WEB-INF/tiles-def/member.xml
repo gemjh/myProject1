@@ -75,6 +75,15 @@
     	<put-attribute name="title" value="회원탈퇴 완료"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/deleteMemberCom.jsp"/>       
     </definition>
+    <!-- 임시비밀번호설정및전송 -->
+    <definition name="findPassword" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPassword.jsp"/>       
+    </definition>
+    <definition name="findPasswordCom" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPasswordCom.jsp"/>       
+    </definition>
 </tiles-definitions>
 
 

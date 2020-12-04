@@ -189,6 +189,18 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.5</version>
 		</dependency>
+		<!-- 이메일 발송  -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.3.22.RELEASE</version>
+		</dependency>
+		<!--  이메일 발송  -->
 		<!-- 라이브러리 추가 -->
 		
 		<!-- Test -->

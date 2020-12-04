@@ -69,4 +69,27 @@
 		<property name="basePackage" value="kr.spring.musinfo.dao,kr.spring.admin.dao,kr.spring.member.dao, kr.spring.main.dao"/>
 	</bean>
 	
+	<!-- 이메일 발송 설정  -->
+	<bean id="mailSender"
+      class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="defaultEncoding" value="utf-8"/>
+		<!-- 발신자 Gmail : username / password -->
+	        <!-- Gmail 아이디 -->
+		<property name="username" value="muchacheckin@gmail.com"/>
+		<!-- Gmail 패스워드 -->
+		<property name="password" value="2whabci!"/>
+	        <property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="email" class="kr.spring.member.email.Email"/>
+	<bean id="emailSender" class="kr.spring.member.email.EmailSender"/>
 </beans>

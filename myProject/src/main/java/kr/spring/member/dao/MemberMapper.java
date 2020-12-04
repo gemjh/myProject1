@@ -19,7 +19,7 @@ public interface MemberMapper {
 	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone,prefer) VALUES (#{mem_num},#{nickname},#{password},#{birth},#{phone},#{prefer})")
 	public void joinMember_detail(MemberVO member);
 	@Select("SELECT m.mem_num,m.email,m.auth,d.password,d.mem_imagename,d.nickname,d.mem_regdate,d.purchase_date,d.expire_date FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.email=#{email}")
-	public MemberVO selectCheckMember(String id);//누락된id(탈퇴한 회원의 id)는 검색필요 X -> JOIN
+	public MemberVO selectCheckMember(String email);//누락된id(탈퇴한 회원의 id)는 검색필요 X -> JOIN
 	
 	//회원정보 변경
 	@Update("UPDATE member_detail SET nickname=#{nickname},phone=#{phone},mem_modifydate=SYSDATE WHERE mem_num=#{mem_num}")
@@ -53,6 +53,10 @@ public interface MemberMapper {
 	public void updateTicket(MemberVO member);
 	@Update("UPDATE member SET auth=1 WHERE mem_num=#{mem_num}")
 	public void updateTicketAuth(MemberVO member);
+	
+	//비밀번호 찾기
+	@Update(" UPDATE ( SELECT * FROM member m JOIN member_detail d ON m.mem_num = d.mem_num) SET password = #{password} WHERE email = #{email} ")
+	public void updateRandomPassword(MemberVO member);
 }
 
 

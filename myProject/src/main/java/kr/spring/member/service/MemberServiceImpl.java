@@ -66,6 +66,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void updatePrefer(MemberVO member) {
 		memberMapper.updatePrefer(member);
+	}
+
+	@Override
+	public void updateRandomPassword(MemberVO member) {
+		memberMapper.updatePassword(member);
 	};
 	
 	

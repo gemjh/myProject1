@@ -25,7 +25,7 @@ span{
 			src="https://www.youtube.com/embed/XB8YTYHnWHQ"></iframe>
 	</div>
 	<c:if test="${count!=0 }">
-		평균 평점 : 
+		평균 평점 : <div id="average"></div>
 		<table>
 			<tr>
 				<th>닉네임</th>
@@ -40,7 +40,7 @@ span{
 						<td>${list.rev_rate}</td>
 						<td>${list.review}<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
 							<input type="button" value="수정"
-							onclick="location.href='modify.do?rev_num=${list.rev_num}'">
+							onclick="location.href='modify.do?mus_num=${list.mus_num }&rev_num=${list.rev_num}'">
 							<input type="button" value="삭제" id="delete_btn"
 							onclick="location.href='delete.do?rev_num=${list.rev_num}'">
 						</td>
@@ -57,6 +57,21 @@ span{
 		</table>
 	</c:if>
 </div>
+<!-- <script type="text/javascript">
+var num=new Array(???);
+function sum(array){
+	var result=0.0;
+	for(var i=0;i<array.length;i++)
+		result+=average[i];
+		return result;
+}
+function average(array){
+	var sum=0.0;
+	for(var i=0;i<array.length;i++)
+		sum+=array[i];
+	return sum/array.length;
+} 
+</script> -->
 <!-- 
  <script>
   $.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';

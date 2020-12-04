@@ -115,14 +115,19 @@ public class CommentsController {
 		}
 	//리뷰 수정 폼 호출
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
-	public String form(@RequestParam int rev_num,int mus_num, Model model) {
+	public String form(@RequestParam int rev_num,@RequestParam int mus_num, Model model) {
 		CommentsVO commentsVO=commentsService.selectComments(rev_num,mus_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<CommentsVO>> : " + commentsVO);
+		}
+		
 		model.addAttribute("commentsVO",commentsVO);
 		return "reviewModify";
 	}
 	//리뷰 수정 처리
 	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
-	public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
+	public String submitUpdate(@ModelAttribute("commentsVO") @Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
 		if(log.isDebugEnabled()) {
 			log.debug("<<리뷰 수정>>"+commentsVO);
 		}
@@ -149,7 +154,7 @@ public class CommentsController {
 	public String submitDelete(@RequestParam int rev_num,Model model, HttpServletRequest request) {
 		commentsService.deleteComments(rev_num);
 		model.addAttribute("message","삭제되었습니다.");
-		model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoMain.do");
+		model.addAttribute("url",request.getContextPath()+"/main/musMain.do");
 		return "musinfo/result";
 
 	}

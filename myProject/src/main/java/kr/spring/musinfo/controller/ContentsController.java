@@ -49,8 +49,6 @@ public class ContentsController {
 	//최근리뷰 2개
 		List<ContentsVO> newest=contentsService.selectNewest(mus_num);
 		model.addAttribute("newest",newest);
-/*		List<ContentsVO> ids=contentsService.selectIds(mus_num);
-		model.addAttribute("ids",ids);*/
 	return new ModelAndView("musinfoMain","contentsVO",VO);
 
 	}

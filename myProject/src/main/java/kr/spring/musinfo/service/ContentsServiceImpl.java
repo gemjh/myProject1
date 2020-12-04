@@ -42,11 +42,6 @@ public class ContentsServiceImpl implements ContentsService{
 
 
 
-/*	@Override
-	public List<ContentsVO> selectIds(int mus_num) {
-		// TODO Auto-generated method stub
-		return contentsMapper.selectIds(mus_num);
-	}*/
 
 
 

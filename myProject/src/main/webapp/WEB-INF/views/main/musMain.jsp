@@ -51,64 +51,65 @@
 	<div class="align-center">등록된 뮤지컬이 없습니다.</div>
 </c:if>
 <c:if test="${count > 0}">
-	<div>새로 올라온 작품</div>
-	<section>
+<div class="contents">
+	<div class="contents_title">새로 올라온 작품</div>
+	<div class="type1-contents_contents">	
+	<c:forEach var="musMain" items="${latestList}">
+		<div class="type1-content-box">			
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+				</a>
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<span class="type1-content_title">${musMain.mus_name}</span>
+				</a>
+			</div>
+		</c:forEach>
+	</div>
 	
-	<div>
-		<c:forEach var="musMain" items="${latestList}">
-			<div>
+	<div class="contents_title">뮤챠 최고 인기작</div>
+	<div class="type1-contents_contents">	
+	<c:forEach var="musMain" items="${popularList}">
+		<div class="type1-content-box">			
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}"
-					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>
+					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+				</a>
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<span class="type1-content_title">${musMain.mus_name}</span>
 				</a>
 			</div>
 		</c:forEach>
 	</div>
-	</section>
 	
-	<div >뮤챠 최고 인기작</div>
-	<section>
-	<div>
-		<c:forEach var="musMain" items="${popularList}">
-			<div>
+	<div class="contents_title">__님이 선호하는 장르의 작품</div>
+	<div class="type1-contents_contents">	
+	<c:forEach var="musMain" items="${preferList}">
+		<div class="type1-content-box">			
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}"
-					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>
+					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+				</a>
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<span class="type1-content_title">${musMain.mus_name}</span>
 				</a>
 			</div>
 		</c:forEach>
 	</div>
-	</section>
-
-	<div>__님이 선호하는 장르</div>
-	<section>
-	<div>
-		<c:forEach var="musMain" items="${preferList}">
-			<div class="type1-content-box">
+	
+	<div class="contents_title">__님이 찜한 작품 작품</div>
+	<div class="type1-contents_contents">	
+	<c:forEach var="musMain" items="${pickList}">
+		<div class="type1-content-box">			
 				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}"
-					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>
+					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+				</a>
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<span class="type1-content_title">${musMain.mus_name}</span>
 				</a>
 			</div>
 		</c:forEach>
 	</div>
-	</section>
-
-	<div>__님이 찜한 작품</div>
-	<section>
-	<div>
-		<c:forEach var="musMain" items="${pickList}">
-			<div>
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}"
-					style="max-width: 200px;"> <span class="type1-content_title">${musMain.mus_name}</span>
-				</a>
-			</div>
-		</c:forEach>
-	</div>
-	</section>
+</div>
 </c:if>
- 
+
 
 <!-- <th>장르</th>
 <th>관람등급</th>

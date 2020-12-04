@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.main.service.MusMainService;
 import kr.spring.main.vo.MusMainVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -63,6 +64,7 @@ public class MusMainController {
 				log.debug("<<글 목록>> : " + list );
 			}
 		}	*/
+		
 		
 		// 신작순 목록 호출
 		List<MusMainVO> latestList = null;

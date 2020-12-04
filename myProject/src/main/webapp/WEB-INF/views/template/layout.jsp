@@ -25,6 +25,7 @@
 	<script src="${pageContext.request.contextPath}/resources/assets/js/respond.min.js"></script>
 	<![endif]-->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin/layout.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/swiper.css">
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/swiper.js"></script>

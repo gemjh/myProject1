@@ -321,14 +321,36 @@ public class AdminMusicalController {
 		System.out.println("//mav: " + mav);
 		return mav;
 	}
-	// 뮤지컬 리뷰 숨기기
-	@RequestMapping("/admin/reviewDelete.do")
-	public String reviewDelete() {
+	// 뮤지컬 리뷰 저장/숨기기
+	@RequestMapping("/admin/reviewHide.do")
+	public String reviewHide(@RequestParam int rev_num) {
 		System.out.println("***리뷰 숨기기 *****");
 
+		if (log.isDebugEnabled()) {
+			log.debug("<<리뷰 숨기기>> : " + rev_num);
+		}
+		
+		adminMusicalService.saveReview(rev_num);
+		adminMusicalService.hideReview(rev_num);
+		
 		return "redirect:/admin/adminMusicalReviews.do";
 	}
 
 	// 뮤지컬 리뷰 되돌리기
+	@RequestMapping("/admin/reviewReturn.do")
+	public String reviewReturn(@RequestParam int rev_num) {
+		System.out.println("***리뷰 되돌리기 *****");
+		System.out.println("//rev_num"+rev_num);
+	
+		if (log.isDebugEnabled()) {
+			log.debug("<<리뷰 되돌리기>> : " + rev_num);
+		}
+		
+		adminMusicalService.returnReview(rev_num);
+		
+		return "redirect:/admin/adminMusicalReviews.do";
+	}
+	
+	
 
 }

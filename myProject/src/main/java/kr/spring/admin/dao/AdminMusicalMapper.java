@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.admin.vo.AdminMusicalVO;
 import kr.spring.musinfo.vo.CommentsVO;
@@ -42,6 +43,17 @@ public interface AdminMusicalMapper {
 	public int selectReviewsRowCount(Map<String, Object> map);
 	//뮤지컬 리뷰 리스트
 	public List<CommentsVO> selectReviewsList(Map<String, Object> map);
-	
+
+	// 숨길 리뷰 저장
+	@Update("UPDATE reviews r SET hide_rev = review WHERE r.rev_num=#{rev_num}")
+	public void saveReview(Integer rev_num);
+
+	// 뮤지컬 리뷰 숨기기
+	@Update("UPDATE reviews r SET review ='관리자에 의해 가려졌습니다.' WHERE r.rev_num=#{rev_num}")
+	public void hideReview(Integer rev_num);
+
+	//리뷰 되돌리기
+	@Update("UPDATE reviews r SET review = hide_rev,hide_rev='' WHERE r.rev_num=#{rev_num}")
+	public void returnReview(Integer rev_num); 
 	
 }

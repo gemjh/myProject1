@@ -52,8 +52,12 @@
 					<td>${musical.review}</td>
 					<td>${musical.rev_regdate}</td>
 					<td>
-					<input type="button" value="가리기" id="rev_delete" onclick="location.href='reviewDelete.do?rev_num=${musical.rev_num}'"/>
+					<c:if test="${musical.hide_rev==null}">
+					<input type="button" value="가리기" id="rev_delete" onclick="location.href='reviewHide.do?rev_num=${musical.rev_num}'"/>
+					</c:if>
+					<c:if test="${musical.hide_rev!=null}">
 					<input type="button" value="되돌리기" id="rev_delete" onclick="location.href='reviewReturn.do?rev_num=${musical.rev_num}'"/>
+					</c:if>
 					</td>
 				</tr>
 			</c:forEach>

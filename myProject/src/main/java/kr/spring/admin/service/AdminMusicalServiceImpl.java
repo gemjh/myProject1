@@ -67,5 +67,23 @@ public class AdminMusicalServiceImpl implements AdminMusicalService{
 		return mapper.selectReviewsList(map);
 	}
 
+	@Override
+	public void saveReview(Integer rev_num) {
+		mapper.saveReview(rev_num);
+		
+	}
+
+	@Override
+	public void hideReview(Integer rev_num) {
+		mapper.hideReview(rev_num);
+		
+	}
+
+	@Override
+	public void returnReview(Integer rev_num) {
+		mapper.returnReview(rev_num);
+		
+	}
+
 }
 	

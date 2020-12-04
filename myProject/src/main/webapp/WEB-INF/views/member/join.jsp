@@ -22,7 +22,7 @@
 				$('#email').focus();
 				return;
 			}
-			 
+			
 			$('#message_email').text();//메시지초기화
 			$('#loading').show();//로딩이미지 노출	
 			
@@ -64,20 +64,59 @@
 		
 		//submit이벤트 발생시 id 중복체크 여부 확인
 		$('#register_form').submit(function(){
+			
+			
+			
 			if(checkId==0){
 				$('#message_email').css('color','red').text('이메일 중복체크 필수')
 				$('#email').focus();
 				return false;
 			}
-			//비밀번호 | 비밀번호 확인 비교
+			
+			if($('#nickname').val() == ''){
+				alert('닉네임를 입력하세요');
+				$('#nickname').focus();
+				return false;
+			}
+			
+			if($('#password').val() == ''){
+				alert('비밀번호를 입력하세요');
+				$('#password').focus();
+				return false;
+			}
+			if($('#confirm_password').val() == ''){
+				alert('비밀번호를 입력하세요');
+				$('#confirm_password').focus();
+				return false;
+			}
 			if($('#password').val()!=$('#confirm_password').val()){
-				alert('비밀번호와 비밀번호 확인이 불일치합니다');
+				alert('비밀번호와 비밀번호 확인 불일치');
 				return false;
 			}
-			if($('#password').length() < 5 | $('#password').length() > 10){
-				alert('비밀번호는 4자 이상, 10자이하로 입력해주세요.');
+				
+ 			if($('#birth').val() == ''){
+				alert('생년월일을 입력하세요');
+				$('#birth').focus();
 				return false;
 			}
+			if($('#phone').val() == ''){
+				alert('연락처를 입력하세요');
+				$('#phone').focus();
+				return false;
+			}
+				
+			
+			//전화번호형식체크
+		 	var regP =  /^\d{3}-\d{3,4}-\d{4}$/;
+			if(!regP.test($('#phone').val())){
+				$('#message_phone').css('color','red').text('연락처 형식을 맞춰 입력해주세요');
+				$('#phone').focus();
+				return false; 
+			}
+			
+			/////
+			
+			
 		});
 	});
 	//체크박스 최대 2개 선택
@@ -118,12 +157,10 @@ form{
 			<li>
 				<label for="nickname">닉네임</label>
 				<form:input path="nickname"/>
-				<form:errors path="nickname" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="password">비밀번호</label>
 				<form:password path="password"/>
-				<form:errors path="password" cssClass="error-color"/>
 			</li>
  			<li>
 				<label for="confirm_password">비밀번호 확인</label>
@@ -132,12 +169,11 @@ form{
 			<li>
 				<label for="birth">생년월일</label>
 				<input type="date" name="birth" id="birth">
-				<form:errors path="birth" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="phone">연락처</label>
 				<form:input path="phone"/>
-				<form:errors path="phone" cssClass="error-color"/>
+				<span id="message_phone"></span>
 			</li>
 		</ul>
 		 

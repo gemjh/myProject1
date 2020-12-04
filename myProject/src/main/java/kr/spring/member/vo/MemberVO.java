@@ -18,6 +18,7 @@ public class MemberVO {
 	@Size(min=4,max=10)
 	private String password;
 	private Date birth;
+	@NotEmpty
 	private String phone;
 	private Date mem_regdate;
 	private Date mem_modifydate;

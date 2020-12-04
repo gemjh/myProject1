@@ -37,7 +37,7 @@ public class MemberFindPasswordController {
 
 	@RequestMapping(value="/member/findPassword.do",method=RequestMethod.GET)
 	public String form(){
-		return "/member/findPassword";
+		return "findPassword";
 	}
 
 	@RequestMapping(value="/member/findPassword.do",method=RequestMethod.POST)

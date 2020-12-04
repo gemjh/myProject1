@@ -84,7 +84,7 @@
     	<put-attribute name="title" value="임시비밀번호 발송완료"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/findPasswordCom.jsp"/>       
     </definition>
-</tiles-definitions>
+</tiles-definitions>   
 
 
 

@@ -142,9 +142,9 @@
 .swiper-button-next {
   position: absolute;
   top: 50%;
-  width: 80px; /* 넣고싶은 버튼 이미지의 폭과 높이를 넣는다 */
-  height: 150px; /* 넣고싶은 버튼 이미지의 폭과 높이를 넣는다 */
-  margin-top: -75px; /* 버튼이 화면 중간으로 오도록 높이의 1/2값을 -(마이너스)값으로 넣는다 */
+  width: 16px; /* 넣고싶은 버튼 이미지의 폭과 높이를 넣는다 */
+  height: 30px; /* 넣고싶은 버튼 이미지의 폭과 높이를 넣는다 */
+  margin-top: -30px; /* 버튼이 화면 중간으로 오도록 높이의 1/2값을 -(마이너스)값으로 넣는다 */
   z-index: 10;
   cursor: pointer;
   display: flex;
@@ -154,10 +154,10 @@
 }
 /* 버튼 이미지를 추가 */
 .swiper-button-prev{
-	background: url(../../resources/images/btn_prev.png);
+	background: url(../../resources/images/btn_prev_30.png);
 }
 .swiper-button-next{
-	background: url(../../resources/images/btn_next.png);
+	background: url(../../resources/images/btn_next_30.png);
 }
 
 .swiper-button-prev.swiper-button-disabled,
@@ -262,8 +262,8 @@
   transform: scale(0.33);
 }
 .swiper-pagination-bullet {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   display: inline-block;
   border-radius: 100%;
   background: #000;

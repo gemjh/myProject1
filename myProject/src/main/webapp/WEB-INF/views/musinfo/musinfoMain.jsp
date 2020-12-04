@@ -4,27 +4,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
 
-
 /* 콘텐츠 정보들 */
 .content_info-box {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -25px;
-    padding-bottom: 25px;
+    padding: 25px 25px;
     border-bottom: 1px solid rgb(224, 224, 224);
 }
+/* 뮤지컬 제목 */
 .content_title{
 	font-size:25px;
 	color:white;
 }
-/* 콘텐츠 정보들 중에 왼쪽 부분 */
+/* 콘텐츠 정보들 중에 기본정보 윗부분 */
 .content_info-box .left-column {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     border: 1px solid rgb(226, 220, 220);
     border-radius: 3px;
 }
@@ -36,14 +34,14 @@
     margin-left: 22px;
 }
 
-/* 오른쪽 부분 중 첫번째 줄 */
+/* 첫번째 줄 */
 .content_info{
     font-size: 23px;
     margin-bottom: 25px;
     color: rgb(122, 122, 122);   
 }
 
-/* 오른쪽 부분 중 마지막 줄 */
+/* 마지막 줄 */
 .content_info:last-child {
     display: flex;
 }
@@ -56,19 +54,19 @@
 	margin-right:20px;
 	color:rgb(122,122,122);
 }
-/* 기본 정보 */
+/* 포스터 아래 큰 제목 */
 .contents_contents_title{
 	font-size: 23px;
 	margin: 15px auto;
 }
 
 /* 한줄평 더보기 */
-.moreReviews{
-	float:right;
+#moreReviews{
+	margin-left:-5px;
 	background-color:#27272b;
 	color:#FFF;
 	border:0;
-	outline:0
+	outline:0;
 }
 .cursor {
     cursor: pointer;
@@ -86,7 +84,7 @@
          
       }
 
-      .btn-moreInfo{display:none;white-space:nowrap;float:right;}
+      .btn-moreInfo{display:none;white-space:nowrap;}
       
       @media screen and (max-width: 533px){
          .contents_contents_column .contents_contents_summary.hidden{
@@ -96,7 +94,24 @@
 
 </style>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.watch').mouseover(function(){
+		$('.watch').css('color','#fff');
+	});
+	$('.review').mouseover(function(){
+		$('.review').css('color','#fff');
+	})
+	$('.watch').mouseleave(function(){
+		$('.watch').css('color','rgb(122,122,122)');
+	});
+	$('.review').mouseleave(function(){
+		$('.review').css('color','rgb(122,122,122)');
+	})
+})
+</script>
 <script>
+//기본정보 더보기
 $(document).ready(function () {
     var colorbox = $('.contents_contents_column .contents_contents_summary');
     colorbox.each( function() {
@@ -111,6 +126,8 @@ $(document).ready(function () {
           });
        }
     } );
+    
+
     
  // 찜 버튼 클릭시(찜하기 또는 찜 취소하기)
     $("#like_img").click(function(event){    	
@@ -174,7 +191,7 @@ $(document).ready(function () {
     <div class="content_info-box">
         <!-- 왼쪽 포스터입니다. -->
         <div class="left-column">
-            <img src="imageView.do?mus_num=${contentsVO.mus_num }" style="max-width:500px;" alt="${contentsVO.mus_name }">
+            <img src="imageView.do?mus_num=${contentsVO.mus_num }" style="max-width:400px;" alt="${contentsVO.mus_name }">
         </div>
         <!-- 여기까지 왼쪽 포스터 -->
 
@@ -214,7 +231,6 @@ $(document).ready(function () {
 
                 <!-- 별점 평가하기 -->
                 	<input type="button" id="review" class="review" value="☆평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
-
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
@@ -268,7 +284,7 @@ $(document).ready(function () {
                     
 
                     
-                    <!-- 네번째(코멘트) 시작 -->
+                    <!-- 세번째(코멘트) 시작 -->
 			<div class="contents_contents_column">
 				<div class="column_column">
 					<div>
@@ -290,7 +306,7 @@ $(document).ready(function () {
 				<input type="button" id="moreReviews" name="moreReviews" value="더보기" onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
 				<!-- 코멘트 더보기 링크 끝 -->
 			</div>
-			<!-- 네번째(코멘트) 끝 -->
+			<!-- 세번째(코멘트) 끝 -->
 
                 </div>
             </div>

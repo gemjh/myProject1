@@ -3,6 +3,9 @@ package kr.spring.member.vo;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
@@ -10,7 +13,9 @@ public class MemberVO {
 	private int mem_num;
 	private String email;
 	private int auth;
+	@NotEmpty
 	private String nickname;
+	@Size(min=4,max=10)
 	private String password;
 	private Date birth;
 	private String phone;
@@ -25,6 +30,7 @@ public class MemberVO {
 	private int mus_num; 
 
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도로 사용
+	@Size(min=4,max=10)
 	private String now_password;
 
 	//비밀번호 일치 여부 체크
@@ -35,6 +41,21 @@ public class MemberVO {
 		return false;
 	}
 
+
+	/*
+	//비밀번호 일치 여부 체크 -- 비밀번호 암호화 
+	//import kr.spring.util.SecurityUtil; memberVO의 isCheckedPassword; controller의 password암호화 ___
+		public boolean isCheckedPassword(String userPassword) {
+			SecurityUtil securityUtil = new SecurityUtil();
+			
+			String sDbPassword = securityUtil.encryptSHA256(password);
+			
+			if(auth <3 && sDbPassword.equals(userPassword)) {
+				return true;
+			}
+			return false;
+		}*/
+	
 	//이미지 BLOB 처리
 	public void setUpload(MultipartFile upload) throws IOException{
 		//MultipartFile -> byte[]

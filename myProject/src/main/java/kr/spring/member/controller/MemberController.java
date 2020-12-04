@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,10 +44,12 @@ public class MemberController {
 				log.debug("<<회원 가입>> : " + memberVO);
 			}
 			
+			
+		
 		//가장 많이 선택된 선호 장르 고르기
 		String[] prefer = request.getParameterValues("prefer");
 
-		
+		if(prefer != null) {
 		//체크된 갯수를 더해줄 배열 생성
 		int[] index = {0,0,0,0,0,0};
 		//갯수 ++
@@ -77,9 +78,16 @@ public class MemberController {
 		}
 		memberVO.setPrefer(max);	
 		
+			//콘솔 확인용
 			/*		log.debug("<< P R E F E R>> prefer : " + prefer);
 					log.debug("<< P R E F E R>> max : " + max);
 					log.debug("<< P R E F E R>> maxIndex :" + maxIndex );*/
+		
+		}else {//선택한 장르가 없는 경우 코드 0
+			int noChoice = 0;
+			memberVO.setPrefer(noChoice);
+		}
+		
 		
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
@@ -109,7 +117,17 @@ public class MemberController {
 		if (result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
 			return formLogin();
 		}
-
+		
+		//password 암호화
+		//import kr.spring.util.SecurityUtil; memberVO의 isCheckedPassword; controller의 password암호화 ___
+		/*SecurityUtil securityUtil = new SecurityUtil();
+		String Spass = (String) session.getAttribute("password");
+		String userSpass = securityUtil.encryptSHA256(Spass);
+		
+		//변경하여 다시 세션에 저장
+		session.setAttribute("password",userSpass);*/
+		
+		
 		// 로그인 체크(email와 비밀번호 일치 여부 체크)
 		try {
 			MemberVO member = memberService.selectCheckMember(memberVO.getEmail());

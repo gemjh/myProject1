@@ -15,17 +15,7 @@
 				return;
 			}
 			
-			/* 1.객체생성(문자열로 명시), 
-			   2.정규표현식 사용
-			*/
-			
-			//===============================
-			
-			//정규표현식 -> id형태에서 이메일 형식으로 바꾸기!!!! 아직 작업 X
-			
-			//================================//
-			/* var regMsg = new RegExp('^[A-Za-z0-9+]{4,10}$'); */
-		 	/* var regMsg = /^[A-Za-z0-9+]{4,10}$/; */
+			//이메일 형식 체크
 		 	var regMsg =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			if(!regMsg.test($('#email').val())){
 				$('#message_email').css('color','red').text('이메일 형식을 맞춰 입력해주세요');
@@ -79,12 +69,19 @@
 				$('#email').focus();
 				return false;
 			}
-			
+			//비밀번호 | 비밀번호 확인 비교
+			if($('#password').val()!=$('#confirm_password').val()){
+				alert('비밀번호와 비밀번호 확인이 불일치합니다');
+				return false;
+			}
+			if($('#password').length() < 5 | $('#password').length() > 10){
+				alert('비밀번호는 4자 이상, 10자이하로 입력해주세요.');
+				return false;
+			}
 		});
 	});
-	
 	//체크박스 최대 2개 선택
-	function count_chkbox(){
+	/* function count_chkbox(){
 		num = document.getElementsByName("chk");
 		chk_count = 0;
 		chk_max = 2;
@@ -97,8 +94,13 @@
 			alert(chk_max + "개만 선택 가능합니다");
 			return false;
 		}
-	}
-</script> 
+	} */
+</script>
+<style>
+form{
+	width:95%;
+}
+</style>
 <div class="page-main-style">
 	<h2>회원 가입</h2>
 	<form:form id="register_form" action="join.do" commandName="memberVO">
@@ -123,11 +125,10 @@
 				<form:password path="password"/>
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
-<%-- 			<li>
-				<label for="password_chk">비밀번호 확인</label>
-				<form:input path="password_chk"/>
-				<form:errors path="password_chk" cssClass="error-color"/>
-			</li> --%>
+ 			<li>
+				<label for="confirm_password">비밀번호 확인</label>
+				<input type="password" id="confirm_password">
+			</li> 
 			<li>
 				<label for="birth">생년월일</label>
 				<input type="date" name="birth" id="birth">
@@ -141,62 +142,62 @@
 		</ul>
 		 
 		 <div class="perfer_chk" id="prefer_chk">
-		 <p>보고싶은 공연을 골라보세요. 메인에서 장르 맞춰서 추천하기위해서 여기서 받음.</p>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 <p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장</p>
+		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Cats.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/thosedays.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/dodo.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fuerza.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/gloomyday.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/lapungel.GIF" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">
-		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Gentleman's_guide.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/infinityFlying.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The Phantom Of The Opera.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/redhat.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/circus.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jesus_Christ_Super_Star.jpg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fanletter.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The Lion King.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Sweeney_Todd.jpg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/sunemoone.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="70" height="100">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jekyll and Hyde.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/annie.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/6oclock.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
 		 	<br><br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/chef.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/shadow.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Notre Dame de Paris.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The_Man_of_La_Mancha.jpeg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/alcandy.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+			<br><br><br>		 	
 		 </div>
 
 		<div class="align-center">

@@ -3,23 +3,73 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
-* {
-    box-sizing: border-box;
-    text-decoration: none;
-}
 
-html {
+
+/* 콘텐츠 정보들 */
+.content_info-box {
     width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+.content_title{
+	font-size:25px;
+	color:white;
+}
+/* 콘텐츠 정보들 중에 왼쪽 부분 */
+.content_info-box .left-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgb(226, 220, 220);
+    border-radius: 3px;
 }
 
-.main_style {
-    width: 100%;
-    height: 100vh;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
+/* 콘텐츠 정보 중 오른쪽 부분 */
+.right-column {
+    width: 750px;
+    height: 230px;
+    margin-left: 22px;
 }
 
+/* 오른쪽 부분 중 첫번째 줄 */
+.content_info{
+    font-size: 23px;
+    margin-bottom: 25px;
+    color: rgb(122, 122, 122);   
+}
+
+/* 오른쪽 부분 중 마지막 줄 */
+.content_info:last-child {
+    display: flex;
+}
+
+/* 바로보기, 평가하기 */
+.watch, .review{
+	background-color:#27272b;
+	border:0;
+	outline:0;
+	margin-right:20px;
+	color:rgb(122,122,122);
+}
+/* 기본 정보 */
+.contents_contents_title{
+	font-size: 23px;
+	margin: 15px auto;
+}
+
+/* 한줄평 더보기 */
+.moreReviews{
+	float:right;
+	background-color:#27272b;
+	color:#FFF;
+	border:0;
+	outline:0
+}
 .cursor {
     cursor: pointer;
 }
@@ -118,9 +168,7 @@ $(document).ready(function () {
 
 
 </script>
-<!-- 메뉴바 밑에 콘텐츠 썸네일 -->
-    <div class="thumbnail"></div>
-    <!-- 여기까지 썸네일 -->
+
 <div class="all_contents">
     <!-- 썸네일 밑에 겹쳐있는 콘텐츠 정보들입니다. -->
     <div class="content_info-box">
@@ -132,7 +180,6 @@ $(document).ready(function () {
 
         <!-- 포스터 오른쪽 정보들 입니다. -->
         <div class="right-column">
-                    <div class="content_info"></div>
         
             <!-- 첫번째 줄 작품명 -->
             <div class="content_info">
@@ -155,18 +202,18 @@ $(document).ready(function () {
 
             <!-- 세번째 줄 평점 -->
             <div class="content_info">
-                <span class="content_star">평점: ${avg }(${num}명) </span>
+                <span class="content_star">평점 ★${avg }(${num}명) </span>
             </div>
             <!-- 세번째 줄 평점 끝 -->
 
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
-                     <input type="button" id="watch" value="바로보기" onclick="${contentsVO.mus_video }">
+                     <input type="button" id="watch" class="watch" value="▷바로보기" onclick="${contentsVO.mus_video }">
                 <!-- 바로보기 버튼 끝 -->
 
                 <!-- 별점 평가하기 -->
-                	<input type="button" id="review" value="평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
+                	<input type="button" id="review" class="review" value="☆평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
 
                 <!-- 별점 평가하기 끝 -->
                 
@@ -189,8 +236,7 @@ $(document).ready(function () {
                 <div class="contents_contents-box">
                     <!-- 첫번째(기본정보) 박스입니다 -->
                     <div class="contents_contents_column">
-                        <div>
-                            <span class="contents_contents_title">기본 정보</span>
+                        <div class="contents_contents_title">기본 정보
                         </div>
                           
                         <span class="contents_contents_summary contents_info">
@@ -204,7 +250,7 @@ $(document).ready(function () {
 
                     <!-- 두번째(출연/제작) 시작 -->
                     <div class="contents_contents_column">
-                        <span class="contents_contents_title">출연</span>
+                        <div class="contents_contents_title">출연</div>
                         <div class="contents_contents_container">
                             <div class="contents_contents_content">
                                 <div class="contents_contents_profile">
@@ -220,46 +266,16 @@ $(document).ready(function () {
                     </div>
                     <!-- 두번째(출연/제작) 끝 -->
                     
-<!--                     세번째(하이라이트) 시작
-                    <div class="contents_contents_column">
-                        <div>
-                            <span class="contents_contents_title">하이라이트</span>
-                        </div>
-                        <div class="contents_contents_highlight">
-                            <input type="url" >
-                        </div>
-                    </div>
-                    세번째(하이라이트) 끝 -->
 
-<%--                     <!-- 세번째(별점 그래프) 시작 -->
-                    <div class="contents_contents_column">
-                        <div>
-                            <span class="contents_contents_title">별점 그래프</span>
-                            <div>
-                                <span class="star_average">평균 ★${avg}</span>
-                                <c:set var="starArray" value=">"></c:set>
-                                
-                                
-                                <span class="star_people">(명)</span>
-                            </div>
-                        </div>
-                        <div class="contents_contents_star-box">
-                            <img src="img/star_graph.png" alt="별점 그래프" class="star-graph">
-                        </div>
-                    </div>
-                    <!-- 세번째(별점 그래프) 끝 --> --%>
                     
                     <!-- 네번째(코멘트) 시작 -->
 			<div class="contents_contents_column">
 				<div class="column_column">
 					<div>
-						<span class="contents_contents_title">한줄평</span> 
-						<span class="contents_contents_title-number"></span>
+						<div class="contents_contents_title">한줄평</div> 
 					</div>
 
 				</div>
-				<div class="contents_contents_comment-container">
-					<div class="comment-nemo">
 						<div class="comment_user">
 						<c:forEach var="newest" items="${newest }">
 						<ul class="newComments">
@@ -269,25 +285,13 @@ $(document).ready(function () {
   						</ul>
 						</c:forEach>
 						</div>
-					</div>
-				</div>
 				
 				<!-- 코멘트 더보기 링크 -->
-				<input type="button" id="reviews" value="더보기" onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
-				</a>
+				<input type="button" id="moreReviews" name="moreReviews" value="더보기" onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
 				<!-- 코멘트 더보기 링크 끝 -->
 			</div>
 			<!-- 네번째(코멘트) 끝 -->
 
-			<!-- <div class="contents_contents_column">
-                        <div>
-                            <span class="contents_contents_title">이 작품이 담긴 컬렉션</span>
-                            <span class="contents_contents_title-number">143</span>
-                        </div>
-                    </div>
-                    <div class="contents_contents_column">
-                        <span class="contents_contents_title">비슷한 작품</span>
-                    </div> -->
                 </div>
             </div>
             <div class="contents_side-box"></div>

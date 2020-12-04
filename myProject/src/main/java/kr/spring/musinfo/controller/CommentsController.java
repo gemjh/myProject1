@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.musinfo.service.CommentsService;
 import kr.spring.musinfo.vo.CommentsVO;
-import kr.spring.musinfo.vo.ContentsVO;
 import kr.spring.util.PagingUtil;
 
 
@@ -113,50 +112,53 @@ public class CommentsController {
 			System.out.println("//mav: "+ mav);
 			return mav;
 		}
-	//리뷰 수정 폼 호출
-	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
-	public String form(@RequestParam int rev_num,Model model) {
-		CommentsVO commentsVO=commentsService.selectComments(rev_num);
-		
-		if(log.isDebugEnabled()) {
-			log.debug("<<CommentsVO>> : " + commentsVO);
-		}
-		
-		model.addAttribute("commentsVO",commentsVO);
-		return "reviewModify";
-	}
-	//리뷰 수정 처리
-	@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
-	public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
-		if(log.isDebugEnabled()) {
-			log.debug("<<리뷰 수정>>"+commentsVO);
-		}
-		//오류시 폼 호출
-		if(result.hasErrors()) {
+		//리뷰 수정 폼 호출
+		@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
+		public String form(@RequestParam int rev_num,Model model) {
+			System.out.println("//*******리뷰 수정 폼 보기");
+			CommentsVO commentsVO=commentsService.selectComments(rev_num);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<CommentsVO>> : " + commentsVO);
+			}
+			
+			model.addAttribute("commentsVO",commentsVO);
+			model.addAttribute("pageCheck", "reviewpage");
 			return "reviewModify";
 		}
-		MemberVO member=(MemberVO)session.getAttribute("user");
-		System.out.println("//member : " + member);
-		commentsVO.setMem_num(member.getMem_num());
-		//뮤지컬번호 세팅
-		commentsVO.setMus_num(commentsVO.getMus_num());
-		//리뷰쓰기
-		commentsService.updateComments(commentsVO);
+		//리뷰 수정 처리
+		@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
+		public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
+			if(log.isDebugEnabled()) {
+				log.debug("<<리뷰 수정>>"+commentsVO);
+			}
+			//오류시 폼 호출
+			if(result.hasErrors()) {
+				return "reviewModify";
+			}
+			MemberVO member=(MemberVO)session.getAttribute("user");
+			System.out.println("//member : " + member);
+			commentsVO.setMem_num(member.getMem_num());
+			//뮤지컬번호 세팅
+			commentsVO.setMus_num(commentsVO.getMus_num());
+			//리뷰쓰기
+			commentsService.updateComments(commentsVO);
 
+			
+			//수정 후 view
+			model.addAttribute("message","수정되었습니다.");
+			model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoMain.do");
+			return "musinfo/result";
+		}
+		//글 삭제
+		@RequestMapping("/musinfo/delete.do")
+		public String submitDelete(@RequestParam int rev_num,Model model, HttpServletRequest request) {
+			commentsService.deleteComments(rev_num);
+			model.addAttribute("message","삭제되었습니다.");
+			model.addAttribute("url",request.getContextPath()+"/main/musMain.do");
+			return "musinfo/result";
+
+		}
 		
-		//수정 후 view
-		model.addAttribute("message","수정되었습니다.");
-		model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoMain.do");
-		return "musinfo/result";
+		
 	}
-	//글 삭제
-	@RequestMapping("/musinfo/delete.do")
-	public String submitDelete(@RequestParam int rev_num,Model model, HttpServletRequest request) {
-		commentsService.deleteComments(rev_num);
-		model.addAttribute("message","삭제되었습니다.");
-		model.addAttribute("url",request.getContextPath()+"/main/musMain.do");
-		return "musinfo/result";
-
-	}
-
-}

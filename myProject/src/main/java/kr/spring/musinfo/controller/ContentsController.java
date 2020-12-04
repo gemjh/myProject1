@@ -47,14 +47,19 @@ public class ContentsController {
 	ContentsVO VO = contentsService.selectContents(mus_num);
 	System.out.println("//ContentsVO : " + VO);
 	//평점
+	if(VO.getRev_rate()>0) {
 	String avg =String.format("%.1f",contentsService.selectAvg(mus_num));
-	
 	System.out.println("//avg : " + avg);
 	model.addAttribute("avg",avg);
-	//전체 리뷰어 수
 	int num=contentsService.selectNum(mus_num);
 	System.out.println("//num : " + num);
+	
 	model.addAttribute("num",num);
+	}
+	//전체 리뷰어 수
+	
+	
+	
 	//최근리뷰 2개
 		List<ContentsVO> newest=contentsService.selectNewest(mus_num);
 		model.addAttribute("newest",newest);

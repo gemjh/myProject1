@@ -118,9 +118,11 @@ $(function(){
             <!-- 두번째 줄 년도, 장르, 나라 끝 -->
 
             <!-- 세번째 줄 평점 -->
+      
             <div class="content_info">
-                <span class="content_star">평점: ${avg }(${num}명) </span>
+                <span class="content_star">평점: ${avg}(${num}명) </span>
             </div>
+        
             <!-- 세번째 줄 평점 끝 -->
 
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->

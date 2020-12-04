@@ -27,16 +27,5 @@
 			 m.mus_num=#{mus_num}
 		</where>
  	</select>
- 	<select id="selectComments" parameterType="String" resultType="String">
-		SELECT 
-		* 
-		FROM(SELECT a.* 
-		FROM (SELECT 
-		* 
-		FROM reviews r JOIN member_detail m 
-		ON r.mem_num=m.mem_num ORDER BY r.rev_regdate asc)a) 
-		<![CDATA[
-		WHERE mus_num=#{mus_num} and rev_num=#{rev_num}
-]]>
-</select>
+
 </mapper>

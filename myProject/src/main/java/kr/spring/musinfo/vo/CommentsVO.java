@@ -74,12 +74,14 @@ public class CommentsVO {
 	public void setHide_rev(String hide_rev) {
 		this.hide_rev = hide_rev;
 	}
-	
 	@Override
 	public String toString() {
 		return "CommentsVO [rev_num=" + rev_num + ", mem_num=" + mem_num + ", mus_num=" + mus_num + ", rev_rate="
-				+ rev_rate + ", review=" + review + ", rev_regdate=" + rev_regdate + "]";
+				+ rev_rate + ", review=" + review + ", rev_regdate=" + rev_regdate + ", hide_rev=" + hide_rev
+				+ ", nickname=" + nickname + ", mus_name=" + mus_name + "]";
 	}
+	
+	
 	
 	
 }

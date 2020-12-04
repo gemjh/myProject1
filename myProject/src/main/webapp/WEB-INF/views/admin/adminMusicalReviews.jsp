@@ -9,9 +9,8 @@
 		<li>
 			<select name="keyfield" id="keyfield">
 				<option value="1">뮤지컬 번호</option>
-				<option value="2">뮤지컬 제목</option>
-				<option value="3">뮤지컬 장르</option>
-				<option value="4">전체</option>
+				<option value="2">회원 번호</option>
+				<option value="3">전체</option>
 			</select>
 		</li>
 		<li>
@@ -35,8 +34,8 @@
 			<tr>
 				<th>리뷰 번호</th>
 				<th width="130">뮤지컬 번호</th>
-				<th>뮤지컬 제목</th>
 				<th>닉네임</th>
+				<th>회원번호</th>
 				<th>평점</th>
 				<th>한줄평</th>
 				<th>리뷰 등록일</th>
@@ -46,8 +45,8 @@
 				<tr>
 					<td>${musical.rev_num}</td>
 					<td><a href="${pageContext.request.contextPath}/musinfo/reviews.do?mus_num=${musical.mus_num}">${musical.mus_num}</a></td>
-					<td>${musical.mus_name}</td>
 					<td>${musical.nickname}</td>
+					<td>${musical.mem_num}</td>
 					<td>${musical.rev_rate}</td>
 					<td>${musical.review}</td>
 					<td>${musical.rev_regdate}</td>

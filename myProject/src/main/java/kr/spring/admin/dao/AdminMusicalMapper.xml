@@ -74,13 +74,11 @@
 		ON	r.mus_num=m.mus_num
       <where>
          <if test="keyword != '' and keyfield == 1">
-         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         r.mus_num LIKE '%' || #{keyword} || '%' </if>
          <if test="keyword != '' and keyfield == 2">
-         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         r.mem_num LIKE '%' || #{keyword} || '%'  </if>
          <if test="keyword != '' and keyfield == 3">
-         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
-         <if test="keyword != '' and keyfield == 4">
-         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+         r.mus_num LIKE '%' || #{keyword} || '%' or  r.mem_num LIKE '%' || #{keyword} || '%' </if>
 		 </where>
       </select>
      <!-- 등록된 뮤지컬 리뷰 리스트 -->

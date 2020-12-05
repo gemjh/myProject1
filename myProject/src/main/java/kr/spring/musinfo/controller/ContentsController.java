@@ -44,11 +44,11 @@ public class ContentsController {
 		
 	//뮤지컬번호에서 정보 가져오기
 	ContentsVO VO = contentsService.selectContents(mus_num);
-	CommentsVO avgVO = commentsService.selectAvg(mus_num);
+	int count = commentsService.selectReviewCount(mus_num);
 	System.out.println("//ContentsVO : " + VO);
-	System.out.println("//avgVO : " + avgVO);
+	System.out.println("//avgVO : " + count);
 	//평점
-	if(avgVO != null) {
+	if(count>0) {
 	String avg =String.format("%.1f",contentsService.selectAvg(mus_num));
 	System.out.println("//avg : " + avg);
 	model.addAttribute("avg",avg);

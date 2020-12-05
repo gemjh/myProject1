@@ -26,6 +26,6 @@ public interface CommentsMapper {
 	public int selectRowCount(Map<String, Object> map);
 	
 	//리뷰 평점 구하기
-	@Select("SELECT * FROM reviews r WHERE r.mus_num=#{mus_num}")
-	public CommentsVO selectAvg(int mus_num);
+	@Select("SELECT COUNT(*) FROM reviews r WHERE r.mus_num=#{mus_num}")
+	public int selectReviewCount(int mus_num);
 }

@@ -52,9 +52,9 @@ public class CommentsServiceImpl implements CommentsService{
 			}
 
 			@Override
-			public CommentsVO selectAvg(int mus_num) {
+			public int selectReviewCount(int mus_num) {
 				// TODO Auto-generated method stub
-				return commentsMapper.selectAvg(mus_num);
+				return commentsMapper.selectReviewCount(mus_num);
 			}
 
 

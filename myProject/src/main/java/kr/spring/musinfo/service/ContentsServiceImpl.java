@@ -17,7 +17,7 @@ public class ContentsServiceImpl implements ContentsService{
 	ContentsMapper contentsMapper; 
 
 
-
+ 
 	@Override
 	public List<String> actorList(Map<String, Object> map) {
 		// TODO Auto-generated method stub

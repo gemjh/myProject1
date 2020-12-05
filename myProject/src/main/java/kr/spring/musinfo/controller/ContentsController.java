@@ -52,18 +52,19 @@ public class ContentsController {
 	String avg =String.format("%.1f",contentsService.selectAvg(mus_num));
 	System.out.println("//avg : " + avg);
 	model.addAttribute("avg",avg);
+	
 	int num=contentsService.selectNum(mus_num);
 	System.out.println("//num : " + num);
 	
 	model.addAttribute("num",num);
 	}
-	//전체 리뷰어 수
 	
 	
 	
 	//최근리뷰 2개
 		List<ContentsVO> newest=contentsService.selectNewest(mus_num);
 		model.addAttribute("newest",newest);
+		System.out.println("//최근리뷰2개"+newest);
 	return new ModelAndView("musinfoMain","contentsVO",VO);
 
 	}

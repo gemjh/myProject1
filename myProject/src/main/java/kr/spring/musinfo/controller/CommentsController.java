@@ -38,12 +38,22 @@ public class CommentsController {
 
 	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
-	public String reviewForm(@RequestParam int mus_num, Model model) {
+	public String reviewForm(@RequestParam int mus_num, Model model,HttpServletRequest request, 
+			HttpSession session) {
 		CommentsVO commentsVO = new CommentsVO();
 		commentsVO.setMus_num(mus_num);
 		model.addAttribute("commentsVO", commentsVO);
 		model.addAttribute("pageCheck", "reviewpage");
-		
+		if(session.getAttribute("user")==null) {
+			model.addAttribute("message","로그인해 주세요.");
+			model.addAttribute("url",request.getContextPath()+"/member/login.do");
+			return "musinfo/result";
+		}
+		MemberVO member=(MemberVO)session.getAttribute("user");
+		if(member.getAuth()==2) {
+			model.addAttribute("message","이용권을 구매하세요.");
+			return "musinfo/result";		
+			}
 		return "reviewWrite";
 	}
 	//리뷰 등록
@@ -51,7 +61,8 @@ public class CommentsController {
 	public String submit(@Valid CommentsVO commentsVO, 
 						BindingResult result, 
 						HttpServletRequest request, 
-						HttpSession session) {
+						HttpSession session,
+						Model model) {
 		System.out.println("//리뷰 등록 처리");
 		if(log.isDebugEnabled()) {
 			log.debug("<<리뷰 저장>>:"+commentsVO);
@@ -63,6 +74,7 @@ public class CommentsController {
 		//회원번호 세팅
 		MemberVO member=(MemberVO)session.getAttribute("user");
 		System.out.println("//member : " + member);
+
 		commentsVO.setMem_num(member.getMem_num());
 		//뮤지컬번호 세팅
 		commentsVO.setMus_num(commentsVO.getMus_num());

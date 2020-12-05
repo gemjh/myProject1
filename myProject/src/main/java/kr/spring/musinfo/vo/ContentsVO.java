@@ -31,11 +31,11 @@ public class ContentsVO {
 	private String nickname;
 	private String review;
 	//뮤지컬 리뷰
-	private int rev_rate;
-	public int getRev_rate() {
+	private double rev_rate;
+	public double getRev_rate() {
 		return rev_rate;
 	}
-	public void setRev_rate(int rev_rate) {
+	public void setRev_rate(double rev_rate) {
 		this.rev_rate = rev_rate;
 	}
 	

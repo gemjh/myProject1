@@ -124,11 +124,15 @@ public class CommentsController {
 			
 			model.addAttribute("commentsVO",commentsVO);
 			model.addAttribute("pageCheck", "reviewpage");
+			model.addAttribute("rev_num", rev_num);
 			return "reviewModify";
 		}
 		//리뷰 수정 처리
 		@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.POST)
-		public String submitUpdate(@Valid CommentsVO commentsVO, BindingResult result,HttpServletRequest request,HttpSession session,Model model) {	
+		public String submitUpdate(@Valid CommentsVO commentsVO, 
+				BindingResult result,
+				HttpServletRequest request,
+				Model model) {	
 			if(log.isDebugEnabled()) {
 				log.debug("<<리뷰 수정>>"+commentsVO);
 			}
@@ -136,19 +140,14 @@ public class CommentsController {
 			if(result.hasErrors()) {
 				return "reviewModify";
 			}
-			MemberVO member=(MemberVO)session.getAttribute("user");
-			System.out.println("//member : " + member);
-			commentsVO.setMem_num(member.getMem_num());
-			//뮤지컬번호 세팅
-			commentsVO.setMus_num(commentsVO.getMus_num());
-			//리뷰쓰기
+	
 			commentsService.updateComments(commentsVO);
 
 			
 			//수정 후 view
 			model.addAttribute("message","수정되었습니다.");
 			model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoMain.do");
-			return "musinfo/result";
+			return "reviews";
 		}
 		//글 삭제
 		@RequestMapping("/musinfo/delete.do")

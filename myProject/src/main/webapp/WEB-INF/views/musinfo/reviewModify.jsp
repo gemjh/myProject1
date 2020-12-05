@@ -21,7 +21,7 @@ h1{
 <h1>솔직한 감상평을 들려주세요!</h1>
 <form:form action="modify.do" commandName="commentsVO"
 	enctype="multipart/form-data" id="reviewForm" name="reviewForm">
-	<form:hidden path="mus_num" />
+	<form:hidden path="rev_num" />
 	<input type="hidden" name="rev_rate" id="rev_rate" value="" />
 	<label for=review></label>
 	<div id="half"></div>

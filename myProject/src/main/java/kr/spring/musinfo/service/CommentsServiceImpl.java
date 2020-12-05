@@ -51,6 +51,12 @@ public class CommentsServiceImpl implements CommentsService{
 				return commentsMapper.selectRowCount(map);
 			}
 
+			@Override
+			public CommentsVO selectAvg(int mus_num) {
+				// TODO Auto-generated method stub
+				return commentsMapper.selectAvg(mus_num);
+			}
+
 
 
 			

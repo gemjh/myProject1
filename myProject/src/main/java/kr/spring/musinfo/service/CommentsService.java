@@ -12,5 +12,6 @@ public interface CommentsService {
 	public CommentsVO selectComments(int rev_num);
 	public void updateComments(CommentsVO commentsVO);
 	public void deleteComments(int rev_num);
+	public CommentsVO selectAvg(int mus_num);
 
 }

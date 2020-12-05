@@ -1,8 +1,6 @@
 package kr.spring.musinfo.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +20,14 @@ import kr.spring.musinfo.service.CommentsService;
 import kr.spring.musinfo.service.ContentsService;
 import kr.spring.musinfo.vo.CommentsVO;
 import kr.spring.musinfo.vo.ContentsVO;
-import kr.spring.util.PagingUtil;
 
 @Controller
 public class ContentsController {
 	private Logger log=Logger.getLogger(this.getClass());
 	@Resource
 	private ContentsService contentsService;
+	@Resource
+	private CommentsService commentsService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -45,9 +44,11 @@ public class ContentsController {
 		
 	//뮤지컬번호에서 정보 가져오기
 	ContentsVO VO = contentsService.selectContents(mus_num);
+	CommentsVO avgVO = commentsService.selectAvg(mus_num);
 	System.out.println("//ContentsVO : " + VO);
+	System.out.println("//avgVO : " + avgVO);
 	//평점
-	if(VO.getRev_rate()>0) {
+	if(avgVO != null) {
 	String avg =String.format("%.1f",contentsService.selectAvg(mus_num));
 	System.out.println("//avg : " + avg);
 	model.addAttribute("avg",avg);

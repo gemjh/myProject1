@@ -18,11 +18,14 @@ public interface CommentsMapper {
 	public void insertComments(CommentsVO commentsVO);
 	@Select("SELECT * FROM reviews r WHERE r.rev_num=#{rev_num}")
 	public CommentsVO selectComments(int rev_num);
-	@Update("update (select * from reviews r, member_detail m where r.mem_num=m.mem_num)   set mem_num=#{mem_num},mus_num=#{mus_num},rev_rate=#{rev_rate},review=#{review},rev_regdate=sysdate where rev_num=#{rev_num}")
+	@Update("update reviews set rev_rate=#{rev_rate},review=#{review},rev_regdate=sysdate where rev_num=#{rev_num}")
 	public void updateComments(CommentsVO commentsVO);
 	@Delete("delete from reviews where rev_num=#{rev_num}")
 	public void deleteComments(int rev_num);
 	public List<CommentsVO> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
-
+	
+	//리뷰 평점 구하기
+	@Select("SELECT * FROM reviews r WHERE r.mus_num=#{mus_num}")
+	public CommentsVO selectAvg(int mus_num);
 }

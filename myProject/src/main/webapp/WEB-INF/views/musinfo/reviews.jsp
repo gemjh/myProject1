@@ -38,14 +38,15 @@ span{
 					<tr>
 						<td>${list.nickname}</td>
 						<td>${list.rev_rate}</td>
-						<c:if test="${list.hide_riv==null}">
-						<td>${list.review}<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
+						<td>${list.review}
+						<c:if test="${list.hide_rev==null}">
+						<!-- 로그인이 되어 있고 작성자 아이디와 로그인 아이디가 일치해야 수정/삭제 권한을 줌 -->
 							<input type="button" value="수정"
 							onclick="location.href='modify.do?rev_num=${list.rev_num}'">
 							<input type="button" value="삭제" id="delete_btn"
 							onclick="location.href='delete.do?rev_num=${list.rev_num}'">
-						</td>
 						</c:if>
+						</td>
 					</tr>
 				</c:if>
 				<c:if test="${user.mem_num!=list.mem_num}">

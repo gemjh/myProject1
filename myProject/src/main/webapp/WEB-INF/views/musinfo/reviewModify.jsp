@@ -12,22 +12,22 @@
 .half{
 	width:200px;
 }
-textarea{
-}
+
 h1{
 	text-align:center;
 }
 </style>
+
 <h1>솔직한 감상평을 들려주세요!</h1>
 <form:form action="modify.do" commandName="commentsVO"
 	enctype="multipart/form-data" id="reviewForm" name="reviewForm">
 	<form:hidden path="rev_num" />
-	<input type="hidden" name="rev_rate" id="rev_rate" value="" />
+	<form:input type="hidden" path="rev_rate" />
+	<form:errors path="rev_rate" cssClass="error-color"/>
 	<label for=review></label>
 	<div id="half"></div>
 	<form:textarea path="review" />
 	<form:errors path="review" cssClass="error-color" />
-
 	<div class="align-center">
 		<input type="submit" value="등록"> <input type="button"
 			value="홈으로" onclick="location.href='main/musMain.do'">

@@ -57,6 +57,13 @@ public class CommentsServiceImpl implements CommentsService{
 				return commentsMapper.selectReviewCount(mus_num);
 			}
 
+			@Override
+			public CommentsVO selectReviewRatings(int mus_num, int mem_num) {
+				// TODO Auto-generated method stub
+				return commentsMapper.selectReviewRatings(mus_num, mem_num);
+			}
+
+
 
 
 			

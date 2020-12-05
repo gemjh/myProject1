@@ -12,26 +12,28 @@
 .half{
 	width:200px;
 }
-textarea{
-}
 h1{
 	text-align:center;
 }
-</style>
 
+</style>
+<%--  <c:if test="">
+	<%=response.sendRedirect("musinfo/musinfoDetail.do?mus_num=") %>
+</c:if>  --%>
 <h1>솔직한 감상평을 들려주세요!</h1>
 <form:form action="write.do" commandName="commentsVO"
 	enctype="multipart/form-data" id="reviewForm" name="reviewForm">
 	<form:hidden path="mus_num" />
-	<input type="hidden" name="rev_rate" id="rev_rate" value="" />
+	<form:input type="hidden" path="rev_rate" />
+	<form:errors path="rev_rate" cssClass="error-color"/>
 	<label for=review></label>
 	<div id="half"></div>
 	<form:textarea path="review" />
 	<form:errors path="review" cssClass="error-color" />
 
 	<div class="align-center">
-		<input type="submit" value="등록"> <input type="button"
-			value="홈으로" onclick="location.href='main/musMain.do'">
+		<input type="submit" value="등록"> 
+		<input type="button" value="홈으로" onclick="location.href='../main/musMain.do'">
 	</div>
 </form:form>
 <script>
@@ -54,5 +56,6 @@ h1{
 		function getInputValue() {
 			var rev_rate = $('#rev_rate').val();
 		}
+
 	});
 </script>

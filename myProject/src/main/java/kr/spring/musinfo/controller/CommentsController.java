@@ -49,12 +49,14 @@ public class CommentsController {
 			model.addAttribute("url",request.getContextPath()+"/member/login.do");
 			return "musinfo/result";
 		}
-
 		MemberVO member=(MemberVO)session.getAttribute("user");
 		if(member.getAuth()==2) {
 			model.addAttribute("message","이용권을 구매하세요.");
 			return "musinfo/result";		
 			}
+		if(member.getMem_num()==commentsVO.getMem_num()) {
+			return "redirect:musinfo/modify.do?rev_num="+commentsVO.getRev_num();
+		}
 		return "reviewWrite";
 	}
 	//리뷰 등록

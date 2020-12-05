@@ -2,11 +2,16 @@ package kr.spring.musinfo.vo;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+
 public class CommentsVO {
 	private int rev_num;
 	private int mem_num;
 	private int mus_num;
+	@Positive
 	private double rev_rate;
+	@NotEmpty
 	private String review;
 	private Date rev_regdate;
 	private String hide_rev;

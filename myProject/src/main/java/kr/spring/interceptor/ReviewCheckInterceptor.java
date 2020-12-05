@@ -24,8 +24,8 @@ public class ReviewCheckInterceptor extends HandlerInterceptorAdapter{
 			log.debug("<<로그인 아이디와 작성자 아이디 일치 여부 체크>>");
 		}
 		//작성자의 회원번호 구하기
-		int mem_num=Integer.parseInt(request.getParameter("mem_num"));
-		CommentsVO commentsVO=commentsService.selectComments(mem_num);
+		int rev_num=Integer.parseInt(request.getParameter("rev_num"));
+		CommentsVO commentsVO=commentsService.selectComments(rev_num);
 		
 		HttpSession session=request.getSession();
 		MemberVO member=(MemberVO)session.getAttribute("user");

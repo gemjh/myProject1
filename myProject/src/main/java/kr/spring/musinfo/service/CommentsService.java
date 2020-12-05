@@ -13,5 +13,6 @@ public interface CommentsService {
 	public void updateComments(CommentsVO commentsVO);
 	public void deleteComments(int rev_num);
 	public int selectReviewCount(int mus_num);
+	public CommentsVO selectReviewRatings(int mus_num, int mem_num);
 
 }

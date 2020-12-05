@@ -247,12 +247,12 @@ $(document).ready(function () {
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
                 <c:if test="${user.auth==1}">
-                     <input type="button" id="watch" class="watch" value="▷바로보기" onclick="location.href='https://${contentsVO.mus_video }'">
+                      <input type="button" id="watch" class="watch" value="►바로보기" onclick="location.href='https://${contentsVO.mus_video }'">
                 
                 <!-- 바로보기 버튼 끝 -->
 
                 <!-- 별점 평가하기 -->
-                	<input type="button" id="review" class="review" value="☆평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
+                	<input type="button" id="review" class="review" value="★평가하기" onclick="location.href='write.do?mus_num=${contentsVO.mus_num}'">
                 <!-- 별점 평가하기 끝 -->
                 
                 <!-- 찜 -->
@@ -267,7 +267,6 @@ $(document).ready(function () {
                 <c:if test="${user.auth==0 }">
                 	<input type="button" id="edit" class="edit" value="정보 편집" onclick="location.href='Mucha/admin/adminMain.do'">
                 </c:if>
-
 
             </div>
             <!-- 여기까지가 마지막 줄에 보고싶어요, 별점 평가하기 끝 -->

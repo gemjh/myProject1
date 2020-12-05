@@ -47,7 +47,7 @@
 }
 
 /* 바로보기, 평가하기 */
-.watch, .review{
+.watch, .review, .join, .edit{
 	background-color:#27272b;
 	border:0;
 	outline:0;
@@ -99,15 +99,30 @@ $(function(){
 	$('.watch').mouseover(function(){
 		$('.watch').css('color','#fff');
 	});
-	$('.review').mouseover(function(){
-		$('.review').css('color','#fff');
-	})
 	$('.watch').mouseleave(function(){
 		$('.watch').css('color','rgb(122,122,122)');
 	});
+	
+	$('.review').mouseover(function(){
+		$('.review').css('color','#fff');
+	});
 	$('.review').mouseleave(function(){
 		$('.review').css('color','rgb(122,122,122)');
-	})
+	});
+	
+	$('.join').mouseover(function(){
+		$('.join').css('color','#fff');
+	});
+	$('.join').mouseleave(function(){
+		$('.join').css('color','rgb(122,122,122)');
+	});
+	
+	$('.edit').mouseover(function(){
+		$('.edit').css('color','#fff');
+	});
+	$('.edit').mouseleave(function(){
+		$('.edit').css('color','rgb(122,122,122)');
+	});
 })
 </script>
 <script>
@@ -231,7 +246,9 @@ $(document).ready(function () {
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
                 <!-- 바로보기 버튼 -->
+                <c:if test="${user.auth==1}">
                      <input type="button" id="watch" class="watch" value="▷바로보기" onclick="location.href='https://${contentsVO.mus_video }'">
+                
                 <!-- 바로보기 버튼 끝 -->
 
                 <!-- 별점 평가하기 -->
@@ -241,6 +258,16 @@ $(document).ready(function () {
                 <!-- 찜 -->
                 <a href="#" id="like_img"><img src="/Mucha/resources/images/like_no.png" width="30px"></a>
                 <!-- 찜 끝 -->
+                </c:if>
+                <!-- 로그인하지 않았거나 이용권이 없는 경우 -->
+                <c:if test="${user.auth==2 || user.auth==null}">
+                	<input type="button" id="join" class="join" value="지금 바로 감상하세요" onclick="location.href='/Mucha/member/login.do'">
+                </c:if>
+                <!-- 관리자인 경우 -->
+                <c:if test="${user.auth==0 }">
+                	<input type="button" id="edit" class="edit" value="정보 편집" onclick="location.href='Mucha/admin/adminMain.do'">
+                </c:if>
+
 
             </div>
             <!-- 여기까지가 마지막 줄에 보고싶어요, 별점 평가하기 끝 -->

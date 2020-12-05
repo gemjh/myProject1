@@ -24,12 +24,11 @@ public class ReviewCheckInterceptor extends HandlerInterceptorAdapter{
 			log.debug("<<로그인 아이디와 작성자 아이디 일치 여부 체크>>");
 		}
 		//작성자의 회원번호 구하기
-		int rev_num=Integer.parseInt(request.getParameter("rev_num"));
-		int mus_num=Integer.parseInt(request.getParameter("mus_num"));
-		CommentsVO commentsVO=commentsService.selectComments(rev_num);
+		int mem_num=Integer.parseInt(request.getParameter("mem_num"));
+		CommentsVO commentsVO=commentsService.selectComments(mem_num);
 		
 		HttpSession session=request.getSession();
-		MemberVO member=(MemberVO)session.getAttribute("member");
+		MemberVO member=(MemberVO)session.getAttribute("user");
 		if(log.isDebugEnabled()) {
 			log.debug("<<로그인 회원 번호>>: "+member.getMem_num()+"<br><<작성자 회원 번호>>: "+commentsVO.getMem_num());
 			

@@ -49,6 +49,7 @@ public class CommentsController {
 			model.addAttribute("url",request.getContextPath()+"/member/login.do");
 			return "musinfo/result";
 		}
+
 		MemberVO member=(MemberVO)session.getAttribute("user");
 		if(member.getAuth()==2) {
 			model.addAttribute("message","이용권을 구매하세요.");

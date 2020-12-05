@@ -85,11 +85,11 @@
 			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 		
-		<!-- <interceptor>
-			<mapping path="/board/update.do"/>
-			<mapping path="/board/delete.do"/>
-			<beans:bean class="kr.spring.interceptor.WriterCheckInterceptor"/>
-		</interceptor> -->
+	 	<interceptor>
+			<mapping path="/musinfo/modify.do"/>
+			<mapping path="/musinfo/delete.do"/>
+			<beans:bean class="kr.spring.interceptor.ReviewCheckInterceptor"/>
+		</interceptor>
 		
 	<!-- 관리자 interceptor -->
 		<interceptor>

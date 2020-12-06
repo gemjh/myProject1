@@ -38,7 +38,7 @@ public class CommentsController {
 
 	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
-	public String reviewForm(@RequestParam int mus_num, Model model,HttpServletRequest request, 
+	public String reviewForm(@RequestParam int mus_num,@RequestParam int mem_num, Model model,HttpServletRequest request, 
 			HttpSession session) {
 		CommentsVO commentsVO = new CommentsVO();
 		commentsVO.setMus_num(mus_num);
@@ -57,6 +57,10 @@ public class CommentsController {
 		if(member.getMem_num()==commentsVO.getMem_num()) {
 			return "redirect:musinfo/modify.do?rev_num="+commentsVO.getRev_num();
 		}
+//		if(reviewCount!=0) {
+//			model.addAttribute("message","작품당 리뷰를 2개 이상 쓸 수 없습니다.");
+//			return "musinfo/result";
+//		}
 		return "reviewWrite";
 	}
 	//리뷰 등록

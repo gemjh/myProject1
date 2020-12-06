@@ -5,7 +5,7 @@
 	<h2>뮤지컬 삭제</h2>
 	<form:form action="adminMusicalDelete.do" commandName="memberVO">
 	<form:errors element="div" cssClass="error-color"/>
-		<form:hidden path="mus_num"/>
+		<form:hidden path="mem_num"/>
 		<ul>
 			<li>
 				<label for="email">관리자 이메일</label>

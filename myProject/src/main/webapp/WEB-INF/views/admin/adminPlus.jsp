@@ -66,23 +66,18 @@
 		
 		//submit이벤트 발생시 id 중복체크 여부 확인
 		$('#register_form').submit(function(){
-			var check = 0;
 			
 			if(checkId==0){
 				$('#message_email').css('color','red').text('이메일 중복체크 필수')
 				$('#email').focus();
-				check = 1;
 				return false;
 			}
 			//생일 선택여부  체크
 			var birth = $("#birth").val();
 			    if( birth == ''){
 			        alert("생일을 선택하세요!");
-			        check = 1;
 			        return false; 
 			    }
-			    
-	          if(check == 1) return false;
 		});		
 	});
 

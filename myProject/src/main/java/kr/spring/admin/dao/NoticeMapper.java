@@ -13,12 +13,13 @@ import kr.spring.admin.vo.NoticeVO;
 public interface NoticeMapper {
 	public List<NoticeVO> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
-	
-	@Insert("INSERT INTO notice (no_num, mem_num, no_title, no_content, no_regdate) VALUES(no_seq.nextval, #{mem_num}, #{no_title}, #{no_content}, SYSDATE)")
+	//공지사항 등록
+	@Insert("INSERT INTO notice (no_num, mem_num, no_title, no_content, no_regdate ,noticeDate) VALUES(no_seq.nextval, #{mem_num}, #{no_title}, #{no_content}, SYSDATE,#{noticeDate})")
 	public void insertNotice(NoticeVO notice);
 	
 	@Select("SELECT * FROM notice n  WHERE n.no_num=#{no_num}")
 	public NoticeVO selectNotice(Integer no_num);
+	//공지사항 수정
 	@Update("UPDATE notice SET no_hit=no_hit+1 WHERE no_num=#{no_num}")
 	public void updateHit(Integer no_num);
 	

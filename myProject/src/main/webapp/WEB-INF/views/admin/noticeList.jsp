@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <div class="page-main-style">
 	<h2>공지사항</h2>
 	<form action="noticeList.do" id="notice_form" method="get">
@@ -23,7 +22,8 @@
 			</li>
 		</ul>
 	</form>
-	<div class="align-right">
+	
+	<div class="align-right" >
 		<c:if test="${!empty user}">
 			<input type="button" value="글쓰기" onclick="location.href='noticeWrite.do'">
 		</c:if>
@@ -32,11 +32,12 @@
 		<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-		<table>
+		<table id="noticeTable" class="noticeTable" >
 			<tr>
 				<th>번호</th>
 				<th width="400">제목</th>
 				<th>작성 관리자 번호</th>
+				<th>공개 종료일</th>
 				<th>최근 수정일</th>
 				<th>조회수</th>
 			</tr>
@@ -45,6 +46,7 @@
 					<td>${notice.no_num}</td>
 					<td><a href="noticeView.do?no_num=${notice.no_num}">${notice.no_title}</a></td>
 					<td>${notice.mem_num}</td>
+					<td>${notice.noticeDate}</td>
 					<td>${notice.no_regdate}</td>
 					<td>${notice.no_hit}</td>
 				</tr>			

@@ -41,7 +41,7 @@
 		<tr>
 			<td>${member_detail.mem_num}</td>
 			<td><a href="adminMemberDetail.do?mem_num=${member_detail.mem_num}">${member_detail.nickname}</a></td>
-			<td>${member_detail.email}</td>
+			<td><a href="mailto:">${member_detail.email}</a></td>
 		</tr>
 		</c:forEach>
 	</table>

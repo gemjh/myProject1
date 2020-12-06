@@ -9,7 +9,7 @@ public class NoticeVO {
 	private String no_content;
 	private Date no_regdate;	
 	private int no_hit;
-	
+	private Date noticeDate;
 	public int getNo_num() {
 		return no_num;
 	}
@@ -46,11 +46,20 @@ public class NoticeVO {
 	public void setNo_hit(int no_hit) {
 		this.no_hit = no_hit;
 	}
+	
+	public Date getNoticeDate() {
+		return noticeDate;
+	}
+	public void setNoticeDate(Date noticeDate) {
+		this.noticeDate = noticeDate;
+	}
 	@Override
 	public String toString() {
 		return "NoticeVO [no_num=" + no_num + ", mem_num=" + mem_num + ", no_title=" + no_title + ", no_content="
-				+ no_content + ", no_regdate=" + no_regdate + ", no_hit=" + no_hit + "]";
+				+ no_content + ", no_regdate=" + no_regdate + ", no_hit=" + no_hit + ", noticeDate=" + noticeDate + "]";
 	}
+
+	
 	
 	
 

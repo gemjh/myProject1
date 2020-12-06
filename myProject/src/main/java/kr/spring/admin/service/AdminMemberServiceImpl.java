@@ -59,6 +59,12 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 		return mapper.selectCheckMember(email);
 	}
 
+	@Override
+	public void deleteAdmin(int mem_num) {
+		mapper.deleteAdmin(mem_num);
+		
+	}
+
 
 
 	

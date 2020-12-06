@@ -252,8 +252,6 @@ public class AdminMusicalController {
 			return "adminMusicalDelete";
 		}
 
-
-		
 	}	
 	//뮤지컬 삭제 완료 폼
 	@RequestMapping("/admin/adminMusicalDeleteCompleted.do")

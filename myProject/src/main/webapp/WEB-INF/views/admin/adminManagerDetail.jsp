@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="page-main-style">
 	<h2>관리자 정보 상세 보기</h2>
 	<table>
@@ -29,4 +31,9 @@
 			<td>${memberVO.mem_regdate}</td>
 		</tr>
 	</table>
+	<c:if test="${admin.mem_num=='100'}">
+	<div class="align-center">
+		<input type="button" value="삭제" onclick="location.href='adminDelete.do?mem_num=${memberVO.mem_num}'">
+	</div>
+	</c:if>
 </div>

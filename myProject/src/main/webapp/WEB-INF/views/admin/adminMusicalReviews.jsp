@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
-    
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#hiddenReview').click(function(){
+		$('#hiddenReview').remove();
+		var all ="<input type='button' value='전체보기' id='allReview' class='allReview' />";
+		$('.align-right').append(all);
+	});
+	$('#allReview').click(function(){
+		$('#allReview').remove();
+		var hidden ="<input type='button' value='가려진 리뷰' id='hiddenReview' class='hiddenReview' />";
+		$('.align-right').append(hidden);
+	});
+});    
+</script>
 <div class="page-main-style">
 	<h2>등록된 뮤지컬 리뷰</h2>
 	<form action="adminMusicalReviews.do" id="search_form" method="get">
@@ -23,9 +37,12 @@
 		</li>
 	</ul>
 	</form>
-	<c:if test="${count==0}">
-	<div class="align-center">등록된 게시물이 없습니다.</div>
-	</c:if>
+	<div class="align-right" >
+		<input type="button" value="가려진 리뷰" id="hiddenReview" class="hiddenReview" />
+		<c:if test="${count==0}">
+			<div class="align-center">등록된 게시물이 없습니다.</div>
+		</c:if>
+	</div>
 	<c:if test="${count>0}">
 	<div>
 	검색된 총 뮤지컬 수 : ${count}

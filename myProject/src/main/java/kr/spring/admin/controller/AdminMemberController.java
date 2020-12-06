@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -45,11 +46,12 @@ public class AdminMemberController {
 	
 	//관리자 목록
 	@RequestMapping("/admin/adminManagerList.do")
-	public ModelAndView managerList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+	public ModelAndView managerList(
+			@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
 		System.out.println("//****관리자 목록**************");
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -82,26 +84,76 @@ public class AdminMemberController {
 		mav.addObject("list", list);
 		mav.addObject("count", count);
 		mav.addObject("pagingHtml", page.getPagingHtml());
-		System.out.println("//mav: " + mav);
+		
 		return mav;
 	}
+	//관리자 상세보기
 	@RequestMapping("/admin/adminManagerDetail.do")
-	public String managerDetail(@RequestParam int mem_num,
+	public String managerDetail(HttpSession session,@RequestParam int mem_num,
 			Model model) {
-	System.out.println("//*******회원 상세 보기");
-	MemberVO vo = adminMemberService.selectMember(mem_num);
-	System.out.println("//MemberVO : " + vo);
-	model.addAttribute("memberVO",vo);
+	System.out.println("//*******관리자 상세 보기");
 	
+	MemberVO vo = adminMemberService.selectMember(mem_num);
+	model.addAttribute("memberVO",vo);
+	MemberVO user = (MemberVO) session.getAttribute("user");
+	MemberVO admin= memberService.selectMember(user.getMem_num());
+	model.addAttribute("admin", admin);
+	System.out.println("//model: " + model);
 	return "adminManagerDetail";
 	}
 	
+	//관리자 삭제
+	@RequestMapping(value = "/admin/adminDelete.do", method = RequestMethod.GET)
+	public String adminDelete() {
+		return "adminDelete";
+	}
+	//관리자 삭제 처리
+	@RequestMapping(value = "/admin/adminDelete.do", method = RequestMethod.POST)
+	public String completeDelete(	@Valid MemberVO memberVO, 
+									BindingResult result, 
+									HttpSession session, 
+									HttpServletRequest request) {
+		System.out.println("//*****관리자 삭제 처리**");
+		// email,password 필드의 에러만 체크
+		if (result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
+			return "/admin/adminDelete.do";
+		}
+		// 회원번호를 얻기 위해 세션에 저장된 회원 정보 반환
+		MemberVO vo = (MemberVO) session.getAttribute("user");
+		memberVO.setMem_num(vo.getMem_num());
+
+		
+		// 비밀번호 일치 여부 체크
+		// 회원번호를 이용해 회원 정보를 읽기
+		MemberVO member = adminMemberService.selectMember(memberVO.getMem_num());
+		boolean check = false;
+		// 입력한 아이디.equals(세션에 저장된 아이디)
+		if (member != null && memberVO.getEmail().equals(vo.getEmail())) {
+			// 비밀번호 일치여부 체크
+			check = member.isCheckedPassword(memberVO.getPassword());
+		}
+
+		if (check) {
+			// 인증성공
+			adminMemberService.deleteAdmin(memberVO.getMus_num());
+			System.out.println("//뮤지컬 삭제 완료");
+			return "redirect:/admin/adminMusicalDeleteCompleted.do";
+
+		} else {
+			// 인증실패
+			result.reject("invalidEmailOrPassword");
+			return "adminDelete";
+		}
+	}	
+
 	//관리자 추가
 	@RequestMapping(value = "/admin/adminPlus.do", method = RequestMethod.GET)
 	public String form() {
 		return "adminPlus";
 	}
-
+	
+	
+	
 	// 관리자 추가 처리
 	@RequestMapping(value = "/admin/adminPlus.do", method = RequestMethod.POST)
 	public String submit(@Valid MemberVO memberVO, BindingResult result) {
@@ -199,11 +251,12 @@ public class AdminMemberController {
 	//회원 관리
 	//회원 목록
 	@RequestMapping("/admin/adminMemberList.do")
-	public ModelAndView process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+	public ModelAndView process(
+			@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
 		System.out.println("//**********회원 목록**************");
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -234,6 +287,7 @@ public class AdminMemberController {
 		mav.setViewName("adminMemberList");
 		mav.addObject("list", list);
 		mav.addObject("count", count);
+		
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		System.out.println("//mav: " + mav);
 		return mav;

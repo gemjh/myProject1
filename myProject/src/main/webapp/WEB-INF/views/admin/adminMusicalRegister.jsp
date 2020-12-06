@@ -17,28 +17,22 @@ $(document).ready(function(){
 		var mus_time = $("#mus_time").val();
 			if(mus_name==''||mus_name.replace(blank_pattern,'')==""){
 		       alert("제목을 입력하세요.");
-		       check = 1;
 		       return false;
 		   }else if(!fileCheck){
-		       alert("파일을 첨부해 주세요");
-		       check = 1;
+		       alert("파일을 첨부해 주세요");		      
 		       return false;
 		   }else if(mus_summary==''||mus_summary.replace(blank_pattern,'')==""){
-		       alert("요약 내용을 입력하세요.");
-		       check = 1;
+		       alert("요약 내용을 입력하세요.");		     
 		       return false;
 		   }else if(mus_detail==''||mus_detail.replace(blank_pattern,'')==""){
-		       alert("상세 내용을 입력하세요.");
-		       check = 1;
+		       alert("상세 내용을 입력하세요.");		       
 		       return false;
 		   }else if(mus_video==''||mus_video.replace(blank_pattern,'')==""){
-		       alert("스트리밍 링크를 입력하세요.");
-		       check = 1;
+		       alert("스트리밍 링크를 입력하세요.");		       
 		       return false;
 		   }else if( mus_time == '' || mus_time <= 0){
 	        alert("재생 시간을 입력하세요!");
-	        $("#mus_time").focus();
-	        check = 1;
+	        $("#mus_time").focus();	       
 	        return false; 
 	  	  }
 	    $('.actor_box').each(function(index,item){

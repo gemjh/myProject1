@@ -18,7 +18,7 @@
 	<div class="align-right">
 	    <%--수정 삭제의 경우는 로그인이 되어있고 로그인한 회원번호와 작성자 회원번호가
 	               일치해야 함 --%>
-		<c:if test="${!empty user && user.mem_num == notice.mem_num}">
+		<c:if test="${user.auth==0}">
 		<input type="button" value="수정"
 		       onclick="location.href='noticeUpdate.do?no_num=${notice.no_num}'">
 		<input type="button" value="삭제" id="delete_btn">

@@ -42,4 +42,10 @@ public class AdminMainController {
 		
 		return "adminMain";
 	}
+	
+	@RequestMapping("/member/memberWarning.do")//관리자외 일반회원이 관리자 페이지 접근시
+	public String memberWarning() {
+		
+		return "memberWarning";
+	}
 }

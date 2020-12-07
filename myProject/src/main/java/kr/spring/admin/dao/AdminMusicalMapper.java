@@ -39,10 +39,14 @@ public interface AdminMusicalMapper {
 	@Delete("DELETE FROM musical WHERE musical.mus_num=#{mus_num}")
 	public void deleteMusical(Integer mus_num);
 	
-	//뮤지컬 리뷰 리스트 갯수
+	//전체 리뷰 리스트 갯수
 	public int selectReviewsRowCount(Map<String, Object> map);
-	//뮤지컬 리뷰 리스트
+	//전체 리뷰 리스트
 	public List<CommentsVO> selectReviewsList(Map<String, Object> map);
+	//가려진 리뷰 리스트 갯수
+	public int selectHiddenReviewsRowCount(Map<String, Object> map);
+	//가려진 리뷰 리스트
+	public List<CommentsVO> selectHiddenReviewsList(Map<String, Object> map);
 
 	// 숨길 리뷰 저장
 	@Update("UPDATE reviews r SET hide_rev = review WHERE r.rev_num=#{rev_num}")

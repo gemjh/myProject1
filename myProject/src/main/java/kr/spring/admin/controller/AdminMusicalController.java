@@ -315,10 +315,58 @@ public class AdminMusicalController {
 		mav.setViewName("adminMusicalReviews");
 		mav.addObject("list", list);
 		mav.addObject("count", count);
+		int check = 0;
+		mav.addObject("check", check);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		System.out.println("//mav: " + mav);
 		return mav;
 	}
+	// 뮤지컬 가려진 리뷰 보기
+	@RequestMapping("/admin/hiddenReviews.do")
+	public ModelAndView hiddenReview(
+			@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
+			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
+		System.out.println("***가려진 뮤지컬 리뷰 보기*****");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		System.out.println("//map: " + map);
+		// 총 글의 갯수 또는 검색된 글의 갯수 구하기
+		int count=adminMusicalService.selectHiddenReviewsRowCount(map);
+		System.out.println("//count: " + count);
+		if (log.isDebugEnabled()) {
+			log.debug("<<count>> : " + count);
+		}
+		System.out.println("//" + currentPage + "//" + keyfield + "//" + keyword);
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "adminMusicalReviews.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		System.out.println("//page :" + page);
+		System.out.println("//map: " + map);
+		List<CommentsVO> list = null;
+		if (count > 0) {
+			list = adminMusicalService.selectHiddenReviewsList(map);
+			System.out.println("//list : " + list);
+
+			if (log.isDebugEnabled()) {
+				log.debug("<<리뷰 목록>> : " + list);
+			}
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("hiddenReviews");
+		mav.addObject("list", list);
+		mav.addObject("count", count);
+		int check = 1;
+		mav.addObject("check", check);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+		System.out.println("//mav: " + mav);
+		return mav;
+	}
+
+
 	// 뮤지컬 리뷰 저장/숨기기
 	@RequestMapping("/admin/reviewHide.do")
 	public String reviewHide(@RequestParam int rev_num) {

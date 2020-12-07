@@ -85,5 +85,16 @@ public class AdminMusicalServiceImpl implements AdminMusicalService{
 		
 	}
 
+	@Override
+	public int selectHiddenReviewsRowCount(Map<String, Object> map) {
+		return mapper.selectHiddenReviewsRowCount(map);
+	}
+
+	@Override
+	public List<CommentsVO> selectHiddenReviewsList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.selectHiddenReviewsList(map);
+	}
+
 }
 	

@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -203,124 +205,129 @@ public class NoticeController {
 		return "redirect:/admin/noticeList.do";
 	}
 	
-
-	//이미지 업로드
-	 @RequestMapping(value="/admin/imageUpload.do", method = RequestMethod.POST)
-	    public void imageUpload(HttpServletRequest request,
-	            HttpServletResponse response, MultipartHttpServletRequest multiFile
-	            , @RequestParam MultipartFile upload) throws Exception{
-	        // 랜덤 문자 생성
-	        UUID uid = UUID.randomUUID();
-	        
-	        OutputStream out = null;
-	        PrintWriter printWriter = null;
-	        
-	        //인코딩
-	        response.setCharacterEncoding("utf-8");
-	        response.setContentType("text/html;charset=utf-8");
-	        
-	        try{
-	            
-	            //파일 이름 가져오기
-	            String fileName = upload.getOriginalFilename();
-	            byte[] bytes = upload.getBytes();
-	            
-	            //이미지 경로 생성
-	            String path = "/myProject/src/main/webapp/resources/upload";
-	            String ckUploadPath = path + uid + "_" + fileName;
-	            File folder = new File(path);
-	            
-	            //해당 디렉토리 확인
-	            if(!folder.exists()){
-	                try{
-	                    folder.mkdirs(); // 폴더 생성
-	                }catch(Exception e){
-	                    e.getStackTrace();
-	                }
-	            }
-	            
-	            out = new FileOutputStream(new File(ckUploadPath));
-	            out.write(bytes);
-	            out.flush(); // outputStram에 저장된 데이터를 전송하고 초기화
-	            
-	            String callback = request.getParameter("CKEditorFuncNum");
-	            printWriter = response.getWriter();
-	            String fileUrl = "/admin/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName;  // 작성화면
-	            
-	        // 업로드시 메시지 출력
-	          printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
-	          printWriter.flush();
-	            
-	        }catch(IOException e){
-	            e.printStackTrace();
-	        } finally {
-	          try {
-	           if(out != null) { out.close(); }
-	           if(printWriter != null) { printWriter.close(); }
-	          } catch(IOException e) { e.printStackTrace(); }
-	         }
-	        
-	        return;
-	    }
-	    
-	    /**
-	     * cKeditor 서버로 전송된 이미지 뿌려주기
-	     * @param uid
-	     * @param fileName
-	     * @param request
-	     * @return
-	     * @throws ServletException
-	     * @throws IOException
-	     */
-	    //
-	    @RequestMapping(value="/admin/ckImgSubmit.do")
-	    public void ckSubmit(@RequestParam(value="uid") String uid
-	                            , @RequestParam(value="fileName") String fileName
-	                            , HttpServletRequest request, HttpServletResponse response)
-	 throws ServletException, IOException{
-	        
-	        //서버에 저장된 이미지 경로
-	        String path = "/myProject/src/main/webapp/resources/upload";
-	    
-	        String sDirPath = path + uid + "_" + fileName;
-	    
-	        File imgFile = new File(sDirPath);
-	        
-	        //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
-	        if(imgFile.isFile()){
-	            byte[] buf = new byte[1024];
-	            int readByte = 0;
-	            int length = 0;
-	            byte[] imgBuf = null;
-	            
-	            FileInputStream fileInputStream = null;
-	            ByteArrayOutputStream outputStream = null;
-	            ServletOutputStream out = null;
-	            
-	            try{
-	                fileInputStream = new FileInputStream(imgFile);
-	                outputStream = new ByteArrayOutputStream();
-	                out = response.getOutputStream();
-	                
-	                while((readByte = fileInputStream.read(buf)) != -1){
-	                    outputStream.write(buf, 0, readByte);
-	                }
-	                
-	                imgBuf = outputStream.toByteArray();
-	                length = imgBuf.length;
-	                out.write(imgBuf, 0, length);
-	                out.flush();
-	                
-	            }catch(IOException e){
-	                log.info(e);
-	            }finally {
-	                outputStream.close();
-	                fileInputStream.close();
-	                out.close();
-	            }
-	        }
-	    }
-
 	
-}
+	//이미지 업로드
+	@RequestMapping("/admin/imageUpload.do")
+	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
+			MultipartHttpServletRequest multiFile, @RequestParam MultipartFile upload) throws Exception {
+		System.out.println("//업로드");
+		// 랜덤 문자 생성
+		UUID uid = UUID.randomUUID();
 
+		OutputStream out = null;
+		PrintWriter printWriter = null;
+
+		// 인코딩
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+
+		try {
+
+			// 파일 이름 가져오기
+			String fileName = upload.getOriginalFilename();
+			byte[] bytes = upload.getBytes();
+
+			// 이미지 경로 생성
+			String path = "/myProject/src/main/webapp/resources/upload";
+			String ckUploadPath = path + uid + "_" + fileName;
+			File folder = new File(path);
+			System.out.println("folder : "+folder);
+
+			// 해당 디렉토리 확인
+			if (!folder.exists()) {
+				try {
+					folder.mkdirs(); // 폴더 생성
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+
+			out = new FileOutputStream(new File(ckUploadPath));
+			out.write(bytes);
+			out.flush(); // outputStram에 저장된 데이터를 전송하고 초기화
+
+			String callback = request.getParameter("CKEditorFuncNum");
+			printWriter = response.getWriter();
+			String fileUrl = "${pageContext.request.contextPath}/admin/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName; // 작성화면
+			System.out.println("//fileUrl"+fileUrl);
+			// 업로드시 메시지 출력
+			printWriter.println("{\"filename\" : \"" + fileName + "\", \"uploaded\" : 1, \"url\":\"" + fileUrl + "\"}");
+			printWriter.flush();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (printWriter != null) {
+					printWriter.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return;
+	}
+
+	/**
+	 * cKeditor 서버로 전송된 이미지 뿌려주기
+	 * 
+	 * @param uid
+	 * @param fileName
+	 * @param request
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	//
+	@RequestMapping("/admin/ckImgSubmit.do")
+	public void ckSubmit(@RequestParam(value = "uid") String uid, @RequestParam(value = "fileName") String fileName,
+			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("//전송된 이미지 보기");
+		// 서버에 저장된 이미지 경로
+		String path = "/myProject/src/main/webapp/resources/upload";
+
+		String sDirPath = path + uid + "_" + fileName;
+
+		File imgFile = new File(sDirPath);
+
+		// 사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
+		if (imgFile.isFile()) {
+			System.out.println("//이미지를 찾지 못함");
+			byte[] buf = new byte[1024];
+			int readByte = 0;
+			int length = 0;
+			byte[] imgBuf = null;
+
+			FileInputStream fileInputStream = null;
+			ByteArrayOutputStream outputStream = null;
+			ServletOutputStream out = null;
+
+			try {
+				fileInputStream = new FileInputStream(imgFile);
+				outputStream = new ByteArrayOutputStream();
+				out = response.getOutputStream();
+
+				while ((readByte = fileInputStream.read(buf)) != -1) {
+					outputStream.write(buf, 0, readByte);
+				}
+
+				imgBuf = outputStream.toByteArray();
+				length = imgBuf.length;
+				out.write(imgBuf, 0, length);
+				out.flush();
+
+			} catch (IOException e) {
+				log.info(e);
+			} finally {
+				outputStream.close();
+				fileInputStream.close();
+				out.close();
+			}
+		}
+	}
+
+}

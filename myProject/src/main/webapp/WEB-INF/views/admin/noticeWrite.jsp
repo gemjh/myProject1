@@ -34,7 +34,6 @@
 		var getToday = year + month + day;
 		if ($("#noticeDate").val() == '') {
 			alert("게시물 공개 종료일을 선택하세요");
-			alert(getToday);
 			return false;
 			}
 		var noticeDate=$("#noticeDate").val().split("-");
@@ -64,7 +63,7 @@
                 <div class="input-group">                 
                   <form:textarea path="no_content" />
                   <script type="text/javascript">
-					CKEDITOR.replace('no_content', {filebrowserUploadUrl:'/admin/imageUpload.do',height:600});
+					CKEDITOR.replace('no_content', {filebrowserUploadUrl:'${pageContext.request.contextPath}/admin/imageUpload.do',height:600});
 				</script>
                 </div>
                 <form:errors path="no_content" cssClass="error-color"/>

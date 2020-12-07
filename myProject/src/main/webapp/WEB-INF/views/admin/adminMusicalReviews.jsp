@@ -4,16 +4,15 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$(document).on('click','#hiddenReview',function(){
-		$('#hiddenReview').remove();
-		var all ="<input type='button' value='전체보기' id='allReview' class='allReview' />";
-		$('.align-right').append(all);
+	$(document).on('click','#hiddenReview',function(){//가려진 리뷰 보기
+		location.href="${pageContext.request.contextPath}/admin/hiddenReviews.do";
 		
+
 	});
-	$(document).on('click','#allReview',function(){
-		$('#allReview').remove();
-		var hidden ="<input type='button' value='가려진 리뷰' id='hiddenReview' class='hiddenReview' />";
-		$('.align-right').append(hidden);
+	$(document).on('click','#allReview',function(){//전체 리뷰 보기
+
+		location.href="${pageContext.request.contextPath}/admin/adminMusicalReviews.do";
+		
 	});
 });    
 </script>
@@ -39,7 +38,12 @@ $(document).ready(function(){
 	</ul>
 	</form>
 	<div class="align-right" >
-		<input type="button" value="가려진 리뷰" id="hiddenReview" class="hiddenReview" />
+		<c:if test="${check==0}">
+		<input type="button" value="가려진 리뷰만 보기" id="hiddenReview" class="hiddenReview" />
+		</c:if>
+		<c:if test="${check==1}">
+		<input type="button" value="전체 리뷰 보기" id="allReview" class="allReview" />
+		</c:if>
 		<c:if test="${count==0}">
 			<div class="align-center">등록된 게시물이 없습니다.</div>
 		</c:if>

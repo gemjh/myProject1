@@ -34,6 +34,12 @@ public interface AdminMusicalService {
 	// 리뷰 리스트
 	public List<CommentsVO> selectReviewsList(Map<String, Object> map);
 
+	//가려진 리뷰 리스트 갯수
+	public int selectHiddenReviewsRowCount(Map<String, Object> map);
+	
+	//가려진 리뷰 리스트
+	public List<CommentsVO> selectHiddenReviewsList(Map<String, Object> map);
+	
 	// 숨길 리뷰 저장
 	public void saveReview(Integer rev_num);
 

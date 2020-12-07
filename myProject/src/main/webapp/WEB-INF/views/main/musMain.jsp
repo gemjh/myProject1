@@ -8,9 +8,10 @@
 <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img2.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img3.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/main2.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/main5.png" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/main6.png" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/main7.jpg" alt=""></div>
     </div>
     
     <!-- Add Pagination -->
@@ -45,69 +46,75 @@
   </script>
 
 <!-- ========================== swiper end =========================== -->
-
-
-<c:if test="${count == 0}">
-	<div class="align-center">등록된 뮤지컬이 없습니다.</div>
+<c:if test="${empty user}">
+	<%
+		response.sendRedirect(request.getContextPath()+"/member/login.do");
+	%>
 </c:if>
-<c:if test="${count > 0}">
-<div class="contents">
-	<div class="contents_title">새로 올라온 작품</div>
-	<div class="type1-contents_contents">	
-	<c:forEach var="musMain" items="${latestList}">
-		<div class="type1-content-box">			
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-				</a>
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<span class="type1-content_title">${musMain.mus_name}</span>
-				</a>
+
+<c:if test="${!empty user}">
+	<c:if test="${count == 0}">
+		<div class="align-center">등록된 뮤지컬이 없습니다.</div>
+	</c:if>
+	<c:if test="${count > 0}">
+		<div class="contents">
+			<div class="contents_title">새로 올라온 작품</div>
+			<div class="type1-contents_contents">	
+				<c:forEach var="musMain" items="${latestList}">
+					<div class="type1-content-box">			
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+						</a>
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<span class="type1-content_title">${musMain.mus_name}</span>
+						</a>
+					</div>
+				</c:forEach>
 			</div>
-		</c:forEach>
-	</div>
-	
-	<div class="contents_title">뮤챠 최고 인기작</div>
-	<div class="type1-contents_contents">	
-	<c:forEach var="musMain" items="${popularList}">
-		<div class="type1-content-box">			
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-				</a>
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<span class="type1-content_title">${musMain.mus_name}</span>
-				</a>
+			
+			<div class="contents_title">뮤챠 최고 인기작</div>
+			<div class="type1-contents_contents">	
+			<c:forEach var="musMain" items="${popularList}">
+				<div class="type1-content-box">			
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+						</a>
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<span class="type1-content_title">${musMain.mus_name}</span>
+						</a>
+					</div>
+				</c:forEach>
 			</div>
-		</c:forEach>
-	</div>
-	
-	<div class="contents_title">__님이 선호하는 장르의 작품</div>
-	<div class="type1-contents_contents">	
-	<c:forEach var="musMain" items="${preferList}">
-		<div class="type1-content-box">			
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-				</a>
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<span class="type1-content_title">${musMain.mus_name}</span>
-				</a>
+			
+			<div class="contents_title">__님이 선호하는 장르의 작품</div>
+			<div class="type1-contents_contents">	
+			<c:forEach var="musMain" items="${preferList}">
+				<div class="type1-content-box">			
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+						</a>
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<span class="type1-content_title">${musMain.mus_name}</span>
+						</a>
+					</div>
+				</c:forEach>
 			</div>
-		</c:forEach>
-	</div>
-	
-	<div class="contents_title">__님이 찜한 작품 작품</div>
-	<div class="type1-contents_contents">	
-	<c:forEach var="musMain" items="${pickList}">
-		<div class="type1-content-box">			
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-				</a>
-				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-					<span class="type1-content_title">${musMain.mus_name}</span>
-				</a>
+
+			<div class="contents_title">__님이 찜한 작품 작품</div>
+			<div class="type1-contents_contents">	
+			<c:forEach var="musMain" items="${pickList}">
+				<div class="type1-content-box">			
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+						</a>
+						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+							<span class="type1-content_title">${musMain.mus_name}</span>
+						</a>
+					</div>
+				</c:forEach>
 			</div>
-		</c:forEach>
-	</div>
-</div>
+		</div>
+	</c:if>
 </c:if>
 
 

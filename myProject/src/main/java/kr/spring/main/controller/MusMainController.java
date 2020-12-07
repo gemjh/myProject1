@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,12 +34,18 @@ public class MusMainController {
 		return new MusMainVO();
 	}	
 	
+	// 첫 화면
+	@RequestMapping(value="/main/musFirst.do")
+	public String form() {
+		return "musFirst";
+	}
+	
+	
 	// 메인 목록
 	@RequestMapping("/main/musMain.do")
 	public ModelAndView process1(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 								@RequestParam(value="keyfield",defaultValue="") String keyfield,
 								@RequestParam(value="keyword",defaultValue="") String keyword){
-		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -73,7 +82,7 @@ public class MusMainController {
 			latestList = musMainService.selectMusLatestList(map);
 			
 			if(log.isDebugEnabled()) {
-				log.debug("<<신작 목록>> : " + latestList );
+				log.debug("<<신작 목록>> 출력됨 ");
 			}
 			
 		}
@@ -82,19 +91,28 @@ public class MusMainController {
 		List<MusMainVO> popularList = null;
 		if(count > 0) {
 			popularList = musMainService.selectMusPopularList(map);
+			if(log.isDebugEnabled()) {
+				log.debug("<<인기순 목록>>출력됨 ");
+			}
 		}
 		
 		// 선호장르 목록 호출
-		List<MusMainVO> preferList = null;
+		List<MusMainVO> preferList = null;		
 		if(count > 0) {
 			preferList = musMainService.selectMusPreferList(map);
+			if(log.isDebugEnabled()) {
+				log.debug("<<선호장르 목록>>출력 ");
+			}
 		}
 		
-		// 찜한 목록 호출
-		List<MusMainVO> pickList = null;
+		// 찜한 목록 호출		
+		List<MusMainVO> pickList = null;		
 		if(count > 0) {
 			pickList = musMainService.selectMusPickList(map);
-		}		
+			if(log.isDebugEnabled()) {
+				log.debug("<<찜한 목록>>출력 ");
+			}
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		// 뷰 이름 설정 - ""에 tiles 명 넣기
@@ -141,7 +159,7 @@ public class MusMainController {
 			list = musMainService.selectMusMainList(map);
 			
 			if(log.isDebugEnabled()) {
-				log.debug("<<글 목록>> : " + list );
+				log.debug("<<글 목록>> 출력됨");
 			}
 		}		
 		

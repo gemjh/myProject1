@@ -46,19 +46,19 @@ public class MusMainServiceImpl implements MusMainService{
 		return musMainMapper.selectMusPreferList(map);
 	}
 
-	@Override
-	public int selectPreferCount(Map<String, Object> map) {
-		return musMainMapper.selectPreferCount(map);
-	}
+	/*@Override
+	public int selectMusPreferCount(Map<String, Object> map) {
+		return musMainMapper.selectMusPreferCount(map);
+	}*/
 
 	@Override
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map) {
 		return musMainMapper.selectMusPickList(map);
 	}
 
-	@Override
-	public int selectPickCount(Map<String, Object> map) {
-		return musMainMapper.selectPickCount(map);
+	/*@Override
+	public int selectMusPickCount(Map<String, Object> map) {
+		return musMainMapper.selectMusPickCount(map);
 	}
-
+*/
 }

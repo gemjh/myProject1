@@ -9,7 +9,7 @@ import kr.spring.main.vo.MusMainVO;
 
 
 public interface MusMainMapper {
-	// 뮤지컬 리스트
+	// 뮤지컬 검색 리스트
 	public List<MusMainVO> selectMusMainList(Map<String, Object> map);
 
 	// 뮤지컬 리스트 갯수 구하기
@@ -35,14 +35,18 @@ public interface MusMainMapper {
 	//public int selectMusPopularCount(Map<String, Object> map);
 	
 	// 회원 선호 장르 리스트
+	@Select("SELECT * FROM musical ORDER BY mus_num ASC")
 	public List<MusMainVO> selectMusPreferList(Map<String, Object> map);
 	
 	// 회원 선호 장르 갯수 구하기
-	public int selectPreferCount(Map<String, Object> map);
+	//@Select("SELECT COUNT(*) FROM musical")
+	//public int selectMusPreferCount(Map<String, Object> map);
 	
 	// 회원 찜한 작품 리스트
+	@Select("SELECT * FROM musical ORDER BY mus_num ASC")
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map);
 	
 	// 회원 찜한 작품 갯수 구하기
-	public int selectPickCount(Map<String, Object> map);
+	//@Select("SELECT COUNT(*) FROM musical")
+	//public int selectMusPickCount(Map<String, Object> map);
 }

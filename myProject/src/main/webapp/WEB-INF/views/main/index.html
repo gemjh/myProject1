@@ -1,208 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>왓차피디아 - 클론 코딩 프로젝트</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+    body{
+         background: url(https://img3.akspic.com/image/672-photograph-blue-kiss-emotion-interaction-1920x1080.jpg?attachment=1) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        overflow-y: scroll;
+  		scroll-behavior: smooth;
+    }   
+    </style>
+    <title>왓챠플레이 - 왕좌의 게임 시즌 8외 6만편 영화,드라마 무제한 감상 - 왓챠플레이</title>
 </head>
-
 <body>
-    <header class="menu-box">
-        <div class="menu">
-            <div class="menu_left">
-                <a href="index.html"><img class="menu_logo" src="img/logo.png" /></a>
-                <span class="menu_movie">영화</span>
-                <span class="menu_tv">TV 프로그램</span>
-                <span class="menu_book">책</span>
-            </div>
-            <div class="menu_right">
-                <div class="menu_search-box">
-                    <i class="fas fa-search"></i>
-                    <input class="menu_search" type="text" placeholder="작품 제목,배우,감독을 검색해보세요.">
-                </div>
-                <span class="menu_login">로그인</span>
-                <span class="menu_sign-up" id="js-signUp">회원가입</span>
-            </div>
-            <div class="pop_sign-up">
-                <img src="img/pop_logo.png" class="pop_logo">
-                <span class="pop_title">회원가입</span>
-                <form action="">
-                    <div class="pop_input-box">
-                        <input type="text" placeholder="이름">
-                    </div>
-                    <div class="pop_input-box">
-                        <input type="text" placeholder="이메일">
-                    </div>
-                    <div class="pop_input-box">
-                        <input type="text" placeholder="비밀번호">
-                    </div>
-                </form>
-                <button class="pop_btn">회원가입</button>
-                <div class="pop_already">
-                    <span>이미 가입하셨나요?&nbsp;</span>
-                    <a href="">
-                        <span>로그인</span>
-                    </a>
-                </div>
-                <span class="pop_or">OR</span>
-                <div class="pop_line-box">
-                    <div class="pop_line"></div>
-                    <div class="pop_line"></div>
-                </div>
-                <button class="pop_facebook">
-                    <i class="fab fa-facebook-square"></i>
-                    <span>Facebook 으로 로그인</span>
-                </button>
-            </div>
-            <div class="overlay"></div>
-        </div>
-    </header>
-    <main class="first_contents-box contents-box">
-        <div class="contents">
-            <div class="contents_title">박스오피스</div>
-            <div class="type1-contents_contents">
-                <div class="type1-content-box">
-                    <a href="contents.html">
-                        <img src="img/ironrain.jpg" alt="강철비2: 정상회담">
-                    </a>
-                    <span class="type1-content_title">강철비2: 정상회담</span>
-                    <span class="type1-content_year">2019 · 한국</span>
-                    <span class="type1-content_star">평균★ 2.7</span>
-                    <span class="type1-content_info">예매율 61% · 누적 관객 3,870명</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-                <div class="type1-content-box">
-                    <a href="contents.html">
-                        <img src="img/ironrain.jpg" alt="강철비2: 정상회담">
-                    </a>
-                    <span class="type1-content_title">강철비2: 정상회담</span>
-                    <span class="type1-content_year">2019 · 한국</span>
-                    <span class="type1-content_star">평균★ 2.7</span>
-                    <span class="type1-content_info">예매율 61% · 누적 관객 3,870명</span>
-                    <div class="type1-content_number">2</div>
-                </div>
-                <div class="type1-content-box">
-                    <a href="contents.html">
-                        <img src="img/ironrain.jpg" alt="강철비2: 정상회담">
-                    </a>
-                    <span class="type1-content_title">강철비2: 정상회담</span>
-                    <span class="type1-content_year">2019 · 한국</span>
-                    <span class="type1-content_star">평균★ 2.7</span>
-                    <span class="type1-content_info">예매율 61% · 누적 관객 3,870명</span>
-                    <div class="type1-content_number">3</div>
-                </div>
-                <div class="type1-content-box">
-                    <a href="contents.html">
-                        <img src="img/ironrain.jpg" alt="강철비2: 정상회담">
-                    </a>
-                    <span class="type1-content_title">강철비2: 정상회담</span>
-                    <span class="type1-content_year">2019 · 한국</span>
-                    <span class="type1-content_star">평균★ 2.7</span>
-                    <span class="type1-content_info">예매율 61% · 누적 관객 3,870명</span>
-                    <div class="type1-content_number">4</div>
-                </div>
-                <div class="type1-content-box">
-                    <a href="contents.html">
-                        <img src="img/ironrain.jpg" alt="강철비2: 정상회담">
-                    </a>
-                    <span class="type1-content_title">강철비2: 정상회담</span>
-                    <span class="type1-content_year">2019 · 한국</span>
-                    <span class="type1-content_star">평균★ 2.7</span>
-                    <span class="type1-content_info">예매율 61% · 누적 관객 3,870명</span>
-                    <div class="type1-content_number">5</div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <main class="contents-box">
-        <div class="contents">
-            <div class="contents_title">평균별점이 높은 작품</div>
-            <div class="type2-contents_contents">
-                <div class="type2-content-box">
-                    <img src="img/wallE.jpg" alt="월-E">
-                    <span class="type2-content_title">월-E</span>
-                    <span class="type2-content_star">평균★ 2.7</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-                <div class="type2-content-box">
-                    <img src="img/wallE.jpg" alt="월-E">
-                    <span class="type2-content_title">월-E</span>
-                    <span class="type2-content_star">평균★ 2.7</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-                <div class="type2-content-box">
-                    <img src="img/wallE.jpg" alt="월-E">
-                    <span class="type2-content_title">월-E</span>
-                    <span class="type2-content_star">평균★ 2.7</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-                <div class="type2-content-box">
-                    <img src="img/wallE.jpg" alt="월-E">
-                    <span class="type2-content_title">월-E</span>
-                    <span class="type2-content_star">평균★ 2.7</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-                <div class="type2-content-box">
-                    <img src="img/wallE.jpg" alt="월-E">
-                    <span class="type2-content_title">월-E</span>
-                    <span class="type2-content_star">평균★ 2.7</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-                <div class="type2-content-box">
-                    <img src="img/wallE.jpg" alt="월-E">
-                    <span class="type2-content_title">월-E</span>
-                    <span class="type2-content_star">평균★ 2.7</span>
-                    <div class="type1-content_number">1</div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer class="footer">
-        <div class="small-box ">
-            <span class="review">
-                지금까지&nbsp;
-            </span>
-            <span class="review review-red">
-                ★ 562,339,084 개의 평가가&nbsp;
-            </span>
-            <span class="review">
-                쌓였어요.
-            </span>
-        </div>
-        <div class="big-box">
-            <div class="first-column column">
-                <span class="footer_info cursor">
-                    서비스 이용약관 &nbsp;|&nbsp; 개인정보 처리방침 &nbsp;|&nbsp; 회사 안내
-                </span>
-            </div>
-            <div class="second-column column">
-                <span class="footer_info cursor">
-                    고객센터 &nbsp;|&nbsp; cs@watchapedia.co.kr
-                </span>
-                <span class="footer_info cursor">
-                    제휴 및 대외 협력 &nbsp;|&nbsp; contact@watcha.com, 070-7554-9696
-                </span>
-            </div>
-            <div class="third-column column">
-                <span class="footer_info">
-                    주식회사 왓챠 &nbsp;|&nbsp; 대표 박태훈 &nbsp;|&nbsp; 서울특별시 서초구 강남대로 343 신덕빌딩 3층
-                </span>
-                <span class="footer_info">
-                    사업자 등록 번호 211-88-66013
-                </span>
-                <div class="footer_info">
-                    <img src="img/footer_logo.png" class="footer_logo">
-                    <span class="footer_info">© 2011 Watcha. Inc</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="js/index.js"></script>
-</body>
+<!-- ========================== swiper start=========================== -->
 
+<!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img2.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/images/img3.jpg" alt=""></div>
+    </div>
+    
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>  
+
+   <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            slidesPerView: 1,
+            spaceBetween: 30,
+            mousewheel: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+
+<!-- ========================== swiper end =========================== -->
+    <div class="back-shadow">
+          <header class="header-top">
+              <div  class="top_header">
+                  <div class="header-logo">
+                    <a href="index.html" class="logo_link">
+                      <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                      <span class="watcha">WATCHA PLAY</span>
+                    </a>
+                  </div>
+                  <div class="index-startButton">
+                    <a href="signUp.html">
+                      <span class="top-start_button1">시작하기</span>
+                    </a>
+                  </div>
+              </div>
+          </header>
+          
+          <main>
+              <div class="main_promotion">
+                  <span class="main_promotion-one">
+                      매주 5백 편 신작 업데이트, 영화 드라마 무제한 감상
+                  </span>
+                  <span class="main_promotion-two">
+                      Apple 앱스토어 "2018 올해를 빛낸 최고작" 선정
+                  </span>
+                  <a href="signUp.html">
+                    <span class="main_promotion-three">
+                          시작하기
+                    </span>
+                </a>
+              </div>
+              <div class="scroll_page">
+                      <span class="scroll_page-circle1 select_page">
+                        <a href="index.html">
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                        </a>
+                      </span>
+                      <span class="scroll_page-circle2">
+                          <a href="startPage2.html">
+                             <i class="fa fa-circle" aria-hidden="true"></i>
+                          </a>
+                      </span>
+                      <span class="scroll_page-circle3">
+                          <a href="startPage3.html">
+                             <i class="fa fa-circle" aria-hidden="true"></i>
+                          </a>
+                      </span>
+                      <span class="scroll_page-circle4">
+                          <a href="startPage4.html">
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                          </a>
+                      </span>
+                  </div>
+          </main>
+      
+          
+          <section class="bottom">
+              <span class="arrow_down">
+                <a href="startPage2.html">
+                  <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+                </a>
+              </span>
+          </section>
+          
+        </div>    
+</body>
 </html>

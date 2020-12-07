@@ -82,6 +82,7 @@
 			<mapping path="/member/myImage.do"/>
 			<mapping path="/member/ticket.do"/>
 			<mapping path="/board/delete.do"/>
+			<mapping path="/main/musMain.do"/>
 			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 		

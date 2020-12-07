@@ -30,5 +30,5 @@ public interface CommentsMapper {
 	//리뷰2개이상 작성 방지하기
 	@Select("select count(*) from reviews where mus_num=#{mus_num} and mem_num=#{mem_num}")
 	public int selectReviewRatings(@Param("mus_num") int mus_num,@Param("mem_num") int mem_num);
-	public List<CommentsVO> selectReviewRatings(Map<String, Object> map);
-}
+/*	public List<CommentsVO> selectReviewRatings(Map<String, Object> map);
+*/}

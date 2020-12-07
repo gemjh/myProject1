@@ -14,6 +14,5 @@ public interface CommentsService {
 	public void deleteComments(int rev_num);
 	public int selectReviewCount(int mus_num);
 	public int selectReviewRatings(int mus_num, int mem_num);
-	public List<CommentsVO> selectReviewRatings(Map<String, Object> map);
-
-}
+/*	public List<CommentsVO> selectReviewRatings(Map<String, Object> map);
+*/}

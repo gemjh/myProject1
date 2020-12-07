@@ -38,7 +38,7 @@ public class CommentsController {
 
 	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
-	public String reviewForm(@RequestParam int mus_num,Model model,HttpServletRequest request, 
+	public String reviewForm(@RequestParam int mus_num,@RequestParam int mem_num,Model model,HttpServletRequest request, 
 			HttpSession session) {
 		CommentsVO commentsVO = new CommentsVO();
 		commentsVO.setMus_num(mus_num);
@@ -57,10 +57,12 @@ public class CommentsController {
 /*		if(member.getMem_num()==commentsVO.getMem_num()) {
 			return "redirect:musinfo/modify.do?rev_num="+commentsVO.getRev_num();
 		}*/
-//		if(reviewCount!=0) {
-//			model.addAttribute("message","작품당 리뷰를 2개 이상 쓸 수 없습니다.");
-//			return "musinfo/result";
-//		}
+		int reviewCount=commentsService.selectReviewRatings(mus_num,mem_num);
+		
+		if(reviewCount>0) {
+			model.addAttribute("message","작품당 리뷰를 2개 이상 쓸 수 없습니다.");
+			return "musinfo/result";
+		}
 		return "reviewWrite";
 	}
 	//리뷰 등록
@@ -142,7 +144,8 @@ public class CommentsController {
 			if(log.isDebugEnabled()) {
 				log.debug("<<CommentsVO>> : " + commentsVO);
 			}
-			
+			commentsVO.setMus_num(commentsVO.getMus_num());
+
 			model.addAttribute("commentsVO",commentsVO);
 			model.addAttribute("pageCheck", "reviewpage");
 			model.addAttribute("rev_num", rev_num);
@@ -162,13 +165,13 @@ public class CommentsController {
 				model.addAttribute("pageCheck", "reviewpage");
 				return "reviewModify";
 			}
-	
+			
 			commentsService.updateComments(commentsVO);
+			CommentsVO vo = commentsService.selectComments(commentsVO.getRev_num());
 
-			//수정 후 view
-			model.addAttribute("message","수정되었습니다.");
-			model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoMain.do");
-			return "reviews";
+			model.addAttribute("message","수정되었습니다");
+			model.addAttribute("url",request.getContextPath()+"/musinfo/reviews.do?mus_num="+vo.getMus_num());
+			return "musinfo/result";
 		}
 		//글 삭제
 		@RequestMapping("/musinfo/delete.do")

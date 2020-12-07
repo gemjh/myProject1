@@ -30,11 +30,11 @@
 			 m.mus_num=#{mus_num}
 		</where>
  	</select>
-<!--  	<select id="selectReviewRatings" parameterType="map" resultType="integer">
+  	<select id="selectReviewRatings" parameterType="map" resultType="integer">
  		select 
  			count(*) 
  		from reviews 
  		<where> mus_num=#{mus_num} and mem_num=#{mem_num}
  		</where>
- 	</select> -->
+ 	</select> 
 </mapper>

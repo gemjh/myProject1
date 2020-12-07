@@ -4,12 +4,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#hiddenReview').click(function(){
+	$(document).on('click','#hiddenReview',function(){
 		$('#hiddenReview').remove();
 		var all ="<input type='button' value='전체보기' id='allReview' class='allReview' />";
 		$('.align-right').append(all);
+		
 	});
-	$('#allReview').click(function(){
+	$(document).on('click','#allReview',function(){
 		$('#allReview').remove();
 		var hidden ="<input type='button' value='가려진 리뷰' id='hiddenReview' class='hiddenReview' />";
 		$('.align-right').append(hidden);

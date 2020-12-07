@@ -38,7 +38,7 @@
 	</div>
 	<table>
 		<tr>
-			<th width="130">회원 번호</th>
+			<th width="130">관리자 번호</th>
 			<th>닉네임</th>
 			<th>이메일 주소</th>
 		</tr>

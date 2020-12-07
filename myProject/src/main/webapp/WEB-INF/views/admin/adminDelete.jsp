@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="page-main-style">
-	<h2>관리자 삭제</h2>
+	<h2>${vo.mem_num}번 관리자 삭제</h2>
 	<form:form action="adminDelete.do" commandName="memberVO">
 	<form:errors element="div" cssClass="error-color"/>
 	<form:hidden path="mem_num"/>

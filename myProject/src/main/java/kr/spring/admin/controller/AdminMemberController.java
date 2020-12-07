@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.admin.service.AdminMemberService;
 import kr.spring.member.service.MemberService;
@@ -103,48 +104,12 @@ public class AdminMemberController {
 	}
 	
 	//관리자 삭제
-	@RequestMapping(value = "/admin/adminDelete.do", method = RequestMethod.GET)
-	public String adminDelete() {
-		return "adminDelete";
+	@RequestMapping("/admin/adminDelete.do")
+	public String adminDelete(@RequestParam int mem_num,Model model) {
+		adminMemberService.deleteAdmin(mem_num);
+		return "redirect:adminManagerList.do";
 	}
-	//관리자 삭제 처리
-	@RequestMapping(value = "/admin/adminDelete.do", method = RequestMethod.POST)
-	public String completeDelete(	@Valid MemberVO memberVO, 
-									BindingResult result, 
-									HttpSession session, 
-									HttpServletRequest request) {
-		System.out.println("//*****관리자 삭제 처리**");
-		// email,password 필드의 에러만 체크
-		if (result.hasFieldErrors("email") || result.hasFieldErrors("password")) {
-			return "/admin/adminDelete.do";
-		}
-		// 회원번호를 얻기 위해 세션에 저장된 회원 정보 반환
-		MemberVO vo = (MemberVO) session.getAttribute("user");
-		memberVO.setMem_num(vo.getMem_num());
 
-		
-		// 비밀번호 일치 여부 체크
-		// 회원번호를 이용해 회원 정보를 읽기
-		MemberVO member = adminMemberService.selectMember(memberVO.getMem_num());
-		boolean check = false;
-		// 입력한 아이디.equals(세션에 저장된 아이디)
-		if (member != null && memberVO.getEmail().equals(vo.getEmail())) {
-			// 비밀번호 일치여부 체크
-			check = member.isCheckedPassword(memberVO.getPassword());
-		}
-
-		if (check) {
-			// 인증성공
-			adminMemberService.deleteAdmin(memberVO.getMus_num());
-			System.out.println("//뮤지컬 삭제 완료");
-			return "redirect:/admin/adminMusicalDeleteCompleted.do";
-
-		} else {
-			// 인증실패
-			result.reject("invalidEmailOrPassword");
-			return "adminDelete";
-		}
-	}	
 
 	//관리자 추가
 	@RequestMapping(value = "/admin/adminPlus.do", method = RequestMethod.GET)

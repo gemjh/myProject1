@@ -2,7 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+function button_event(){
+	if (confirm("정말 삭제하시겠습니까?") == true){    
+		location.href="${pageContext.request.contextPath}/admin/adminDelete.do?mem_num="+${memberVO.mem_num};
+	}else{   //취소
+	    return;
+	}
+			
+};	
+</script>
 <div class="page-main-style">
 	<h2>관리자 정보 상세 보기</h2>
 	<table>
@@ -31,9 +41,9 @@
 			<td>${memberVO.mem_regdate}</td>
 		</tr>
 	</table>
-	<c:if test="${admin.mem_num=='100'}">
+	<c:if test="${admin.mem_num=='100' && memberVO.mem_num!='100'}">
 	<div class="align-center">
-		<input type="button" value="삭제" onclick="location.href='adminDelete.do?mem_num=${memberVO.mem_num}'">
+		<input type="button" id="delete" value="삭제" onclick="button_event();">
 	</div>
 	</c:if>
 </div>

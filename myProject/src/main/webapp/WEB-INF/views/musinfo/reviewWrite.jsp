@@ -9,18 +9,29 @@
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/labs.js" type="text/javascript"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
 <style>
-.half{
-	width:200px;
-}
-h1{
+
+h1 {
 	text-align:center;
+	color:#FFF;
 }
 
+body{
+	background-color:#27272b;
+}
+textarea{
+	width:300px;
+	height:100px;
+	margin-bottom:10px;
+}
+#half,#review{
+	margin-left:75px;
+}
+.result{
+	margin-left:280px;
+}
 </style>
-<%--  <c:if test="">
-	<%=response.sendRedirect("musinfo/musinfoDetail.do?mus_num=") %>
-</c:if>  --%>
-<h1>솔직한 감상평을 들려주세요!</h1>
+
+<h1>솔직한 감상평을 들려주세요!(최대 100자)</h1>
 <form:form action="write.do" commandName="commentsVO"
 	enctype="multipart/form-data" id="reviewForm" name="reviewForm">
 	<form:hidden path="mus_num" />
@@ -28,14 +39,15 @@ h1{
 	<form:errors path="rev_rate" cssClass="error-color"/>
 	<label for=review></label>
 	<div id="half"></div>
-	<form:textarea path="review" />
+	<form:textarea id="review" name="review" path="review" />
+	
 	<form:errors path="review" cssClass="error-color" />
-
-	<div class="align-center">
+	<div class="result">
 		<input type="submit" value="등록"> 
 		<input type="button" value="홈으로" onclick="location.href='../main/musMain.do'">
 	</div>
 </form:form>
+
 <script>
 	$.fn.raty.defaults.path = '${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images';
 	$(function() {
@@ -58,4 +70,13 @@ h1{
 		}
 
 	});
+	//글자수 제한
+	$(document).ready(function(){
+		$('#review').on('keyup',function(){
+			if($(this).val().length>100){
+				$(this).val($(this).val().substring(0,100));
+				alert("글자수가 너무 많아요!");
+				}
+			});
+		});
 </script>

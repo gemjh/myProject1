@@ -21,7 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.musinfo.service.CommentsService;
+import kr.spring.musinfo.service.ContentsService;
 import kr.spring.musinfo.vo.CommentsVO;
+import kr.spring.musinfo.vo.ContentsVO;
 import kr.spring.util.PagingUtil;
 
 
@@ -29,6 +31,8 @@ import kr.spring.util.PagingUtil;
 public class CommentsController {
 	@Resource
 	private CommentsService commentsService;
+	@Resource
+	private ContentsService contentsService;
 	private Logger log = Logger.getLogger(this.getClass());
 	//자바빈 초기화
 	@ModelAttribute
@@ -49,6 +53,7 @@ public class CommentsController {
 		MemberVO member=(MemberVO)session.getAttribute("user");
 		if(member.getAuth()==2) {
 			model.addAttribute("message","이용권을 구매하세요.");
+			model.addAttribute("url",request.getContextPath()+"/member/ticket.do");
 			return "musinfo/result";		
 			}
 
@@ -101,17 +106,21 @@ public class CommentsController {
 	//리뷰 전체보기
 		@RequestMapping("/musinfo/reviews.do")
 		public ModelAndView process(
+				Model model,
 				@RequestParam int mus_num,
 				@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 				@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 				@RequestParam(value = "keyword", defaultValue = "") String keyword){
+			
 			System.out.println("//리뷰 전체보기*************");
+			
 			Map<String,Object> map=new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
 			map.put("keyword", keyword);
 			map.put("mus_num",mus_num);
 			int count=commentsService.selectRowCount(map);
 			System.out.println("//count: "+ count);
+			
 			if(log.isDebugEnabled()) {
 				log.debug("<<count>>: "+count);
 			}
@@ -128,6 +137,22 @@ public class CommentsController {
 				}
 			}
 			System.out.println("//list: "+ list);
+			//뮤지컬번호에서 정보 가져오기
+			ContentsVO VO = contentsService.selectContents(mus_num);
+			int count2 = commentsService.selectReviewCount(mus_num);
+			System.out.println("//ContentsVO : " + VO);
+			System.out.println("//avgVO : " + count2);
+			//평점
+			if(count2>0) {
+			String avg =String.format("%.1f",contentsService.selectAvg(mus_num));
+			System.out.println("//avg : " + avg);
+			model.addAttribute("avg",avg);
+			
+			int num=contentsService.selectNum(mus_num);
+			System.out.println("//num : " + num);
+			
+			model.addAttribute("num",num);
+			}
 			ModelAndView mav=new ModelAndView();
 			mav.setViewName("reviews");
 			mav.addObject("count",count);
@@ -135,7 +160,15 @@ public class CommentsController {
 			mav.addObject("pagingHtml",page.getPagingHtml());
 			System.out.println("//mav: "+ mav);
 			return mav;
+			
+			
+
 		}
+
+			
+			
+			
+	
 		//리뷰 수정 폼 호출
 		@RequestMapping(value="/musinfo/modify.do",method=RequestMethod.GET)
 		public String form(@RequestParam int rev_num,Model model) {

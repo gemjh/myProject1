@@ -24,8 +24,8 @@ span{
 		<iframe width="560" height="315"
 			src="https://www.youtube.com/embed/XB8YTYHnWHQ"></iframe>
 	</div>
-	<c:if test="${count!=0 }">
-		평균 평점 : <div id="average"></div>
+	<c:if test="${count2!=0 }">
+		평균 평점 : ${avg }(${num}명)
 		<table>
 			<tr>
 				<th>닉네임</th>

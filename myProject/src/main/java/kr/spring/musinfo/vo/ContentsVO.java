@@ -30,6 +30,7 @@ public class ContentsVO {
 	//최근 리뷰에 사용할  정보
 	private String nickname;
 	private String review;
+	private byte[] mem_image;
 	//뮤지컬 리뷰
 	private double rev_rate;
 	public double getRev_rate() {
@@ -147,5 +148,11 @@ public class ContentsVO {
 	}
 	public void setReview(String review) {
 		this.review = review;
+	}
+	public byte[] getMem_image() {
+		return mem_image;
+	}
+	public void setMem_image(byte[] mem_image) {
+		this.mem_image = mem_image;
 	}
 }

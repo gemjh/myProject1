@@ -359,12 +359,12 @@ $(document).ready(function () {
 
 				</div>
 			</div>
-			<!-- 코멘트 더보기 링크 -->
+
+		</div>
+					<!-- 코멘트 더보기 링크 -->
 			<input type="button" id="moreReviews" name="moreReviews" value="더보기"
 				onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
-
 			<!-- 코멘트 더보기 링크 끝 -->
-		</div>
 	</div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
   </div>

@@ -2,109 +2,7 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<style>
-
-/* 콘텐츠 정보들 */
-.content_info-box {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 25px;
-    border-bottom: 1px solid rgb(224, 224, 224);
-}
-/* 뮤지컬 제목 */
-.content_title{
-	font-size:25px;
-	color:white;
-}
-/* 콘텐츠 정보들 중에 기본정보 윗부분 */
-.content_info-box .left-column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgb(226, 220, 220);
-    border-radius: 3px;
-}
-
-/* 콘텐츠 정보 중 오른쪽 부분 */
-.right-column {
-    width: 750px;
-    height: 230px;
-    margin-left: 22px;
-}
-
-/* 첫번째 줄 */
-.content_info{
-    font-size: 23px;
-    margin-bottom: 25px;
-    color: rgb(122, 122, 122);   
-}
-
-/* 마지막 줄 */
-.content_info:last-child {
-    display: flex;
-}
-
-/* 바로보기, 평가하기 */
-.watch, .review, .join, .edit{
-	background-color:#27272b;
-	border:0;
-	outline:0;
-	margin-right:20px;
-	color:rgb(122,122,122);
-}
-/* 포스터 아래 큰 제목 */
-.contents_contents_title{
-	font-size: 23px;
-	margin: 15px auto;
-}
-
-/* 한줄평 디자인 */
-.user_profile{
-	position:absolute;
-	margin: 0 0;
-	width:100px;
-	height:100px;
-	
-}
-.star, .comment, .user_name{
-	margin-left: 100px;
-}
-
-/* 한줄평 더보기 */
-#moreReviews{
-	margin-left:-5px;
-	background-color:#27272b;
-	color:rgb(122, 122, 122);
-	border:0;
-	outline:0;
-}
-.cursor {
-    cursor: pointer;
-}
-      .contents_contents_column{
-      		overflow:hidden;
-      	}
-      .contents_contents_column .contents_contents_summary.hidden{
-         white-space:nowrap;
-         word-wrap:normal;
-         width:90%;
-         overflow:hidden;
-         text-overflow: ellipsis;
-         float:left;
-         
-      }
-
-      .btn-moreInfo{display:none;white-space:nowrap; color:rgb(122, 122, 122)}
-      
-      @media screen and (max-width: 533px){
-         .contents_contents_column .contents_contents_summary.hidden{
-            width:75%;
-         }
-      }
-
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/musinfo/musinfoMain.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -295,92 +193,178 @@ $(document).ready(function () {
 
     <!-- 여기서부터 메인 컨텐츠 박스입니다 -->
     <div class="contents_main-box">
-        <div class="contents_middle-box">
-            <div>
-                <div class="contents_contents-box">
-                    <!-- 첫번째(기본정보) 박스입니다 -->
-                    <div class="contents_contents_column">
-                        <div class="contents_contents_title">기본 정보
-                        </div>
-                          
-                        <span class="contents_contents_summary contents_info">
-                            ${contentsVO.mus_summary }
-                        </span><br>
-                        <!-- 기본정보 더보기 링크 -->
-                        <span class="btn-moreInfo">더보기</span>
-                        <!-- 더보기 링크 끝 --> 
-                        <!-- 상세정보 -->
-                        <span class="contents_contents_detail contents_info">
-                            ${contentsVO.mus_detail }
-                        </span>
-                    </div>
-                    <!-- 첫번째(기본정보) 끝입니다 -->
+		<div class="contents_middle-box">
+			<div>
+				<div class="contents_contents-box">
+					<!-- 첫번째(기본정보) 박스입니다 -->
+					<div class="contents_contents_column">
+						<div class="contents_contents_title">기본 정보</div>
 
-                    <!-- 두번째(출연/제작) 시작 -->
-                    <div class="contents_contents_column">
-                        <div class="contents_contents_title">출연</div>
-                        <div class="contents_contents_container">
-                            <div class="contents_contents_content">
-                                <div class="contents_contents_profile">
-                                    <div>
-                                    	<span class="profile_name">
-                                    	${contentsVO.mus_actor }
-										</span>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 두번째(출연/제작) 끝 -->
-                    
-
-                    
-                    <!-- 세번째(코멘트) 시작 -->
-			<div class="contents_contents_column">
-				<div class="column_column">
-					<div>
-						<div class="contents_contents_title">한줄평</div> 
+						<span class="contents_contents_summary contents_info">
+							${contentsVO.mus_summary } </span><br>
+						<!-- 기본정보 더보기 링크 -->
+						<span class="btn-moreInfo">더보기</span>
+						<!-- 더보기 링크 끝 -->
+						<!-- 상세정보 -->
+						<span class="contents_contents_detail contents_info">
+							${contentsVO.mus_detail } </span>
 					</div>
+					<!-- 첫번째(기본정보) 끝입니다 -->
+
+					<!-- 두번째(출연/제작) 시작 -->
+					<div class="contents_contents_column">
+						<div class="contents_contents_title">출연</div>
+						<div class="contents_contents_container">
+							<div class="contents_contents_content">
+								<div class="contents_contents_profile">
+									<div>
+										<span class="profile_name"> ${contentsVO.mus_actor } </span>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 두번째(출연/제작) 끝 -->
+
+
+
+					<!-- 세번째(코멘트) 시작 -->
+					<div class="contents_contents_column">
+						<div class="newestComments">
+							<div class="contents_contents_title">한줄평</div>
+						</div>
+						<div class="comment_user">
+							<c:forEach var="newest" items="${newest }">
+								<ul class="user_profile">
+									<c:if test="${newest.mem_image!=null }">
+										<li><img src="/member/imageView.do" width=100px; height=100px; ></li>
+										
+									</c:if>	
+									<c:if test="${newest.mem_image==null }">
+										<li><img src="${pageContext.request.contextPath/resources/css/images/blank.GIF }"></li>
+									</c:if>
+								</ul>
+								<ul class="newComments">
+									<li class="star"><c:if test="${newest.rev_rate==1 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==1.5 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==2 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==2.5 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==3.0 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==3.5 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==4 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png">
+										</c:if> <c:if test="${newest.rev_rate==4.5 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png">
+										</c:if> <c:if test="${newest.rev_rate==5.0 }">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+											<img
+												src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png">
+										</c:if></li>
+									<li class="comment">${newest.review }</li>
+									<li class="user_name">by ${newest.nickname }</li>
+								</ul>
+
+							</c:forEach>
+						</div>
+
+
+					</div>
+					<!-- 세번째(코멘트) 끝 -->
 
 				</div>
-						<div class="comment_user">
-						<c:forEach var="newest" items="${newest }">
-						<ul class="newComments">
-						<c:if test="${newest.mem_image !=null}">
-							<li class="user_profile"><img src="${pageContext.request.contextPath}/member/imageView.do"></li>
-							</c:if>
- 							<li class="star">
- 								<c:if test="${newest.rev_rate==1 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
- 								<c:if test="${newest.rev_rate==1.5 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
-
- 								<c:if test="${newest.rev_rate==2 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
- 								<c:if test="${newest.rev_rate==2.5 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
-
- 								<c:if test="${newest.rev_rate==3.0 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
- 								<c:if test="${newest.rev_rate==3.5 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
-
- 								<c:if test="${newest.rev_rate==4 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-off.png"></c:if>
- 								<c:if test="${newest.rev_rate==4.5 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-half.png"></c:if>
- 				
- 								<c:if test="${newest.rev_rate==5.0 }"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"><img src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/lib/images/star-on.png"></c:if>
- 							</li>
-							<li class="comment">${newest.review }</li>
-  	 						<li class="user_name">by ${newest.nickname }</li>
-  						</ul>
-						</c:forEach>
-						</div>
-				
-				<!-- 코멘트 더보기 링크 -->
-				<input type="button" id="moreReviews" name="moreReviews" value="더보기" onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
-				<!-- 코멘트 더보기 링크 끝 -->
 			</div>
-			<!-- 세번째(코멘트) 끝 -->
+			<!-- 코멘트 더보기 링크 -->
+			<input type="button" id="moreReviews" name="moreReviews" value="더보기"
+				onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
 
-                </div>
-            </div>
-            <div class="contents_side-box"></div>
-        </div>
-    </div>
+			<!-- 코멘트 더보기 링크 끝 -->
+		</div>
+	</div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
   </div>

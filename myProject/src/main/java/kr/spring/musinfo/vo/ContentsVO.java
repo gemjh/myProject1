@@ -31,6 +31,7 @@ public class ContentsVO {
 	private String nickname;
 	private String review;
 	private byte[] mem_image;
+	private String mem_num;
 	//뮤지컬 리뷰
 	private double rev_rate;
 	public double getRev_rate() {
@@ -129,7 +130,7 @@ public class ContentsVO {
 		return "ContentsVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
 				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
 				+ ", mus_rate=" + mus_rate + ",  mus_detail=" + mus_detail + ", mus_summary="
-				+ mus_summary + ", mus_regdate=" + mus_regdate + ", nickname=" + nickname +", review=" +review+"]";
+				+ mus_summary + ", mus_regdate=" + mus_regdate + ", nickname=" + nickname +", review=" +review+", mem_num="+mem_num+"]";
 	}
 	public String getMus_postname() {
 		return mus_postname;
@@ -154,5 +155,11 @@ public class ContentsVO {
 	}
 	public void setMem_image(byte[] mem_image) {
 		this.mem_image = mem_image;
+	}
+	public String getMem_num() {
+		return mem_num;
+	}
+	public void setMem_num(String mem_num) {
+		this.mem_num = mem_num;
 	}
 }

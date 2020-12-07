@@ -64,6 +64,8 @@
 .user_profile{
 	position:absolute;
 	margin: 0 0;
+	width:100px;
+	height:100px;
 	
 }
 .star, .comment, .user_name{

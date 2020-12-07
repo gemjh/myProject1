@@ -38,7 +38,7 @@ public class CommentsController {
 
 	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
-	public String reviewForm(@RequestParam int mus_num,@RequestParam int mem_num, Model model,HttpServletRequest request, 
+	public String reviewForm(@RequestParam int mus_num,Model model,HttpServletRequest request, 
 			HttpSession session) {
 		CommentsVO commentsVO = new CommentsVO();
 		commentsVO.setMus_num(mus_num);
@@ -54,9 +54,9 @@ public class CommentsController {
 			model.addAttribute("message","이용권을 구매하세요.");
 			return "musinfo/result";		
 			}
-		if(member.getMem_num()==commentsVO.getMem_num()) {
+/*		if(member.getMem_num()==commentsVO.getMem_num()) {
 			return "redirect:musinfo/modify.do?rev_num="+commentsVO.getRev_num();
-		}
+		}*/
 //		if(reviewCount!=0) {
 //			model.addAttribute("message","작품당 리뷰를 2개 이상 쓸 수 없습니다.");
 //			return "musinfo/result";
@@ -76,6 +76,7 @@ public class CommentsController {
 		}
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
+			model.addAttribute("pageCheck", "reviewpage");
 			return "reviewWrite";
 		}
 		//회원번호 세팅
@@ -88,6 +89,7 @@ public class CommentsController {
 		//리뷰쓰기
 		commentsService.insertComments(commentsVO);
 		System.out.println("//리뷰쓰기");
+		
 		return "redirect:musinfoDetail.do?mus_num="+commentsVO.getMus_num();
 	}
 
@@ -157,12 +159,12 @@ public class CommentsController {
 			}
 			//오류시 폼 호출
 			if(result.hasErrors()) {
+				model.addAttribute("pageCheck", "reviewpage");
 				return "reviewModify";
 			}
 	
 			commentsService.updateComments(commentsVO);
 
-			
 			//수정 후 view
 			model.addAttribute("message","수정되었습니다.");
 			model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoMain.do");

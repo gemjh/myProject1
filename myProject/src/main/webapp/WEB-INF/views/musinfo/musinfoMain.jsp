@@ -259,9 +259,13 @@ $(document).ready(function () {
                 <a href="#" id="like_img"><img src="/Mucha/resources/images/like_no.png" width="30px"></a>
                 <!-- 찜 끝 -->
                 </c:if>
-                <!-- 로그인하지 않았거나 이용권이 없는 경우 -->
-                <c:if test="${user.auth==2 || user.auth==null}">
+                <!-- 로그인하지 않은 경우 -->
+                <c:if test="${user.auth==null}">
                 	<input type="button" id="join" class="join" value="지금 바로 감상하세요" onclick="location.href='/Mucha/member/login.do'">
+                </c:if>
+                <!-- 이용권이 없는 경우 -->
+                <c:if test="${user.auth==2 }">
+                	<input type="button" id="join" class="join" value="지금 바로 감상하세요" onclick="location.href='/Mucha/member/ticket.do'">
                 </c:if>
                 <!-- 관리자인 경우 -->
                 <c:if test="${user.auth==0 }">

@@ -63,7 +63,10 @@
                 <div class="input-group">                 
                   <form:textarea path="no_content" />
                   <script type="text/javascript">
-					CKEDITOR.replace('no_content', {filebrowserUploadUrl:'${pageContext.request.contextPath}/admin/imageUpload.do',height:600});
+					CKEDITOR.replace('no_content', 
+				{filebrowserUploadUrl:'${pageContext.request.contextPath}/admin/imageUpload.do',
+				filebrowserImageUploadUrl : '${pageContext.request.contextPath}/admin/imageUpload.do',
+						height:600});
 				</script>
                 </div>
                 <form:errors path="no_content" cssClass="error-color"/>

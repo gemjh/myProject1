@@ -291,7 +291,7 @@ public class NoticeController {
 		String path = "/myProject/src/main/webapp/resources/upload";
 
 		String sDirPath = path + uid + "_" + fileName;
-
+		
 		File imgFile = new File(sDirPath);
 
 		// 사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.

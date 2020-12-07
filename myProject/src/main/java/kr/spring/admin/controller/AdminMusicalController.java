@@ -24,13 +24,13 @@ import kr.spring.admin.service.AdminMusicalService;
 import kr.spring.admin.vo.AdminMusicalVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.musinfo.service.CommentsService;
+import kr.spring.musinfo.service.ContentsService;
 import kr.spring.musinfo.vo.CommentsVO;
+import kr.spring.musinfo.vo.ContentsVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
 public class AdminMusicalController {
-	@Resource
-	private CommentsService commentsService;
 	
 	private Logger log = Logger.getLogger(this.getClass());
 
@@ -40,6 +40,9 @@ public class AdminMusicalController {
 
 	@Resource
 	AdminMemberService adminMemberService;
+	
+	@Resource
+	private ContentsService contentsService;
 
 	// 자바빈 초기화
 	@ModelAttribute
@@ -131,6 +134,7 @@ public class AdminMusicalController {
 				log.debug("<<뮤지컬 목록>> : " + list);
 			}
 		}
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminMusicalList");
 		mav.addObject("list", list);

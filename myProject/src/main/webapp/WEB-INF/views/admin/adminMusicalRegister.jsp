@@ -82,7 +82,7 @@ function deleteBox (x) {
 				<option value="4">어린이/가족</option>
 				<option value="5">퍼포먼스</option>
 			</select>
-			<li>
+			</li>
 			<li>
 			<label for="mus_age">등급</label>
 			<select name="mus_age" id="mus_age">

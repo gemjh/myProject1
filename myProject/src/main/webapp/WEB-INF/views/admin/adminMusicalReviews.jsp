@@ -60,6 +60,9 @@ $(document).ready(function(){
 				<th>회원번호</th>
 				<th>평점</th>
 				<th>한줄평</th>
+				<c:if test="${musical.hide_rev!=null}">
+				<th>가려진 한줄평</th>
+				</c:if>
 				<th>리뷰 등록일</th>
 				<th>리뷰 가리기</th>
 			</tr>
@@ -70,7 +73,12 @@ $(document).ready(function(){
 					<td>${musical.nickname}</td>
 					<td>${musical.mem_num}</td>
 					<td>${musical.rev_rate}</td>
+					<c:if test="${musical.hide_rev!=null}">
+					<td>${musical.hide_rev}</td>
+					</c:if>
+					<c:if test="${musical.hide_rev==null}">
 					<td>${musical.review}</td>
+					</c:if>
 					<td>${musical.rev_regdate}</td>
 					<td>
 					<c:if test="${musical.hide_rev==null}">

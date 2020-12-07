@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.service.MemberService;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.musinfo.service.CommentsService;
 import kr.spring.musinfo.service.ContentsService;
 import kr.spring.musinfo.vo.CommentsVO;
@@ -28,6 +31,8 @@ public class ContentsController {
 	private ContentsService contentsService;
 	@Resource
 	private CommentsService commentsService;
+	@Resource
+	private MemberService memberService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -62,6 +67,7 @@ public class ContentsController {
 	
 	
 	//최근리뷰 2개
+
 		List<ContentsVO> newest=contentsService.selectNewest(mus_num);
 		model.addAttribute("newest",newest);
 		System.out.println("//최근리뷰2개"+newest);
@@ -92,19 +98,49 @@ public class ContentsController {
 	//이미지 출력
 		@RequestMapping("/musinfo/imageView.do")
 		public ModelAndView viewImage(@RequestParam int mus_num) {
-			System.out.println("//*****이미지 출력*********");
+
+			System.out.println("//*****영화이미지 출력*********");
 			ContentsVO contentsVO = contentsService.selectContents(mus_num);
 			System.out.println("//VO : "+contentsVO);
+
+			
 			ModelAndView mav = new ModelAndView();
 			System.out.println("//mav : "+mav);
+			
 			mav.setViewName("imageView");
 			mav.addObject("imageFile",contentsVO.getMus_post());
 			mav.addObject("filename",contentsVO.getMus_postname());
 			System.out.println("//mav : "+mav);
+
+			
 			return mav;
+			
 		}
+/*	//프로필이미지 출력
+		@RequestMapping(value="/member/imageView.do")
+		public ModelAndView profile(@RequestParam int mem_num) {
+			System.out.println("//*****프로필이미지 출력*********");
+			MemberVO memberVO = memberService.selectMember(mem_num);
+			System.out.println("//VO : "+memberVO);
+			
+			ModelAndView mav=new ModelAndView();
+			mav.setViewName("imageView");
+			mav.addObject("imageFile",memberVO.getMem_image());
+			mav.addObject("filename",memberVO.getMem_imagename());
+			return mav;
+		}*/
 		
-
-		
-
+/*		@RequestMapping("/musinfo/imageView.do")
+		public ModelAndView viewImage(@RequestParam int board_num) {
+			
+			BoardVO board = boardService.selectBoard(board_num);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("imageView");
+			                            //byte[]타입의 데이터
+			mav.addObject("imageFile", board.getUploadfile());
+			mav.addObject("filename", board.getFilename());
+			
+			return mav;
+		}*/
 }

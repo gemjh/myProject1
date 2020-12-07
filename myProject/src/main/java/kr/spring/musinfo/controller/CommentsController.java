@@ -38,12 +38,9 @@ public class CommentsController {
 
 	//리뷰 폼 호출
 	@RequestMapping(value="/musinfo/write.do",method=RequestMethod.GET)
-	public String reviewForm(@RequestParam int mus_num,@RequestParam int mem_num,Model model,HttpServletRequest request, 
+	public String reviewForm(CommentsVO commentsVO, Model model,HttpServletRequest request, 
 			HttpSession session) {
-		CommentsVO commentsVO = new CommentsVO();
-		commentsVO.setMus_num(mus_num);
-		model.addAttribute("commentsVO", commentsVO);
-		model.addAttribute("pageCheck", "reviewpage");
+	
 		if(session.getAttribute("user")==null) {
 			model.addAttribute("message","로그인해 주세요.");
 			model.addAttribute("url",request.getContextPath()+"/member/login.do");
@@ -54,15 +51,19 @@ public class CommentsController {
 			model.addAttribute("message","이용권을 구매하세요.");
 			return "musinfo/result";		
 			}
-/*		if(member.getMem_num()==commentsVO.getMem_num()) {
-			return "redirect:musinfo/modify.do?rev_num="+commentsVO.getRev_num();
-		}*/
-		int reviewCount=commentsService.selectReviewRatings(mus_num,mem_num);
+
 		
-		if(reviewCount>0) {
+		int reviewCount=commentsService.selectReviewRatings(commentsVO.getMus_num(),member.getMem_num());
+		
+			if(reviewCount>0) {
 			model.addAttribute("message","작품당 리뷰를 2개 이상 쓸 수 없습니다.");
+			model.addAttribute("url",request.getContextPath()+"/musinfo/musinfoDetail.do?mus_num="+commentsVO.getMus_num());
 			return "musinfo/result";
-		}
+			}
+		  
+			model.addAttribute("commentsVO", commentsVO);
+			model.addAttribute("pageCheck", "reviewpage");
+			
 		return "reviewWrite";
 	}
 	//리뷰 등록

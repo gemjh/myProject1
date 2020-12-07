@@ -58,9 +58,9 @@ public class CommentsServiceImpl implements CommentsService{
 			}
 
 			@Override
-			public int selectReviewRatings(int mus_num, int mem_num) {
+			public int selectReviewRatings(int mus_num,int mem_num ) {
 				// TODO Auto-generated method stub
-				return commentsMapper.selectReviewRatings(mus_num, mem_num);
+				return commentsMapper.selectReviewRatings(mus_num,mem_num);
 			}
 
 /*			@Override

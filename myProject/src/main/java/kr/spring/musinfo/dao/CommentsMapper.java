@@ -1,10 +1,8 @@
 package kr.spring.musinfo.dao;
 
-
-
 import java.util.List;
 import java.util.Map;
-
+   
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -25,7 +23,7 @@ public interface CommentsMapper {
 	public List<CommentsVO> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
 	//리뷰 평점 구하기
-	@Select("SELECT COUNT(*) FROM reviews r WHERE r.mus_num=#{mus_num}")
+	@Select("SELECT COUNT(*) FROM reviews WHERE mus_num=#{mus_num}")
 	public int selectReviewCount(int mus_num);
 	//리뷰2개이상 작성 방지하기
 	@Select("select count(*) from reviews where mus_num=#{mus_num} and mem_num=#{mem_num}")

@@ -32,3 +32,4 @@ public interface CommentsMapper {
 	public int selectReviewRatings(@Param("mus_num") int mus_num,@Param("mem_num") int mem_num);
 /*	public List<CommentsVO> selectReviewRatings(Map<String, Object> map);
 */}
+ 

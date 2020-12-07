@@ -15,8 +15,8 @@
 						<div class="search_type1-content-box">
 							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
 								<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width:200px;">
-								<span class="search_type1-content_title">${musMain.mus_name}</span>
 							</a>
+							<span class="search_type1-content_title">${musMain.mus_name}</span>
 						</div>	
 					</c:forEach>
 				</div>			

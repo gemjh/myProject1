@@ -36,11 +36,11 @@ public interface MusMainService {
 	// 회원 선호 장르 갯수 구하기
 	// public int selectMusPreferCount(Map<String, Object> map);
 
-	// 회원 찜한 작품 리스트
+	/*// 회원 찜한 작품 리스트
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map);
 
 	// 회원 찜한 작품 갯수 구하기
-	// public int selectMusPickCount(Map<String, Object> map);
+	 public int selectMusPickCount(Map<String, Object> map);*/
 
 	// 카테고리 별 작품 보기
 	//갯수

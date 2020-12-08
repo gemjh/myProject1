@@ -1,11 +1,13 @@
 package kr.spring.musinfo.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.spring.main.vo.MusMainVO;
 import kr.spring.musinfo.dao.PickMapper;
 import kr.spring.musinfo.vo.PickVO;
 
@@ -23,10 +25,16 @@ public class PickServiceImpl implements PickService{
 	public void deletePick(PickVO pickVO) {
 		pickMapper.deletePick(pickVO);
 	}
+	
+	@Override
+	public List<MusMainVO> selectMusPickList(Map<String, Object> map) {
+		return pickMapper.selectMusPickList(map);
+	}
 
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
 		return pickMapper.selectRowCount(map);
 	}
 
+	
 }

@@ -28,7 +28,7 @@ public interface MusMainMapper {
 	//public int selectMusLatestCount(Map<String, Object> map);
 	
 	// 인기순 리스트
-	@Select("SELECT * FROM musical ORDER BY mus_num ASC")
+	@Select("SELECT * FROM musical ORDER BY mus_hit DESC")
 	public List<MusMainVO> selectMusPopularList(Map<String, Object> map);
 	
 	// 인기순 리스트 갯수 구하기
@@ -42,13 +42,13 @@ public interface MusMainMapper {
 	//@Select("SELECT COUNT(*) FROM musical")
 	//public int selectMusPreferCount(Map<String, Object> map);
 	
-	// 회원 찜한 작품 리스트
-	@Select("SELECT * FROM musical ORDER BY mus_num ASC")
+	/*// 회원 찜한 작품 리스트
+	@Select("SELECT * FROM pick p JOIN musical m ON p.mus_num=m.mus_num WHERE mem_num=#{mem_num}")
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map);
 	
 	// 회원 찜한 작품 갯수 구하기
-	//@Select("SELECT COUNT(*) FROM musical")
-	//public int selectMusPickCount(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM pick WHERE mem_num=#{mem_num}")
+	public int selectMusPickCount(Map<String, Object> map);*/
 	
 	
 	//카테고리별 갯수 구하기

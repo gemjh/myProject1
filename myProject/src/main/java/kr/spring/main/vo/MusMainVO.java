@@ -26,9 +26,10 @@ public class MusMainVO {
 	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
-	public int getMus_num() {
-		return mus_num;
-	}
+	
+	
+	
+	
 	//이미지 업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
 		//MultipartFile - > byte[] 반환
@@ -114,6 +115,9 @@ public class MusMainVO {
 	}
 	public void setMus_num(int mus_num) {
 		this.mus_num = mus_num;
+	}
+	public int getMus_num() {
+		return mus_num;
 	}
 	@Override
 	public String toString() {

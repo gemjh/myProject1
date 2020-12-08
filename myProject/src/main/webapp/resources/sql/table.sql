@@ -37,6 +37,7 @@ CREATE TABLE musical(
     mus_hit number(10),
     mus_detail CLOB not null,
     mus_regdate DATE not null,
+    mus_hit NUMBER(10),
      CONSTRAINT musical_pk PRIMARY KEY(mus_num)
 );
 
@@ -45,10 +46,6 @@ CREATE TABLE actor(
  act_name VARCHAR2(50) not null,
 CONSTRAINT actor_pk  PRIMARY KEY (act_num)
 );
-
-
-
-
 
 CREATE TABLE prefer(
  prefer_num NUMBER(10) not null,
@@ -224,4 +221,11 @@ START WITH  100;
 CREATE SEQUENCE no_seq
 INCREMENT BY 1
 START WITH 70000;
+
+INSERT INTO genre (gen_num,gen_name) VALUES(0,'분류없음');
+INSERT INTO genre (gen_num,gen_name) VALUES(1,'라이선스');
+INSERT INTO genre (gen_num,gen_name) VALUES(2,'오리지널');
+INSERT INTO genre (gen_num,gen_name) VALUES(3,'창작');
+INSERT INTO genre (gen_num,gen_name) VALUES(4,'어린이/가족');
+INSERT INTO genre (gen_num,gen_name) VALUES(5,'퍼포먼스');
 

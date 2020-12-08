@@ -51,18 +51,16 @@ public class MusMainServiceImpl implements MusMainService{
 		return musMainMapper.selectMusPreferCount(map);
 	}*/
 
-	@Override
+	/*@Override
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map) {
 		return musMainMapper.selectMusPickList(map);
 	}
 
-	
-
-	/*@Override
+	@Override
 	public int selectMusPickCount(Map<String, Object> map) {
 		return musMainMapper.selectMusPickCount(map);
-	}
-*/
+	}*/
+
 	//카테고리 갯수
 	@Override
 	public int selectLicenseCount(Map<String, Object> map) {

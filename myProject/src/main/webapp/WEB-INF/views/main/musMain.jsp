@@ -85,8 +85,9 @@
 					</div>
 				</c:forEach>
 			</div>
-			
-			<div class="contents_title">__님이 선호하는 장르의 작품</div>
+	
+
+			<div class="contents_title">${user.nickname}님이 선호하는 장르의 작품</div>
 			<div class="type1-contents_contents">	
 			<c:forEach var="musMain" items="${preferList}">
 				<div class="type1-content-box">			
@@ -98,9 +99,9 @@
 						</a>
 					</div>
 				</c:forEach>
-			</div>
-
-			<div class="contents_title">__님이 찜한 작품 작품</div>
+			</div>		
+			
+			<div class="contents_title">${user.nickname}님이 찜한 작품 작품</div>
 			<div class="type1-contents_contents">	
 			<c:forEach var="musMain" items="${pickList}">
 				<div class="type1-content-box">			
@@ -113,32 +114,7 @@
 					</div>
 				</c:forEach>
 			</div>
+			
 		</div>
-	</c:if>
+	</c:if>	
 </c:if>
-
-
-<!-- <th>장르</th>
-<th>관람등급</th>
-<th width="400">주연배우</th>
-<th>재생시간</th>
-<th>영상 링크</th>
-<th>평점</th>
-<th>요약 정보</th>
-<th>상세 정보</th>
-<th>등록일</th>
-
-
-<td>${musMain.gen_num}</td>
-	<td>${musMain.mus_age}</td>
-	<td>${musMain.mus_actor}</td>
-	<td>${musMain.mus_time}</td>
-	<td>${musMain.mus_video}</td>
-	<td>${musMain.mus_rate}</td>
-	<td>${musMain.mus_summary}</td>
-	<td>${musMain.mus_detail}</td>
-	<td>${musMain.mus_regdate}</td>
-
-<div class="align-center">${pagingHtml}</div>
-
- -->

@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.main.service.MusMainService;
 import kr.spring.main.vo.MusMainVO;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.musinfo.service.PickService;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -27,6 +26,8 @@ public class MusMainController {
 
 	@Resource
 	private MusMainService musMainService;
+	@Resource
+	private PickService pickService;
 
 	// 자바빈 초기화
 	@ModelAttribute
@@ -45,7 +46,8 @@ public class MusMainController {
 	@RequestMapping("/main/musMain.do")
 	public ModelAndView process1(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 								@RequestParam(value="keyfield",defaultValue="") String keyfield,
-								@RequestParam(value="keyword",defaultValue="") String keyword){
+								@RequestParam(value="keyword",defaultValue="") String keyword,
+								HttpSession session){
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -105,20 +107,28 @@ public class MusMainController {
 			}
 		}
 		
-		// 찜한 목록 호출		
+		// 찜한 목록 호출	
+		MemberVO memberVO = (MemberVO)session.getAttribute("user");
+		map.put("mem_num", memberVO.getMem_num());
+/*		int pick_count = pickService.selectRowCount(map);
+		
+		map.put("pick_count", pick_count);
+		System.out.println("<<pick_count>> : " + pick_count);*/
 		List<MusMainVO> pickList = null;		
 		if(count > 0) {
-			pickList = musMainService.selectMusPickList(map);
+			System.out.println("//map : "+map);
+			pickList = pickService.selectMusPickList(map);
 			if(log.isDebugEnabled()) {
 				log.debug("<<찜한 목록>>출력 ");
 			}
 		}
-		
+	
 		ModelAndView mav = new ModelAndView();
 		// 뷰 이름 설정 - ""에 tiles 명 넣기
 		mav.setViewName("main");
 		// 데이터 저장
 		mav.addObject("count", count);
+		//mav.addObject("pick_count", pick_count);
 		//mav.addObject("list", list);
 		mav.addObject("latestList", latestList);
 		mav.addObject("popularList", popularList);

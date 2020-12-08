@@ -16,11 +16,11 @@
 				   <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">장르별 카테고리 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="${pageContext.request.contextPath}/main/musCategory.do?gen_num=1">라이선스</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/musCategory.do?gen_num=2">오리지널</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/musCategory.do?gen_num=3">창작</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/musCategory.do?gen_num=4">가족/어린이</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/musCategory.do?gen_num=5">퍼포먼스</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/adminMain.do">라이선스</a></li>
+							<li><a href="#">오리지널</a></li>
+							<li><a href="#">창작</a></li>
+							<li><a href="#">가족/어린이</a></li>
+							<li><a href="#">퍼포먼스</a></li>
 						</ul>
 					</li>
 					
@@ -75,6 +75,9 @@
 							<!-- 이용권 결제한 경우 -->
 							<c:if test="${!empty user.purchase_date}">
 								<span style="color:white;">[${user.nickname}님의 이용권 만료일 : ${user.expire_date}]</span>
+							</c:if>
+							<c:if test="${user.purchase_date == null}">
+								<span style="color:white;">뮤챠의 모든 서비스를 이용하세요 !  [<a href="${pageContext.request.contextPath}/member/ticket.do">월 정기권 구매하기</a>]</span>
 							</c:if>
 				        </li>
 					</c:if>

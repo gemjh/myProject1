@@ -71,6 +71,18 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void updateRandomPassword(MemberVO member) {
 		memberMapper.updatePassword(member);
+	}
+
+	@Override
+	public void setTicketAuth(MemberVO member) {
+		memberMapper.setTicketAuth(member);
+		
+	}
+
+	@Override
+	public void resetTicketDate(MemberVO member) {
+		memberMapper.resetTicketDate(member);
+		
 	};
 	
 	

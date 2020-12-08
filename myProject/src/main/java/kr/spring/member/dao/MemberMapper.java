@@ -54,6 +54,12 @@ public interface MemberMapper {
 	@Update("UPDATE member SET auth=1 WHERE mem_num=#{mem_num}")
 	public void updateTicketAuth(MemberVO member);
 	
+	//이용권만료
+	@Update("UPDATE member SET auth=2 WHERE mem_num=#{mem_num}")
+	public void setTicketAuth(MemberVO member);
+	@Update("UPDATE member_detail SET purchase_date=null, expire_date=null WHERE mem_num=#{mem_num}")
+	public void resetTicketDate(MemberVO member);
+	
 	//비밀번호 찾기
 	@Update(" UPDATE ( SELECT * FROM member m JOIN member_detail d ON m.mem_num = d.mem_num) SET password = #{password} WHERE email = #{email} ")
 	public void updateRandomPassword(MemberVO member);

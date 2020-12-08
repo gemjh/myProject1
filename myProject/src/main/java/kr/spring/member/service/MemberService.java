@@ -13,6 +13,7 @@ public interface MemberService {
 	public void updateProfile(MemberVO member);
 	public void updateTicket(MemberVO member);
 	public void updateTicketAuth(MemberVO member);
-	
 	public void updateRandomPassword(MemberVO member);
+	public void setTicketAuth(MemberVO member);
+	public void resetTicketDate(MemberVO member);
 }

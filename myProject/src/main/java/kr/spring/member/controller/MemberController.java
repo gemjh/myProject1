@@ -1,7 +1,9 @@
 package kr.spring.member.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -140,33 +142,45 @@ public class MemberController {
 				check = member.isCheckedPassword(memberVO.getPassword());
 			}
 
-			if (check) {
+			if (check) {//비밀번호 일치 하는 경우
 				
-				/*/////
-				//오늘 날짜와 만료일 체크하여 auth 수정
-				Date exDate = null;
-				Date today = null;
-				try{
 					
-					Date currentTime = new Date();
-				
-				SimpleDateFormat sdt = new SimpleDateFormat();
-				SimpleDateFormat tdf = new SimpleDateFormat("yy/MM/dd");
-				
-				exDate = member.getExpire_date();
-				today = tdf.parse(sdt.format(currentTime));
-				}catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-				if(exDate.compareTo(today) < 0) {
-					//exDate < today 인 경우 결제권 만료. auth값 2로 변경
-					
-					
-				}
-				/////		
-				*/// 인증 성공, 로그인 처리
+				// 인증 성공, 로그인 처리
 				session.setAttribute("user", member);
+				MemberVO vo = (MemberVO) session.getAttribute("user");
+				if (log.isDebugEnabled()) {
+					log.debug("<<auth수정 전 VO>> : " + vo);
+				}
+				/////
+				if(vo.getExpire_date()!=null) {
+							//오늘 날짜와 만료일 체크하여 auth 수정
+							SimpleDateFormat sdf = new SimpleDateFormat();
+							Calendar cal = new GregorianCalendar();
+							//오늘날짜
+							Date date = cal.getTime();
+							String today = sdf.format(date);
+							
+							//Expire_date
+							String exDate = sdf.format(vo.getExpire_date());
+							
+							
+							if(exDate.compareTo(today) < 0) {
+								//exDate < today 인 경우 결제권 만료. auth값 2로 변경
+								if (log.isDebugEnabled()) {
+									log.debug("<<compareTo 결과>> : " + exDate.compareTo(today));
+								}
+								
+								//전송된 데이터가 저장된 자바빈에 회원 번호를 저장
+								memberVO.setMem_num(vo.getMem_num());
+								
+								memberService.setTicketAuth(memberVO);
+								memberService.resetTicketDate(memberVO);
+								
+								vo.setExpire_date(null);
+								
+							}
+					}
+				/////	
 				
 				return "redirect:/index.jsp";
 			} else {

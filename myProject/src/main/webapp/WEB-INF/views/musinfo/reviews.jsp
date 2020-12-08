@@ -21,7 +21,7 @@ body.home{
 	</c:if>
 	<!-- 한줄평 -->
 
-	<c:if test="${count2!=0 }">
+	<c:if test="${count2>0 }">
 		평균 평점 : ${avg }(${num}명)
 		<table>
 			<tr>

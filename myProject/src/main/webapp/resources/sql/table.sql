@@ -37,7 +37,7 @@ CREATE TABLE musical(
     mus_hit number(10),
     mus_detail CLOB not null,
     mus_regdate DATE not null,
-    mus_hit NUMBER(10),
+    mus_hit NUMBER(10) default 0,
      CONSTRAINT musical_pk PRIMARY KEY(mus_num)
 );
 

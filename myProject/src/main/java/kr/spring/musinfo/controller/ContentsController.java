@@ -41,7 +41,7 @@ public class ContentsController {
 	}
 	//뮤지컬 소개 페이지
 	@RequestMapping("/musinfo/musinfoDetail.do")
-	public ModelAndView detail(@RequestParam int mus_num,Model model) {
+	public ModelAndView detail(@Valid ContentsVO contentsVO, int mus_num,Model model) {
 		System.out.println("//*******뮤지컬상세 보기");
 		if(log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 상세>>:"+mus_num);
@@ -60,11 +60,12 @@ public class ContentsController {
 	
 	int num=contentsService.selectNum(mus_num);
 	System.out.println("//num : " + num);
-	
-	model.addAttribute("num",num);
+
 	}
 	
-	
+	//바로보기 버튼 누르면 조회수 update
+	contentsService.updateHit(contentsVO);
+	model.addAttribute("mus_hit",contentsVO.getMus_hit());
 	
 	//최근리뷰 2개
 
@@ -75,6 +76,7 @@ public class ContentsController {
 
 	}
 
+	
 	
 	//출연자 이름
 	@RequestMapping(value = "/musinfo/musinfoDetail.do",method=RequestMethod.POST)

@@ -34,6 +34,9 @@ public class ContentsVO {
 	private String mem_num;
 	//뮤지컬 리뷰
 	private double rev_rate;
+	//조회수
+	private int mus_hit;
+	
 	public double getRev_rate() {
 		return rev_rate;
 	}
@@ -130,7 +133,7 @@ public class ContentsVO {
 		return "ContentsVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
 				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
 				+ ", mus_rate=" + mus_rate + ",  mus_detail=" + mus_detail + ", mus_summary="
-				+ mus_summary + ", mus_regdate=" + mus_regdate + ", nickname=" + nickname +", review=" +review+", mem_num="+mem_num+"]";
+				+ mus_summary + ", mus_regdate=" + mus_regdate + ", nickname=" + nickname +", review=" +review+", mem_num="+mem_num+",mus_hit="+mus_hit+"]";
 	}
 	public String getMus_postname() {
 		return mus_postname;
@@ -162,4 +165,11 @@ public class ContentsVO {
 	public void setMem_num(String mem_num) {
 		this.mem_num = mem_num;
 	}
+	public int getMus_hit() {
+		return mus_hit;
+	}
+	public void setMus_hit(int mus_hit) {
+		this.mus_hit = mus_hit;
+	}
+	
 }

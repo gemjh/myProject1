@@ -33,6 +33,9 @@ $(function(){
 	$('.edit').mouseleave(function(){
 		$('.edit').css('color','rgb(122,122,122)');
 	});
+	
+	
+	
 })
 </script>
 <script>
@@ -57,7 +60,13 @@ $(document).ready(function () {
     
     } );
     
-
+//바로보기 클릭하면 조회수 올리기
+	function hit(){
+	var mus_hit=${contentsVO.mus_hit};
+	mus_hit.on("click",function(){
+		return ${contentsVO.mus_hit};
+	})
+	}
     
  // 찜 버튼 클릭시(찜하기 또는 찜 취소하기)
     $("#like_img").click(function(event){    	
@@ -116,6 +125,7 @@ $(document).ready(function () {
 </script>
 
 <div class="all_contents">
+
     <!-- 썸네일 밑에 겹쳐있는 콘텐츠 정보들입니다. -->
     <div class="content_info-box">
         <!-- 왼쪽 포스터입니다. -->
@@ -157,7 +167,7 @@ $(document).ready(function () {
             	<!-- 로그인했고 이용권이 있는 경우 -->
                 <!-- 바로보기 버튼 -->
                 <c:if test="${user.auth==1}">
-                      <input type="button" id="watch" class="watch" value="►바로보기" onclick="location.href='https://${contentsVO.mus_video }'">
+                      <input type="button" id="watch" class="watch" value="►바로보기" onclick="location.href='https://${contentsVO.mus_video }';hit();">
                 
                 <!-- 바로보기 버튼 끝 -->
 

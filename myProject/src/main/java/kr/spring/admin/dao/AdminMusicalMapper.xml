@@ -59,6 +59,7 @@
 		mus_age=#{mus_age},
 		mus_actor=#{mus_actor},
 		mus_time=#{mus_time},
+		mus_hit=#{mus_hit},
 		mus_video=#{mus_video},
 		mus_detail=#{mus_detail},
 		mus_summary=#{mus_summary}

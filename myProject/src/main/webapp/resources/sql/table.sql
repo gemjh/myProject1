@@ -30,7 +30,7 @@ CREATE TABLE musical(
     mus_actor VARCHAR2(100) not null,
     mus_time NUMBER(3) not null,
     mus_video VARCHAR2(1000) not null,
-    mus_rate NUMBER(10),
+    mus_rate NUMBER(10) default 0 not null,
     mus_post BLOB not null,
     mus_postname VARCHAR2(200) not null,
     mus_summary VARCHAR2(1000) not null,

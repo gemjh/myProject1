@@ -14,4 +14,5 @@ public interface ContentsService {
 	public List<ContentsVO> selectNewest(int mus_num);
 	public double selectAvg(int mus_num);
 	public int selectNum(int mus_num);
+	public void updateHit(ContentsVO contentsVO);
 }

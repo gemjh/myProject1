@@ -23,8 +23,8 @@ public interface AdminMusicalMapper {
 	
 	// 뮤지컬 등록 페이지
 	@Insert("INSERT INTO musical "
-			+ "(mus_num, mus_name, gen_num, mus_age, mus_actor,mus_time,mus_video,mus_post,mus_postname,mus_detail,mus_summary,mus_regdate)"
-			+"VALUES (mus_seq.nextval,#{mus_name},#{gen_num},#{mus_age},#{mus_actor},#{mus_time},#{mus_video},#{mus_post},#{mus_postname},#{mus_detail},#{mus_summary},"
+			+ "(mus_num, mus_name, gen_num, mus_age, mus_actor,mus_time,mus_video,mus_hit,mus_post,mus_postname,mus_detail,mus_summary,mus_regdate)"
+			+"VALUES (mus_seq.nextval,#{mus_name},#{gen_num},#{mus_age},#{mus_actor},#{mus_time},#{mus_video},0,#{mus_post},#{mus_postname},#{mus_detail},#{mus_summary},"
 			+ "SYSDATE)")
 	public void insertMusical(AdminMusicalVO adminMusical);
 

@@ -22,5 +22,5 @@ public interface ContentsMapper {
 	@Select("select count(rev_rate) from reviews where mus_num=#{mus_num}")
 	public int selectNum(int mus_num);
 	@Update("UPDATE musical SET mus_hit=mus_hit+1 WHERE mus_num=#{mus_num}")
-	public void updateHit(Integer no_num);
+	public void updateHit(ContentsVO contentsVO);
 }

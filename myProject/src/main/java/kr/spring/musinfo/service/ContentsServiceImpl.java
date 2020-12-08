@@ -56,4 +56,12 @@ public class ContentsServiceImpl implements ContentsService{
 		return contentsMapper.selectNum(mus_num);
 	}
 
+
+
+	@Override
+	public void updateHit(ContentsVO contentsVO) {
+		// TODO Auto-generated method stub
+		contentsMapper.updateHit(contentsVO);
+	}
+
 }

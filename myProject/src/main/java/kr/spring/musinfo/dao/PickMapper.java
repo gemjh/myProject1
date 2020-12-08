@@ -22,7 +22,7 @@ public interface PickMapper {
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map);
 	
 	// 회원이 찜한 작품 갯수
-	@Select("SELECT COUNT(*) FROM pick WHERE mem_num=#{mem_num} AND mus_num=#{mus_num}")
+	@Select("SELECT COUNT(*) FROM pick WHERE mem_num=#{mem_num}")
 	public int selectRowCount(Map<String, Object> map);
 	
 }

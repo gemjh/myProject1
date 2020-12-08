@@ -33,8 +33,8 @@ public interface MusMainService {
 	// 회원 선호 장르 리스트
 	public List<MusMainVO> selectMusPreferList(Map<String, Object> map);
 
-	// 회원 선호 장르 갯수 구하기
-	// public int selectMusPreferCount(Map<String, Object> map);
+	// 회원 선호 장르 번호 구하기
+	public int selectMusPreferCount(Map<String, Object> map);
 
 	/*// 회원 찜한 작품 리스트
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map);

@@ -99,21 +99,31 @@ public class MusMainController {
 		}
 		
 		// 선호장르 목록 호출
+		MemberVO memberVO1 = (MemberVO)session.getAttribute("user");
+		map.put("mem_num", memberVO1.getMem_num());	
+		
+		int prefer = musMainService.selectMusPreferCount(map);
+		map.put("prefer", prefer);
+		System.out.println("<<prefer>> 번호 : " + prefer);
+		
 		List<MusMainVO> preferList = null;		
 		if(count > 0) {
+			System.out.println("<<preferList if문으로 들어옴>>");
 			preferList = musMainService.selectMusPreferList(map);
 			if(log.isDebugEnabled()) {
 				log.debug("<<선호장르 목록>>출력 ");
 			}
 		}
 		
-		// 찜한 목록 호출	
-		MemberVO memberVO = (MemberVO)session.getAttribute("user");
-		map.put("mem_num", memberVO.getMem_num());
-/*		int pick_count = pickService.selectRowCount(map);
 		
+		// 찜한 목록 호출	
+		MemberVO memberVO2 = (MemberVO)session.getAttribute("user");
+		map.put("mem_num", memberVO2.getMem_num());	
+		
+		int pick_count = pickService.selectRowCount(map);		
 		map.put("pick_count", pick_count);
-		System.out.println("<<pick_count>> : " + pick_count);*/
+		System.out.println("<<pick_count>> : " + pick_count);
+		
 		List<MusMainVO> pickList = null;		
 		if(count > 0) {
 			System.out.println("//map : "+map);
@@ -128,7 +138,8 @@ public class MusMainController {
 		mav.setViewName("main");
 		// 데이터 저장
 		mav.addObject("count", count);
-		//mav.addObject("pick_count", pick_count);
+		mav.addObject("pick_count", pick_count);
+		mav.addObject("prefer", prefer);
 		//mav.addObject("list", list);
 		mav.addObject("latestList", latestList);
 		mav.addObject("popularList", popularList);

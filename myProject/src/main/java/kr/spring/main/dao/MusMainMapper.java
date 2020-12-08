@@ -35,12 +35,12 @@ public interface MusMainMapper {
 	//public int selectMusPopularCount(Map<String, Object> map);
 	
 	// 회원 선호 장르 리스트
-	@Select("SELECT * FROM musical ORDER BY mus_num ASC")
+	@Select("SELECT * FROM musical WHERE gen_num=(SELECT prefer FROM member_detail WHERE mem_num=#{mem_num})")
 	public List<MusMainVO> selectMusPreferList(Map<String, Object> map);
 	
-	// 회원 선호 장르 갯수 구하기
-	//@Select("SELECT COUNT(*) FROM musical")
-	//public int selectMusPreferCount(Map<String, Object> map);
+	// 회원 선호 장르 번호 구하기
+	@Select("SELECT prefer FROM member_detail WHERE mem_num=#{mem_num}")
+	public int selectMusPreferCount(Map<String, Object> map);
 	
 	/*// 회원 찜한 작품 리스트
 	@Select("SELECT * FROM pick p JOIN musical m ON p.mus_num=m.mus_num WHERE mem_num=#{mem_num}")

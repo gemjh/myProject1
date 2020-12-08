@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<!-- 메인 슬라이드 -->
 <!-- ========================== swiper start=========================== -->
 
 <!-- Swiper -->
@@ -46,6 +47,11 @@
   </script>
 
 <!-- ========================== swiper end =========================== -->
+
+
+
+
+
 <c:if test="${empty user}">
 	<%
 		response.sendRedirect(request.getContextPath()+"/member/login.do");
@@ -85,36 +91,60 @@
 					</div>
 				</c:forEach>
 			</div>
+		</div>
+	</c:if>
+</c:if>
 	
-			<c:if test="${user.auth!=0}">	
-				<div class="contents_title">${user.nickname}님이 선호하는 장르의 작품</div>
-				<div class="type1-contents_contents">	
-				<c:forEach var="musMain" items="${preferList}">
-					<div class="type1-content-box">			
-							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-								<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-							</a>
-							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-								<span class="type1-content_title">${musMain.mus_name}</span>
-							</a>
-						</div>
-					</c:forEach>
-				</div>						
+	
 
-				<div class="contents_title">${user.nickname}님이 찜한 작품</div>
-				<div class="type1-contents_contents">	
-				<c:forEach var="musMain" items="${pickList}">
-					<div class="type1-content-box">			
-							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-								<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-							</a>
-							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-								<span class="type1-content_title">${musMain.mus_name}</span>
-							</a>
-						</div>
-					</c:forEach>
+<!-- 선호작품 슬라이드 -->	
+	
+	
+<c:if test="${!empty user}">
+	<c:if test="${user.auth == 0}">
+		<c:if test="${prefer == 0}">
+		</c:if>
+	</c:if>
+	<c:if test="${user.auth!=0 && prefer > 0}">
+		<div class="contents">
+			<div class="contents_title">${user.nickname}님이 선호하는 장르의 작품</div>
+			<div class="type1-contents_contents">	
+			<c:forEach var="musMain" items="${preferList}">
+				<div class="type1-content-box">			
+					<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+						<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+					</a>
+					<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+						<span class="type1-content_title">${musMain.mus_name}</span>
+					</a>
 				</div>
-			</c:if>
+			</c:forEach>
+			</div>
+		</div>
+	</c:if>	
+</c:if>
+				
+				
+<c:if test="${!empty user}">
+	<c:if test="${user.auth == 0}">
+		<c:if test="${pick_count == 0}">
+		</c:if>		
+	</c:if>
+	<c:if test="${pick_count > 0}">
+		<div class="contents">
+			<div class="contents_title">${user.nickname}님이 찜한 작품 작품</div>
+			<div class="type1-contents_contents">	
+			<c:forEach var="musMain" items="${pickList}">
+				<div class="type1-content-box">			
+					<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+						<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+					</a>
+					<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+						<span class="type1-content_title">${musMain.mus_name}</span>
+					</a>
+				</div>
+			</c:forEach>
+			</div>
 		</div>
 	</c:if>	
 </c:if>

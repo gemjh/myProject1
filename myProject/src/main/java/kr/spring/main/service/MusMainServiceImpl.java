@@ -46,10 +46,10 @@ public class MusMainServiceImpl implements MusMainService{
 		return musMainMapper.selectMusPreferList(map);
 	}
 
-	/*@Override
+	@Override
 	public int selectMusPreferCount(Map<String, Object> map) {
 		return musMainMapper.selectMusPreferCount(map);
-	}*/
+	}
 
 	/*@Override
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map) {

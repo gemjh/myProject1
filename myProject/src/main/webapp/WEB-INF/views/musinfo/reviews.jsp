@@ -20,10 +20,7 @@ body.home{
 		<div class="align-center">등록된 한줄평이 없습니다.</div>
 	</c:if>
 	<!-- 한줄평 -->
-	<div>
-		<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/XB8YTYHnWHQ"></iframe>
-	</div>
+
 	<c:if test="${count2!=0 }">
 		평균 평점 : ${avg }(${num}명)
 		<table>

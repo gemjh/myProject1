@@ -9,21 +9,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ContentsVO {
 	private int mus_num;
-	@NotEmpty
 	private String mus_name;
 	private int gen_num;
 	private int mus_age;
-	@NotEmpty
 	private String mus_actor;
 	private int mus_time;
-	@NotEmpty
 	private String mus_video;
 	private int mus_rate;
 	private byte[] mus_post;
 	private String mus_postname;
-	@NotEmpty
 	private String mus_summary;
-	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
 	

@@ -55,13 +55,12 @@
 }
 
 /* 한줄평 디자인 */
-.newComments, .user_profile {
+.newComments, .user_profile{
 	float:left;
-   height:100px;
-   
 }
 .newComments{
-	margin-left:10px;
+   height:100px;
+	margin:0 auto;
 }
 /* 한줄평 더보기 */
 #moreReviews{

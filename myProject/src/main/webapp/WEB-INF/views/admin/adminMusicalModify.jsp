@@ -94,7 +94,7 @@ function deleteBox (x) {
 				<option value="5">퍼포먼스</option>
 			</select>
 			</li>
-			<li>
+			<li style="clear:both;">
 			<label for="mus_age">뮤지컬 등급</label>
 			<select name="mus_age" id="mus_age" >
 				<option value="7">7</option>
@@ -103,7 +103,7 @@ function deleteBox (x) {
 				<option value="19">19</option>
 			</select>
 			</li>
-			<li>
+			<li style="clear:both;">
 				<label for="upload">포스터</label>
 				<input type="file" name="upload" id="upload"
 											accept="image/gif,image/png,image/jpeg">

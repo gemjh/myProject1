@@ -82,7 +82,6 @@ $(document).ready(function () {
 		});
 		event.preventDefault();
     });
-    
  	function getFav(){
  		var music_num = ${contentsVO.mus_num};
  		$.ajax({

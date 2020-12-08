@@ -55,7 +55,10 @@
 }
 
 /* 한줄평 디자인 */
-
+.user_profile:nth-child(1), .newComments:nth-child(1){
+	float:left;
+	margin-right:10px;
+}
 /* 한줄평 더보기 */
 #moreReviews{
    background-color:#27272b;

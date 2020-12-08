@@ -1,71 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	var chk = 1;
-	
-	$('#modifyForm').submit(function(){
-		if($('#nickname').val()==''){
-			$('#message_nick').css('color','red').text('닉네임을 입력하세요');
-			$('#nickname').focus();
-			chk = 0;
-			return false;
-		}
-		var regMsg = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/;
-		if(!regMsg.test($('#nickname').val())){
-			$('#message_nick').css('color','red').text('2~10글자로 입력하세요');
-			$('#nickname').focus();
-			chk = 0;
-			return false;
-		}
-		
-		if($('#phone').val()==''){
-			$('#message_phone').css('color','red').text('휴대폰번호를 입력하세요');
-			$('#phone').focus();
-			chk = 0;
-			return false;
-		}
-		
-		
-		//전화번호 유효성 체크
-	 	var regP =  /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
-		if(!regP.test($('#phone').val())){
-			$('#message_phone').css('color','red').text('숫자로만 입력해주세요');
-			$('#phone').focus();
-			return false; 
-		}
-		
-		if(chk!=0){
-			alert('회원정보가 변경되었습니다.');
-		}
-	});
-	
-});	
-</script> 
+
+<style>
+
+form{
+	width:95%;
+}
+
+</style>
+
 <div class="page-main-style">
-	<h2>회원정보 변경</h2>
-	<form:form id="modifyForm" action="modifyMember.do" commandName="memberVO">
-	<form:errors element="div" cssClass="error-color"/>
-		<ul>
-			<li>
-				<label for="nickname">닉네임</label>
-				<form:input path="nickname"/>
-				<br>
-				<span id="message_nick"></span>
-				<form:errors path="nickname" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="phone">연락처</label>
-				<form:input path="phone"/>
-				<br>	
-				<span id="message_phone"></span>
-				<form:errors path="phone" cssClass="error-color"/>
-			</li>
-		</ul>
+	<h2>선호장르 변경</h2>
+	<form:form id="modPrefer_form" action="modifyPrefer.do" commandName="memberVO">
+		<form:errors element="div" cssClass="error-color"/>
+		 <div class="perfer_chk" id="prefer_chk">
+		<p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장</p>
+
+		 	<br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Cats.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/thosedays.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/dodo.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fuerza.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<br><br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/gloomyday.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/lapungel.GIF" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Gentleman's_guide.jpeg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/infinityFlying.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The Phantom Of The Opera.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<br><br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/redhat.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/circus.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jesus_Christ_Super_Star.jpg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fanletter.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The Lion King.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<br><br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/Sweeney_Todd.jpg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/sunemoone.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jekyll and Hyde.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/annie.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/6oclock.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<br><br><br>
+		 	<img src="${pageContext.request.contextPath}/resources/post/chef.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/shadow.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Notre Dame de Paris.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/The_Man_of_La_Mancha.jpeg" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="1">
+		 	<img src="${pageContext.request.contextPath}/resources/post/alcandy.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+			<br><br><br>		 	
+		 </div>
+	
 		<div class="align-center">
-			<input type="submit" value="수정">
+			<input type="submit" value="변경하기">
 			<input type="button" value="홈으로"
 			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 		</div>

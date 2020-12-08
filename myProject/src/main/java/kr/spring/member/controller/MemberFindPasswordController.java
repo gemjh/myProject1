@@ -71,7 +71,7 @@ public class MemberFindPasswordController {
 			
 			emailSender.sendEmail(email);
 
-			return "/member/findPasswordCom";
+			return "findPasswordCom";
 		}else {
 			result.reject("invalidIdOrEmail");
 			return form();

@@ -118,10 +118,10 @@ CONSTRAINT notice_pk PRIMARY KEY (no_num)
 --FOREIGN KEY(email)
 --REFERENCES member_detail(email);
 
-ALTER TABLE member_detail
+ALTER TABLE member
 ADD CONSTRAINTS mem_num 
 FOREIGN KEY(mem_num)
-REFERENCES member(mem_num)
+REFERENCES member_detail(mem_num)
 ON DELETE CASCADE;
 
 ALTER TABLE musical

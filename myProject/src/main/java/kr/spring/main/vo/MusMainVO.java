@@ -2,6 +2,7 @@ package kr.spring.main.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -26,9 +27,7 @@ public class MusMainVO {
 	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
-	
-	
-	
+	private int mus_hit;
 	
 	//이미지 업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
@@ -41,6 +40,8 @@ public class MusMainVO {
 		setMus_postname(upload.getOriginalFilename());
 		System.out.println("//파일명 구하기");
 	}
+	
+	
 	public String getMus_name() {
 		return mus_name;
 	}
@@ -119,11 +120,22 @@ public class MusMainVO {
 	public int getMus_num() {
 		return mus_num;
 	}
+	public int getMus_hit() {
+		return mus_hit;
+	}
+	public void setMus_hit(int mus_hit) {
+		this.mus_hit = mus_hit;
+	}
+
+
 	@Override
 	public String toString() {
-		return "AdminMusicalVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
+		return "MusMainVO [mus_num=" + mus_num + ", mus_name=" + mus_name + ", gen_num=" + gen_num + ", mus_age="
 				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
-				+ ", mus_rate=" + mus_rate + ", mus_postname=" + mus_postname + ", mus_summary=" + mus_summary
-				+ ", mus_detail=" + mus_detail + ", mus_regdate=" + mus_regdate + "]";
+				+ ", mus_rate=" + mus_rate + ", mus_post=" + Arrays.toString(mus_post) + ", mus_postname="
+				+ mus_postname + ", mus_summary=" + mus_summary + ", mus_detail=" + mus_detail + ", mus_regdate="
+				+ mus_regdate + ", mus_hit=" + mus_hit + "]";
 	}
+	
+	
 }

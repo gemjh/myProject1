@@ -101,7 +101,7 @@
 				</c:forEach>
 			</div>		
 			
-			<div class="contents_title">${user.nickname}님이 찜한 작품 작품</div>
+			<div class="contents_title">${user.nickname}님이 찜한 작품</div>
 			<div class="type1-contents_contents">	
 			<c:forEach var="musMain" items="${pickList}">
 				<div class="type1-content-box">			

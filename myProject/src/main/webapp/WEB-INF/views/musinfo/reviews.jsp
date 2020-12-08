@@ -15,13 +15,13 @@ body.home{
 <script src="${pageContext.request.contextPath}/resources/css/musinfo/raty-master/demo/javascripts/labs.js" type="text/javascript"></script>
 
 <div class="page-main-style">
-	<h2>리뷰 보기</h2>
+	<h2>한줄평 보기</h2>
 	<c:if test="${count==0 }">
 		<div class="align-center">등록된 한줄평이 없습니다.</div>
 	</c:if>
 	<!-- 한줄평 -->
 
-	<c:if test="${count2>0 }">
+	<c:if test="${count!=0 }">
 		평균 평점 : ${avg }(${num}명)
 		<table>
 			<tr>

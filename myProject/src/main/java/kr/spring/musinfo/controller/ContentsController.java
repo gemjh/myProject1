@@ -60,6 +60,8 @@ public class ContentsController {
 	
 	int num=contentsService.selectNum(mus_num);
 	System.out.println("//num : " + num);
+	model.addAttribute("num",num);
+
 
 	}
 	

@@ -192,7 +192,7 @@ $(document).ready(function () {
                 </c:if>
                 <!-- 관리자인 경우 -->
                 <c:if test="${user.auth==0 }">
-                	<input type="button" id="edit" class="edit" value="정보 편집" onclick="location.href='Mucha/admin/adminMain.do'">
+                	<input type="button" id="edit" class="edit" value="정보 편집" onclick="location.href='/Mucha/admin/adminMain.do'">
                 </c:if>
 
             </div>

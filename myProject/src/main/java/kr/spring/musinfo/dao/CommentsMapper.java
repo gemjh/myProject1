@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.musinfo.vo.CommentsVO;
    
 public interface CommentsMapper {
-	@Insert("insert into reviews(rev_num,mem_num,mus_num,rev_rate,review,rev_regdate) values(rev_seq.nextval,#{mem_num},#{mus_num},#{rev_rate},#{review},sysdate)")
+	@Insert("insert into reviews(rev_num,mem_num,mus_num,rev_rate,review,rev_regdate) values(rev_num.nextval,#{mem_num},#{mus_num},#{rev_rate},#{review},sysdate)")
 	public void insertComments(CommentsVO commentsVO);
 	@Select("SELECT * FROM reviews r WHERE r.rev_num=#{rev_num}")
 	public CommentsVO selectComments(int rev_num);
@@ -28,6 +28,5 @@ public interface CommentsMapper {
 	//리뷰2개이상 작성 방지하기
 	@Select("select count(*) from reviews where mus_num=#{mus_num} and mem_num=#{mem_num}")
 	public int selectReviewRatings(@Param("mus_num") int mus_num,@Param("mem_num") int mem_num);
-/*	public List<CommentsVO> selectReviewRatings(Map<String, Object> map);
-*/}
+}
  

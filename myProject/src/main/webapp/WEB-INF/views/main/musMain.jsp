@@ -98,7 +98,68 @@
 	
 
 <!-- 선호작품 슬라이드 -->	
-	
+<%-- 
+<c:if test="${!empty user}">
+	<c:if test="${user.auth == 0}">
+		<c:if test="${prefer == 0}">
+		</c:if>
+	</c:if>
+	<c:if test="${user.auth!=0 && prefer > 0}">
+		<ul class="contents">
+			<li class="contents_title">${user.nickname}님이 선호하는 장르의 작품</li>
+			<li class="type1-contents_contents" style="float:left">	
+<!-- ========================== swiper start=========================== -->
+
+<!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+      
+      	<c:forEach var="musMain" items="${preferList}">
+			<div class="type1-content-box">			
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+				</a>
+				<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+					<span class="type1-content_title">${musMain.mus_name}</span>
+				</a>
+			</div>
+		</c:forEach>
+      
+      </div>      
+    </div>
+    
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>  
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 5,
+      spaceBetween: 0, /* 사진과 사진 사이의 간격 */
+      loop: true,
+      slidesPerGroup : 5,
+	  
+      loopFillGroupWithBlank : true,
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+<!-- ========================== swiper end =========================== -->
+
+			</li>
+		</ul>
+	</c:if>	
+</c:if>
+	 --%>		
 	
 <c:if test="${!empty user}">
 	<c:if test="${user.auth == 0}">
@@ -109,6 +170,8 @@
 		<div class="contents">
 			<div class="contents_title">${user.nickname}님이 선호하는 장르의 작품</div>
 			<div class="type1-contents_contents">	
+			
+			
 			<c:forEach var="musMain" items="${preferList}">
 				<div class="type1-content-box">			
 					<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
@@ -119,6 +182,8 @@
 					</a>
 				</div>
 			</c:forEach>
+			
+			
 			</div>
 		</div>
 	</c:if>	

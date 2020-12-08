@@ -9,7 +9,6 @@
 <body>
 
 	<h2>선호장르 수정이 완료되었습니다 !</h2>
-	저장된 선호장르 : #{prefer}
 	<input type="button" value="홈으로"
 			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 </body>

@@ -1,5 +1,8 @@
 package kr.spring.member.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -127,7 +130,6 @@ public class MemberController {
 		//변경하여 다시 세션에 저장
 		session.setAttribute("password",userSpass);*/
 		
-		
 		// 로그인 체크(email와 비밀번호 일치 여부 체크)
 		try {
 			MemberVO member = memberService.selectCheckMember(memberVO.getEmail());
@@ -139,6 +141,30 @@ public class MemberController {
 			}
 
 			if (check) {
+				
+				/////
+				//오늘 날짜와 만료일 체크하여 auth 수정
+				Date exDate = null;
+				Date today = null;
+				try{
+					
+					Date currentTime = new Date();
+				
+				SimpleDateFormat sdt = new SimpleDateFormat();
+				SimpleDateFormat tdf = new SimpleDateFormat("yy/MM/dd");
+				
+				exDate = member.getExpire_date();
+				today = tdf.parse(sdt.format(currentTime));
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				if(exDate.compareTo(today) < 0) {
+					//exDate < today 인 경우 결제권 만료. auth값 2로 변경
+					
+					
+				}
+				/////		
 				// 인증 성공, 로그인 처리
 				session.setAttribute("user", member);
 				
@@ -234,16 +260,17 @@ public class MemberController {
 	}
 	//선호장르 수정 처리
 	@RequestMapping(value = "/member/modifyPrefer.do", method = RequestMethod.POST)
-	public String submitUpdatePrefer(@Valid MemberVO memberVO, BindingResult result,HttpServletRequest request, HttpSession session) {
+	public String submitUpdatePrefer(MemberVO memberVO, BindingResult result,HttpServletRequest request, HttpSession session) {
 
 		if (log.isDebugEnabled()) {
 			log.debug("<<선호도 수정 처리>> : " + memberVO);
 		}
 
+		
 		//가장 많이 선택된 선호 장르 고르기
 				String[] prefer = request.getParameterValues("prefer");
 
-				
+				if(prefer != null) {
 				//체크된 갯수를 더해줄 배열 생성
 				int[] index = {0,0,0,0,0,0};
 				//갯수 ++
@@ -270,12 +297,12 @@ public class MemberController {
 						max = j;
 					}
 				}
-				memberVO.setPrefer(max);
+				memberVO.setPrefer(max);	
 				
-		// 유효성 체크 결과 오류가 있으면 폼 호출
-		if (result.hasErrors()) {
-			return "modifyPrefer";
-		}
+				}else {//선택한 장르가 없는 경우 코드 0
+					int noChoice = 0;
+					memberVO.setPrefer(noChoice);
+				}
 
 		// 회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
 		MemberVO vo = (MemberVO) session.getAttribute("user");
@@ -284,7 +311,7 @@ public class MemberController {
 
 		// 선호장르 수정
 		memberService.updatePrefer(memberVO);
-
+		
 		return "modifyPreferCom";
 	}
 	
@@ -421,16 +448,11 @@ public class MemberController {
 	
 	//이용권 구매 처리
 	@RequestMapping(value="/member/ticket.do", method=RequestMethod.POST)
-	public String SubmitTicket(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+	public String SubmitTicket(MemberVO memberVO, BindingResult result, HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<티켓구매처리>>" + memberVO);
 		}
-		//유효성 체크 결과 오류가 있으면 폼 호출
-		if(result.hasErrors()) {
-			return "ticket";
-		}
-		
 		//회원 번호를 얻기 위해 세션에 저장된 회원 정보 반환
 		MemberVO vo = (MemberVO) session.getAttribute("user");
 		//전송된 데이터가 저장된 자바빈에 회원 번호를 저장

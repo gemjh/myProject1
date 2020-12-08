@@ -1,72 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!-- 체크박스 이미지화...... 안됨 이건 안되는데 혹시나해서 일단 살려둠 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#modPrefer_form').submit(function(){
+			if($('#prefer').val()==''){
+				alert('하나 이상 선택하세요');
+				return false;
+			}	
+		});
+	});
+</script>
 
-
-
- <style>
+<style>
 
 form{
 	width:95%;
 }
-/* input[type=checkbox] { display:none; }
-
-input[type=checkbox] + label { 
-
-display: inline-block; 
-
-cursor: pointer; 
-
-line-height: 22px; 
-
-padding-left: 22px; 
-
-background: url('"https://via.placeholder.com/0x0.png"') left/22px no-repeat; 
-
-}
-
-input[type=checkbox]:checked + label { 
-background-image: url("https://via.placeholder.com/80x110.png"); 
-} */
 
 </style>
+
 <div class="page-main-style">
 	<h2>선호장르 변경</h2>
-	<form:form action="modifyPrefer.do" commandName="memberVO">
+	<form:form id="modPrefer_form" action="modifyPrefer.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		 <div class="perfer_chk" id="prefer_chk">
 		<p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장</p>
-<%-- 
-		 
-		<!-- 체크박스 이미지화...... 안됨 이건 안되는데 혹시나해서 일단 살려둠 -->
-		<input type="checkbox" id="prefer" value="1">
-		<label for="prefer">
-		<img src="${pageContext.request.contextPath}/resources/post/" width="180" height="240">
-		</label>
-		
-		<input type="checkbox" id="prefer" value="2">
-		<label for="prefer">
-		<img src="${pageContext.request.contextPath}/resources/post/" width="180" height="240">
-		</label>
-		
-		<input type="checkbox" id="prefer" value="3">
-		<label for="prefer">
-		<img src="${pageContext.request.contextPath}/resources/post/" width="180" height="240">
-		</label>
-		
-		<input type="checkbox" id="prefer4" value="4">s
-		<label for="prefer4">
-		<img src="${pageContext.request.contextPath}/resources/post/" width="180" height="240">
-		</label>
-		
-		<input type="checkbox" id="prefer5" value="5">
-		<label for="prefer5">
-		<img src="${pageContext.request.contextPath}/resources/post/" width="180" height="240">
-		</label>
 
-		 <br><br><br>
-		 	 --%>
 		 	<br><br>
 		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">

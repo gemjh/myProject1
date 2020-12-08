@@ -13,7 +13,7 @@ $(document).ready(function(){
 			chk = 0;
 			return false;
 		}
-		var regMsg = /^[A-Za-z0-9+]{2,10}$/;
+		var regMsg = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/;
 		if(!regMsg.test($('#nickname').val())){
 			$('#message_nick').css('color','red').text('2~10글자로 입력하세요');
 			$('#nickname').focus();
@@ -27,12 +27,14 @@ $(document).ready(function(){
 			chk = 0;
 			return false;
 		}
-		var regMsg2 = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-		if(!regMsg2.test($('#phone').val())){
-			$('#message_phone').css('color','red').text('전화번호 양식으로 입력하세요');
+		
+		
+		//전화번호 유효성 체크
+	 	var regP =  /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+		if(!regP.test($('#phone').val())){
+			$('#message_phone').css('color','red').text('숫자로만 입력해주세요');
 			$('#phone').focus();
-			chk = 0;
-			return false;
+			return false; 
 		}
 		
 		if(chk!=0){

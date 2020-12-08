@@ -105,11 +105,18 @@
 				return false;
 			}
 				
-			
-			//전화번호형식체크
-		 	var regP =  /^\d{3}-\d{3,4}-\d{4}$/;
+			//닉네임 유효성  체크
+			var regMsg = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/;
+			if(!regMsg.test($('#nickname').val())){
+				$('#message_nick').css('color','red').text('2~10글자로 입력하세요');
+				$('#nickname').focus();
+				chk = 0;
+				return false;
+			}
+			//전화번호 유효성 체크
+		 	var regP =  /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 			if(!regP.test($('#phone').val())){
-				$('#message_phone').css('color','red').text('연락처 형식을 맞춰 입력해주세요');
+				$('#message_phone').css('color','red').text('숫자로만 입력해주세요');
 				$('#phone').focus();
 				return false; 
 			}

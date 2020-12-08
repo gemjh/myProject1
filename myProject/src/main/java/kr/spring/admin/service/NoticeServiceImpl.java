@@ -50,5 +50,15 @@ public class NoticeServiceImpl implements NoticeService{
 	public void deleteNotice(Integer no_num) {
 		noticeMapper.deleteNotice(no_num);
 	}
+
+	@Override
+	public int selectMemberNoitceRowCount(Map<String, Object> map) {
+		return noticeMapper.selectMemberNoitceRowCount(map);
+	}
+
+	@Override
+	public List<NoticeVO> selectMemberNoticeList(Map<String, Object> map) {
+		return noticeMapper.selectMemberNoticeList(map);
+	}
 	
 }

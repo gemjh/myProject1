@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.admin.service.NoticeService;
 import kr.spring.admin.vo.NoticeVO;
 import kr.spring.util.PagingUtil;
-
+@Controller
 public class MemberNoticeController {
 	private Logger log = Logger.getLogger(this.getClass());
 	@Resource
@@ -29,7 +30,7 @@ public class MemberNoticeController {
 	
 	//회원 공지사항 보기
 	// 게시판 목록
-	@RequestMapping("/admin/memberNoticeList.do")
+	@RequestMapping("/member/memberNoticeList.do")
 	public ModelAndView memberNoticeList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
@@ -40,7 +41,7 @@ public class MemberNoticeController {
 		System.out.println("//map: " + map);
 
 		// 총 글의 갯수 또는 검색된 글의 갯수 구하기
-		int count = noticeService.selectRowCount(map);
+		int count = noticeService.selectMemberNoitceRowCount(map);
 		System.out.println("//count: " + count);
 		if (log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
@@ -53,7 +54,7 @@ public class MemberNoticeController {
 		System.out.println("//map: " + map);
 		List<NoticeVO> list = null;
 		if (count > 0) {
-			list = noticeService.selectList(map);
+			list = noticeService.selectMemberNoticeList(map);
 			System.out.println("//list : " + list);
 
 			if (log.isDebugEnabled()) {
@@ -61,7 +62,7 @@ public class MemberNoticeController {
 			}
 		}
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("noticeList");
+		mav.setViewName("memberNoticeList");
 		mav.addObject("list", list);
 		mav.addObject("count", count);
 		mav.addObject("pagingHtml", page.getPagingHtml());
@@ -69,7 +70,7 @@ public class MemberNoticeController {
 		return mav;
 	}
 	//공자사항 상세
-		@RequestMapping("/admin/memberNoticeView.do")
+		@RequestMapping("/member/memberNoticeView.do")
 		public ModelAndView memberNoticeView(@RequestParam int no_num) {
 			System.out.println("//공지사항 상세 보기 ");
 			if(log.isDebugEnabled()) {
@@ -80,7 +81,7 @@ public class MemberNoticeController {
 			
 			NoticeVO notice = noticeService.selectNotice(no_num);
 			
-			return new ModelAndView("noticeView","notice",notice);
+			return new ModelAndView("memberNoticeView","notice",notice);
 		}
 	
 }

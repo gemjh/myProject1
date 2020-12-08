@@ -84,6 +84,15 @@
     	<put-attribute name="title" value="임시비밀번호 발송완료"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/findPasswordCom.jsp"/>       
     </definition>
+    <!-- 공지사항 보기 -->
+    <definition name="memberNoticeList" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberNoticeList.jsp"/>       
+    </definition>
+    <definition name="memberNoticeView" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberNoticeView.jsp"/>       
+    </definition>
 </tiles-definitions>   
 
 

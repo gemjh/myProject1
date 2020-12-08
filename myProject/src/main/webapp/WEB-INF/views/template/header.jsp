@@ -64,10 +64,11 @@
 								<li><a href="${pageContext.request.contextPath}/member/modifyPrefer.do">선호장르 변경</a><li>
 								<li><a href="${pageContext.request.contextPath}/member/myImage.do">프로필 이미지 변경</a></li>
 								<li><a href="${pageContext.request.contextPath}/member/ticket.do">이용권 구매</a><li>
-								<li><a href="${pageContext.request.contextPath}/member/deleteMember.do">회원 탈퇴</a><li>
+								<li><a href="${pageContext.request.contextPath}/member/memberNoticeList.do">회원 탈퇴</a><li>
 								<li><a href="#">너의 문의내역</a></li>
 								<li><a href="#">너의 찜 목록</a></li>
 								<li><a href="#">너의 리뷰</a></li>
+								<li><a href="${pageContext.request.contextPath}/member/memberNoticeList.do">공지사항</a><li>
 							</ul>
 					    </li>
 					    <li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
@@ -91,7 +92,7 @@
 			      <div class="form-group">
 			        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="제목, 배우로 검색해보세요.">
 			      </div>
-			      <button type="submit" class="btn btn-danger">찾기</button>
+			      <button type="submit" class="btn btn-danger" style="opacity:0">찾기</button>
 			    </form>
 			</div><!--/.nav-collapse -->
 		</div>

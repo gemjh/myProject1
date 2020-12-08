@@ -16,8 +16,11 @@
 	</p>
 	<hr size="1" width="100%">
 	<div class="align-right">
+	    <%--수정 삭제의 경우는 로그인이 되어있고 로그인한 회원번호와 작성자 회원번호가
+	               일치해야 함 --%>
+
 		<input type="button" value="목록"
-		       onclick="location.href='noticeList.do'">
+		       onclick="location.href='memberNoticeList.do'">
 	</div>
 </div>
 

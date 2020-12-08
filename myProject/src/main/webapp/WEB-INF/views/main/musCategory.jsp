@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
-li{
+.categoryList{
 float:left;
 padding-right:10px;
 margin-bottom:15px;
@@ -38,7 +38,7 @@ font-size:20px;
 		<div class="search_type1-contents_contents">
 		<ul>
 			<c:forEach var="musMain" items="${list}">				
-				<li>
+				<li class="categoryList">
 					<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
 						<img src="postView.do?mus_num=${musMain.mus_num}" class="post">
 					</a>

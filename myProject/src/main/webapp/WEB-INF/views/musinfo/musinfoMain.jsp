@@ -120,7 +120,7 @@ $(document).ready(function () {
     <div class="content_info-box">
         <!-- 왼쪽 포스터입니다. -->
         <div class="left-column">
-            <img src="imageView.do?mus_num=${contentsVO.mus_num }" style="max-width:400px;" alt="${contentsVO.mus_name }">
+            <img src="imageView.do?mus_num=${contentsVO.mus_num }" style="max-width:300px;" alt="${contentsVO.mus_name }">
         </div>
         <!-- 여기까지 왼쪽 포스터 -->
 
@@ -154,6 +154,7 @@ $(document).ready(function () {
 
             <!-- 마지막 바로보기, 별점 평가하기, 찜하기 -->
             <div class="content_info">
+            	<!-- 로그인했고 이용권이 있는 경우 -->
                 <!-- 바로보기 버튼 -->
                 <c:if test="${user.auth==1}">
                       <input type="button" id="watch" class="watch" value="►바로보기" onclick="location.href='https://${contentsVO.mus_video }'">
@@ -172,10 +173,12 @@ $(document).ready(function () {
                 <!-- 로그인하지 않은 경우 -->
                 <c:if test="${user.auth==null}">
                 	<input type="button" id="join" class="join" value="지금 바로 감상하세요" onclick="location.href='/Mucha/member/login.do'">
+                    <a href="#" id="like_img"><img src="/Mucha/resources/images/like_no.png" width="30px"></a>
                 </c:if>
                 <!-- 이용권이 없는 경우 -->
                 <c:if test="${user.auth==2 }">
                 	<input type="button" id="join" class="join" value="지금 바로 감상하세요" onclick="location.href='/Mucha/member/ticket.do'">
+                    <a href="#" id="like_img"><img src="/Mucha/resources/images/like_no.png" width="30px"></a>            	
                 </c:if>
                 <!-- 관리자인 경우 -->
                 <c:if test="${user.auth==0 }">
@@ -233,15 +236,16 @@ $(document).ready(function () {
 						<div class="newestComments">
 							<div class="contents_contents_title">한줄평</div>
 						</div>
-						<div class="comment_user">
 							<c:forEach var="newest" items="${newest }">
+							<div class="comment_user">
+							
 								<ul class="user_profile">
 									<c:if test="${newest.mem_image!=null }">
-										<li><img src="/member/imageView.do" width=100px; height=100px; ></li>
+										<li><img src="/member/imageView.do" width=60px; height=60px; ></li>
 										
 									</c:if>	
 									<c:if test="${newest.mem_image==null }">
-										<li><img src="${pageContext.request.contextPath/resources/css/images/blank.GIF }"></li>
+										<li><img src="/Mucha/resources/images/blank.GIF"  width=60px; height=60px;></li>
 									</c:if>
 								</ul>
 								<ul class="newComments">
@@ -348,9 +352,9 @@ $(document).ready(function () {
 									<li class="comment">${newest.review }</li>
 									<li class="user_name">by ${newest.nickname }</li>
 								</ul>
+						</div>
 
 							</c:forEach>
-						</div>
 
 
 					</div>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.musinfo.vo.CommentsVO;
 import kr.spring.musinfo.vo.ContentsVO;
@@ -20,4 +21,6 @@ public interface ContentsMapper {
 	public double selectAvg(int mus_num);
 	@Select("select count(rev_rate) from reviews where mus_num=#{mus_num}")
 	public int selectNum(int mus_num);
+	@Update("UPDATE musical SET mus_hit=mus_hit+1 WHERE mus_num=#{mus_num}")
+	public void updateHit(Integer no_num);
 }

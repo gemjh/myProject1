@@ -48,20 +48,14 @@
    margin-right:20px;
    color:rgb(122,122,122);
 }
-/* 포스터 아래 큰 제목 */
+/* 포스터 오른쪽 큰 제목 */
 .contents_contents_title{
    font-size: 23px;
    margin: 15px auto;
 }
 
 /* 한줄평 디자인 */
-.newComments, .user_profile{
-	float:left;
-}
-.newComments{
-   height:100px;
-	margin:0 auto;
-}
+
 /* 한줄평 더보기 */
 #moreReviews{
    background-color:#27272b;

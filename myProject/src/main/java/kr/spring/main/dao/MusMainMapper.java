@@ -49,4 +49,24 @@ public interface MusMainMapper {
 	// 회원 찜한 작품 갯수 구하기
 	//@Select("SELECT COUNT(*) FROM musical")
 	//public int selectMusPickCount(Map<String, Object> map);
+	
+	
+	//카테고리별 갯수 구하기
+	@Select("SELECT COUNT(*) FROM musical WHERE musical.gen_num =1")
+	public int selectLicenseCount(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM musical WHERE musical.gen_num =2")
+	public int selectOriginalCount(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM musical WHERE musical.gen_num =3")
+	public int selectCreationCount(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM musical WHERE musical.gen_num =4")
+	public int selectFamilyCount(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM musical WHERE musical.gen_num =5")
+	public int selectPerformanceCount(Map<String, Object> map);
+	
+	//카테고리별 리스트 구하기
+	public List<MusMainVO> selectLicense(Map<String, Object> map);
+	public List<MusMainVO> selectOriginal(Map<String, Object> map);
+	public List<MusMainVO> selectCreation(Map<String, Object> map);
+	public List<MusMainVO> selectFamily(Map<String, Object> map);
+	public List<MusMainVO> selectPerformance(Map<String, Object> map);
 }

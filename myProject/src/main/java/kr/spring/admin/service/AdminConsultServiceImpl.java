@@ -10,7 +10,7 @@ public class AdminConsultServiceImpl implements AdminConsultService{
 
 	@Override
 	public List<AdminConsultVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 

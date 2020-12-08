@@ -31,10 +31,6 @@ $(document).ready(function(){
 		       alert("요약 내용을 입력하세요.");
 		       check = 1;
 		       return false;
-		   }else if(mus_detail==''||mus_detail.replace(blank_pattern,'')==""){
-		       alert("상세 내용을 입력하세요.");
-		       check = 1;
-		       return false;
 		   }else if(mus_video==''||mus_video.replace(blank_pattern,'')==""){
 		       alert("스트리밍 링크를 입력하세요.");
 		       check = 1;

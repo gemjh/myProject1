@@ -34,6 +34,100 @@
  	]]>
  	</select>
  	
+ 	
+ 	
+ 	
+ 	<!-- 카테고리별 목록 -->
+ 
+ 	<select id="selectLicense" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           	musical.gen_num	= 1
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 	
+ 	<select id="selectOriginal" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           	musical.gen_num	= 2
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+
+ 	<select id="selectCreation" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           musical.gen_num= 3		
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 
+ 	<select id="selectFamily" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		          musical.gen_num= 4 
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 
+ 	<select id="selectPerformance" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           musical.gen_num=5		
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
 </mapper>   
 
 

@@ -142,7 +142,7 @@ public class MemberController {
 
 			if (check) {
 				
-				/////
+				/*/////
 				//오늘 날짜와 만료일 체크하여 auth 수정
 				Date exDate = null;
 				Date today = null;
@@ -165,7 +165,7 @@ public class MemberController {
 					
 				}
 				/////		
-				// 인증 성공, 로그인 처리
+				*/// 인증 성공, 로그인 처리
 				session.setAttribute("user", member);
 				
 				return "redirect:/index.jsp";

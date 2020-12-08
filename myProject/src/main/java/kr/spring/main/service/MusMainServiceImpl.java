@@ -56,9 +56,64 @@ public class MusMainServiceImpl implements MusMainService{
 		return musMainMapper.selectMusPickList(map);
 	}
 
+	
+
 	/*@Override
 	public int selectMusPickCount(Map<String, Object> map) {
 		return musMainMapper.selectMusPickCount(map);
 	}
 */
+	//카테고리 갯수
+	@Override
+	public int selectLicenseCount(Map<String, Object> map) {
+		return musMainMapper.selectLicenseCount(map);
+	}
+
+	@Override
+	public int selectOriginalCount(Map<String, Object> map) {
+		return musMainMapper.selectOriginalCount(map);
+	}
+
+	@Override
+	public int selectCreationCount(Map<String, Object> map) {
+		return musMainMapper.selectCreationCount(map);
+	}
+
+	@Override
+	public int selectFamilyCount(Map<String, Object> map) {
+		return musMainMapper.selectFamilyCount(map);
+	}
+
+	@Override
+	public int selectPerformanceCount(Map<String, Object> map) {
+		return musMainMapper.selectPerformanceCount(map);
+	}
+	
+	//카테고리 리스트 
+	@Override
+	public List<MusMainVO> selectLicense(Map<String, Object> map) {
+		return musMainMapper.selectLicense(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectOriginal(Map<String, Object> map) {
+		return musMainMapper.selectOriginal(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectCreation(Map<String, Object> map) {
+		return musMainMapper.selectCreation(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectFamily(Map<String, Object> map) {
+		return musMainMapper.selectFamily(map);
+	}
+
+	@Override
+	public List<MusMainVO> selectPerformance(Map<String, Object> map) {
+		return musMainMapper.selectPerformance(map);
+	}
+
+	
 }

@@ -86,35 +86,35 @@
 				</c:forEach>
 			</div>
 	
+			<c:if test="${user.auth!=0}">	
+				<div class="contents_title">${user.nickname}님이 선호하는 장르의 작품</div>
+				<div class="type1-contents_contents">	
+				<c:forEach var="musMain" items="${preferList}">
+					<div class="type1-content-box">			
+							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+								<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+							</a>
+							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+								<span class="type1-content_title">${musMain.mus_name}</span>
+							</a>
+						</div>
+					</c:forEach>
+				</div>						
 
-			<div class="contents_title">${user.nickname}님이 선호하는 장르의 작품</div>
-			<div class="type1-contents_contents">	
-			<c:forEach var="musMain" items="${preferList}">
-				<div class="type1-content-box">			
-						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-							<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-						</a>
-						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-							<span class="type1-content_title">${musMain.mus_name}</span>
-						</a>
-					</div>
-				</c:forEach>
-			</div>		
-			
-			<div class="contents_title">${user.nickname}님이 찜한 작품</div>
-			<div class="type1-contents_contents">	
-			<c:forEach var="musMain" items="${pickList}">
-				<div class="type1-content-box">			
-						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-							<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
-						</a>
-						<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
-							<span class="type1-content_title">${musMain.mus_name}</span>
-						</a>
-					</div>
-				</c:forEach>
-			</div>
-			
+				<div class="contents_title">${user.nickname}님이 찜한 작품</div>
+				<div class="type1-contents_contents">	
+				<c:forEach var="musMain" items="${pickList}">
+					<div class="type1-content-box">			
+							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+								<img src="postView.do?mus_num=${musMain.mus_num}" style="max-width: 200px;">
+							</a>
+							<a href="${pageContext.request.contextPath}/musinfo/musinfoDetail.do?mus_num=${musMain.mus_num}">
+								<span class="type1-content_title">${musMain.mus_name}</span>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+			</c:if>
 		</div>
 	</c:if>	
 </c:if>

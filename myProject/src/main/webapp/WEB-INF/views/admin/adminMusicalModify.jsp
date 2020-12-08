@@ -13,7 +13,6 @@ $(document).ready(function(){
 	$('#musical_form').submit(function(event){
 		var check = 0;
 		var blank_pattern = /^\s+|\s+$/g;
-		var fileCheck = document.getElementById("upload").value;
 		var mus_name = $("#mus_name").val();
 		var mus_summary = $("#mus_summary").val();
 		var mus_detail = $("#mus_detail").val();

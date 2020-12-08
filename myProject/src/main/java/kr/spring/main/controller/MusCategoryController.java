@@ -34,9 +34,8 @@ public class MusCategoryController {
 		return new MusMainVO();
 	}	
 	
-	
-	
-	// 메인 목록
+
+	// 카테고리별 목록
 	@RequestMapping("/main/musCategory.do")
 	public ModelAndView process1(@RequestParam int gen_num,
 								@RequestParam(value="pageNum", defaultValue="1") int currentPage,
@@ -104,36 +103,17 @@ public class MusCategoryController {
 				log.debug("<<퍼포먼스 목록>> 출력됨 ");
 			}
 		}
-
-
-		
 		ModelAndView mav = new ModelAndView();
 		// 뷰 이름 설정 - ""에 tiles 명 넣기
 		mav.setViewName("musCategory");
 		// 데이터 저장
 		mav.addObject("count", count);
 		mav.addObject("list", list);
+		mav.addObject("gen_num", gen_num);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 
 		return mav;
 	}
-	
-
-	
-	//DB에 저장된 포스터 이미지를 view에 출력
-/*	@RequestMapping("/main/postView2.do")
-	public ModelAndView viewImage(@RequestParam int mus_num) {
-
-		MusMainVO musMainVO = musMainService.selectMusMain(mus_num);
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("imageView");
-		//bite[]타입의 데이터
-		mav.addObject("imageFile",musMainVO.getMus_post());
-		mav.addObject("filename",musMainVO.getMus_postname());
-
-		return mav;	
-	}*/
 }
 
 

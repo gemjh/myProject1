@@ -31,4 +31,16 @@
     	<put-attribute name="title" value="한줄평 수정"/>
     	<put-attribute name="body" value="/WEB-INF/views/musinfo/reviewModify.jsp"/>       
     </definition>
+    <!-- 리뷰 삭제 -->
+    <definition name="reviewDelete" 
+              extends="musinfoMain">
+    	<put-attribute name="title" value="한줄평 삭제"/>
+    	<put-attribute name="body" value="/WEB-INF/views/musinfo/reviewDelete.jsp"/>       
+    </definition>
+    <!-- 뮤지컬 보기 -->
+    <definition name="musicalWatch" 
+              extends="musinfoMain">
+    	<put-attribute name="title" value="뮤지컬 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/musinfo/musicalWatch.jsp"/>       
+    </definition>
 </tiles-definitions>

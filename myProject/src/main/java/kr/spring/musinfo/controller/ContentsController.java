@@ -65,9 +65,7 @@ public class ContentsController {
 
 	}
 	
-	//바로보기 버튼 누르면 조회수 update
-	contentsService.updateHit(contentsVO);
-	model.addAttribute("mus_hit",contentsVO.getMus_hit());
+
 	
 	//최근리뷰 2개
 
@@ -78,7 +76,6 @@ public class ContentsController {
 
 	}
 
-	
 	
 	//출연자 이름
 	@RequestMapping(value = "/musinfo/musinfoDetail.do",method=RequestMethod.POST)
@@ -147,4 +144,21 @@ public class ContentsController {
 			
 			return mav;
 		}*/
+		
+		//뮤지컬 보기
+		@RequestMapping("/musinfo/musicalWatch.do")
+		public ModelAndView watch(int mus_num,Model model) {
+			if(log.isDebugEnabled()) {
+				log.debug("<<뮤지컬 상세>>:"+mus_num);
+			}
+			ContentsVO musical = contentsService.selectContents(mus_num);
+			
+			model.addAttribute("mus_num",mus_num);
+			// 조회수 update
+			contentsService.updateHit(musical);
+			model.addAttribute("mus_hit",musical.getMus_hit());
+			
+			return new ModelAndView("musicalWatch","musical",musical);
+		}
+
 }

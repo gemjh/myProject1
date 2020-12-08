@@ -167,7 +167,7 @@ $(document).ready(function () {
             	<!-- 로그인했고 이용권이 있는 경우 -->
                 <!-- 바로보기 버튼 -->
                 <c:if test="${user.auth==1}">
-                      <input type="button" id="watch" class="watch" value="►바로보기" onclick="location.href='https://${contentsVO.mus_video }';hit();">
+                      <input type="button" id="watch" class="watch" value="►바로보기" onclick="location.href='musicalWatch.do?mus_num=${contentsVO.mus_num}';hit();">
                 
                 <!-- 바로보기 버튼 끝 -->
 
@@ -251,11 +251,11 @@ $(document).ready(function () {
 							
 								<ul class="user_profile">
 									<c:if test="${newest.mem_image!=null }">
-										<li><img src="/member/imageView.do" width=60px; height=60px; ></li>
+										<li><img src="${pageContext.request.contextPath}/member/imageView.do" width=80px; height=80px; ></li>
 										
 									</c:if>	
 									<c:if test="${newest.mem_image==null }">
-										<li><img src="/Mucha/resources/images/blank.GIF"  width=60px; height=60px;></li>
+										<li><img src="/Mucha/resources/images/blank.GIF"  width=80px; height=80px;></li>
 									</c:if>
 								</ul>
 								<ul class="newComments">

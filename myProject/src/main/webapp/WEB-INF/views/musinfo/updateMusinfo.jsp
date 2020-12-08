@@ -291,6 +291,3 @@
         </div>
     </main>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
- 
-    <script src="${pageContext.request.contextPath }/resources/js/index.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/star.js"></script>

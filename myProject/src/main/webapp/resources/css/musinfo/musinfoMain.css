@@ -59,12 +59,16 @@
 	float:left;
 	margin-right:10px;
 }
+.newComments{
+	height:80px;
+}
 /* 한줄평 더보기 */
 #moreReviews{
    background-color:#27272b;
    color:rgb(122, 122, 122);
    border:0;
    outline:0;
+   float:right;
 }
 .cursor {
     cursor: pointer;

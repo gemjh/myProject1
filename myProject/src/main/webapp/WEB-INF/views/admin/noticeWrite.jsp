@@ -16,6 +16,18 @@
 	width:500px;
 }
 
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
@@ -102,8 +114,8 @@
          	</div> 
          <br>
 	  <div class="align-center">
-			<input type="submit" value="작성">
-			<input type="button" value="목록" onclick="location.href='noticeList.do'">
+			<input type="submit" value="작성" class="button">
+			<input type="button" value="목록" class="button" onclick="location.href='noticeList.do'">
 	  </div>
 	</form:form>
 </div>

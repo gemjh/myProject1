@@ -1,8 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <div class="page-main-style">
-	<h2>회원 목록</h2>
+	<h2>회원 정보 보기</h2>
 	<form action="adminMemberList.do" id="search_form" method="get">
 	<ul class="search">
 		<li>
@@ -17,8 +30,8 @@
 			<input type="text" name="keyword" id="keyword">
 		</li>
 		<li>
-			<input type="submit" value="찾기">
-			<input type="button" value="목록"
+			<input type="submit" value="찾기" class="button">
+			<input type="button" value="목록" class="button"
 						onclick="location.href='adminMemberList.do'">
 		</li>
 	</ul>

@@ -6,8 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 #musical_form{
-	height: 700px;
-    width: 1000px;
+	height: 800px;
+    width: 900px;
 }
 .info{
 	 min-width: 800px;

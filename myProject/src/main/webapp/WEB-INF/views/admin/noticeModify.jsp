@@ -15,6 +15,17 @@
 #no_title{
 	width:500px;
 }
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
@@ -97,12 +108,14 @@ $(document).ready(
 			</div>
 			<hr>
 			<div>
-				<label for="noticeDate">게시물 공개 종료일</label> <input type="date"
+				<label for="noticeDate">게시물 공개 종료일</label> 
+				<input type="date"
 					id="noticeDate" name="noticeDate" />
 			</div>
 			<br>
 			<div class="align-center">
-				<input type="submit" value="수정"> <input type="button"
+				<input type="submit" value="수정" class="button"> 
+				<input type="button" class="button"
 					value="목록" onclick="location.href='noticeList.do'">
 			</div>
 	</form:form>

@@ -2,6 +2,19 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		//비밀번호 변경 체크
@@ -54,7 +67,7 @@
 </script>
 <div class="page-main-style">
 
-	<h2>내 정보 변경</h2>
+	<h2>내 정보 수정</h2>
 	<form:form id="change_form" action="adminMemberModify.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
@@ -85,8 +98,8 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="수정">
-			<input type="button" value="홈으로"
+			<input type="submit" value="수정" class="button" >
+			<input type="button" value="돌아가기"  class="button" 
 			    onclick="location.href='${pageContext.request.contextPath}/admin/adminMain.do'">
 		</div>
 	</form:form>

@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style> 
 <div class="page-main-style">
 	<h2>${notice.no_title}</h2>
 	<ul>
@@ -19,9 +32,9 @@
 	    <%--수정 삭제의 경우는 로그인이 되어있고 로그인한 회원번호와 작성자 회원번호가
 	               일치해야 함 --%>
 		<c:if test="${user.auth==0}">
-		<input type="button" value="수정"
+		<input type="button" value="수정" class="button"
 		       onclick="location.href='noticeUpdate.do?no_num=${notice.no_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		<input type="button" value="삭제" id="delete_btn" class="button">
 		<script>
 			var delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -33,7 +46,7 @@
 			};
 		</script>              
 		</c:if>
-		<input type="button" value="목록"
+		<input type="button" value="목록" class="button"
 		       onclick="location.href='noticeList.do'">
 	</div>
 </div>

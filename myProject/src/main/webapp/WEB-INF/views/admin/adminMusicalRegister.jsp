@@ -3,8 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <style>
 #musical_form{
-	height: 700px;
-    width: 1000px;
+	height: 800px;
+    width: 900px;
 }
 .info{
 	 min-width: 800px;
@@ -12,6 +12,22 @@
 .link{
 	min-width: 670px;
 }
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+.button2:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
@@ -107,7 +123,7 @@ function deleteBox (x) {
 			<li style="clear:both;">
 				<label for="upload">포스터</label>
 				<input type="file" name="upload" id="upload"
-											accept="image/gif,image/png,image/jpeg">
+											accept="image/gif,image/png,image/jpeg" class="button2">
 			</li>
 			<li style="clear:both;">
 				<label for="mus_summary">요약 정보</label>
@@ -121,10 +137,11 @@ function deleteBox (x) {
 				<form:errors path="mus_detail" cssClass="error-color"/>
 				<br>
 			</li>
+			<br>
 			<li>
 				<label for="mus_actor">출연 배우</label>
-				<input type="button" value="배우추가" onclick="addBox(this.form)"/>
-				<input type="button" value="초기화" onclick="deleteBox(this.form)"/>
+				<input type="button" value="배우추가" onclick="addBox(this.form)" class="button"/>
+				<input type="button" value="초기화" onclick="deleteBox(this.form)" class="button"/>
 				<br>
 				<div id="mus_actor">
 				 <input type="text" name="mus_actor" placeholder="배우 이름 입력" size="10" class="actor_box">
@@ -144,8 +161,8 @@ function deleteBox (x) {
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="목록" onclick="location.href='adminMusicalList.do'">
+			<input type="submit" value="등록" class="button">
+			<input type="button" value="목록" class="button" onclick="location.href='adminMusicalList.do'">
 		</div>
 	</form:form>
 </div>

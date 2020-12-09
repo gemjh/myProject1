@@ -2,6 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 function button_event(){
@@ -22,7 +35,7 @@ function button_event(){
 		</tr>
 		<tr>
 			<th>관리자 이메일</th>
-			<td>${memberVO.email}</td>
+			<td><a href="mailto:">${memberVO.email}</a></td>
 		</tr>
 		<tr>
 			<th>관리자 닉네임</th>
@@ -43,7 +56,7 @@ function button_event(){
 	</table>
 	<c:if test="${admin.mem_num=='100' && memberVO.mem_num!='100'}">
 	<div class="align-center">
-		<input type="button" id="delete" value="삭제" onclick="button_event();">
+		<input type="button" id="delete" value="삭제" onclick="button_event();" class="button">
 	</div>
 	</c:if>
 </div>

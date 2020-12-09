@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){			
@@ -90,7 +103,7 @@
 			<li>
 				<label for="email">이메일</label>
 				<form:input path="email"/>
-				<input type="button" id="confirmEmail" value="Email 확인">
+				<input type="button" id="confirmEmail" value="Email 확인" class="button">
  				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" 
 				      width="16" height="16" style="display:none;" id="loading">
 				<span id="message_email"></span>
@@ -125,9 +138,9 @@
 
 
 		<div class="align-center">
-			<input type="submit" value="전송">
-			<input type="button" value="홈으로"
-			    onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			<input type="submit" value="전송" class="button">
+			<input type="button" value="돌아가기" class="button"
+			    onclick="location.href='${pageContext.request.contextPath}/admin/adminManagerList.do'">
 		</div>
 	</form:form>
 </div>

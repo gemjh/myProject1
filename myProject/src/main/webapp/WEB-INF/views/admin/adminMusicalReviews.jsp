@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -31,18 +44,18 @@ $(document).ready(function(){
 			<input type="text" name="keyword" id="keyword">
 		</li>
 		<li>
-			<input type="submit" value="찾기">
-			<input type="button" value="목록"
+			<input type="submit" value="찾기" class="button">
+			<input type="button" value="목록" class="button"
 						onclick="location.href='adminMusicalList.do'">
 		</li>
 	</ul>
 	</form>
 	<div class="align-right" >
 		<c:if test="${check==0}">
-		<input type="button" value="가려진 리뷰만 보기" id="hiddenReview" class="hiddenReview" />
+		<input type="button" value="가려진 리뷰만 보기" id="hiddenReview" class="button" />
 		</c:if>
 		<c:if test="${check==1}">
-		<input type="button" value="전체 리뷰 보기" id="allReview" class="allReview" />
+		<input type="button" value="전체 리뷰 보기" id="allReview" class="button" />
 		</c:if>
 		<c:if test="${count==0}">
 			<div class="align-center">등록된 게시물이 없습니다.</div>
@@ -82,10 +95,10 @@ $(document).ready(function(){
 					<td>${musical.rev_regdate}</td>
 					<td>
 					<c:if test="${musical.hide_rev==null}">
-					<input type="button" value="가리기" id="rev_delete" onclick="location.href='reviewHide.do?rev_num=${musical.rev_num}'"/>
+					<input type="button" value="가리기" id="rev_delete" onclick="location.href='reviewHide.do?rev_num=${musical.rev_num}'" class="button"/>
 					</c:if>
 					<c:if test="${musical.hide_rev!=null}">
-					<input type="button" value="되돌리기" id="rev_delete" onclick="location.href='reviewReturn.do?rev_num=${musical.rev_num}'"/>
+					<input type="button" value="되돌리기" id="rev_delete" onclick="location.href='reviewReturn.do?rev_num=${musical.rev_num}'" class="button"/>
 					</c:if>
 					</td>
 				</tr>

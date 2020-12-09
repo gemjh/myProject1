@@ -3,15 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
+.search_contents_title{
+	margin-left:40px;
+}
 .categoryList{
 float:left;
-padding-right:10px;
+padding-right:20px;
 margin-bottom:15px;
-font-
+
 }
 .post{
 width:200px; 
-height:300px;
+height:280px;
 }
 .title{
 font-size:20px;

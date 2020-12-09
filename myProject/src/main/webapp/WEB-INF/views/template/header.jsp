@@ -64,7 +64,7 @@
 								<li><a href="${pageContext.request.contextPath}/member/modifyPrefer.do">선호장르 변경</a><li>
 								<li><a href="${pageContext.request.contextPath}/member/myImage.do">프로필 이미지 변경</a></li>
 								<li><a href="${pageContext.request.contextPath}/member/ticket.do">이용권 구매</a><li>
-								<li><a href="${pageContext.request.contextPath}/member/memberNoticeList.do">회원 탈퇴</a><li>
+								<li><a href="${pageContext.request.contextPath}/member/deleteMember.do">회원 탈퇴</a><li>
 								<li><a href="#">너의 문의내역</a></li>
 								<li><a href="#">너의 찜 목록</a></li>
 								<li><a href="#">너의 리뷰</a></li>

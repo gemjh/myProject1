@@ -68,8 +68,12 @@
    color:rgb(122, 122, 122);
    border:0;
    outline:0;
-   float:right;
 }
+.contents_contents_title, .moreReviews{
+	
+	float:left;
+}
+
 .cursor {
     cursor: pointer;
 }

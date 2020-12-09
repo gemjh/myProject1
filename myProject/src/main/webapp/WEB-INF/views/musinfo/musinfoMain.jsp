@@ -246,7 +246,12 @@ $(document).ready(function () {
 						<div class="newestComments">
 							<div class="contents_contents_title">한줄평</div>
 						</div>
-							<c:forEach var="newest" items="${newest }">
+						<!-- 코멘트 더보기 링크 -->
+						<input type="button" id="moreReviews" name="moreReviews"
+							value="더보기"
+							onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
+						<!-- 코멘트 더보기 링크 끝 -->
+						<c:forEach var="newest" items="${newest }">
 							<div class="comment_user">
 							
 								<ul class="user_profile">
@@ -374,10 +379,7 @@ $(document).ready(function () {
 			</div>
 
 		</div>
-					<!-- 코멘트 더보기 링크 -->
-			<input type="button" id="moreReviews" name="moreReviews" value="더보기"
-				onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
-			<!-- 코멘트 더보기 링크 끝 -->
+					
 	</div>
     <!-- 여기까지 메인 컨텐츠 박스였습니다 -->
   </div>

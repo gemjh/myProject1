@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<style>
+#musical_form{
+	height: 700px;
+    width: 1000px;
+}
+.info{
+	 min-width: 800px;
+}
+.link{
+	min-width: 670px;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -97,15 +109,15 @@ function deleteBox (x) {
 				<input type="file" name="upload" id="upload"
 											accept="image/gif,image/png,image/jpeg">
 			</li>
-			<li>
+			<li style="clear:both;">
 				<label for="mus_summary">요약 정보</label>
-				<form:textarea path="mus_summary" cols="50" rows="7"/>
+				<form:textarea path="mus_summary" cols="50" rows="7" style="clear:both;" class="info"/>
 				<form:errors path="mus_summary" cssClass="error-color"/>
 				<br>
 			</li>
 			<li>
 				<label for="mus_detail">상세 정보</label>
-				<form:textarea path="mus_detail" cols="50" rows="10"/>
+				<form:textarea path="mus_detail" cols="50" rows="10" class="info"/>
 				<form:errors path="mus_detail" cssClass="error-color"/>
 				<br>
 			</li>
@@ -121,7 +133,7 @@ function deleteBox (x) {
 			</li>
 			<li>
 				<label for="mus_video">스트리밍 링크</label>
-				<form:textarea path="mus_video" cols="50"/>
+				<form:textarea path="mus_video" cols="50" class="link"/>
 				<form:errors path="mus_video" cssClass="error-color"/>
 				<br>
 			</li>

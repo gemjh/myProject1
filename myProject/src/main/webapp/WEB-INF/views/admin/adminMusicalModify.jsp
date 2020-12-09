@@ -4,7 +4,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<style>
+#musical_form{
+	height: 700px;
+    width: 1000px;
+}
+.info{
+	 min-width: 800px;
+}
+.link{
+	min-width: 670px;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -111,12 +122,12 @@ function deleteBox (x) {
 			</li>
 			<li>
 				<label for="mus_summary">요약 정보</label>
-				<form:textarea path="mus_summary" cols="50" rows="7"/>
+				<form:textarea path="mus_summary" cols="50" rows="7" class="info"/>
 				<form:errors path="mus_summary" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="mus_detail">상세 정보</label>
-				<form:textarea path="mus_detail" cols="50" rows="10"/>
+				<form:textarea path="mus_detail" cols="50" rows="10" class="info"/>
 				<form:errors path="mus_detail" cssClass="error-color"/>
 			</li>
 			<li>
@@ -132,7 +143,7 @@ function deleteBox (x) {
 			</li>
 			<li>
 				<label for="mus_video">스트리밍 비디오 링크</label>
-				<form:textarea path="mus_video" cols="50"/>
+				<form:textarea path="mus_video" cols="50" class="link"/>
 				<form:errors path="mus_video" cssClass="error-color"/>
 			</li>
 			<li>

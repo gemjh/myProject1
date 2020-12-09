@@ -26,6 +26,7 @@ public class AdminMusicalVO {
 	@NotEmpty
 	private String mus_detail;
 	private Date mus_regdate;
+	private int mus_hit;
 	
 	public int getMus_num() {
 		return mus_num;
@@ -122,5 +123,11 @@ public class AdminMusicalVO {
 				+ mus_age + ", mus_actor=" + mus_actor + ", mus_time=" + mus_time + ", mus_video=" + mus_video
 				+ ", mus_rate=" + mus_rate + ", mus_postname=" + mus_postname + ", mus_summary=" + mus_summary
 				+ ", mus_detail=" + mus_detail + ", mus_regdate=" + mus_regdate + "]";
+	}
+	public int getMus_hit() {
+		return mus_hit;
+	}
+	public void setMus_hit(int mus_hit) {
+		this.mus_hit = mus_hit;
 	}
 }

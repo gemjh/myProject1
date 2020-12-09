@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+th{
+	min-width:150px;
+}
+</style>
 <div class="page-main-style">
 	<h2>뮤지컬 정보 상세 보기</h2>
 	<table>

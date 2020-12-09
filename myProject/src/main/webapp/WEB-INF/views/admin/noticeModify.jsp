@@ -49,7 +49,6 @@ $(document).ready(
 		var getToday = year + month + day;
 		if ($("#noticeDate").val() == '') {
 			alert("게시물 공개 종료일을 선택하세요");
-			alert(getToday);
 			return false;
 			}
 		var noticeDate=$("#noticeDate").val().split("-");

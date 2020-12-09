@@ -157,7 +157,6 @@ public class AdminMemberController {
 			//아이디 미중복
 			map.put("result", "emailNotFound");
 		}	
-		
 		return map;
 	}
 	

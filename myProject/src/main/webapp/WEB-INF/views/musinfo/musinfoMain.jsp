@@ -215,7 +215,7 @@ $(document).ready(function () {
 						<span class="contents_contents_summary contents_info">
 							${contentsVO.mus_summary } </span><br>
 						<!-- 기본정보 더보기 링크 -->
-						<span class="btn-moreInfo">더보기</span>
+						<span class="btn-moreInfo">상세정보 보기</span>
 						<!-- 더보기 링크 끝 -->
 						<!-- 상세정보 -->
 						<span class="contents_contents_detail contents_info">
@@ -244,14 +244,15 @@ $(document).ready(function () {
 					<!-- 세번째(코멘트) 시작 -->
 					<div class="contents_contents_column">
 						<div class="newestComments">
-							<div class="contents_contents_title">한줄평</div>
+							<div class="contents_contents_title recentReviews">한줄평
+							<!-- 코멘트 더보기 링크 -->
+							<input type="button" id="moreReviews" name="moreReviews"
+								value="더보기"
+								onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">	
+						<!-- 코멘트 더보기 링크 끝 --></div>
+							
 						</div>
-						<!-- 코멘트 더보기 링크 -->
-						<input type="button" id="moreReviews" name="moreReviews"
-							value="더보기"
-							onclick="location.href='reviews.do?mus_num=${contentsVO.mus_num}'">
-						<!-- 코멘트 더보기 링크 끝 -->
-						<c:forEach var="newest" items="${newest }">
+											<c:forEach var="newest" items="${newest }">
 							<div class="comment_user">
 							
 								<ul class="user_profile">

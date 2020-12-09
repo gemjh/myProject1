@@ -68,13 +68,10 @@
    color:rgb(122, 122, 122);
    border:0;
    outline:0;
-   margin:20px 0 0 3px;
+   font-size:10pt;
 }
 
-/* 한줄평 더보기 가로정렬 */
-.contents_contents_title:last-child, #moreReviews{
-	float:left;
-}
+
 
 .cursor {
     cursor: pointer;

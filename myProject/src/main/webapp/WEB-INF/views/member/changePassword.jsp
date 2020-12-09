@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+.submit{
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+}
+.submit:hover{
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -62,6 +85,7 @@
 		});
 	});
 </script>
+
 <div class="page-main-style">
 	<h2>비밀번호 변경</h2>
 	<form:form id="change_form" action="changePassword.do" commandName="memberVO">
@@ -84,8 +108,8 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="변경">
- 			<input type="button" value="홈으로"
+			<input type="submit" value="변경" class="submit">
+ 			<input type="button" value="홈으로" class="button"
 			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 		</div>
 	</form:form>

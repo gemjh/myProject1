@@ -178,6 +178,7 @@ public class MemberController {
 								
 								vo.setExpire_date(null);
 								
+								session.invalidate();
 							}
 					}
 				/////	
@@ -475,8 +476,9 @@ public class MemberController {
 		//회원 정보 수정
 		memberService.updateTicket(memberVO);
 		memberService.updateTicketAuth(memberVO);
-		
-		return "ticketCom";
+		session.invalidate();
+
+		return "redirect:/index.jsp";
 		
 	}
 	

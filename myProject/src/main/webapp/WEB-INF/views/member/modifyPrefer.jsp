@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+.submit{
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+}
+.submit:hover{
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -26,7 +49,7 @@ form{
 	<form:form id="modPrefer_form" action="modifyPrefer.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		 <div class="perfer_chk" id="prefer_chk">
-		<p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장</p>
+		<p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장 (아무것도 선택하지 않은 null인 경우 0을 저장)</p>
 
 		 	<br><br>
 		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
@@ -87,8 +110,8 @@ form{
 		 </div>
 	
 		<div class="align-center">
-			<input type="submit" value="변경하기">
-			<input type="button" value="홈으로"
+			<input type="submit" value="변경하기" class="submit">
+			<input type="button" value="홈으로" class="button"
 			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 		</div>
 	</form:form>

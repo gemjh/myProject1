@@ -1,6 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+
+.file{
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+}
+.file:hover{
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -94,11 +118,11 @@
 			<br><br>
 		</li>
 		<li>
-			<input type="button" value="수정" id="image_btn">
+			<input type="button" value="수정" id="image_btn" class="button">
 		<div id="image_choice" style="display:none;">
-				<input type="file" id="upload" accept="image/gif,image/png,image/jpeg"><br>
-				<input type="button" value="변경하기" id="image_submit">
-				<input type="button" value="취소하기" id="image_reset">      
+				<input type="file" id="upload" accept="image/gif,image/png,image/jpeg" class="file"><br>
+				<input type="button" value="변경하기" id="image_submit" class="button" >
+				<input type="button" value="취소하기" id="image_reset" class="button">      
 			</div>
 		</li>
 	</ul>

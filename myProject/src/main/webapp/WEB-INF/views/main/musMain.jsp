@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<style>
+.contents_title,.type1-content-box{
+padding-left:14.5px;
+}
+</style>
 <!-- 메인 슬라이드 -->
 <!-- ========================== swiper start=========================== -->
 <div>

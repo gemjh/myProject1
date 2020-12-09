@@ -25,4 +25,7 @@ public interface PickMapper {
 	@Select("SELECT COUNT(*) FROM pick WHERE mem_num=#{mem_num}")
 	public int selectRowCount(Map<String, Object> map);
 	
+	// 뮤지컬 찜 여부 카운트
+	@Select("SELECT COUNT(*) FROM pick WHERE mem_num=#{mem_num} AND mus_num=#{mus_num}")
+	public int selectPickCount(Map<String, Object> map);
 }

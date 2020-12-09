@@ -38,7 +38,7 @@ public class PickController {
 			map.put("mus_num", pickVO.getMus_num());
 
 			// 찜 확인 - count==0 이면 찜X, count==1 이면 찜O
-			int count = pickService.selectRowCount(map);
+			int count = pickService.selectPickCount(map);
 			System.out.println("//count: "+ count);
 
 			if(count == 0) {
@@ -69,7 +69,8 @@ public class PickController {
 			map.put("mus_num", pickVO.getMus_num());
 
 			// 찜 확인 - count==0 이면 찜X, count==1 이면 찜O
-			int count = pickService.selectRowCount(map);
+			int count = pickService.selectPickCount(map);
+			System.out.println("찜count : " + count);
 
 			mapJson.put("result", "success");
 			mapJson.put("count", count);

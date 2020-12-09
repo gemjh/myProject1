@@ -36,5 +36,10 @@ public class PickServiceImpl implements PickService{
 		return pickMapper.selectRowCount(map);
 	}
 
+	@Override
+	public int selectPickCount(Map<String, Object> map) {
+		return pickMapper.selectPickCount(map);
+	}
+
 	
 }

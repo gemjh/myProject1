@@ -15,4 +15,7 @@ public interface PickService {
 	public List<MusMainVO> selectMusPickList(Map<String, Object> map);
 	
 	public int selectRowCount(Map<String, Object> map);
+	
+	public int selectPickCount(Map<String, Object> map);
 }
+

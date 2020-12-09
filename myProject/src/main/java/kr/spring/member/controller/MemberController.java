@@ -179,6 +179,7 @@ public class MemberController {
 								vo.setExpire_date(null);
 								
 								session.invalidate();
+								return "expireCom";
 							}
 					}
 				/////	
@@ -478,7 +479,7 @@ public class MemberController {
 		memberService.updateTicketAuth(memberVO);
 		session.invalidate();
 
-		return "redirect:/index.jsp";
+		return "ticketCom";
 		
 	}
 	

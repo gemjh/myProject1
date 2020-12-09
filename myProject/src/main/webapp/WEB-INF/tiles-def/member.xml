@@ -93,6 +93,11 @@
     	<put-attribute name="title" value="임시비밀번호 발송완료"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/memberNoticeView.jsp"/>       
     </definition>
+       <!-- 이용권만료처리안내 -->
+    <definition name="expireCom" extends="memberMain">
+    	<put-attribute name="title" value="이용권 만료 처리완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/expireCom.jsp"/>       
+    </definition>
 </tiles-definitions>   
 
 

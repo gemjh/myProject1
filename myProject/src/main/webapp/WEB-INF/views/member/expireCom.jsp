@@ -28,12 +28,13 @@
 }
 </style>
 <meta charset="UTF-8">
-
-<title>결제 완료 안내</title>
+<title>이용권 만료 안내</title>
 </head>
 <body>
-	<h2>월 이용권 결제가 완료되었습니다!<br><br>다시 로그인해주세요!</h2>
-	<input type="button" value="로그인" class="button"
+
+	<h2>월 이용권 이용기간이 끝났습니다!<br><br>다시 로그인해주세요!</h2>
+	
+	<input type="button" value="로그인"
 			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 
 </body>
 </html>

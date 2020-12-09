@@ -2,8 +2,24 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+/*ck에디터 사용시 입력 박스의 높이 지정*/
+.ck-editor__editable_inline {
+    min-height: 450px;
+    min-width: 950px;
+    color:#000000;
+}
+#notice_form{
+	width:1000px;
+}
+#no_title{
+	width:500px;
+}
+
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <script type="text/javascript">
 	$(document).ready(
 		function() {
@@ -51,7 +67,6 @@
 <div >
 	<h2>공지사항 작성</h2>
 	<form:form commandName="noticeVO" action="noticeWrite.do" id="notice_form">
-		<form:errors element="div" cssClass="error-color"/>
 		<div>
 			<div>
 				<label for="no_title">제목</label>
@@ -62,14 +77,23 @@
           <div class="col_c" style="margin-bottom: 30px">
                 <div class="input-group">                 
                   <form:textarea path="no_content" />
-                  <script type="text/javascript">
-					CKEDITOR.replace('no_content', 
-				{filebrowserUploadUrl:'${pageContext.request.contextPath}/admin/imageUpload.do',
-				filebrowserImageUploadUrl : '${pageContext.request.contextPath}/admin/imageUpload.do',
-						height:600});
-				</script>
+                  <%-- (주의)uploadAdapter.js에 업로드 경로가 명시되어 있음. 주소가 변경되면 수정할 것 --%>
+                   <script>
+				 function MyCustomUploadAdapterPlugin(editor) {
+					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        return new UploadAdapter(loader);
+					    }
+					}
+				 
+				 ClassicEditor
+		            .create( document.querySelector( '#no_content' ),{
+		            	extraPlugins: [MyCustomUploadAdapterPlugin]
+		            })
+		            .catch( error => {
+		                console.error( error );
+		            } );
+			    </script>          
                 </div>
-                <form:errors path="no_content" cssClass="error-color"/>
             </div> 
          <hr>
          	<div>

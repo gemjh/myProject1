@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,14 +45,14 @@ public class NoticeController {
 	private Logger log = Logger.getLogger(this.getClass());
 	@Resource
 	NoticeService noticeService;
-	
+
 	//자바빈(VO) 초기화
 	@ModelAttribute
 	public NoticeVO initCommand() {
 		return new NoticeVO();
 	}
-	
-	
+
+
 	// 게시판 목록
 	@RequestMapping("/admin/noticeList.do")
 	public ModelAndView process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
@@ -93,39 +94,39 @@ public class NoticeController {
 		return mav;
 	}
 
-	
+
 	//글 등록 폼
 	@RequestMapping(value="/admin/noticeWrite.do",method=RequestMethod.GET)
 	public String form() {
 		return "noticeWrite";
 	}
-	
+
 	//글 등록 처리
 	@RequestMapping(value="/admin/noticeWrite.do",method=RequestMethod.POST)
 	public String submit(@Valid NoticeVO noticeVO,
-			             BindingResult result,
-			             HttpServletRequest request,
-			             HttpSession session) {
-		
+			BindingResult result,
+			HttpServletRequest request,
+			HttpSession session) {
+
 		if(log.isDebugEnabled()) {
 			log.debug("<<게시판 글 저장>> : " + noticeVO);
 		}
-		
+
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return "noticeWrite";
 		}
-		
+
 		//회원 번호 셋팅
 		MemberVO vo = (MemberVO)session.getAttribute("user");
 		noticeVO.setMem_num(vo.getMem_num());
 
 		//글쓰기
 		noticeService.insertNotice(noticeVO);
-		
+
 		return "redirect:/admin/noticeList.do";
 	}
-	
+
 	//공자사항 상세
 	@RequestMapping("/admin/noticeView.do")
 	public ModelAndView process(@RequestParam int no_num) {
@@ -135,32 +136,32 @@ public class NoticeController {
 		}
 		//해당 글의 조회수 증가
 		noticeService.updateHit(no_num);
-		
+
 		NoticeVO notice = noticeService.selectNotice(no_num);
-		
+
 		return new ModelAndView("noticeView","notice",notice);
 	}
-	
-	
+
+
 	//수정 폼 호출
 	@RequestMapping(value="/admin/noticeUpdate.do", method=RequestMethod.GET)
 	public String form(@RequestParam int no_num, Model model) {
-		
+
 		NoticeVO noticeVO = noticeService.selectNotice(no_num);
-		
+
 		model.addAttribute("noticeVO", noticeVO);
-		
+
 		return "noticeModify";
 	}
-	
+
 	//글 수정 처리
 	@RequestMapping(value="/admin/noticeUpdate.do", method=RequestMethod.POST)
 	public String submitUpdate(@Valid NoticeVO noticeVO,
-			             BindingResult result,
-			             HttpServletRequest request,
-			             HttpSession session,
-			             Model model) {
-		
+			BindingResult result,
+			HttpServletRequest request,
+			HttpSession session,
+			Model model) {
+
 		if(log.isDebugEnabled()) {
 			log.debug("<<글 정보 수정>> : " + noticeVO);
 		}
@@ -168,108 +169,79 @@ public class NoticeController {
 		if(result.hasErrors()) {
 			return "noticeModify";
 		}
-		
+
 		//회원 번호 셋팅
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		noticeVO.setMem_num(user.getMem_num());
-		
+
 		//글 수정
 		noticeService.updateNotice(noticeVO);
-		
+
 		//View에 표시할 메시지
 		model.addAttribute("message", "공지사항 수정 완료!!");
 		model.addAttribute("url", 
 				request.getContextPath()+"/admin/noticeList.do");
-		
+
 		//타일스 설정에 아래 뷰이름이 없으면 단독으로 JSP 호출
 		return "redirect:/admin/noticeView.do?no_num="+noticeVO.getNo_num();
 	}
-	
+
 	//글 삭제 처리
 	@RequestMapping("/admin/noticeDelete.do")
 	public String submitDelete(@RequestParam int no_num,
-			                   Model model,
-			                   HttpServletRequest request) {
-		
+			Model model,
+			HttpServletRequest request) {
+
 		if(log.isDebugEnabled()) {
 			log.debug("<<게시판 글 삭제>> : " + no_num);
 		}
-		
+
 		//글 삭제
 		noticeService.deleteNotice(no_num);
-		
+
 		model.addAttribute("message", "공지사항 삭제 완료!!");
 		model.addAttribute("url", 
 				request.getContextPath()+"/admin/noticeList.do");
-		
+
 		return "redirect:/admin/noticeList.do";
 	}
-	
-	
+
+
 	//이미지 업로드
 	@RequestMapping("/admin/imageUpload.do")
-	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
-			MultipartHttpServletRequest multiFile, @RequestParam MultipartFile upload) throws Exception {
+	@ResponseBody
+	public Map<String,Object> imageUpload(MultipartFile upload, HttpSession session, HttpServletResponse response,
+			HttpServletRequest request) throws Exception {
 		System.out.println("//업로드");
 		// 랜덤 문자 생성
 		UUID uid = UUID.randomUUID();
 
-		OutputStream out = null;
-		PrintWriter printWriter = null;
+		// 업로드할 폴더 경로
+		String realFolder = session.getServletContext().getRealPath("/upload");
 
-		// 인코딩
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		// 업로드할 파일 이름
+		String org_filename = upload.getOriginalFilename();
+		String str_filename = System.currentTimeMillis() + org_filename;
 
-		try {
+		System.out.println("원본 파일명 : " + org_filename);
+		System.out.println("저장할 파일명 : " + str_filename);
 
-			// 파일 이름 가져오기
-			String fileName = upload.getOriginalFilename();
-			byte[] bytes = upload.getBytes();
 
-			// 이미지 경로 생성
-			String path = "/myProject/src/main/webapp/resources/upload";
-			String ckUploadPath = path + uid + "_" + fileName;
-			File folder = new File(path);
-			System.out.println("folder : "+folder);
 
-			// 해당 디렉토리 확인
-			if (!folder.exists()) {
-				try {
-					folder.mkdirs(); // 폴더 생성
-				} catch (Exception e) {
-					e.getStackTrace();
-				}
-			}
+		String filepath = realFolder + "\\" + uid + "\\" + str_filename;
+		System.out.println("파일경로 : " + filepath);
 
-			out = new FileOutputStream(new File(ckUploadPath));
-			out.write(bytes);
-			out.flush(); // outputStram에 저장된 데이터를 전송하고 초기화
-
-			String callback = request.getParameter("CKEditorFuncNum");
-			printWriter = response.getWriter();
-			String fileUrl = "${pageContext.request.contextPath}/admin/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName; // 작성화면
-			System.out.println("//fileUrl"+fileUrl);
-			// 업로드시 메시지 출력
-			printWriter.println("{\"filename\" : \"" + fileName + "\", \"uploaded\" : 1, \"url\":\"" + fileUrl + "\"}");
-			printWriter.flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (out != null) {
-					out.close();
-				}
-				if (printWriter != null) {
-					printWriter.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		File f = new File(filepath);
+		if (!f.exists()) {
+			f.mkdirs();
 		}
+		upload.transferTo(f);
 
-		return;
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("uploaded", true);
+		map.put("url", request.getContextPath()+"/upload/"+uid+"/"+str_filename);
+
+		return map;
 	}
 
 	/**
@@ -291,7 +263,7 @@ public class NoticeController {
 		String path = "/myProject/src/main/webapp/resources/upload";
 
 		String sDirPath = path + uid + "_" + fileName;
-		
+
 		File imgFile = new File(sDirPath);
 
 		// 사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.

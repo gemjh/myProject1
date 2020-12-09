@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.button {
+	border:0;
+	outline:0;
+	background-color: white;
+	color: #black;
+	
+}
+.button:hover {
+	background-color: #d9534f;
+	color: #fff;
+}
+</style>
 <div class="page-main-style">
 	<h2>관리자 목록</h2>
 	<form action="adminManagerList.do" id="search_form" method="get">
@@ -18,15 +31,15 @@
 			<input type="text" name="keyword" id="keyword">
 		</li>
 		<li>
-			<input type="submit" value="찾기">
-			<input type="button" value="목록"
+			<input type="submit" value="찾기" class="button">
+			<input type="button" value="목록" class="button"
 						onclick="location.href='adminManagerList.do'">
 		</li>
 	</ul>
 	</form>
 	<div class="align-right">
 		<c:if test="${!empty user}">
-			<input type="button" value="관리자 추가" onclick="location.href='adminPlus.do'">
+			<input type="button" value="관리자 추가" class="button" onclick="location.href='adminPlus.do'">
 		</c:if>
 	</div>
 	<c:if test="${count==0}">

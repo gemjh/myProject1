@@ -100,7 +100,7 @@
 		<div class="align-center">
 			<input type="submit" value="수정" class="button" >
 			<input type="button" value="돌아가기"  class="button" 
-			    onclick="location.href='${pageContext.request.contextPath}/admin/adminMain.do'">
+			    onclick="history.back(-1);">
 		</div>
 	</form:form>
 </div>

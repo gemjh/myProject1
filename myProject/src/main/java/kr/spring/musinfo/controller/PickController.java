@@ -22,7 +22,7 @@ public class PickController {
 
 	@Resource
 	private PickService pickService;
-
+  
 	// 찜하기 처리
 	@RequestMapping(value="/musinfo/pick.do")
 	@ResponseBody

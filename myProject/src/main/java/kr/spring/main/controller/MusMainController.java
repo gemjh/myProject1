@@ -151,7 +151,7 @@ public class MusMainController {
 	}
 	
 	// 메인 검색 목록
-	@RequestMapping("/main/musMainList.do")
+	@RequestMapping("/main/musMainSearch.do")
 	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 								@RequestParam(value="keyfield",defaultValue="") String keyfield,
 								@RequestParam(value="keyword",defaultValue="") String keyword){
@@ -168,7 +168,7 @@ public class MusMainController {
 		}
 
 		// 페이징 처리 - 검색
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "musMainList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "musMainSearch.do");
 		
 		// 페이지 시작 숫자, 끝 숫자
 		map.put("start", page.getStartCount());
@@ -186,7 +186,7 @@ public class MusMainController {
 		
 		ModelAndView mav = new ModelAndView();
 		// 뷰 이름 설정 - ""에 tiles 명 넣기
-		mav.setViewName("mainList");
+		mav.setViewName("mainSearch");
 		// 데이터 저장
 		mav.addObject("count", count);
 		mav.addObject("list", list);

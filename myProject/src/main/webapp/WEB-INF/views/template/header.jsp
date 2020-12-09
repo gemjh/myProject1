@@ -88,7 +88,7 @@
 					<li><a class="btn" href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
 					</c:if>
 				</ul>
-				<form class="navbar-form" role="search" action="${pageContext.request.contextPath}/main/musMainList.do" id="search_form" method="get">
+				<form class="navbar-form" role="search" action="${pageContext.request.contextPath}/main/musMainSearch.do" id="search_form" method="get">
 			      <div class="form-group">
 			        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="제목, 배우로 검색해보세요.">
 			      </div>

@@ -33,9 +33,9 @@
 }
 
 .type1-content-box {
-    display: flex;  
-    flex-direction: column;
-    width: 300px;
+    /* display: flex;  
+    flex-direction: column; */
+    width: 220px;
     height: 320px;
 }
 

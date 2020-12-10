@@ -3,8 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
+
 th{
-	min-width:150px;
+background-color: #d9534f;
+color: color:white;
+border:solid 2px white;
+min-width:150px;
 }
 </style>
 <div class="page-main-style">

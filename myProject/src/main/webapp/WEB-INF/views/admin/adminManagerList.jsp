@@ -2,6 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.count{
+margin-left:210px;
+}
+.tb{
+width:700px;
+}
+.th{
+background-color: #d9534f;
+color: color:white;
+border:solid 2px white;
+}
 .button {
 	border:0;
 	outline:0;
@@ -13,9 +24,12 @@
 	background-color: #d9534f;
 	color: #fff;
 }
+#add{
+	margin-right:210px;
+}
 </style>
 <div class="page-main-style">
-	<h2>관리자 목록</h2>
+	<h2>관리자 관리</h2>
 	<form action="adminManagerList.do" id="search_form" method="get">
 	<ul class="search">
 		<li>
@@ -39,7 +53,7 @@
 	</form>
 	<div class="align-right">
 		<c:if test="${!empty user}">
-			<input type="button" value="관리자 추가" class="button" onclick="location.href='adminPlus.do'">
+			<input type="button" value="관리자 추가" class="button" id="add" onclick="location.href='adminPlus.do'">
 		</c:if>
 	</div>
 	<c:if test="${count==0}">
@@ -47,10 +61,10 @@
 	</c:if>
 	<c:if test="${count>0}">
 	<div>
-	검색된 총 회원 수 : ${count}
+	<p class="count">검색된 총 관리자 수 : ${count}</p>
 	</div>
-	<table>
-		<tr>
+	<table class="tb">
+		<tr class="th">
 			<th width="130">관리자 번호</th>
 			<th>닉네임</th>
 			<th>이메일 주소</th>

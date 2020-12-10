@@ -2,6 +2,9 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <style>
+h2{
+align-center;
+}
 .button {
 	border:0;
 	outline:0;

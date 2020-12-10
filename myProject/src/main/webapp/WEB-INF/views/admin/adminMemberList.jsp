@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.th{
+background-color: #d9534f;
+color: color:white;
+border:solid 2px white;
+}
 .button {
 	border:0;
 	outline:0;
@@ -45,7 +50,7 @@
 	검색된 총 회원 수 : ${count}
 	</div>
 	<table>
-		<tr>
+		<tr class="th">
 			<th width="130">회원 번호</th>
 			<th>닉네임</th>
 			<th>이메일 주소</th>

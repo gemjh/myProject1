@@ -2,6 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.count{
+margin-left:210px;
+}
+.tb{
+width:700px;
+}
+.th{
+background-color: #d9534f;
+color: color:white;
+border:solid 2px white;
+}
 .button {
 	border:0;
 	outline:0;
@@ -15,7 +26,7 @@
 }
 </style>
 <div class="page-main-style">
-	<h2>등록된 뮤지컬 리스트</h2>
+	<h2>뮤지컬 관리</h2>
 	<form action="adminMusicalList.do" id="search_form" method="get">
 	<ul class="search">
 		<li>
@@ -41,13 +52,13 @@
 	</c:if>
 	<c:if test="${count>0}">
 	<div>
-	검색된 총 뮤지컬 수 : ${count}
+		<p class="count">검색된 총 뮤지컬 수 : ${count}</p>
 	</div>
-	<table>
+	<table class="tb">
 		<tr>
-			<th width="130">뮤지컬 번호</th>
-			<th width="400">뮤지컬 제목</th>
-			<th>등록일</th>
+			<th width="130" class="th">뮤지컬 번호</th>
+			<th width="400" class="th">뮤지컬 제목</th>
+			<th class="th">등록일</th>
 		</tr>
 		<c:forEach var="musical" items="${list}">
 		<tr>

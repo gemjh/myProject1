@@ -3,6 +3,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.tb{
+width:700px;
+}
 .button {
 	border:0;
 	outline:0;
@@ -28,7 +31,7 @@ function button_event(){
 </script>
 <div class="page-main-style">
 	<h2>관리자 정보 상세 보기</h2>
-	<table>
+	<table class="tb">
 		<tr>
 			<th>관리자 번호</th>
 			<td>${memberVO.mem_num}</td>

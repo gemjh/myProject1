@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.th{
+background-color: #d9534f;
+color: color:white;
+border:solid 2px white;
+}
 .button {
 	border:0;
 	outline:0;
@@ -46,7 +51,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 		<table id="noticeTable" class="noticeTable" >
-			<tr>
+			<tr class="th">
 				<th>번호</th>
 				<th width="400">제목</th>
 				<th>작성 관리자 번호</th>

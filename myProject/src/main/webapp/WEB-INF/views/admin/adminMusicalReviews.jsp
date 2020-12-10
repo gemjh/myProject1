@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.review{
+width:400px;
+}
+.th{
+background-color: #d9534f;
+color: color:white;
+border:solid 2px white;
+}
 .button {
 	border:0;
 	outline:0;
@@ -65,14 +73,14 @@ $(document).ready(function(){
 	<div>
 	검색된 총 뮤지컬 수 : ${count}
 	</div>
-		<table>
-			<tr>
+		<table class="tb">
+			<tr class="th">
 				<th>리뷰 번호</th>
 				<th width="130">뮤지컬 번호</th>
 				<th>닉네임</th>
 				<th>회원번호</th>
 				<th>평점</th>
-				<th>한줄평</th>
+				<th class="review">한줄평</th>
 				<c:if test="${musical.hide_rev!=null}">
 				<th>가려진 한줄평</th>
 				</c:if>
@@ -87,10 +95,10 @@ $(document).ready(function(){
 					<td>${musical.mem_num}</td>
 					<td>${musical.rev_rate}</td>
 					<c:if test="${musical.hide_rev!=null}">
-					<td>${musical.hide_rev}</td>
+					<td class="review">${musical.hide_rev}</td>
 					</c:if>
 					<c:if test="${musical.hide_rev==null}">
-					<td>${musical.review}</td>
+					<td class="review">${musical.review}</td>
 					</c:if>
 					<td>${musical.rev_regdate}</td>
 					<td>

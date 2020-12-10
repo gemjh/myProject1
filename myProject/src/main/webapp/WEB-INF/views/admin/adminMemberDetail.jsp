@@ -12,7 +12,7 @@
 		</tr>
 		<tr>
 			<th>회원 이메일</th>
-			<td>${memberVO.email}</td>
+			<td><a href="mailto:">${memberVO.email}</a></td>
 		</tr>
 		<tr>
 			<th>회원 닉네임</th>

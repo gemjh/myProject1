@@ -7,6 +7,7 @@
 	}
 
 </style>
+
 <div class="page-main-style">
 
 	<h2>${musical.mus_name }</h2>

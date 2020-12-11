@@ -44,13 +44,9 @@
 			<input type="submit" value="로그인" class="submit">
 			<input type="button" value="회원가입" class="button"
 				onclick="location.href='${pageContext.request.contextPath}/member/join.do'">
-			<%-- <input type="button" value="홈으로"
-			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> --%> 
 		</div>
 		<br>
 		<div class="align-right">
-		   	<%-- <input type="button" value="이메일 찾기"
-				onclick="location.href='${pageContext.request.contextPath}/member/findEmail.do"> --%>
 			<input type="button" value="비밀번호 찾기" class="button"
 				onclick="location.href='${pageContext.request.contextPath}/member/findPassword.do'"> 
 			   

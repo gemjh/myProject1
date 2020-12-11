@@ -32,7 +32,7 @@
 </head>
 <body>
 
-	<h2>월 이용권 이용기간이 끝났습니다!<br><br>다시 로그인해주세요!</h2>
+	<h2>월 이용권 이용기간이 만료되었습니다!<br><br>다시 로그인해주세요!</h2>
 	
 	<input type="button" value="로그인"
 			    onclick="location.href='${pageContext.request.contextPath}/main/musMain.do'"> 

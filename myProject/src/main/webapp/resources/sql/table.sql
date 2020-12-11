@@ -40,11 +40,6 @@ CREATE TABLE musical(
      CONSTRAINT musical_pk PRIMARY KEY(mus_num)
 );
 
-CREATE TABLE actor(
- act_num NUMBER(10) not null,
- act_name VARCHAR2(50) not null,
-CONSTRAINT actor_pk  PRIMARY KEY (act_num)
-);
 
 CREATE TABLE prefer(
  prefer_num NUMBER(10) not null,
@@ -79,24 +74,6 @@ CREATE TABLE reviews(
 CONSTRAINT reviews_pk PRIMARY KEY (rev_num)
 );
 
-CREATE TABLE consult(
- con_num NUMBER(10) not null,
- mem_num NUMBER(10)   not null,
- con_title VARCHAR2(300) not null,
- con_content VARCHAR2(1500) not null,
- con_answer VARCHAR2(1500)  not null,
- con_completed  NUMBER(1) not null,
- con_regdate  DATE not null,
-CONSTRAINT consult_pk PRIMARY KEY (con_num)
-);
-
-CREATE TABLE voucher(
- voucher_num NUMBER(10) not null,
- mem_num NUMBER(10)   not null,
- buy_date date not null,
- expire_date  DATE not null,
-CONSTRAINT voucher_pk PRIMARY KEY (voucher_num)
-);
 
 CREATE TABLE notice(
 	no_num NUMBER(10) not null,
@@ -165,18 +142,11 @@ FOREIGN KEY(mus_num)
 REFERENCES  musical(mus_num)
  ON DELETE CASCADE;
 
-ALTER TABLE consult
-ADD CONSTRAINTS mem_num5
-FOREIGN KEY(mem_num)
-REFERENCES  member(mem_num)
-ON DELETE CASCADE;
-
 ALTER TABLE notice
 ADD CONSTRAINTS mem_num6
 FOREIGN KEY(mem_num)
 REFERENCES  member(mem_num)
 ON DELETE CASCADE;
-
 
 
 
@@ -208,10 +178,6 @@ START WITH  40000;
 CREATE SEQUENCE con_num
 INCREMENT BY 1
 START WITH  50000;
-
-CREATE SEQUENCE voucher_num
-INCREMENT BY 1
-START WITH  60000;
 
 CREATE SEQUENCE admin_seq
 INCREMENT BY 1

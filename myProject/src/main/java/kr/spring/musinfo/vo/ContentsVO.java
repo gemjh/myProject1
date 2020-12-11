@@ -26,7 +26,7 @@ public class ContentsVO {
 	private String nickname;
 	private String review;
 	private byte[] mem_image;
-	private String mem_num;
+	private int mem_num;
 	//뮤지컬 리뷰
 	private double rev_rate;
 	//조회수
@@ -154,10 +154,10 @@ public class ContentsVO {
 	public void setMem_image(byte[] mem_image) {
 		this.mem_image = mem_image;
 	}
-	public String getMem_num() {
+	public int getMem_num() {
 		return mem_num;
 	}
-	public void setMem_num(String mem_num) {
+	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
 	public int getMus_hit() {

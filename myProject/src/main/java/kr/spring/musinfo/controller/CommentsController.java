@@ -160,9 +160,6 @@ public class CommentsController {
 			mav.addObject("pagingHtml",page.getPagingHtml());
 			System.out.println("//mav: "+ mav);
 			return mav;
-			
-			
-
 		}
 
 			

@@ -41,7 +41,7 @@ public class ContentsController {
 	}
 	//뮤지컬 소개 페이지
 	@RequestMapping("/musinfo/musinfoDetail.do")
-	public ModelAndView detail(@Valid ContentsVO contentsVO, int mus_num,Model model) {
+	public ModelAndView detail(int mus_num,Model model) {
 		System.out.println("//*******뮤지컬상세 보기");
 		if(log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 상세>>:"+mus_num);
@@ -147,16 +147,14 @@ public class ContentsController {
 		
 		//뮤지컬 보기
 		@RequestMapping("/musinfo/musicalWatch.do")
-		public ModelAndView watch(int mus_num,Model model) {
-			if(log.isDebugEnabled()) {
-				log.debug("<<뮤지컬 상세>>:"+mus_num);
-			}
+		public ModelAndView watch(@RequestParam int mus_num,Model model,HttpServletRequest request, 
+				HttpSession session) {
 			ContentsVO musical = contentsService.selectContents(mus_num);
-			
-			model.addAttribute("mus_num",mus_num);
-			// 조회수 update
-			contentsService.updateHit(musical);
-			model.addAttribute("mus_hit",musical.getMus_hit());
+	         
+	         model.addAttribute("mus_num",mus_num);
+	         // 조회수 update
+	         contentsService.updateHit(musical);
+	         model.addAttribute("mus_hit",musical.getMus_hit());
 			
 			return new ModelAndView("musicalWatch","musical",musical);
 		}

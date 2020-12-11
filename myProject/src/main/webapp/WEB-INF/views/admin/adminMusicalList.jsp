@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <style>
+.align-right{
+margin-right:210px;
+}
 .count{
 margin-left:210px;
 }
@@ -47,6 +50,11 @@ border:solid 2px white;
 		</li>
 	</ul>
 	</form>
+	<div class="align-right" >
+		<c:if test="${!empty user}">
+			<input type="button" value="새로 등록하기" onclick="location.href='adminMusicalRegister.do'" class="button">
+		</c:if>
+	</div>
 	<c:if test="${count==0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>

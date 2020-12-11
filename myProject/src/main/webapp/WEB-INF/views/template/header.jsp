@@ -43,9 +43,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">관리 페이지[${user.nickname}접속] <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="${pageContext.request.contextPath}/admin/adminManagerList.do">관리자 계정 보기/추가</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/adminManagerList.do">관리자 계정 관리</a></li>
 								<li><a href="${pageContext.request.contextPath}/admin/adminMemberModify.do">내 정보 수정</a></li>
-								<li><a href="${pageContext.request.contextPath}/admin/adminMusicalRegister.do">뮤지컬 새로 등록</a></li>
 								<li><a href="${pageContext.request.contextPath}/admin/adminMusicalList.do">뮤지컬 관리</a></li>
 								<li><a href="${pageContext.request.contextPath}/admin/adminMusicalReviews.do">뮤지컬 리뷰 관리</a></li>
 								<li><a href="${pageContext.request.contextPath}/admin/adminMemberList.do">회원 정보 보기</a></li>

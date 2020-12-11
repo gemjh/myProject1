@@ -130,7 +130,7 @@ $(document).ready(function () {
     <div class="content_info-box">
         <!-- 왼쪽 포스터입니다. -->
         <div class="left-column">
-            <img src="imageView.do?mus_num=${contentsVO.mus_num }" style="width:200;height:280;" alt="${contentsVO.mus_name }">
+            <img src="imageView.do?mus_num=${contentsVO.mus_num }" width="200" height="280" alt="${contentsVO.mus_name }">
         </div>
         <!-- 여기까지 왼쪽 포스터 -->
 

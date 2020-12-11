@@ -85,7 +85,7 @@
 			<mapping path="/member/deleteMember.do"/>
 			<mapping path="/board/delete.do"/>
 			<mapping path="/main/musMain.do"/>
-			<mapping path="/musinfo/musicalWatch.do"/>			
+			<mapping path="/main/musMainSearch.do"/>		
 			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 		

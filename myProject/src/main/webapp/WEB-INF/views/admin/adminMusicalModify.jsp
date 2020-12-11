@@ -72,7 +72,6 @@ $(document).ready(function(){
 	//옵션값 db 저장된 값으로 초기화 하기
 	$("#gen_num").val(${adminMusicalVO.gen_num}).prop("selected", true);
 	$("#mus_age").val(${adminMusicalVO.mus_age}).prop("selected", true);
-	
 });
 function addBox (x) {
 	 var actors = '<input type="text" name="mus_actor' + '" placeholder="배우이름입력" size="10" class="actor_box">';

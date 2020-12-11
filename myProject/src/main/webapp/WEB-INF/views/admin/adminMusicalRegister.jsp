@@ -31,7 +31,16 @@
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
+	/* 요약정보 글자 수 제한*/
+	$('#mus_summary').on('keyup',function(){
+		if($('#mus_summary').val().length > 500){
+			$('#mus_summary').val($('#mus_summary').val().substring(0,500));
+			$('#limit').html('글자수 초과').css('color','red');
+		}
+	});
+	
 	$('#mus_name').focus();
 	
 	$('#musical_form').submit(function(event){
@@ -88,6 +97,9 @@ function deleteBox (x) {
     $('#mus_actor').empty();
     $('#mus_actor').append(actors);
   }
+  
+
+
 </script>
 <div class="page-main-style">
 	<h2>뮤지컬 등록</h2>
@@ -130,14 +142,15 @@ function deleteBox (x) {
 				<form:textarea path="mus_summary" cols="50" rows="7" style="clear:both;" class="info"/>
 				<form:errors path="mus_summary" cssClass="error-color"/>
 				<br>
+				<span id="limit"></span>			
 			</li>
 			<li>
 				<label for="mus_detail">상세 정보</label>
 				<form:textarea path="mus_detail" cols="50" rows="10" class="info"/>
 				<form:errors path="mus_detail" cssClass="error-color"/>
-				<br>
+				<br><br>
 			</li>
-			<br>
+			
 			<li>
 				<label for="mus_actor">출연 배우</label>
 				<input type="button" value="배우추가" onclick="addBox(this.form)" class="button"/>

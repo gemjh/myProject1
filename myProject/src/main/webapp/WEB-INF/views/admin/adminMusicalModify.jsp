@@ -19,6 +19,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	/* 요약정보 글자 수 제한*/
+	$('#mus_summary').on('keyup',function(){
+		if($('#mus_summary').val().length > 500){
+			$('#mus_summary').val($('#mus_summary').val().substring(0,500));
+			$('#limit').html('글자수 초과').css('color','red');
+		}
+	});
 	$('#mus_name').focus();
 
 	$('#musical_form').submit(function(event){
@@ -65,6 +72,8 @@ $(document).ready(function(){
 	//옵션값 db 저장된 값으로 초기화 하기
 	$("#gen_num").val(${adminMusicalVO.gen_num}).prop("selected", true);
 	$("#mus_age").val(${adminMusicalVO.mus_age}).prop("selected", true);
+	
+	
 });
 function addBox (x) {
 	 var actors = '<input type="text" name="mus_actor' + '" placeholder="배우이름입력" size="10" class="actor_box">';
@@ -124,6 +133,8 @@ function deleteBox (x) {
 				<label for="mus_summary">요약 정보</label>
 				<form:textarea path="mus_summary" cols="50" rows="7" class="info"/>
 				<form:errors path="mus_summary" cssClass="error-color"/>
+				<br>
+				<span id="limit"></span>
 			</li>
 			<li>
 				<label for="mus_detail">상세 정보</label>

@@ -34,7 +34,6 @@ CREATE TABLE musical(
     mus_post BLOB not null,
     mus_postname VARCHAR2(200) not null,
     mus_summary VARCHAR2(1500) not null,
-    mus_hit number(10),
     mus_detail CLOB not null,
     mus_regdate DATE not null,
     mus_hit NUMBER(10) default 0,

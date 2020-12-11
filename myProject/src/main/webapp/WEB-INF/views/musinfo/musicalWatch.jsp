@@ -19,8 +19,7 @@
                 <c:if test="${musical.gen_num==5 }">퍼포먼스</c:if>
                  · ${musical.mus_time }분
     	</div>
-	<div class="video-container">
+	<div class="video-container"> <iframe src="https://www.youtube.com/embed/${musical.mus_video }" frameborder="0" width="100%" height="500"></iframe> </div>
 
-<object type="text/html" width="100%" height="500" data="//www.youtube.com/embed/watch?v${musical.mus_video}"></object>
-	</div>
+
 </div>

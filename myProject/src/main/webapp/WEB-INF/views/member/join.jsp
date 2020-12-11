@@ -170,7 +170,8 @@ form{
 		</ul>
 		 
 		 <div class="perfer_chk" id="prefer_chk">
-		 <p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장</p>
+		  <!-- 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장 -->
+		 <p><br>보고싶은 공연을 체크해보세요!</p>
 		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
 		 	<img src="${pageContext.request.contextPath}/resources/post/Cats.gif" width="180" height="240">

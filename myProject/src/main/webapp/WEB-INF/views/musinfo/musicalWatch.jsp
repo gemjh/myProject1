@@ -21,6 +21,6 @@
     	</div>
 	<div class="video-container">
 
-<object type="text/html" width="100%" height="500" data="${musical.mus_video}"></object>
+<object type="text/html" width="100%" height="500" data="//www.youtube.com/embed/watch?v${musical.mus_video}"></object>
 	</div>
 </div>

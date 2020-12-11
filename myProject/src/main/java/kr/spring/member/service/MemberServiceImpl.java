@@ -83,6 +83,12 @@ public class MemberServiceImpl implements MemberService{
 	public void resetTicketDate(MemberVO member) {
 		memberMapper.resetTicketDate(member);
 		
+	}
+
+	@Override
+	public MemberVO checkEmail(String email) {
+		return memberMapper.checkEmail(email);
+		
 	};
 	
 	

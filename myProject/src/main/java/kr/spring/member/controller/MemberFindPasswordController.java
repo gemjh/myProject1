@@ -47,20 +47,26 @@ public class MemberFindPasswordController {
 		if(log.isDebugEnabled()){
 			log.debug("<<비밀번호 찾기>> : " +memberVO);
 		}
-
+			log.debug("<<분기체크--1>>");
 		//유효성 체크
 		if(result.hasFieldErrors("email")){
 			return form();
 		}
-
+		if(log.isDebugEnabled()){
+			log.debug("<<분기체크--2>>");
+		}
+		/*MemberVO member = memberService.checkEmail(memberVO.getEmail());*/
 		MemberVO member = memberService.selectCheckMember(memberVO.getEmail());
+		if(log.isDebugEnabled()){
+			log.debug("<<분기체크--3>>" + member);
+		}
 		if(member!=null) {
 			//기본비밀번호를 임시비밀번호로 변경
 			String password = randomPassword(10);
 			member.setPassword(password);
 			//변경된 임시비밀번호를 DB에 저장
 			memberService.updateRandomPassword(member);
-
+			
 			email.setContent("임시 비밀번호는 " + password +" 입니다. \n 로그인 후 비밀번호를 꼭 변경해 주세요");
 			email.setReceiver(member.getEmail());
 			email.setSubject(member.getEmail()+" 님 비밀번호 찾기 메일입니다.");
@@ -73,7 +79,7 @@ public class MemberFindPasswordController {
 
 			return "findPasswordCom";
 		}else {
-			result.reject("invalidIdOrEmail");
+			result.reject("invalidEmail");
 			return form();
 		}
 	}

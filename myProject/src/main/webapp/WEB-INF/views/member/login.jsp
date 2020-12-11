@@ -23,7 +23,6 @@
 	background-color: #d9534f;
 	color: #fff;
 }
-
 </style>
 <div class="page-main-style">
 	<h2>회원 로그인</h2>

@@ -62,6 +62,10 @@ public interface MemberMapper {
 	//비밀번호 찾기 랜덤 비밀번호로 변경
 	@Update(" UPDATE ( SELECT * FROM member m JOIN member_detail d ON m.mem_num = d.mem_num) SET password = #{password} WHERE email = #{email} ")
 	public void updateRandomPassword(MemberVO member);
+	
+	//비밀번호 찾기 시 입력한 이메일이 DB에 존재하는지 확인하기위해
+	@Select("SELECT * FROM member where email=#{email}")
+	public MemberVO checkEmail(String email);
 }
 
 

@@ -16,4 +16,5 @@ public interface MemberService {
 	public void updateRandomPassword(MemberVO member);
 	public void setTicketAuth(MemberVO member);
 	public void resetTicketDate(MemberVO member);
+	public MemberVO checkEmail(String email);
 }

@@ -9,15 +9,27 @@
 					<div class="col-md-3 widget">
 						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
-							<p>+234 23 9873237<br>
+							<p>+82253265092<br><br>
 								<a href="mailto:#">muchacheckin@gmail.com</a><br>
 								<br>
-								234 Hidden Pond Road, Ashland City, TN 37015
+								3F, APRO SQUARE, 55, Seocho-daero 77-gil, Seocho-gu, Seoul, Republic of Korea
 							</p>	
 						</div>
 					</div>
+					<div class="col-md-7 widget">
+						<!-- <h3 class="widget-title">Follow me</h3>
+						<div class="widget-body">
+							<p class="follow-me-icons">
+								<a href=""><i class="fa fa-twitter fa-2"></i></a>
+								<a href=""><i class="fa fa-dribbble fa-2"></i></a>
+								<a href=""><i class="fa fa-github fa-2"></i></a>
+								<a href=""><i class="fa fa-facebook fa-2"></i></a>
+							</p>	
+						</div> -->
+					</div>
 
-					<div class="col-md-3 widget">
+					<div class="col-md-2 widget">
+					    <p><br></p><p><br><br></p>
 						<h3 class="widget-title">Follow me</h3>
 						<div class="widget-body">
 							<p class="follow-me-icons">
@@ -26,14 +38,6 @@
 								<a href=""><i class="fa fa-github fa-2"></i></a>
 								<a href=""><i class="fa fa-facebook fa-2"></i></a>
 							</p>	
-						</div>
-					</div>
-
-					<div class="col-md-6 widget">
-						<h3 class="widget-title">Text widget</h3>
-						<div class="widget-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
-							<p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
 						</div>
 					</div>
 
@@ -49,8 +53,8 @@
 						<div class="widget-body">
 							<p class="simplenav">
 								<a href="${pageContext.request.contextPath}/main/musMain.do">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="contact.html">Contact</a> |
+								<a href="#">About</a> |
+								<a href="#">Contact</a> |
 								<b><a href="${pageContext.request.contextPath}/member/login.do">Sign up</a></b>
 							</p>
 						</div>

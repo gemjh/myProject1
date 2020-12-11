@@ -13,7 +13,6 @@ public interface MemberMapper {
 	
 	//회원가입_member
 	@Insert("INSERT INTO member (mem_num,email) VALUES (#{mem_num},#{email})")
-	
 	public void joinMember(MemberVO member);
 	//회원가입_member_detail
 	@Insert("INSERT INTO member_detail (mem_num,nickname,password,birth,phone,prefer) VALUES (#{mem_num},#{nickname},#{password},#{birth},#{phone},#{prefer})")
@@ -60,7 +59,7 @@ public interface MemberMapper {
 	@Update("UPDATE member_detail SET purchase_date=null, expire_date=null WHERE mem_num=#{mem_num}")
 	public void resetTicketDate(MemberVO member);
 	
-	//비밀번호 찾기
+	//비밀번호 찾기 랜덤 비밀번호로 변경
 	@Update(" UPDATE ( SELECT * FROM member m JOIN member_detail d ON m.mem_num = d.mem_num) SET password = #{password} WHERE email = #{email} ")
 	public void updateRandomPassword(MemberVO member);
 }

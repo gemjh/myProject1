@@ -8,12 +8,12 @@
 		<ul>
 			<li>
 				<label for="email">이메일</label>
-				<form:input path="email"/>
+				<form:input path="email"/><br>
 				<form:errors path="email" cssClass="error-color"/>        
 			</li>
 			<li>
 				<label for="password">비밀번호</label>
-				<form:password path="password"/>
+				<form:password path="password"/><br>
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
 		</ul>

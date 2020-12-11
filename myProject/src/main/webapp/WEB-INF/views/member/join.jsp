@@ -126,21 +126,6 @@
 			
 		});
 	});
-	//체크박스 최대 2개 선택
-	/* function count_chkbox(){
-		num = document.getElementsByName("chk");
-		chk_count = 0;
-		chk_max = 2;
-		for(i=0;i<num.length;i++){//배열의 갯수만큼 반복
-			if(num[i].checked){//각 항목의 체크 확인
-				chk_count++;//체크되면 값 1증가
-			}
-		}
-		if(chk_count>chk_max){
-			alert(chk_max + "개만 선택 가능합니다");
-			return false;
-		}
-	} */
 </script>
 <style>
 form{

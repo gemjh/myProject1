@@ -29,23 +29,24 @@
 	$(document).ready(function(){
 		var chk = 1;
 		//비밀번호 변경 체크
+		//변경 비밀번호 입력시 변경 비밀번호 확인과 일치여부 체크
 		$('#password').keyup(function(){
-			if($('#confirm_passwd').val()!='' &&
-					 $('#confirm_passwd').val()!=$(this).val()){
-				$('#message_id').text('비밀번호 불일치').css('color','red');
-			}else if($('#confirm_passwd').val()!='' &&
-					$('#confirm_passwd').val()==$(this).val()){
-				$('#message_id').text('비밀번호 일치').css('color','#000');
+			if($('#confirm_password').val()!='' &&
+					 $('#confirm_password').val()!=$(this).val()){
+				$('#message_password').text('비밀번호 불일치').css('color','red');
+			}else if($('#confirm_password').val()!='' &&
+					$('#confirm_password').val()==$(this).val()){
+				$('#message_password').text('비밀번호 일치').css('color','blue');
 			}
 		});
-		
+ 		//변경 비밀번호 확인 입력시 변경 비밀번호와 일치여부 체크
 		$('#confirm_password').keyup(function(){
 			if($('#password').val()!='' &&
 					 $('#password').val()!=$(this).val()){
-				$('#message_id').text('비밀번호 불일치').css('color','red');
+				$('#message_password').text('비밀번호 불일치').css('color','red');
 			}else if($('#password').val()!='' &&
 					$('#password').val()==$(this).val()){
-				$('#message_id').text('비밀번호 일치').css('color','#000');
+				$('#message_password').text('비밀번호 일치').css('color','blue');
 			}
 		});
 		
@@ -76,12 +77,11 @@
 				return false;
 				
 			}
-			
-			//문제없이 전송된 경우 변경 알림 기능 ---- 현재비밀번호가 다르게 입력되었을 경우에도 변경과 변경확인이 동일하면 DB에 저장은 안되는데 ALERT창은 떠버림;
-/* 			if(chk == '1'){
-				alert('비밀번호가 변경되었습니다');
-			} */
-			
+			if(($('#now_password').val()).equals($('#password').val())){
+				chk=0;
+				alret('현재 비밀번호와 새 비밀번호가 동일합니다');
+				return false;
+			}
 		});
 	});
 </script>
@@ -93,18 +93,18 @@
 		<ul>
 			<li>
 				<label for="now_password">현재 비밀번호</label>
-				<form:password path="now_password"/>
+				<form:password path="now_password"/><br>
 				<form:errors path="now_password" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="password">변경할 비밀번호</label>
-				<form:password path="password"/>
+				<form:password path="password"/><br>
 				<form:errors path="password" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="confirm_password">변경 비밀번호 확인</label>
-				<input type="password" id="confirm_password">
-				<span id="message_email" class="error-color"></span>
+				<input type="password" id="confirm_password"><br>
+				<span id="message_password" class="error-color"></span>
 			</li>
 		</ul>
 		<div class="align-center">

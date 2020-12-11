@@ -37,8 +37,8 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public void updateHit(Integer no_num) {
-		noticeMapper.updateHit(no_num);
+	public void updateNoticeHit(Integer no_num) {
+		noticeMapper.updateNoticeHit(no_num);
 	}
 
 	@Override

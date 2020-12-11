@@ -102,6 +102,9 @@
           or n.no_title LIKE '%' || #{keyword} || '%' 
           or n.no_content LIKE '%' || #{keyword} || '%' </if>
 		</where>                            
+	 </select>
+	 <select id="selectNotice" parameterType="integer" resultType="noticeVO">
+	 	SELECT * FROM notice WHERE no_num=#{no_num}
 	 </select>	
 </mapper>
 

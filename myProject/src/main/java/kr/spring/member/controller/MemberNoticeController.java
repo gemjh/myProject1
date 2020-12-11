@@ -77,7 +77,7 @@ public class MemberNoticeController {
 				log.debug("<<글 상세>> : " + no_num);
 			}
 			//해당 글의 조회수 증가
-			noticeService.updateHit(no_num);
+			noticeService.updateNoticeHit(no_num);
 			
 			NoticeVO notice = noticeService.selectNotice(no_num);
 			

@@ -135,7 +135,7 @@ public class NoticeController {
 			log.debug("<<글 상세>> : " + no_num);
 		}
 		//해당 글의 조회수 증가
-		noticeService.updateHit(no_num);
+		noticeService.updateNoticeHit(no_num);
 
 		NoticeVO notice = noticeService.selectNotice(no_num);
 
@@ -176,11 +176,6 @@ public class NoticeController {
 
 		//글 수정
 		noticeService.updateNotice(noticeVO);
-
-		//View에 표시할 메시지
-		model.addAttribute("message", "공지사항 수정 완료!!");
-		model.addAttribute("url", 
-				request.getContextPath()+"/admin/noticeList.do");
 
 		//타일스 설정에 아래 뷰이름이 없으면 단독으로 JSP 호출
 		return "redirect:/admin/noticeView.do?no_num="+noticeVO.getNo_num();

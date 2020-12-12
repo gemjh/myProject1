@@ -29,7 +29,7 @@ border:solid 2px white;
 }
 </style>
 <div class="page-main-style">
-	<h2>관리자 관리</h2>
+	<h2>관리자 계정 관리</h2>
 	<form action="adminManagerList.do" id="search_form" method="get">
 	<ul class="search">
 		<li>

@@ -32,6 +32,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <script type="text/javascript">
 	$(document).ready(
 		function() {

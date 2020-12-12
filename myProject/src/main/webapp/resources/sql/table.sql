@@ -1,7 +1,7 @@
 
 CREATE TABLE member(
        mem_num NUMBER(10) not null,
-       email VARCHAR2(100) unique not null,
+       email VARCHAR2(50) unique not null,
        auth NUMBER(1) default 2 not null,
       CONSTRAINT mem_pk PRIMARY KEY(mem_num)
 );
@@ -13,7 +13,7 @@ CREATE TABLE member_detail(
        nickname VARCHAR2(30) not null,
        password VARCHAR2(60) not null,
        birth DATE not null,
-       phone VARCHAR2(500) not null,
+       phone VARCHAR2(20) not null,
        mem_regdate DATE default SYSDATE not null,
        mem_modifydate DATE ,
        purchase_date DATE,

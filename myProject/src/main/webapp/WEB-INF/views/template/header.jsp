@@ -32,7 +32,7 @@
 					</c:if>
 					<!-- 이미지가 없는 경우 -->
 					<c:if test="${!empty user && empty user.mem_imagename}">
-						<a href="#" style="cursor:default;" onclick="return false;"><img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="25" height="25" class="my-image"></a>
+						<a href="#" style="cursor:default;" onclick="return false;"><img src="${pageContext.request.contextPath}/resources/images/blank.png" width="25" height="25" class="my-image"></a>
 					</c:if>
 						</li>
 					</c:if>

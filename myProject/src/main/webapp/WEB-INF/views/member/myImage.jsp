@@ -110,7 +110,7 @@
 	<ul>
 		<li>
 			<c:if test="${empty user.mem_imagename}">
-			<img src="${pageContext.request.contextPath}/resources/images/blank.GIF" width="100" height="100" class="my-image">	
+			<img src="${pageContext.request.contextPath}/resources/images/blank.png" width="100" height="100" class="my-image">	
 			</c:if>
 			<c:if test="${!empty user.mem_imagename}">
 			<img src="${pageContext.request.contextPath}/member/imageView.do" width="100" height="100" class="my-image">

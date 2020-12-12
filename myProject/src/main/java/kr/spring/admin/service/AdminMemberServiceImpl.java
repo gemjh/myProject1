@@ -50,8 +50,9 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 	@Override
 	public void adminPlusMember(MemberVO member) {
 		member.setMem_num(mapper.selectMem_num());
-		mapper.adminPlusMember(member);
 		mapper.adminPlusMember_detail(member);
+		mapper.adminPlusMember(member);
+		
 	}
 
 	@Override

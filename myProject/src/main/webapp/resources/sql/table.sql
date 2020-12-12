@@ -81,7 +81,6 @@ CREATE TABLE notice(
 	no_title VARCHAR2(300)  not null,
 	no_content clob,
 	no_regdate DATE  not null,
-	no_modifydate DATE ,
 	no_hit NUMBER(10) default 0 not null ,
 	noticedate date not null ,
 CONSTRAINT notice_pk PRIMARY KEY (no_num)

@@ -49,19 +49,19 @@ form{
 	<form:form id="modPrefer_form" action="modifyPrefer.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		 <div class="perfer_chk" id="prefer_chk">
-		<p>보고싶은 공연을 골라보세요. 가장 많이 선택된 장르(1~5)하나를 member_detail 'prefer'에 저장 (아무것도 선택하지 않은 null인 경우 0을 저장)</p>
+		<p>보고싶은 공연을 골라보세요.</p>
 
 		 	<br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Sweeney_Todd.jpg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/post/Cats.gif" width="180" height="240">
-		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/post/thosedays.png" width="180" height="240">
-		 	<input type="checkbox" id="prefer" name="prefer" value="3">
-		 	<img src="${pageContext.request.contextPath}/resources/post/dodo.gif" width="180" height="240">
+		 	<img src="${pageContext.request.contextPath}/resources/post/sunemoone.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/post/fuerza.gif" width="180" height="240">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Jekyll and Hyde.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="2">
+		 	<img src="${pageContext.request.contextPath}/resources/post/annie.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+		 	<img src="${pageContext.request.contextPath}/resources/post/6oclock.png" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="3">
 		 	<br><br><br>
 		 	<img src="${pageContext.request.contextPath}/resources/post/gloomyday.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
@@ -85,16 +85,18 @@ form{
 		 	<img src="${pageContext.request.contextPath}/resources/post/The Lion King.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="2">
 		 	<br><br><br>
-		 	<img src="${pageContext.request.contextPath}/resources/post/Sweeney_Todd.jpg" width="180" height="240">
+
+			<img src="${pageContext.request.contextPath}/resources/post/duet.jpeg" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="1">
-		 	<img src="${pageContext.request.contextPath}/resources/post/sunemoone.gif" width="180" height="240">
-		 	<input type="checkbox" id="prefer" name="prefer" value="4">
-		 	<img src="${pageContext.request.contextPath}/resources/post/Jekyll and Hyde.gif" width="180" height="240">
+		 	<img src="${pageContext.request.contextPath}/resources/post/Cats.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="2">
-		 	<img src="${pageContext.request.contextPath}/resources/post/annie.gif" width="180" height="240">
-		 	<input type="checkbox" id="prefer" name="prefer" value="5">
-		 	<img src="${pageContext.request.contextPath}/resources/post/6oclock.png" width="180" height="240">
+		 	<img src="${pageContext.request.contextPath}/resources/post/thosedays.png" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="3">
+		 	<img src="${pageContext.request.contextPath}/resources/post/dodo.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="4">
+		 	<img src="${pageContext.request.contextPath}/resources/post/fuerza.gif" width="180" height="240">
+		 	<input type="checkbox" id="prefer" name="prefer" value="5">
+
 		 	<br><br><br>
 		 	<img src="${pageContext.request.contextPath}/resources/post/chef.gif" width="180" height="240">
 		 	<input type="checkbox" id="prefer" name="prefer" value="5">

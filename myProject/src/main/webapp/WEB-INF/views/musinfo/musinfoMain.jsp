@@ -261,7 +261,7 @@ $(document).ready(function () {
 										
 									</c:if>	
 									<c:if test="${newest.mem_image==null }">
-										<li><img src="/Mucha/resources/images/blank.GIF"  width=80px; height=80px;></li>
+										<li><img src="/Mucha/resources/images/blank.png"  width=80px; height=80px;></li>
 									</c:if>
 								</ul>
 								<ul class="newComments">

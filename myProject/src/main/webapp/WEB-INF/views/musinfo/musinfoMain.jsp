@@ -256,13 +256,8 @@ $(document).ready(function () {
 							<div class="comment_user">
 							
 								<ul class="user_profile">
-									<c:if test="${newest.mem_image!=null }">
-										<li><img src="${pageContext.request.contextPath}/member/imageView.do" width=80px; height=80px; ></li>
-										
-									</c:if>	
-									<c:if test="${newest.mem_image==null }">
+									
 										<li><img src="/Mucha/resources/images/blank.png"  width=80px; height=80px;></li>
-									</c:if>
 								</ul>
 								<ul class="newComments">
 									<li class="star"><c:if test="${newest.rev_rate==1 }">

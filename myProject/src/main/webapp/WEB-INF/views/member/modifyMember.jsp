@@ -36,7 +36,9 @@ $(document).ready(function(){
 			chk = 0;
 			return false;
 		}
-		var regMsg = /^[A-Za-z0-9+]{2,10}$/;
+		var regMsg =  /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
+
+
 		if(!regMsg.test($('#nickname').val())){
 			$('#message_nick').css('color','red').text('2~10글자로 입력하세요');
 			$('#nickname').focus();

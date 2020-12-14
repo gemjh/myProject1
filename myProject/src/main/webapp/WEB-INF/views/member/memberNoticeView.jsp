@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>  
 <div class="page-main-style">
 	<h2>${notice.no_title}</h2>
 	<ul>

@@ -34,7 +34,7 @@ public class MemberNoticeController {
 	public ModelAndView memberNoticeList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
-
+		System.out.println("//회원 공지사항 보기");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -47,7 +47,7 @@ public class MemberNoticeController {
 			log.debug("<<count>> : " + count);
 		}
 		System.out.println("//" + currentPage + "//" + keyfield + "//" + keyword);
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "noticeList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 10, 10, "memberNoticeList.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		System.out.println("//page :" + page);

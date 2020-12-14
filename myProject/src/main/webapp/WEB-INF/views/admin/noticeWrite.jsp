@@ -37,6 +37,15 @@
 	$(document).ready(
 		function() {
 			$("#no_title").focus();
+			//제목 글자수 제한
+			$(document).ready(function(){
+				$('#no_title').on('keyup',function(){
+					if($(this).val().length>50){
+						$(this).val($(this).val().substring(0,50));
+						alert("제목은 50자 이하로 입력하세요.");
+						}
+					});
+				});
 			//제목 입력 체크
 			$('#notice_form').submit(
 				function(event) {

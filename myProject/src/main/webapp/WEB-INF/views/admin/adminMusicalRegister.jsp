@@ -32,12 +32,19 @@
 
 $(document).ready(function(){
 	/* 요약정보 글자 수 제한*/
+	
 	$('#mus_summary').on('keyup',function(){
-		if($('#mus_summary').val().length > 500){
-			$('#mus_summary').val($('#mus_summary').val().substring(0,500));
-			$('#limit').html('글자수 초과').css('color','red');
-		}
-	});
+		if($(this).val().length>50){
+			$(this).val($(this).val().substring(0,500));
+			alert("요약 내용은 500자 이하로 입력하세요.");
+			}
+		});
+	$('#mus_detail').on('keyup',function(){
+		if($(this).val().length>50){
+			$(this).val($(this).val().substring(0,2000));
+			alert("상세 내용은 2000자 이하로 입력하세요.");
+			}
+		});
 	
 	$('#mus_name').focus();
 	

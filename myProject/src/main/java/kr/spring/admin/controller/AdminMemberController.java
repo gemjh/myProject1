@@ -125,16 +125,12 @@ public class AdminMemberController {
 		if (log.isDebugEnabled()) {
 			log.debug("<<회원 가입>> : " + memberVO);
 		}
-
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
 			return form();
 		}
-
 		// 관리자 추가 메소드
 		adminMemberService.adminPlusMember(memberVO);
-		
-
 		return "redirect:/admin/adminManagerList.do";
 	}
 	

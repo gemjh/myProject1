@@ -96,8 +96,7 @@ CONSTRAINT notice_pk PRIMARY KEY (no_num)
 ALTER TABLE member
 ADD CONSTRAINTS mem_num 
 FOREIGN KEY(mem_num)
-REFERENCES member_detail(mem_num)
-ON DELETE CASCADE;
+REFERENCES member_detail(mem_num);
 
 ALTER TABLE musical
 ADD CONSTRAINTS gen_num

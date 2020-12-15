@@ -41,14 +41,6 @@ CREATE TABLE musical(
 );
 
 
-CREATE TABLE prefer(
- prefer_num NUMBER(10) not null,
- mem_num NUMBER(10)   not null,
- gen_num NUMBER not null,
- prefer_rate NUMBER(1) not null,
-CONSTRAINT prefer_pk  PRIMARY KEY (prefer_num)
-);
-
 CREATE TABLE genre(
  gen_num NUMBER(2) not null,
  gen_name VARCHAR2(50)  not null,
@@ -110,12 +102,6 @@ FOREIGN KEY(mem_num)
 REFERENCES  member(mem_num)
 ON DELETE CASCADE;
 
-ALTER TABLE prefer
-ADD CONSTRAINTS gen_num2
-FOREIGN KEY(gen_num)
-REFERENCES  genre(gen_num)
-ON DELETE CASCADE;
-
 ALTER TABLE pick
 ADD CONSTRAINTS mem_num3
 FOREIGN KEY(mem_num)
@@ -157,9 +143,6 @@ CREATE SEQUENCE mus_seq
 INCREMENT BY 1
 START WITH  100;
 
-CREATE SEQUENCE prefer_num
-INCREMENT BY 1
-START WITH  20000;
 
 CREATE SEQUENCE pick_num
 INCREMENT BY 1
